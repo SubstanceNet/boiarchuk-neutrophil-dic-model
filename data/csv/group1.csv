@@ -1,0 +1,22 @@
+# Group I (control DIC, "Эфа-2" 8330 mg/kg orally, n=40 rabbits)
+# All hemostatic and neutrophil-activity columns are DELTAS from baseline (t=0).
+# Neutrophil count is ABSOLUTE (10^9/L). Baseline N0 = 7.3 (referenced as N1_BASE).
+# Source: Boyarchuk dissertation (1998), tables 4.9, 5.1, 5.2, 5.3, 5.5, 5.7, 5.9.
+# See PROVENANCE.md for per-table mapping.
+time_d,recalc_delta_s,thrombin_delta_s,fib_delta_mg_dl,fxiii_delta_pct,acid_phosphatase_delta_BO,degranulation_delta_pct,neutrophils_10_9_per_L
+0,0.0,0.0,0.0,0.0,0.00,0.0,7.30
+1,-38.5,-5.6,28.0,71.0,0.22,20.7,9.20
+2,-40.9,-4.9,31.7,72.0,0.36,31.2,9.00
+3,-37.8,-3.0,24.0,56.0,0.48,35.6,9.30
+4,-22.5,-3.5,11.2,47.5,0.51,35.8,9.60
+5,-2.0,0.4,-22.9,5.4,0.38,40.2,8.30
+6,5.0,1.2,-26.8,-4.7,0.42,40.2,7.80
+7,13.6,1.5,-33.5,-12.3,0.50,38.6,8.50
+8,17.3,2.8,-39.1,-20.6,0.54,40.8,9.60
+9,148.3,7.3,-44.8,-65.9,0.58,51.9,9.70
+10,166.3,11.6,-46.8,-69.1,0.62,57.0,11.00
+11,206.7,15.6,-52.6,-76.7,0.84,60.5,11.20
+12,110.0,12.5,-40.6,-63.4,0.54,58.1,11.00
+13,56.8,6.2,-35.8,-49.3,0.44,56.5,8.70
+14,47.3,3.4,-34.1,-40.7,0.31,49.3,8.00
+19,6.3,0.2,-2.2,-5.7,0.07,8.6,7.60

@@ -1,0 +1,8 @@
+# Pinned for reference workstation: HP Omen 17 (Pop!_OS 22.04, Python 3.10.12)
+# These are exact pins for runtime reproducibility. Phase 0 dependencies only;
+# Phase 1+ additions (SALib, emcee, corner, arviz) will go into requirements-analysis.txt.
+
+numpy==2.2.6
+scipy>=1.13.0,<2.0      # required for numpy 2.x compatibility; any 1.13+ is fine
+matplotlib==3.10.3
+pytest>=8.0

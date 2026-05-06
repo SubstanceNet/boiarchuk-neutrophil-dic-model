@@ -1,0 +1,83 @@
+# Data Provenance
+
+This document maps every numerical value in `group1.csv` and `group2.csv` to its primary source. It is the single source of truth for "where did this number come from".
+
+## Experimental design (both groups)
+
+| Item | Value | Source |
+|------|-------|--------|
+| Animal model | Mature rabbits, 2.5–3.0 kg, both sexes | Boyarchuk diss. (1998), Methods |
+| DIC inducer | "Эфа-2" venom preparation, 8330 mg/kg, p.o., fasting | Boyarchuk diss. (1998), Methods |
+| Group I size | n = 40 (12 deaths, 30%, on days 10–12) | Boyarchuk commentary (mortality 30% — not in 2008 paper which states 27%) |
+| Group II size | n = 40 (effectively 0% mortality) | Boyarchuk commentary |
+| G2 myelosan protocol | 10 mg/day × 5–7 days + 4 mg/day × 8 days, p.o. | Boyarchuk commentary; **not published in any journal article** |
+| Target G2 baseline | ~40–50% reduction in peripheral neutrophils | Boyarchuk commentary |
+
+## Variable definitions and conventions
+
+All hemostasis and neutrophil-activity values in CSV are **deltas from each animal's own pre-experiment baseline (t=0)**. This is the convention of the original tables — paired-difference design (метод прямих різниць за Монцевичюте-Ерінгене, 1964).
+
+| CSV column | Original variable | Unit | Type | Method |
+|------------|-------------------|------|------|--------|
+| `recalc_delta_s` | Δ time of plasma recalcification | seconds | Δ | Standard recalcification test |
+| `thrombin_delta_s` | Δ thrombin time | seconds | Δ | Standard thrombin time |
+| `fib_delta_mg_dl` | Δ fibrinogen concentration | mg% (= mg/dL) | Δ | Standard fibrinogen assay |
+| `fxiii_delta_pct` | Δ Factor XIII activity | % of baseline | Δ | Standard XIII activity |
+| `acid_phosphatase_delta_BO` | Δ neutrophil acid phosphatase | Bodansky units | Δ | Bodansky method |
+| `degranulation_delta_pct` | Δ % neutrophils with <10 granules | % | Δ | Pigarevsky 1975/1978; May-Grünwald stain; ×15 ocular, ×90 objective |
+| `neutrophils_10_9_per_L` | Absolute neutrophil count | 10⁹/L | absolute | Standard differential WBC |
+
+## Source-table mapping
+
+Each row of each CSV is reconstructed from these dissertation tables (Boyarchuk O. D., 1998):
+
+- Table 4.9 — recalcification, thrombin, fibrinogen, F.XIII (group I, 16 timepoints)
+- Table 5.1 — neutrophil counts (groups I & II)
+- Table 5.2 — degranulation (lysosomal formula, % distribution by granule content)
+- Table 5.3 — absolute lysosomal-formula counts (×10⁹/L per category)
+- Table 5.5 — bone marrow granulocytopoiesis (group I, group II) — **partially published**
+- Table 5.7 — acid phosphatase activity (groups I & II, dynamics)
+- Table 5.9 — recalcification, thrombin, fibrinogen, F.XIII (group II, 9 timepoints)
+
+## Publication status of these data
+
+Per the analytical summary (Boyarchuk 1998–2023 retrospective), the publication coverage of these primary data is approximately:
+
+| Variable / Group | Published in journal | First publication |
+|------------------|----------------------|-------------------|
+| Hemostasis G1 (16 pts)                   | Partial (peak values, not full dynamics) | 2013 (Вісник ЛНУ) |
+| Acid phosphatase G1 (16 pts)             | Yes, full dynamics | 2013 (Вісник ЛНУ) |
+| Lysosomal formula G1 (% and absolute)    | Partial (% only, partial timepoints) | 2000 (Фізіол. журн.); 2012 (Вісник ЛНУ) |
+| Neutrophil count G1 (absolute)           | Partial | 2000; 2008; 2012 |
+| Hemostasis G2 (9 pts)                    | Aggregated by stage only | 2008 (Наук. вісник МДУ) |
+| Acid phosphatase G2 (9 pts)              | Aggregated by stage only | 2008 |
+| Lysosomal formula G2                     | Aggregated by stage only | 2008 |
+| Neutrophil count G2 (absolute)           | **Not published** | — |
+| Bone marrow granulocytopoiesis G2        | **Not published** | — |
+| Mortality figures (30% / ~0%)            | Partially (27% in 2000) | 2000 |
+| Myelosan protocol details                | **Not published** | — |
+
+This means a substantial portion of `group2.csv` and the "M" pre-treatment state are reconstructed from the dissertation directly, not from any peer-reviewed article. Any publication using this dataset must:
+
+1. cite the dissertation as primary source (Boyarchuk O. D., 1998);
+2. include the data files (or equivalent supplementary tables) so reviewers can audit numbers;
+3. acknowledge that the myelosan protocol description is original to the present work (per author commentary).
+
+## Baseline (t=0) absolute values
+
+For reconstructing original measurements from CSV deltas, baselines are:
+
+| Variable | G1 baseline | G2 baseline | Source |
+|----------|-------------|-------------|--------|
+| Plasma recalcification time | 78.7 s | (~baseline shifted, see G2 table) | Diss. table 4.9 / 5.9 |
+| Thrombin time | (per protocol) | (per protocol) | Diss. tables |
+| Fibrinogen | (per protocol) | (per protocol) | Diss. tables |
+| Factor XIII | 100% (by definition) | 100% (by definition) | Standard |
+| Acid phosphatase | (low baseline, BO) | (low baseline, BO) | Diss. table 5.7 |
+| Neutrophil count | 7.3 × 10⁹/L | 3.9 × 10⁹/L (post-myelosan) | Diss. table 5.1 |
+
+Baselines beyond neutrophil count are documented in the dissertation tables but were not numerically required by v12 (which works on deltas). They will be added to `data/csv/baselines.csv` if needed for absolute-value plots in the manuscript.
+
+## Audit trail
+
+All numerical values in `group1.csv` and `group2.csv` are byte-identical to the arrays in `archive/v12/model_v12.py` lines 42–58 (RECALC1, THROMB1, FIB1, XIII1, AP1, DEG1, N1_DATA; RECALC2 etc.). The migration from Python literals to CSV is verified by `tests/test_data_integrity.py`.
