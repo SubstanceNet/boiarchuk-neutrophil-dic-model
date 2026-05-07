@@ -1,0 +1,29 @@
+nohup: ввод игнорируется
+/home/doc/python_projects/my_env/lib/python3.10/site-packages/scipy/optimize/_differentialevolution.py:486: UserWarning: differential_evolution: the 'workers' keyword has overridden updating='immediate' to updating='deferred'
+  with DifferentialEvolutionSolver(func, bounds, args=args,
+=== W_split sweep: 5 points ===
+  grid: [0.0, 0.3, 1.0, 2.0, 5.0]
+  seeds: [42], quick: True
+  cache: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/01_w_split_profile/results/_cache
+
+[W_split=0.0] running fit (key=a83d8a5d326fea65, quick=True, seeds=[42])...
+[W_split=0.0] DONE  (731s, cost=1.0096, R2_G1=0.854, R2_G2=0.548)
+[W_split=0.3] running fit (key=acccc93f59522190, quick=True, seeds=[42])...
+[W_split=0.3] DONE  (777s, cost=0.9555, R2_G1=0.842, R2_G2=0.537)
+[W_split=1.0] running fit (key=42b850fba0c49aca, quick=True, seeds=[42])...
+[W_split=1.0] DONE  (448s, cost=1.0368, R2_G1=0.837, R2_G2=0.606)
+[W_split=2.0] running fit (key=dbb79729c60f2144, quick=True, seeds=[42])...
+[W_split=2.0] DONE  (698s, cost=1.0431, R2_G1=0.834, R2_G2=0.620)
+[W_split=5.0] running fit (key=e73ff5226231be4c, quick=True, seeds=[42])...
+[W_split=5.0] DONE  (672s, cost=0.9619, R2_G1=0.830, R2_G2=0.645)
+
+=== Summary ===
+ W_split |     cost |   R2_G1 |   R2_G2 | recalc_n |  fib_n | xiii_n
+----------------------------------------------------------------------
+    0.00 |   1.0096 |  0.8542 |  0.5476 |    0.478 |  0.053 |  0.747
+    0.30 |   0.9555 |  0.8418 |  0.5371 |    0.302 |  0.647 |  0.736
+    1.00 |   1.0368 |  0.8371 |  0.6059 |    0.250 |  0.731 |  0.803
+    2.00 |   1.0431 |  0.8340 |  0.6204 |    0.244 |  0.739 |  0.808
+    5.00 |   0.9619 |  0.8301 |  0.6453 |    0.243 |  0.751 |  0.806
+
+Saved -> /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/01_w_split_profile/results/sweep.json
