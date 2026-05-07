@@ -1,0 +1,23 @@
+nohup: ввод игнорируется
+/home/doc/python_projects/my_env/lib/python3.10/site-packages/scipy/optimize/_differentialevolution.py:486: UserWarning: differential_evolution: the 'workers' keyword has overridden updating='immediate' to updating='deferred'
+  with DifferentialEvolutionSolver(func, bounds, args=args,
+=== cx bound sweep: 3 runs ===
+    baseline: (10.0, 600.0)
+    expanded: (10.0, 2000.0)
+        wide: (10.0, 5000.0)
+
+[cx_baseline] running fit (key=3efc3a4af8ef5605, quick=True, seeds=[42])...
+[cx_baseline] DONE  (711s, cost=1.0431, R2_G1=0.834, R2_G2=0.620)
+[cx_expanded] running fit (key=827e4db42fe02b94, quick=True, seeds=[42])...
+[cx_expanded] DONE  (838s, cost=0.9512, R2_G1=0.831, R2_G2=0.646)
+[cx_wide] running fit (key=6601d3e00a378ec3, quick=True, seeds=[42])...
+[cx_wide] DONE  (880s, cost=0.9395, R2_G1=0.836, R2_G2=0.590)
+
+=== Summary ===
+     label |  cx_max |     cost |   R2_G1 |   R2_G2 |    cx_fit |      ax |      bx |     kx | xiii_n
+----------------------------------------------------------------------------------------------------
+  baseline |     600 |   1.0431 |  0.8340 |  0.6204 |    599.71 |   60.60 |   20.77 |  2.608 |  0.808
+  expanded |    2000 |   0.9512 |  0.8305 |  0.6465 |   1997.51 |  203.40 |   47.91 |  9.678 |  0.784
+      wide |    5000 |   0.9395 |  0.8365 |  0.5903 |   1890.36 |  180.99 |   49.59 |  8.090 |  0.798
+
+Saved -> /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/02_cx_bound/results/sweep.json
