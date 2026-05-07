@@ -48,8 +48,20 @@ def patched_config(overrides: dict[str, Any]):
         # cfg.W_SPLIT is restored here.
     """
     saved: dict[str, Any] = {}
+    saved_bounds: dict[int, tuple] = {}
     try:
         for key, val in overrides.items():
+            if key == "BOUNDS_OVERRIDE":
+                # Special handling: val is dict {param_name: (lo, hi)}
+                if not isinstance(val, dict):
+                    raise TypeError("BOUNDS_OVERRIDE must be a dict {name: (lo, hi)}")
+                for pname, new_bound in val.items():
+                    if pname not in cfg.NAMES:
+                        raise ValueError(f"Unknown parameter name: {pname!r}")
+                    idx = cfg.NAMES.index(pname)
+                    saved_bounds[idx] = cfg.BOUNDS[idx]
+                    cfg.BOUNDS[idx] = tuple(new_bound)
+                continue
             if not hasattr(cfg, key):
                 raise AttributeError(f"src.config has no attribute {key!r}")
             saved[key] = getattr(cfg, key)
@@ -58,6 +70,8 @@ def patched_config(overrides: dict[str, Any]):
     finally:
         for key, val in saved.items():
             setattr(cfg, key, val)
+        for idx, orig_bound in saved_bounds.items():
+            cfg.BOUNDS[idx] = orig_bound
 
 
 # ============================================================

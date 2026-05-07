@@ -53,3 +53,7 @@ manuscript/*.pdf
 
 # Notes are personal — let user track selectively.
 # (Default: track. Override per-file in notes/.gitignore if needed.)
+
+# Personal communication drafts with OB — kept locally, not in repo
+notes/questions_for_OB.md
+notes/reports_to_OB/
