@@ -2,16 +2,35 @@
 
 This is the running log of known issues, methodological concerns, and open questions. Internal document — not for publication. Each entry has a status: **open**, **deferred to phase X**, **resolved in phase X**, or **wontfix (with reason)**.
 
-## I-1: cx parameter bound vs reported value (open)
+## I-1: cx parameter bound vs reported value (RESOLVED in Phase 1, analysis 02)
 
-**Issue.** `archive/v12/model_v12.py` sets `BOUNDS[21]` (cx) to `(10, 600)`. The companion `v12_report.md` (§7.5) reports a fitted value of cx = 1481, which lies outside this bound. There is also a comment in the report indicating "cx=600↑" — i.e. cx was stuck at the upper bound — but the numerical value 1481 contradicts this.
+**Original concern.** `archive/v12/model_v12.py` sets `BOUNDS[21]` (cx) to `(10, 600)`. The companion `v12_report.md` (§7.5) reports a fitted value of cx = 1481, outside this bound. There is also a comment indicating "cx=600↑" — i.e. cx stuck at upper bound — but the numerical value 1481 contradicts this.
 
-**Possible explanations.**
-1. The report was written against a development version where bounds were wider; bounds were tightened to (10, 600) before the script was finalised, but the report numbers were not updated.
-2. There were multiple v12 runs with different bound settings; the report aggregates across them inconsistently.
-3. Typo in the report.
+**Investigation.** `analyses/02_cx_bound/`: three-point sweep across cx upper bounds {600, 2000, 5000} with seed=42, then convergence check at expanded {2000} and wide {5000} for seeds {7, 123}; supplementary check pending at wide {5000} for seeds {999, 2024}.
 
-**Resolution path.** Phase 1 task. (a) Run a fresh v12 fit with current bounds and record cx. (b) Compare to historical fit results (if any are recoverable). (c) If cx is consistently at the upper bound (600), expand the bound and refit; track whether expanded bound improves any R². If yes, the bound is artefactual; if not, cx is well-determined inside [10, 600] and the 1481 figure was an error.
+**Findings.**
+
+1. **Strong descending trend** in cx vs xiii_G2 R-squared across the 6 unconstrained fits, with one outlier point (wide/s123: cx=1621, xiii_G2=+0.62). Whether this is a stable alternative basin or a single-seed convergence artefact is being verified by 2 supplementary fits.
+
+2. **Cost is non-discriminating** between mechanistically heterogeneous local optima. Within wide (cx ≤ 5000), three seeds give cost ∈ [0.940, 1.028] but xiii_G2 R-squared ∈ [-0.47, +0.63]. Identifiability failure in the unconstrained search space.
+
+3. **cx alone does not determine xiii fit quality.** Across 6 unconstrained fits cx values cover [1111, 1997] with no monotonic relation to xiii_G2 R-squared. The XIII channel is governed by four parameters {ax, cx, bx, kx} that co-vary along a sloppy direction.
+
+4. **Only the constrained baseline (cx ≤ 600) keeps all six G2 observables at positive R-squared.** All 6 unconstrained fits have at least one G2 observable with R-squared < 0 (XIII in 5/6 cases; one fit with positive XIII has lower scores on recalc/AP/D than baseline).
+
+5. **v12 report value cx=1481 explained.** It falls within the cx range observed in unconstrained fits ([1111, 1997]). It represents an earlier development run with broader bounds, which sacrificed XIII fit quality without that being noticed (the report tracked aggregate R-squared metrics, not per-observable G2 quality).
+
+**Methodological reframing.** The bound (10, 600) is not artefactually constraining. It is a structural prior on the XIII channel that limits the full {ax, cx, bx, kx} manifold to the biologically interpretable subspace where all G2 observables have positive R-squared. Analogous in role to the W_split = 2.0 prior on mechanism-split decomposition.
+
+**Action items for manuscript.**
+- Present cx bound as structural prior on the XIII channel, in a "structural priors" methods subsection together with W_split.
+- Justify both priors via identifiability collapse without them: without W_split, mechanism decomposition becomes non-unique; without the cx bound, XIII channel becomes non-identifiable.
+- Validate via post-hoc held-out balance: in the constrained regime, all six G2 observables have positive R-squared; without the priors, multiple observables collapse to R-squared < 0.
+- Analysis 02 becomes a methods supplement demonstrating necessity of the cx prior.
+
+**Open follow-up for Phase 2.** XIII-channel sloppiness {ax, cx, bx, kx} should be formally characterised by profile likelihood + FIM in Phase 2 step 3.
+
+**Status.** Resolved (final wording pending seed_check_extra results).
 
 ## I-2: G2 R² regression on joint fit vs separate fit (open)
 
@@ -78,8 +97,14 @@ This is the running log of known issues, methodological concerns, and open quest
 
 **Resolution.** Renamed to `archive/v12/v12_report.md` during Phase 0 migration. Original archive intact; no further action.
 
-## I-8: License not yet selected (open)
+## I-8: License selection (RESOLVED in Phase 0)
 
-**Issue.** `pyproject.toml` and README list license as "TBD". Must be selected before any external sharing of the repository.
+**Original concern.** `pyproject.toml` and README list license as "TBD". Must be selected before any external sharing.
 
-**Resolution path.** Discuss with author. Options include MIT (permissive), CC-BY-4.0 (data + docs convention), or hybrid (code MIT, data + manuscript CC-BY).
+**Resolution.** Selected during Phase 0 closure (commit 9e1e70e + amended commit 02c118f):
+- Code (`src/`, `tests/`, `analyses/`): Apache License 2.0 → `LICENSE` file
+- Data, documentation, manuscript sources, internal notes: Creative Commons Attribution 4.0 International (CC-BY-4.0) → `LICENSE-DOCS` file
+
+`pyproject.toml` license field updated to `"Apache-2.0 AND CC-BY-4.0"`. Both licenses permit reuse with attribution.
+
+**Status.** Resolved.

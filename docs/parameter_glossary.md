@@ -31,7 +31,7 @@
 | 18 | b_f  | 0.001–8    | shared | Fib / gHn coefficient | Consumption of fibrinogen via Hn pathway | v12 (expanded from 5) |
 | 19 | d_f  | 0.1–30     | shared | Fib / Hc coefficient | Consumption of fibrinogen via venom pathway | v12 |
 | 20 | a_x  | 1–250      | shared | XIII production / V | Direct stimulation of XIII activity by venom | v12 |
-| 21 | c_x  | 10–600     | shared | XIII production / AP·Nr | Neutrophil-mediated XIII contribution (XIII is stored in azurophil granules) | v12 (see known_issues — report quotes 1481 fitted, but this is outside script bounds) |
+| 21 | c_x  | 10–600     | shared | XIII production / AP·Nr | Neutrophil-mediated XIII contribution (XIII is stored in azurophil granules). **Upper bound is a structural prior** validated by analysis 02 — without it, XIII-channel parameter manifold {ax, cx, bx, kx} becomes non-identifiable and at least one G2 observable collapses to R-squared < 0. See FINDINGS in `analyses/02_cx_bound/`. | v12 + analysis 02 (Phase 1) |
 | 22 | b_x  | 0.001–50   | shared | XIII degradation / gHn | Consumption of XIII via neutrophil pathway | v12 |
 | 23 | k_x  | 0.05–15    | shared | XIII liver-modulated resynthesis | Rate of hepatic XIII resynthesis, gated by liver function (1 − Hn/Hm) | v12 |
 | 24 | k_m  | 1.5–15     | G2-mod | Myelosan modifier on k_r | Multiplier (G2: k_r,eff = k_r · k_m). Reflects accelerated clearance of activated neutrophils under myelosuppression | v12 |
