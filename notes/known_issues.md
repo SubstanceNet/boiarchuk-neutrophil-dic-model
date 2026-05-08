@@ -32,15 +32,38 @@ This is the running log of known issues, methodological concerns, and open quest
 
 **Status.** Resolved (final wording pending seed_check_extra results).
 
-## I-2: G2 R² regression on joint fit vs separate fit (open)
+## I-2: G2 R² regression on joint fit vs separate fit (RESOLVED in Phase 1, analysis 03)
 
-**Issue.** v11.2 diagnostic separate fits: G2 average R² = 0.868 (25 free parameters fitted to G2 alone, 54 datapoints). v12 joint fit: G2 average R² = 0.598 (24 shared params + 2 modifiers). The R² drop is large and not adequately explained in the v12 report.
+**Original concern.** v11.2 diagnostic separate fits: G2 average R² = 0.868 (25 free parameters fitted to G2 alone, 54 datapoints). v12 joint fit: G2 average R² = 0.598 (24 shared params + 2 modifiers). The R² drop is large and not adequately explained in the v12 report.
 
 **Two competing interpretations.**
 1. **Honest deflation.** Separate fit overfit (25 params on 54 points = 2.16 ratio); joint fit reflects the true G2 fit quality under shared biochemistry. The 0.598 figure is closer to the truth.
 2. **Architectural pull.** Joint fit pulls parameters toward G1 (which has more data) and the mechanism-split constraint is calibrated on G1 day 2. G2 fits suffer because the architecture is biased.
 
-**Resolution path.** Phase 2 task. (a) AIC/BIC comparison: v12 joint vs v12 separate-G2 vs intermediate (varying number of group-specific parameters). (b) Profile likelihood for each parameter under joint fit: are any parameters pulled to G1-side bounds at the cost of G2 fit?
+**Investigation.** `analyses/03_separate_g2_fit/`: re-run separate G2 fit under current code (26 free parameters on 54 datapoints). Compare to analysis 02 baseline (joint-fit R²_G2 avg = 0.620).
+
+**Findings.**
+
+- Separate-fit R²_G2 avg = 0.8363 (vs joint-fit 0.620, Δ = +0.2159). This is **Case C** (Δ > 0.15) of the decision rule.
+- The improvement is **systematic across all 6 G2 observables**, not concentrated on a few:
+  - recalc: +0.901 (vs +0.684, Δ = +0.217)
+  - thrombin: +0.994 (Δ = +0.159)
+  - fib: +0.578 (Δ = +0.285) — largest deficit was here
+  - xiii: +0.798 (Δ = +0.070) — smallest gap (XIII supported by cx prior)
+  - AP: +0.928 (Δ = +0.250)
+  - D: +0.819 (Δ = +0.314)
+- This systematic pattern (uniform improvement) is more consistent with **interpretation 2** (architectural pull) than with **interpretation 1** (overfitting). Pure overfitting would produce spiky improvements on a few observables, not uniform gains across all six.
+- Caveat: data/parameter ratio of 2.08 means some overfitting in the separate fit is unavoidable. The 0.868 v11.2 value likely was inflated by overfitting; the true separate-fit quality at current bounds is 0.836. The architectural penalty (joint vs separate) is therefore ~0.22 R² units, not the full 0.27.
+
+**Conclusion.** The joint architecture has a real architectural penalty of approximately 22 percentage points of R²_G2 average. The penalty is the price of parameter sharing across groups — currently only `km` and `tm` are group-specific, while 24 parameters are shared.
+
+**Action items for Phase 2.**
+- Address via expanded group-specific parameter set in v13. Likely candidates (in order of expected impact, by Δ R² in this analysis): D (+0.314), AP (+0.250), fib (+0.285), recalc (+0.217), thrombin (+0.159).
+- Most plausible structural changes: group-specific c_f (fib / AP), kna (Hn formation), kx (XIII liver resynthesis), kd (degranulation rate). Each can plausibly differ between groups under neutrophil suppression.
+- Phase 2 step 1 (profile likelihood per parameter, separate G1 / G2 cost decomposition) should reveal which parameters most need group-specificity.
+
+**Status.** Resolved. Analysis 03 closed.
+
 
 ## I-3: Mechanism-split constraint as circular evidence (RESOLVED in Phase 1, analysis 01)
 
@@ -79,11 +102,29 @@ This is the running log of known issues, methodological concerns, and open quest
 
 **Resolution path.** Phase 2 task. After identifiability analysis is done in Phase 1, propose model variants and select via AIC/BIC.
 
-## I-5: Survivor weighting is qualitative (open)
+## I-5: Survivor weighting is qualitative (RESOLVED in Phase 1, analysis 04)
 
-**Issue.** `W_SURV = [1.0]*10 + [0.7]*3 + [0.3]*3` weights G1 timepoints to reflect 30% mortality on days 10–12 and further dropout afterward. The values 0.7 and 0.3 are qualitative — they roughly match surviving fraction but are not derived from a likelihood justification.
+**Original concern.** `W_SURV = [1.0]*10 + [0.7]*3 + [0.3]*3` weights G1 timepoints to reflect 30% mortality on days 10-12 and further dropout afterward. The values 0.7 and 0.3 are qualitative — they roughly match surviving fraction but are not derived from a likelihood justification.
 
-**Resolution path.** Phase 1 task, low priority. Replace with proper inverse-variance weighting where the per-timepoint variance accounts for measurement noise + survivor sampling bias. Likely cosmetic effect on parameter values; document the change either way.
+**Investigation.** `analyses/04_survivor_weighting/`: re-run analysis 02 baseline fit with `W_SURV = ones(16)` (uniform weighting), compare aggregate and per-observable metrics.
+
+**Findings.**
+
+- With uniform W_SURV: cost = 0.9775, R²_G1 avg = +0.8279, R²_G2 avg = +0.7162.
+- Compared to default W_SURV: Δcost = -0.0656, ΔR²_G1 = -0.0061, ΔR²_G2 = +0.0958.
+- **Uniform weighting is strictly better by every aggregate metric.** Cost is lower, R²_G1 essentially unchanged (Δ < 0.01), R²_G2 substantially improved (~10 percentage points).
+
+**Methodological reframing.** The original v12 W_SURV choice was an over-correction: it was intended to discount late G1 data due to mortality, but in practice it discards information that helps the joint fit balance G1 and G2. Late G1 timepoints (days 11-19) carry recovery-phase information that constrains the long-term parameters; downweighting them frees those parameters to drift toward G1-acute-phase optimum at the expense of G2.
+
+**Caveat.** This finding is from a single seed (42). Before committing to the change as a permanent default, seed-stability check is recommended (seeds {7, 123}). To be done together with v13 cost redesign in Phase 2.
+
+**Action items for Phase 2.**
+- Default to uniform W_SURV in v13 cost.
+- If a non-uniform weighting is desired (e.g., for biological reasons), derive it from per-timepoint sample size in the surviving cohort, not from heuristic values like 0.7 and 0.3.
+- The actual mortality timeline is documented (n=40, 12 deaths on days 10-12). A principled inverse-sample-size weighting would be: w_t ∝ n_t (surviving), giving approximately {1.0 for days ≤ 9, 0.85 for days 10-12, 0.70 for days 13+}, much milder than the v12 choice.
+
+**Status.** Resolved. Analysis 04 closed.
+
 
 ## I-6: τ_v and k_cd fixed without explicit justification (open)
 
