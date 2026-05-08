@@ -1,0 +1,36 @@
+nohup: ввод игнорируется
+/home/doc/python_projects/my_env/lib/python3.10/site-packages/scipy/optimize/_differentialevolution.py:486: UserWarning: differential_evolution: the 'workers' keyword has overridden updating='immediate' to updating='deferred'
+  with DifferentialEvolutionSolver(func, bounds, args=args,
+[cx_tight seed=7] running v13 fit (key=e1a080b4e7c536ce, quick=True, seeds=[7], w_group=(1.0, 1.0))...
+[cx_tight seed=7] DONE  (714s, cost=1.0524, R2_G1=0.825, R2_G2=0.653)
+[cx_tight seed=123] running v13 fit (key=282f9c2b5c81cb28, quick=True, seeds=[123], w_group=(1.0, 1.0))...
+[cx_tight seed=123] DONE  (810s, cost=1.0522, R2_G1=0.825, R2_G2=0.654)
+[cx_v12_prior seed=7] running v13 fit (key=2ea5fadcad7b949d, quick=True, seeds=[7], w_group=(1.0, 1.0))...
+[cx_v12_prior seed=7] DONE  (429s, cost=0.9666, R2_G1=0.834, R2_G2=0.714)
+[cx_v12_prior seed=123] running v13 fit (key=af50892bd979b022, quick=True, seeds=[123], w_group=(1.0, 1.0))...
+[cx_v12_prior seed=123] DONE  (617s, cost=0.9622, R2_G1=0.828, R2_G2=0.752)
+[cx_loose seed=7] running v13 fit (key=828001ad5a472f72, quick=True, seeds=[7], w_group=(1.0, 1.0))...
+[cx_loose seed=7] DONE  (844s, cost=0.9595, R2_G1=0.830, R2_G2=0.738)
+[cx_loose seed=123] running v13 fit (key=b46b555e3421ffac, quick=True, seeds=[123], w_group=(1.0, 1.0))...
+[cx_loose seed=123] DONE  (830s, cost=1.0389, R2_G1=0.829, R2_G2=0.654)
+[cx_expanded seed=7] running v13 fit (key=09670ddc6caf3f49, quick=True, seeds=[7], w_group=(1.0, 1.0))...
+[cx_expanded seed=7] DONE  (623s, cost=0.9534, R2_G1=0.832, R2_G2=0.724)
+[cx_expanded seed=123] running v13 fit (key=5e99fc0b12b28c40, quick=True, seeds=[123], w_group=(1.0, 1.0))...
+[cx_expanded seed=123] DONE  (714s, cost=1.0401, R2_G1=0.829, R2_G2=0.635)
+[cx_wide seed=7] running v13 fit (key=9a49b0cd734bf616, quick=True, seeds=[7], w_group=(1.0, 1.0))...
+[cx_wide seed=7] DONE  (582s, cost=0.9479, R2_G1=0.833, R2_G2=0.724)
+[cx_wide seed=123] running v13 fit (key=e4e9b9ea1e9dd6c1, quick=True, seeds=[123], w_group=(1.0, 1.0))...
+[cx_wide seed=123] DONE  (508s, cost=1.0117, R2_G1=0.845, R2_G2=0.519)
+
+     label | cx_max | seed |    cost |  cx_fit |  xiii_G2 |  recalc |      AP |       D
+-----------------------------------------------------------------------------------------------
+     tight |    500 |    7 |  1.0524 |   498.6 |  +0.7375 | +0.7111 | +0.7371 | +0.5449
+     tight |    500 |  123 |  1.0522 |   500.0 |  +0.7499 | +0.7110 | +0.7287 | +0.5427
+ v12_prior |    600 |    7 |  0.9666 |   600.0 |  +0.3581 | +0.8396 | +0.9514 | +0.7539
+ v12_prior |    600 |  123 |  0.9622 |   599.9 |  +0.4307 | +0.9231 | +0.9604 | +0.7673
+     loose |    700 |    7 |  0.9595 |   700.0 |  +0.3543 | +0.9216 | +0.9602 | +0.7609
+     loose |    700 |  123 |  1.0389 |   700.0 |  +0.7092 | +0.7382 | +0.7390 | +0.5474
+  expanded |   1000 |    7 |  0.9534 |  1000.0 |  +0.2552 | +0.9226 | +0.9618 | +0.7562
+  expanded |   1000 |  123 |  1.0401 |   999.6 |  +0.6559 | +0.7006 | +0.7367 | +0.5597
+      wide |   2000 |    7 |  0.9479 |  1999.8 |  +0.2523 | +0.9220 | +0.9590 | +0.7758
+      wide |   2000 |  123 |  1.0117 |  1247.4 |  -0.1615 | +0.6957 | +0.8219 | +0.6362

@@ -149,3 +149,21 @@ This is the running log of known issues, methodological concerns, and open quest
 `pyproject.toml` license field updated to `"Apache-2.0 AND CC-BY-4.0"`. Both licenses permit reuse with attribution.
 
 **Status.** Resolved.
+
+## I-9: XIII channel identifiability under v13 cost (open, target: Phase 2 step 2)
+
+**Concern.** Under v13 cost (analysis 05, baseline cx ≤ 600), the XIII channel exhibits multi-modal landscape: at seed=42 the optimiser finds xiii_G2 R² = 0.077, while seeds {7, 123} find R² ∈ [0.358, 0.431] at near-equal cost. Analysis 06 sweep across cx bounds {500, 600, 700, 1000, 2000} shows that this is a structural feature of the {ax, cx, bx, kx} parameter manifold under v13 cost: only cx ≤ 500 yields a seed-stable unique optimum (Zone A), while wider bounds expose multiple cost-equivalent local optima (Zone B).
+
+**Resolution path.** Phase 2 step 2: make cx group-specific (G1 cx, G2 cx as separate parameters). Expected to resolve identifiability by giving the channel enough degrees of freedom to fit both groups well simultaneously, eliminating the G1-vs-G2 XIII trade-off that drives multi-modality.
+
+If group-specific cx insufficient, extend to {bx, kx} similarly.
+
+**Status.** Open. Diagnostic complete (analysis 06).
+
+## I-10: Zone-A vs Zone-B fit quality trade-off (deferred to Phase 2 step 2)
+
+**Concern.** Analysis 06 reveals a fundamental trade-off in v13 cost landscape: Zone A (cx ≤ 500) is seed-stable but yields lower mean G2 fit (R²_G2 avg ≈ 0.66) than Zone B (cx ≥ 600) which gives R²_G2 avg ≈ 0.69-0.75 in the favourable basin. v12 prior (cx ≤ 600) sits at the transition.
+
+**Resolution path.** Same as I-9: group-specific cx in Phase 2 step 2 should permit best of both — unique optimum AND high R²_G2 fit quality. If unsuccessful, fall back to Zone A (bound = 500) is documented but methodologically sub-optimal.
+
+**Status.** Open. Tied to I-9 resolution.

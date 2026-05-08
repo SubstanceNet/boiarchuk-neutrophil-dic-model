@@ -1,0 +1,34 @@
+nohup: ввод игнорируется
+/home/doc/python_projects/my_env/lib/python3.10/site-packages/scipy/optimize/_differentialevolution.py:486: UserWarning: differential_evolution: the 'workers' keyword has overridden updating='immediate' to updating='deferred'
+  with DifferentialEvolutionSolver(func, bounds, args=args,
+======================================================================
+v13 cx-bound diagnostic (analysis 06)
+  seeds: [42], quick: True
+  Configurations:
+         tight: cx in (10.0, 500.0)
+     v12_prior: cx in (10.0, 600.0)
+         loose: cx in (10.0, 700.0)
+      expanded: cx in (10.0, 1000.0)
+          wide: cx in (10.0, 2000.0)
+======================================================================
+[cx_tight] running v13 fit (key=54c60b7f2070564b, quick=True, seeds=[42], w_group=(1.0, 1.0))...
+[cx_tight] DONE  (1271s, cost=1.0521, R2_G1=0.824, R2_G2=0.659)
+[cx_v12_prior] running v13 fit (key=a7108d89646ed9b0, quick=True, seeds=[42], w_group=(1.0, 1.0))...
+[cx_v12_prior] DONE  (805s, cost=0.9589, R2_G1=0.833, R2_G2=0.692)
+[cx_loose] running v13 fit (key=c31562e895beae92, quick=True, seeds=[42], w_group=(1.0, 1.0))...
+[cx_loose] DONE  (651s, cost=1.0420, R2_G1=0.829, R2_G2=0.656)
+[cx_expanded] running v13 fit (key=6aee2962336f97b7, quick=True, seeds=[42], w_group=(1.0, 1.0))...
+[cx_expanded] DONE  (1140s, cost=0.9566, R2_G1=0.837, R2_G2=0.642)
+[cx_wide] running v13 fit (key=1cce0a5a395f8b5c, quick=True, seeds=[42], w_group=(1.0, 1.0))...
+[cx_wide] DONE  (718s, cost=1.0269, R2_G1=0.832, R2_G2=0.666)
+
+====================================================================================================
+     label |  cx_max |    cost |   R2_G1 |   R2_G2 |  cx_fit | xiii_n |  xiii_G2
+----------------------------------------------------------------------------------------------------
+     tight |     500 |  1.0521 | +0.8244 | +0.6591 |   500.0 |  0.807 |  +0.7504
+ v12_prior |     600 |  0.9589 | +0.8334 | +0.6920 |   570.9 |  0.791 |  +0.0772
+     loose |     700 |  1.0420 | +0.8286 | +0.6562 |   700.0 |  0.811 |  +0.7610
+  expanded |    1000 |  0.9566 | +0.8367 | +0.6417 |   995.3 |  0.785 |  -0.1590
+      wide |    2000 |  1.0269 | +0.8316 | +0.6663 |  1319.0 |  0.816 |  +0.6662
+
+Saved -> /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/06_v13_cx_diagnostic/results/sweep.json

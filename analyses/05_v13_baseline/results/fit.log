@@ -1,0 +1,47 @@
+nohup: ввод игнорируется
+/home/doc/python_projects/my_env/lib/python3.10/site-packages/scipy/optimize/_differentialevolution.py:486: UserWarning: differential_evolution: the 'workers' keyword has overridden updating='immediate' to updating='deferred'
+  with DifferentialEvolutionSolver(func, bounds, args=args,
+=================================================================
+v13 baseline (analysis 05)
+  cost = src.cost_v13.joint_cost_v13
+  W_GROUP = (1.0, 1.0)  [v12-compatible scale]
+  W_SPLIT = 2.0         [validated in analysis 01]
+  cx bound = (10, 600)  [validated in analysis 02]
+  W_SURV  = ones(16)    [hard-coded; per analysis 04]
+  seed = 42, quick mode
+=================================================================
+[v13_baseline] running v13 fit (key=884e3999eb381945, quick=True, seeds=[42], w_group=(1.0, 1.0))...
+[v13_baseline] DONE  (767s, cost=0.9589, R2_G1=0.833, R2_G2=0.692)
+
+=================================================================
+v13 baseline:
+  cost = 0.9589
+  R^2_G1 avg = +0.8334
+  R^2_G2 avg = +0.6920
+
+Per-observable R^2 G1:
+      recalc: +0.7871
+    thrombin: +0.8600
+         fib: +0.7425
+        xiii: +0.8883
+          AP: +0.8229
+           D: +0.8995
+
+Per-observable R^2 G2:
+      recalc: +0.9068
+    thrombin: +0.9468
+         fib: +0.4977
+        xiii: +0.0772
+          AP: +0.9638
+           D: +0.7594
+
+Comparison to analysis 02 baseline (v12 cost):
+  v12 R^2_G1 avg: +0.8340
+  v13 R^2_G1 avg: +0.8334
+  Δ = -0.0006
+
+  v12 R^2_G2 avg: +0.6204
+  v13 R^2_G2 avg: +0.6920
+  Δ = +0.0716
+
+Saved -> /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/05_v13_baseline/results/fit.json
