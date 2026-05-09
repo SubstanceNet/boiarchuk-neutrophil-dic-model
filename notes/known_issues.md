@@ -158,6 +158,8 @@ This is the running log of known issues, methodological concerns, and open quest
 
 If group-specific cx insufficient, extend to {bx, kx} similarly.
 
+**Investigation update (analysis 07).** Group-specific cx tested in v13_gs (`src/cost_v13_groupspec.py`), 4 quick fits (3 seeds at default bounds + 1 seed at extended bounds (10, 2000)). All four fits converged to `cx_g1 ≈ cx_g2` (ratio in [0.987, 1.000]). Data do not require group-specific cx. **Hypothesis rejected.** v13_gs achieved seed-stability through regularisation effect, not through architectural resolution. R²_G2 not improved. I-9 remains open. Next candidate: c_f (analysis 08).
+
 **Status.** Open. Diagnostic complete (analysis 06).
 
 ## I-10: Zone-A vs Zone-B fit quality trade-off (deferred to Phase 2 step 2)
@@ -166,4 +168,26 @@ If group-specific cx insufficient, extend to {bx, kx} similarly.
 
 **Resolution path.** Same as I-9: group-specific cx in Phase 2 step 2 should permit best of both — unique optimum AND high R²_G2 fit quality. If unsuccessful, fall back to Zone A (bound = 500) is documented but methodologically sub-optimal.
 
+**Investigation update (analysis 07).** Group-specific cx (analysis 07) does not resolve the trade-off. Even with extended bounds, optimiser settles in regularised symmetric solution (Zone A quality), R²_G2 not improved beyond Zone A. **Hypothesis rejected.** Next candidate: c_f.
+
 **Status.** Open. Tied to I-9 resolution.
+
+## TODO-1: Production-quality tests for v13 group-specific architecture (Phase 2 step 2)
+
+**Context.** Analysis 07 introduces `src/cost_v13_groupspec.py` as a parallel implementation of v13 cost with one additional group-specific parameter (`cx_g2`). For the diagnostic experiment, only smoke-tests are added (no full test suite, to avoid premature investment).
+
+**If the experiment succeeds** (group-specific cx resolves I-9, I-10):
+- Promote `cost_v13_groupspec.py` to production-quality module.
+- Write full `tests/test_cost_v13_groupspec.py` mirroring `test_cost_v13.py` (10 tests minimum: smoke, scalar==decomposition, sum==total, perturbation, soft v12 compatibility, group_weights override, failed integration, etc.).
+- Update `docs/parameter_glossary.md` to document `cx_g2`.
+- Update `docs/model_spec.md` to add `cx_g2` to the parameter list and explain group-specific architecture.
+- Consider generalising the group-specific mechanism in `src/config.py` (see Phase 2 step 2 plan: `GROUP_SPECIFIC_MULTIPLIERS` registry).
+
+**If the experiment fails** (group-specific cx does not resolve identifiability):
+- Delete `src/cost_v13_groupspec.py` and `analyses/07_groupspec_cx/`.
+- Document negative result in commit message and Phase 2 plan.
+- Consider next candidate (`c_f` or `kna`).
+
+**Update (analysis 07 outcome):** Group-specific cx experiment **failed** (cx_g1 ≈ cx_g2 in data; not architectural fix). Per pragmatic discussion, `src/cost_v13_groupspec.py` and `run_with_overrides_v13_gs` are RETAINED in src/ as a template for subsequent group-specific candidate analyses (analysis 08 will use it for `c_f`). Final cleanup deferred to manuscript-preparation phase.
+
+**Status.** Pending experiment outcome.
