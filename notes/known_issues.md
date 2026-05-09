@@ -102,6 +102,8 @@ This is the running log of known issues, methodological concerns, and open quest
 
 **Resolution path.** Phase 2 task. After identifiability analysis is done in Phase 1, propose model variants and select via AIC/BIC.
 
+**Investigation update (analysis 08).** Group-specific cf tested in v13_gs[cf], 3 quick fits (seeds 42, 7, 123). Result: fib_G2 R² unchanged (Δ ≈ -0.01); cf_g2/cf_g1 ratio inconsistent across seeds (0.86, 0.86, 1.04 — direction split). **Hypothesis rejected.** Single-parameter group-specific extension does not address I-4. Resolution deferred to Phase 2 step 3 (profile likelihood) and possibly Phase 3 (multi-parameter group-specific or architectural changes to fib channel).
+
 ## I-5: Survivor weighting is qualitative (RESOLVED in Phase 1, analysis 04)
 
 **Original concern.** `W_SURV = [1.0]*10 + [0.7]*3 + [0.3]*3` weights G1 timepoints to reflect 30% mortality on days 10-12 and further dropout afterward. The values 0.7 and 0.3 are qualitative — they roughly match surviving fraction but are not derived from a likelihood justification.
@@ -160,6 +162,8 @@ If group-specific cx insufficient, extend to {bx, kx} similarly.
 
 **Investigation update (analysis 07).** Group-specific cx tested in v13_gs (`src/cost_v13_groupspec.py`), 4 quick fits (3 seeds at default bounds + 1 seed at extended bounds (10, 2000)). All four fits converged to `cx_g1 ≈ cx_g2` (ratio in [0.987, 1.000]). Data do not require group-specific cx. **Hypothesis rejected.** v13_gs achieved seed-stability through regularisation effect, not through architectural resolution. R²_G2 not improved. I-9 remains open. Next candidate: c_f (analysis 08).
 
+**Investigation update (analysis 08).** Second candidate (group-specific cf) also rejected (analysis 08). Pattern of negative results across two candidates suggests single-parameter group-specific extensions are insufficient. Resolution deferred to Phase 2 step 3 (profile likelihood) for systematic identifiability characterisation.
+
 **Status.** Open. Diagnostic complete (analysis 06).
 
 ## I-10: Zone-A vs Zone-B fit quality trade-off (deferred to Phase 2 step 2)
@@ -189,5 +193,7 @@ If group-specific cx insufficient, extend to {bx, kx} similarly.
 - Consider next candidate (`c_f` or `kna`).
 
 **Update (analysis 07 outcome):** Group-specific cx experiment **failed** (cx_g1 ≈ cx_g2 in data; not architectural fix). Per pragmatic discussion, `src/cost_v13_groupspec.py` and `run_with_overrides_v13_gs` are RETAINED in src/ as a template for subsequent group-specific candidate analyses (analysis 08 will use it for `c_f`). Final cleanup deferred to manuscript-preparation phase.
+
+**Update (analysis 08 outcome):** Group-specific cf experiment also failed (cf_g1 ≈ cf_g2 in 2 of 3 seeds; fib_G2 R² unchanged). Pattern of negative results across both attempted candidates (cx, cf). `src/cost_v13_groupspec.py` (now factory-based, generalised) and `run_with_overrides_v13_gs` retained; final cleanup decision deferred to manuscript phase. Phase 2 step 2 closes with 0 successful candidates; proceeding to Phase 2 step 3 (profile likelihood).
 
 **Status.** Pending experiment outcome.
