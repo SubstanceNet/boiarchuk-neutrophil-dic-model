@@ -1,0 +1,503 @@
+{
+  "analysis": "09_profile_likelihood_full_sweep",
+  "baseline_seed": 42,
+  "n_points": 11,
+  "span_factor": 0.5,
+  "params": [
+    {
+      "param_name": "kd",
+      "param_idx": 0,
+      "baseline_value": 0.24924474914057873,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.06950028831116684,
+      "cost_depth_rel": 0.07266052723044818,
+      "ci_95": [
+        0.1670737517180541,
+        0.3718294725253181
+      ],
+      "ci_width_relative": 0.7882479874072558,
+      "classification": "weakly_identified",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 535.9604196548462,
+      "log_grid": true
+    },
+    {
+      "param_name": "kr",
+      "param_idx": 1,
+      "baseline_value": 0.22859650323914654,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.0200367895304987,
+      "cost_depth_rel": 0.020948495262340737,
+      "ci_95": [
+        0.1386507879176407,
+        0.37689191729805166
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "weakly_identified",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 582.7390089035034,
+      "log_grid": true
+    },
+    {
+      "param_name": "krl",
+      "param_idx": 2,
+      "baseline_value": 16.256358384527545,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.0075894494655034395,
+      "cost_depth_rel": 0.007940063402861365,
+      "ci_95": [
+        9.85997977549249,
+        20.0
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "grid_truncated_inconclusive_grid_truncated",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": true,
+      "elapsed_s": 539.5361511707306,
+      "log_grid": true
+    },
+    {
+      "param_name": "kcl",
+      "param_idx": 3,
+      "baseline_value": 14.823377623701774,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.013413830710060193,
+      "cost_depth_rel": 0.014030682129515882,
+      "ci_95": [
+        8.990833009273327,
+        20.0
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "grid_truncated_inconclusive_grid_truncated",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": true,
+      "elapsed_s": 573.9519238471985,
+      "log_grid": true
+    },
+    {
+      "param_name": "kca",
+      "param_idx": 4,
+      "baseline_value": 0.38178383571640917,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.0017571747179647712,
+      "cost_depth_rel": 0.0018378770860869472,
+      "ci_95": [
+        0.2315636017446933,
+        0.6294551307551272
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "flat_profile_check_grid_or_unidentifiable",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 828.8242588043213,
+      "log_grid": true
+    },
+    {
+      "param_name": "kna",
+      "param_idx": 5,
+      "baseline_value": 367.4052297741426,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.004379991730611432,
+      "cost_depth_rel": 0.0045808185891807315,
+      "ci_95": [
+        222.84253639678244,
+        605.7488172950971
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "flat_profile_check_grid_or_unidentifiable",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 564.3127510547638,
+      "log_grid": true
+    },
+    {
+      "param_name": "knd",
+      "param_idx": 6,
+      "baseline_value": 4.071627570830097,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.012402158593616375,
+      "cost_depth_rel": 0.012966593663153631,
+      "ci_95": [
+        2.469566956639726,
+        6.712978982396675
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "flat_profile_check_grid_or_unidentifiable",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 568.0045475959778,
+      "log_grid": true
+    },
+    {
+      "param_name": "Hm",
+      "param_idx": 7,
+      "baseline_value": 118.42729296944884,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.0019306580444480304,
+      "cost_depth_rel": 0.002018856031014532,
+      "ci_95": [
+        71.82978413274111,
+        195.253596950166
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "flat_profile_check_grid_or_unidentifiable",
+      "boundary_minimum": true,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 835.4183838367462,
+      "log_grid": true
+    },
+    {
+      "param_name": "tp2",
+      "param_idx": 8,
+      "baseline_value": 9.17803679442957,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.4524612262684533,
+      "cost_depth_rel": 0.47303827614355115,
+      "ci_95": [
+        9.17803679442957,
+        9.17803679442957
+      ],
+      "ci_width_relative": 0.0,
+      "classification": "well_identified_grid_truncated",
+      "boundary_minimum": false,
+      "grid_clipped_lo": true,
+      "grid_clipped_hi": true,
+      "elapsed_s": 511.2445697784424,
+      "log_grid": true
+    },
+    {
+      "param_name": "s2",
+      "param_idx": 9,
+      "baseline_value": 1.7306898282480634,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.06881728422457623,
+      "cost_depth_rel": 0.07195959559111854,
+      "ci_95": [
+        1.1601160853446546,
+        2.3361869078428485
+      ],
+      "ci_width_relative": 0.6520292491375339,
+      "classification": "moderately_identified",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 558.7019810676575,
+      "log_grid": true
+    },
+    {
+      "param_name": "a2",
+      "param_idx": 10,
+      "baseline_value": 3.274232655805349,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.035959473370835826,
+      "cost_depth_rel": 0.03759322072988954,
+      "ci_95": [
+        1.9859224927782664,
+        5.398297024847251
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "weakly_identified",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 750.7154495716095,
+      "log_grid": true
+    },
+    {
+      "param_name": "ar",
+      "param_idx": 11,
+      "baseline_value": 33.941582511554245,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.030865595484050323,
+      "cost_depth_rel": 0.03226459309269033,
+      "ci_95": [
+        20.586610432423775,
+        55.96020904802298
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "weakly_identified",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 1051.018903017044,
+      "log_grid": true
+    },
+    {
+      "param_name": "cr",
+      "param_idx": 12,
+      "baseline_value": 37.253980602080794,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.017099800676097288,
+      "cost_depth_rel": 0.01787321302220773,
+      "ci_95": [
+        22.59568143150171,
+        61.42143023690056
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "flat_profile_check_grid_or_unidentifiable",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 844.0928030014038,
+      "log_grid": true
+    },
+    {
+      "param_name": "br",
+      "param_idx": 13,
+      "baseline_value": 4.111839104760769,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.015345482728961746,
+      "cost_depth_rel": 0.01604309524667857,
+      "ci_95": [
+        2.493956484842753,
+        6.779276593715651
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "flat_profile_check_grid_or_unidentifiable",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 497.0856559276581,
+      "log_grid": true
+    },
+    {
+      "param_name": "at",
+      "param_idx": 14,
+      "baseline_value": 5.697416504759554,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.06742219140886874,
+      "cost_depth_rel": 0.07049347517228059,
+      "ci_95": [
+        3.8190924937546358,
+        8.499546654549304
+      ],
+      "ci_width_relative": 0.7882479874072558,
+      "classification": "weakly_identified",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 841.524053812027,
+      "log_grid": true
+    },
+    {
+      "param_name": "bt",
+      "param_idx": 15,
+      "baseline_value": 0.2721614427428127,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.018537636616617004,
+      "cost_depth_rel": 0.01938322418701977,
+      "ci_95": [
+        0.16507425941514026,
+        0.44871835971451024
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "flat_profile_check_grid_or_unidentifiable",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 481.2877428531647,
+      "log_grid": true
+    },
+    {
+      "param_name": "af",
+      "param_idx": 16,
+      "baseline_value": 10.114357504241767,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.01588364657123731,
+      "cost_depth_rel": 0.01660354722122911,
+      "ci_95": [
+        6.134667929617183,
+        16.67575635670886
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "flat_profile_check_grid_or_unidentifiable",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 577.510822057724,
+      "log_grid": true
+    },
+    {
+      "param_name": "cf",
+      "param_idx": 17,
+      "baseline_value": 94.15060246574552,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.022459808645680424,
+      "cost_depth_rel": 0.02348250021863956,
+      "ci_95": [
+        57.10522702589054,
+        155.22810093450664
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "weakly_identified",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 552.6209335327148,
+      "log_grid": true
+    },
+    {
+      "param_name": "bf",
+      "param_idx": 18,
+      "baseline_value": 2.835567193000959,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.011982349593234076,
+      "cost_depth_rel": 0.012530405502289437,
+      "ci_95": [
+        1.7198584402303718,
+        4.675059945600137
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "flat_profile_check_grid_or_unidentifiable",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 560.4144303798676,
+      "log_grid": true
+    },
+    {
+      "param_name": "df",
+      "param_idx": 19,
+      "baseline_value": 12.67170246489528,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.0018418768490260362,
+      "cost_depth_rel": 0.0019263261613463787,
+      "ci_95": [
+        7.685776055715138,
+        20.892105389856095
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "flat_profile_check_grid_or_unidentifiable",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 691.1887702941895,
+      "log_grid": true
+    },
+    {
+      "param_name": "ax",
+      "param_idx": 20,
+      "baseline_value": 56.60600473561139,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.019471244506649943,
+      "cost_depth_rel": 0.020346428390326653,
+      "ci_95": [
+        34.333277395986826,
+        93.32752405695467
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "weakly_identified",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 719.4112322330475,
+      "log_grid": true
+    },
+    {
+      "param_name": "cx",
+      "param_idx": 21,
+      "baseline_value": 570.8778884315129,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.015875735286270953,
+      "cost_depth_rel": 0.01659089756009071,
+      "ci_95": [
+        346.2549422857207,
+        600.0
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "grid_truncated_inconclusive_grid_truncated",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": true,
+      "elapsed_s": 615.8080053329468,
+      "log_grid": true
+    },
+    {
+      "param_name": "bx",
+      "param_idx": 22,
+      "baseline_value": 18.252583476190942,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.012618812734996876,
+      "cost_depth_rel": 0.013196128930439721,
+      "ci_95": [
+        11.070751497274003,
+        30.09342262242569
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "flat_profile_check_grid_or_unidentifiable",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 502.35603761672974,
+      "log_grid": true
+    },
+    {
+      "param_name": "kx",
+      "param_idx": 23,
+      "baseline_value": 2.9973940073150915,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.014470838224929672,
+      "cost_depth_rel": 0.01511935916108971,
+      "ci_95": [
+        1.8180113646755165,
+        4.941867256529487
+      ],
+      "ci_width_relative": 1.0,
+      "classification": "flat_profile_check_grid_or_unidentifiable",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 600.1916844844818,
+      "log_grid": true
+    },
+    {
+      "param_name": "km",
+      "param_idx": 24,
+      "baseline_value": 4.932846642799645,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.1472381293765438,
+      "cost_depth_rel": 0.15389354425745985,
+      "ci_95": [
+        3.4529926499597514,
+        6.905985299919502
+      ],
+      "ci_width_relative": 0.7,
+      "classification": "weakly_identified",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 580.7658157348633,
+      "log_grid": false
+    },
+    {
+      "param_name": "tm",
+      "param_idx": 25,
+      "baseline_value": 0.4269355066592478,
+      "baseline_cost": 0.9589071937356771,
+      "cost_depth_abs": 0.1347512248476328,
+      "cost_depth_rel": 0.14089803328447595,
+      "ci_95": [
+        0.3415484053273983,
+        0.5123226079910974
+      ],
+      "ci_width_relative": 0.4,
+      "classification": "moderately_identified",
+      "boundary_minimum": false,
+      "grid_clipped_lo": false,
+      "grid_clipped_hi": false,
+      "elapsed_s": 722.2710559368134,
+      "log_grid": false
+    }
+  ],
+  "total_elapsed_s": 16686.968049526215
+}

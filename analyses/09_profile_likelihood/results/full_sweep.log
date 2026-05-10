@@ -1,0 +1,149 @@
+nohup: ввод игнорируется
+Loaded v13 baseline best_x from analyses/05_v13_baseline/results/fit.json
+  baseline cost: 0.958907
+  shape: (26,)
+  total params to profile: 26
+
+======================================================================
+[1/26] Profile param: kd  (log_grid=True)  elapsed_total: 0.0m
+======================================================================
+     kd: baseline=0.2492, depth_rel=0.0727, CI=[0.1671, 0.3718], class=weakly_identified, elapsed=536s
+======================================================================
+[2/26] Profile param: kr  (log_grid=True)  elapsed_total: 8.9m
+======================================================================
+     kr: baseline=0.2286, depth_rel=0.0209, CI=[0.1387, 0.3769], class=weakly_identified, elapsed=583s
+======================================================================
+[3/26] Profile param: krl  (log_grid=True)  elapsed_total: 18.6m
+======================================================================
+    krl: baseline=16.26, depth_rel=0.0079, CI=[9.86, 20], class=grid_truncated_inconclusive_grid_truncated, elapsed=540s
+======================================================================
+[4/26] Profile param: kcl  (log_grid=True)  elapsed_total: 27.6m
+======================================================================
+    kcl: baseline=14.82, depth_rel=0.0140, CI=[8.991, 20], class=grid_truncated_inconclusive_grid_truncated, elapsed=574s
+======================================================================
+[5/26] Profile param: kca  (log_grid=True)  elapsed_total: 37.2m
+======================================================================
+    kca: baseline=0.3818, depth_rel=0.0018, CI=[0.2316, 0.6295], class=flat_profile_check_grid_or_unidentifiable, elapsed=829s
+======================================================================
+[6/26] Profile param: kna  (log_grid=True)  elapsed_total: 51.0m
+======================================================================
+    kna: baseline=367.4, depth_rel=0.0046, CI=[222.8, 605.7], class=flat_profile_check_grid_or_unidentifiable, elapsed=564s
+======================================================================
+[7/26] Profile param: knd  (log_grid=True)  elapsed_total: 60.4m
+======================================================================
+    knd: baseline=4.072, depth_rel=0.0130, CI=[2.47, 6.713], class=flat_profile_check_grid_or_unidentifiable, elapsed=568s
+======================================================================
+[8/26] Profile param: Hm  (log_grid=True)  elapsed_total: 69.9m
+======================================================================
+     Hm: baseline=118.4, depth_rel=0.0020, CI=[71.83, 195.3], class=flat_profile_check_grid_or_unidentifiable, elapsed=835s
+======================================================================
+[9/26] Profile param: tp2  (log_grid=True)  elapsed_total: 83.8m
+======================================================================
+    tp2: baseline=9.178, depth_rel=0.4730, CI=[9.178, 9.178], class=well_identified_grid_truncated, elapsed=511s
+======================================================================
+[10/26] Profile param: s2  (log_grid=True)  elapsed_total: 92.3m
+======================================================================
+     s2: baseline=1.731, depth_rel=0.0720, CI=[1.16, 2.336], class=moderately_identified, elapsed=559s
+======================================================================
+[11/26] Profile param: a2  (log_grid=True)  elapsed_total: 101.6m
+======================================================================
+     a2: baseline=3.274, depth_rel=0.0376, CI=[1.986, 5.398], class=weakly_identified, elapsed=751s
+======================================================================
+[12/26] Profile param: ar  (log_grid=True)  elapsed_total: 114.2m
+======================================================================
+     ar: baseline=33.94, depth_rel=0.0323, CI=[20.59, 55.96], class=weakly_identified, elapsed=1051s
+======================================================================
+[13/26] Profile param: cr  (log_grid=True)  elapsed_total: 131.7m
+======================================================================
+     cr: baseline=37.25, depth_rel=0.0179, CI=[22.6, 61.42], class=flat_profile_check_grid_or_unidentifiable, elapsed=844s
+======================================================================
+[14/26] Profile param: br  (log_grid=True)  elapsed_total: 145.7m
+======================================================================
+     br: baseline=4.112, depth_rel=0.0160, CI=[2.494, 6.779], class=flat_profile_check_grid_or_unidentifiable, elapsed=497s
+======================================================================
+[15/26] Profile param: at  (log_grid=True)  elapsed_total: 154.0m
+======================================================================
+     at: baseline=5.697, depth_rel=0.0705, CI=[3.819, 8.5], class=weakly_identified, elapsed=842s
+======================================================================
+[16/26] Profile param: bt  (log_grid=True)  elapsed_total: 168.1m
+======================================================================
+     bt: baseline=0.2722, depth_rel=0.0194, CI=[0.1651, 0.4487], class=flat_profile_check_grid_or_unidentifiable, elapsed=481s
+======================================================================
+[17/26] Profile param: af  (log_grid=True)  elapsed_total: 176.1m
+======================================================================
+     af: baseline=10.11, depth_rel=0.0166, CI=[6.135, 16.68], class=flat_profile_check_grid_or_unidentifiable, elapsed=578s
+======================================================================
+[18/26] Profile param: cf  (log_grid=True)  elapsed_total: 185.7m
+======================================================================
+     cf: baseline=94.15, depth_rel=0.0235, CI=[57.11, 155.2], class=weakly_identified, elapsed=553s
+======================================================================
+[19/26] Profile param: bf  (log_grid=True)  elapsed_total: 194.9m
+======================================================================
+     bf: baseline=2.836, depth_rel=0.0125, CI=[1.72, 4.675], class=flat_profile_check_grid_or_unidentifiable, elapsed=560s
+======================================================================
+[20/26] Profile param: df  (log_grid=True)  elapsed_total: 204.2m
+======================================================================
+     df: baseline=12.67, depth_rel=0.0019, CI=[7.686, 20.89], class=flat_profile_check_grid_or_unidentifiable, elapsed=691s
+======================================================================
+[21/26] Profile param: ax  (log_grid=True)  elapsed_total: 215.8m
+======================================================================
+     ax: baseline=56.61, depth_rel=0.0203, CI=[34.33, 93.33], class=weakly_identified, elapsed=719s
+======================================================================
+[22/26] Profile param: cx  (log_grid=True)  elapsed_total: 227.8m
+======================================================================
+     cx: baseline=570.9, depth_rel=0.0166, CI=[346.3, 600], class=grid_truncated_inconclusive_grid_truncated, elapsed=616s
+======================================================================
+[23/26] Profile param: bx  (log_grid=True)  elapsed_total: 238.0m
+======================================================================
+     bx: baseline=18.25, depth_rel=0.0132, CI=[11.07, 30.09], class=flat_profile_check_grid_or_unidentifiable, elapsed=502s
+======================================================================
+[24/26] Profile param: kx  (log_grid=True)  elapsed_total: 246.4m
+======================================================================
+     kx: baseline=2.997, depth_rel=0.0151, CI=[1.818, 4.942], class=flat_profile_check_grid_or_unidentifiable, elapsed=600s
+======================================================================
+[25/26] Profile param: km  (log_grid=False)  elapsed_total: 256.4m
+======================================================================
+     km: baseline=4.933, depth_rel=0.1539, CI=[3.453, 6.906], class=weakly_identified, elapsed=581s
+======================================================================
+[26/26] Profile param: tm  (log_grid=False)  elapsed_total: 266.1m
+======================================================================
+     tm: baseline=0.4269, depth_rel=0.1409, CI=[0.3415, 0.5123], class=moderately_identified, elapsed=722s
+
+====================================================================================================
+param |   baseline |    depth |     CI low |      CI hi |  CI/grid |                           classification
+----------------------------------------------------------------------------------------------------
+   kd |     0.2492 |   0.0727 |     0.1671 |     0.3718 |    0.788 |                        weakly_identified
+   kr |     0.2286 |   0.0209 |     0.1387 |     0.3769 |    1.000 |                        weakly_identified
+  krl |      16.26 |   0.0079 |       9.86 |         20 |    1.000 | grid_truncated_inconclusive_grid_truncated
+  kcl |      14.82 |   0.0140 |      8.991 |         20 |    1.000 | grid_truncated_inconclusive_grid_truncated
+  kca |     0.3818 |   0.0018 |     0.2316 |     0.6295 |    1.000 | flat_profile_check_grid_or_unidentifiable
+  kna |      367.4 |   0.0046 |      222.8 |      605.7 |    1.000 | flat_profile_check_grid_or_unidentifiable
+  knd |      4.072 |   0.0130 |       2.47 |      6.713 |    1.000 | flat_profile_check_grid_or_unidentifiable
+   Hm |      118.4 |   0.0020 |      71.83 |      195.3 |    1.000 | flat_profile_check_grid_or_unidentifiable
+  tp2 |      9.178 |   0.4730 |      9.178 |      9.178 |    0.000 |           well_identified_grid_truncated
+   s2 |      1.731 |   0.0720 |       1.16 |      2.336 |    0.652 |                    moderately_identified
+   a2 |      3.274 |   0.0376 |      1.986 |      5.398 |    1.000 |                        weakly_identified
+   ar |      33.94 |   0.0323 |      20.59 |      55.96 |    1.000 |                        weakly_identified
+   cr |      37.25 |   0.0179 |       22.6 |      61.42 |    1.000 | flat_profile_check_grid_or_unidentifiable
+   br |      4.112 |   0.0160 |      2.494 |      6.779 |    1.000 | flat_profile_check_grid_or_unidentifiable
+   at |      5.697 |   0.0705 |      3.819 |        8.5 |    0.788 |                        weakly_identified
+   bt |     0.2722 |   0.0194 |     0.1651 |     0.4487 |    1.000 | flat_profile_check_grid_or_unidentifiable
+   af |      10.11 |   0.0166 |      6.135 |      16.68 |    1.000 | flat_profile_check_grid_or_unidentifiable
+   cf |      94.15 |   0.0235 |      57.11 |      155.2 |    1.000 |                        weakly_identified
+   bf |      2.836 |   0.0125 |       1.72 |      4.675 |    1.000 | flat_profile_check_grid_or_unidentifiable
+   df |      12.67 |   0.0019 |      7.686 |      20.89 |    1.000 | flat_profile_check_grid_or_unidentifiable
+   ax |      56.61 |   0.0203 |      34.33 |      93.33 |    1.000 |                        weakly_identified
+   cx |      570.9 |   0.0166 |      346.3 |        600 |    1.000 | grid_truncated_inconclusive_grid_truncated
+   bx |      18.25 |   0.0132 |      11.07 |      30.09 |    1.000 | flat_profile_check_grid_or_unidentifiable
+   kx |      2.997 |   0.0151 |      1.818 |      4.942 |    1.000 | flat_profile_check_grid_or_unidentifiable
+   km |      4.933 |   0.1539 |      3.453 |      6.906 |    0.700 |                        weakly_identified
+   tm |     0.4269 |   0.1409 |     0.3415 |     0.5123 |    0.400 |                    moderately_identified
+
+Full sweep completed in 16687s = 278.1m = 4.64h
+
+Classification tally:
+   12  flat_profile_check_grid_or_unidentifiable
+    8  weakly_identified
+    3  grid_truncated_inconclusive_grid_truncated
+    2  moderately_identified
+    1  well_identified_grid_truncated

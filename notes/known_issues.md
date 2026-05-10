@@ -103,6 +103,8 @@ This is the running log of known issues, methodological concerns, and open quest
 **Resolution path.** Phase 2 task. After identifiability analysis is done in Phase 1, propose model variants and select via AIC/BIC.
 
 **Investigation update (analysis 08).** Group-specific cf tested in v13_gs[cf], 3 quick fits (seeds 42, 7, 123). Result: fib_G2 R² unchanged (Δ ≈ -0.01); cf_g2/cf_g1 ratio inconsistent across seeds (0.86, 0.86, 1.04 — direction split). **Hypothesis rejected.** Single-parameter group-specific extension does not address I-4. Resolution deferred to Phase 2 step 3 (profile likelihood) and possibly Phase 3 (multi-parameter group-specific or architectural changes to fib channel).
+**Investigation update (analysis 09).** Profile likelihood for the fib channel parameters confirms structural under-determination: `af`, `bf`, `df` are sloppy (depth_rel < 0.02), `cf` weakly identified (depth_rel 0.024). The fib observable is genuinely under-constrained by data, not by architecture. Resolution would require additional fib timepoints in future experiments. **Closing as: structurally explained, no in-model fix possible with current data.**
+
 
 ## I-5: Survivor weighting is qualitative (RESOLVED in Phase 1, analysis 04)
 
@@ -164,6 +166,8 @@ If group-specific cx insufficient, extend to {bx, kx} similarly.
 
 **Investigation update (analysis 08).** Second candidate (group-specific cf) also rejected (analysis 08). Pattern of negative results across two candidates suggests single-parameter group-specific extensions are insufficient. Resolution deferred to Phase 2 step 3 (profile likelihood) for systematic identifiability characterisation.
 
+**Investigation update (analysis 09).** Profile likelihood explains identifiability issue. All four XIII channel parameters {ax, cx, bx, kx} are sloppy (depth_rel < 0.02) or grid-truncated (cx upper bound). The channel is genuinely under-constrained by data. Multi-modality observed in analyses 05/06 reflects different points on the sloppy plateau, all with near-equivalent cost. **Closing as: structurally explained.**
+
 **Status.** Open. Diagnostic complete (analysis 06).
 
 ## I-10: Zone-A vs Zone-B fit quality trade-off (deferred to Phase 2 step 2)
@@ -173,6 +177,8 @@ If group-specific cx insufficient, extend to {bx, kx} similarly.
 **Resolution path.** Same as I-9: group-specific cx in Phase 2 step 2 should permit best of both — unique optimum AND high R²_G2 fit quality. If unsuccessful, fall back to Zone A (bound = 500) is documented but methodologically sub-optimal.
 
 **Investigation update (analysis 07).** Group-specific cx (analysis 07) does not resolve the trade-off. Even with extended bounds, optimiser settles in regularised symmetric solution (Zone A quality), R²_G2 not improved beyond Zone A. **Hypothesis rejected.** Next candidate: c_f.
+
+**Investigation update (analysis 09).** Zone A vs Zone B trade-off explained as different points on `cx` sloppy plateau, both achieving similar cost. Profile likelihood for cx is grid-truncated (baseline 570 near bound 600). **Closing as: structurally explained, no architectural fix needed.**
 
 **Status.** Open. Tied to I-9 resolution.
 
