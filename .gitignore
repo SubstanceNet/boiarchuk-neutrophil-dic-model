@@ -57,3 +57,6 @@ manuscript/*.pdf
 # Personal communication drafts with OB — kept locally, not in repo
 notes/questions_for_OB.md
 notes/reports_to_OB/
+
+# Ad-hoc diagnostic scripts (not formal analyses)
+analyses/_diagnostic/

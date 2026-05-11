@@ -1,0 +1,117 @@
+nohup: ввод игнорируется
+/home/doc/python_projects/my_env/lib/python3.10/site-packages/scipy/optimize/_differentialevolution.py:486: UserWarning: differential_evolution: the 'workers' keyword has overridden updating='immediate' to updating='deferred'
+  with DifferentialEvolutionSolver(func, bounds, args=args,
+======================================================================
+Analysis 10 — Parametric bootstrap (N=100, v13 baseline)
+======================================================================
+
+Computing baseline predictions and sigmas...
+  baseline_x shape: (26,)
+  sigmas: {'recalc': (34.66182820233367, 3.7880181621717686), 'thrombin': (2.282467602385382, 0.4916944246628903), 'fib': (14.122221107271335, 5.940626827129228), 'xiii': (16.25317916168862, 6.104862998823341), 'AP': (0.08448338067898811, 0.019393094337837636), 'D': (5.37550425521464, 5.100679511640206)}
+  saved: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/10_bootstrap/results/sigmas.json
+[  1/100] seed=1 cost=0.8244 (918s), total=15.3m, ETA=1514.0m
+[  2/100] seed=2 cost=0.8677 (673s), total=26.5m, ETA=1299.3m
+[  3/100] seed=3 cost=0.9608 (728s), total=38.6m, ETA=1249.5m
+[  4/100] seed=4 cost=0.8903 (637s), total=49.3m, ETA=1182.1m
+[  5/100] seed=5 cost=0.8424 (1676s), total=77.2m, ETA=1466.6m
+[  6/100] seed=6 cost=0.8744 (871s), total=91.7m, ETA=1436.8m
+[  7/100] seed=7 cost=0.7684 (861s), total=106.1m, ETA=1409.0m
+[  8/100] seed=8 cost=0.9509 (820s), total=119.7m, ETA=1376.8m
+[  9/100] seed=9 cost=0.9649 (641s), total=130.4m, ETA=1318.5m
+[ 10/100] seed=10 cost=0.7718 (1022s), total=147.4m, ETA=1326.9m
+[ 11/100] seed=11 cost=0.8014 (783s), total=160.5m, ETA=1298.5m
+[ 12/100] seed=12 cost=0.8216 (912s), total=175.7m, ETA=1288.4m
+[ 13/100] seed=13 cost=1.0888 (775s), total=188.6m, ETA=1262.1m
+[ 14/100] seed=14 cost=0.8574 (797s), total=201.9m, ETA=1240.1m
+[ 15/100] seed=15 cost=0.8248 (919s), total=217.2m, ETA=1230.7m
+[ 16/100] seed=16 cost=0.8775 (1004s), total=233.9m, ETA=1228.1m
+[ 17/100] seed=17 cost=0.9631 (842s), total=248.0m, ETA=1210.6m
+[ 18/100] seed=18 cost=0.8642 (744s), total=260.3m, ETA=1186.0m
+[ 19/100] seed=19 cost=0.8414 (774s), total=273.2m, ETA=1164.9m
+[ 20/100] seed=20 cost=1.0086 (690s), total=284.7m, ETA=1138.9m
+[ 21/100] seed=21 cost=0.7950 (542s), total=293.8m, ETA=1105.1m
+[ 22/100] seed=22 cost=0.9009 (1036s), total=311.0m, ETA=1102.7m
+[ 23/100] seed=23 cost=0.9908 (851s), total=325.2m, ETA=1088.8m
+[ 24/100] seed=24 cost=0.9720 (876s), total=339.8m, ETA=1076.1m
+[ 25/100] seed=25 cost=0.9904 (847s), total=353.9m, ETA=1061.8m
+[ 26/100] seed=26 cost=1.0164 (809s), total=367.4m, ETA=1045.7m
+[ 27/100] seed=27 cost=0.8507 (672s), total=378.6m, ETA=1023.7m
+[ 28/100] seed=28 cost=0.8810 (877s), total=393.2m, ETA=1011.2m
+[ 29/100] seed=29 cost=0.9336 (1055s), total=410.8m, ETA=1005.8m
+[ 30/100] seed=30 cost=0.9177 (969s), total=427.0m, ETA=996.2m
+[ 31/100] seed=31 cost=0.8295 (769s), total=439.8m, ETA=978.8m
+[ 32/100] seed=32 cost=0.9382 (1075s), total=457.7m, ETA=972.6m
+[ 33/100] seed=33 cost=0.8007 (875s), total=472.3m, ETA=958.8m
+[ 34/100] seed=34 cost=0.7713 (1657s), total=499.9m, ETA=970.3m
+[ 35/100] seed=35 cost=0.9277 (898s), total=514.8m, ETA=956.1m
+[ 36/100] seed=36 cost=0.7942 (954s), total=530.7m, ETA=943.5m
+[ 37/100] seed=37 cost=0.9059 (1022s), total=547.8m, ETA=932.7m
+[ 38/100] seed=38 cost=0.8929 (622s), total=558.1m, ETA=910.6m
+[ 39/100] seed=39 cost=0.8905 (873s), total=572.7m, ETA=895.7m
+[ 40/100] seed=40 cost=0.8618 (773s), total=585.6m, ETA=878.4m
+[ 41/100] seed=41 cost=0.8404 (755s), total=598.2m, ETA=860.8m
+[ 42/100] seed=42 cost=0.7043 (1035s), total=615.4m, ETA=849.8m
+[ 43/100] seed=43 cost=0.8955 (677s), total=626.7m, ETA=830.7m
+[ 44/100] seed=44 cost=0.8925 (1140s), total=645.7m, ETA=821.8m
+[ 45/100] seed=45 cost=0.8402 (778s), total=658.6m, ETA=805.0m
+[ 46/100] seed=46 cost=0.8931 (952s), total=674.5m, ETA=791.8m
+[ 47/100] seed=47 cost=0.8794 (641s), total=685.2m, ETA=772.7m
+[ 48/100] seed=48 cost=0.8156 (725s), total=697.3m, ETA=755.4m
+[ 49/100] seed=49 cost=0.8227 (1774s), total=726.8m, ETA=756.5m
+[ 50/100] seed=50 cost=0.9162 (668s), total=738.0m, ETA=738.0m
+[ 51/100] seed=51 cost=0.9728 (668s), total=749.1m, ETA=719.7m
+[ 52/100] seed=52 cost=0.8772 (689s), total=760.6m, ETA=702.1m
+[ 53/100] seed=53 cost=0.9838 (784s), total=773.7m, ETA=686.1m
+[ 54/100] seed=54 cost=0.8472 (720s), total=785.7m, ETA=669.3m
+[ 55/100] seed=55 cost=0.9859 (729s), total=797.8m, ETA=652.8m
+[ 56/100] seed=56 cost=0.8815 (649s), total=808.6m, ETA=635.4m
+[ 57/100] seed=57 cost=0.7998 (678s), total=820.0m, ETA=618.6m
+[ 58/100] seed=58 cost=0.9011 (1043s), total=837.3m, ETA=606.4m
+[ 59/100] seed=59 cost=0.7856 (663s), total=848.4m, ETA=589.6m
+[ 60/100] seed=60 cost=0.8857 (666s), total=859.5m, ETA=573.0m
+[ 61/100] seed=61 cost=0.8124 (965s), total=875.6m, ETA=559.8m
+[ 62/100] seed=62 cost=0.7989 (863s), total=890.0m, ETA=545.5m
+[ 63/100] seed=63 cost=0.8993 (1506s), total=915.0m, ETA=537.4m
+[ 64/100] seed=64 cost=0.8400 (1088s), total=933.2m, ETA=524.9m
+[ 65/100] seed=65 cost=0.9537 (783s), total=946.2m, ETA=509.5m
+[ 66/100] seed=66 cost=0.9121 (795s), total=959.5m, ETA=494.3m
+[ 67/100] seed=67 cost=0.8602 (985s), total=975.9m, ETA=480.7m
+[ 68/100] seed=68 cost=0.7861 (617s), total=986.2m, ETA=464.1m
+[ 69/100] seed=69 cost=0.8374 (1087s), total=1004.3m, ETA=451.2m
+[ 70/100] seed=70 cost=0.8641 (670s), total=1015.5m, ETA=435.2m
+[ 71/100] seed=71 cost=0.7435 (616s), total=1025.8m, ETA=419.0m
+[ 72/100] seed=72 cost=0.8521 (955s), total=1041.7m, ETA=405.1m
+[ 73/100] seed=73 cost=0.8874 (685s), total=1053.1m, ETA=389.5m
+[ 74/100] seed=74 cost=0.8813 (916s), total=1068.4m, ETA=375.4m
+[ 75/100] seed=75 cost=0.8242 (889s), total=1083.2m, ETA=361.1m
+[ 76/100] seed=76 cost=0.8774 (676s), total=1094.4m, ETA=345.6m
+[ 77/100] seed=77 cost=1.0633 (663s), total=1105.5m, ETA=330.2m
+[ 78/100] seed=78 cost=0.8115 (874s), total=1120.1m, ETA=315.9m
+[ 79/100] seed=79 cost=0.8910 (705s), total=1131.8m, ETA=300.9m
+[ 80/100] seed=80 cost=1.0020 (1021s), total=1148.8m, ETA=287.2m
+[ 81/100] seed=81 cost=0.7694 (908s), total=1163.9m, ETA=273.0m
+[ 82/100] seed=82 cost=0.9461 (694s), total=1175.5m, ETA=258.0m
+[ 83/100] seed=83 cost=0.8547 (766s), total=1188.3m, ETA=243.4m
+[ 84/100] seed=84 cost=0.8835 (805s), total=1201.7m, ETA=228.9m
+[ 85/100] seed=85 cost=0.9058 (964s), total=1217.8m, ETA=214.9m
+[ 86/100] seed=86 cost=0.9005 (675s), total=1229.0m, ETA=200.1m
+[ 87/100] seed=87 cost=0.7920 (808s), total=1242.5m, ETA=185.7m
+[ 88/100] seed=88 cost=0.7986 (687s), total=1253.9m, ETA=171.0m
+[ 89/100] seed=89 cost=0.8110 (793s), total=1267.1m, ETA=156.6m
+[ 90/100] seed=90 cost=0.8922 (801s), total=1280.5m, ETA=142.3m
+[ 91/100] seed=91 cost=0.8552 (677s), total=1291.8m, ETA=127.8m
+[ 92/100] seed=92 cost=0.9254 (776s), total=1304.7m, ETA=113.5m
+[ 93/100] seed=93 cost=0.8187 (680s), total=1316.0m, ETA=99.1m
+[ 94/100] seed=94 cost=0.6906 (751s), total=1328.6m, ETA=84.8m
+[ 95/100] seed=95 cost=0.9333 (728s), total=1340.7m, ETA=70.6m
+[ 96/100] seed=96 cost=0.9193 (923s), total=1356.1m, ETA=56.5m
+[ 97/100] seed=97 cost=1.0241 (863s), total=1370.5m, ETA=42.4m
+[ 98/100] seed=98 cost=0.7938 (660s), total=1381.5m, ETA=28.2m
+[ 99/100] seed=99 cost=0.8059 (675s), total=1392.7m, ETA=14.1m
+[100/100] seed=100 cost=0.8375 (654s), total=1403.6m, ETA=0.0m
+
+=== Bootstrap complete in 23.39h ===
+Saved: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/10_bootstrap/results/ensemble_raw.json
+
+Run aggregation script next:
+  python -m analyses.10_bootstrap.aggregate
