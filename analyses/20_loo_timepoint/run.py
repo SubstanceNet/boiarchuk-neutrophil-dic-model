@@ -107,7 +107,7 @@ def main():
     tfg1, tfg2 = make_fine_grids()
 
     # Load baseline RMSE per observable per group (computed in analysis 10 sigmas)
-    sigmas_path = Path("analyses/10_bootstrap/results/sigmas.json")
+    sigmas_path = Path("analyses/22_predictive_check/results/sigmas.json")
     if sigmas_path.exists():
         sigmas_data = json.loads(sigmas_path.read_text())
         rmse_g1 = sigmas_data["sigmas_g1"]
@@ -141,8 +141,8 @@ def main():
                  + [("G2", *t) for t in g2_loo_targets])
 
     print(f"Total LOO fits: {len(all_targets)}")
-    print(f"  G1 targets: {[t[1] for t in all_targets if t[0]=='G1']}")
-    print(f"  G2 targets: {[t[1] for t in all_targets if t[0]=='G2']}")
+    print(f"  G1 targets (t_value): {[t[2] for t in all_targets if t[0]=='G1']}")
+    print(f"  G2 targets (t_value): {[t[2] for t in all_targets if t[0]=='G2']}")
     print()
 
     sweep_start = time.time()
