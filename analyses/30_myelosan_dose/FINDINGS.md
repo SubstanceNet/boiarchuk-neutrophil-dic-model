@@ -8,7 +8,8 @@ bootstrap ensemble members), ~2 minutes wall-clock, zero failures.
 Grid: km ∈ [1.0, 10.0] log-spaced 15 vals × tm ∈ [0.2, 1.0] log-spaced 15 vals.
 Per cell: 100 bootstrap ensemble members → 22,500 total simulations.
 Per simulation: G2 ODE with kr_g2 = kr × km, tp2_g2 = tp2 × tm
-(G2 neutrophil profile retained throughout). 6 severity metrics computed.
+(G2 neutrophil profile retained throughout). 6 severity metrics computed
+(time-to-peak gHn computed but not interpreted here; deferred to analysis 31).
 
 ## Reference points
 
@@ -91,6 +92,31 @@ G2-context cannot cause liver collapse. Analysis 31 will explore:
 - Does delayed myelosan administration reduce its effect?
 - Is there a therapeutic window?
 - Does delayed administration approach G1-like severity?
+
+## Note on time-to-peak metric deferral
+
+A `time_to_peak_gHn` metric was computed during the sweep (one of the
+6 severity metrics) but is **not interpreted in this analysis**, for two
+reasons:
+
+1. **Semantic alignment.** Time-to-peak biology addresses *when* the
+   critical DIC event occurs, which is the central question of analysis
+   31 (intervention timing), not the dose magnitude question of analysis
+   30 (this analysis).
+
+2. **Edge artifact from neutrophil interpolator extrapolation.** At
+   km=1 (no myelosan effect), G2 trajectories exhibit a slow secondary
+   rise in gHn between t=7 and t=8, exceeding the first peak by a small
+   margin. This is attributed to constant extrapolation of the
+   neutrophil interpolator beyond the last G2 data point (t=8 → N=3.73
+   held constant). The `argmax` operation thus selects the last
+   timepoint in these scenarios, producing a misleading "time-to-peak"
+   value of 8 days. Properly addressing this requires a time-dependent
+   N(t) model on the full 0-19 day interval, which is implemented in
+   analysis 31.
+
+The raw `phase_diagram_time_to_peak_gHn.json` is retained for
+reference but is not promoted to a figure in this analysis.
 
 ## Caveat on initial sanity-check formulation
 
