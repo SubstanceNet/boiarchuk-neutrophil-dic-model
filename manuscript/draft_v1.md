@@ -176,6 +176,8 @@ Working content:
 - Bootstrap: marginal CIs broadly consistent with PL for well-identified parameters; wider for sloppy parameters as expected.
 - XIII channel structurally under-determined: 41% of bootstrap iterations yield xiii_G2 R² < 0, reflecting fundamental limitation of the available data rather than parameter identification failure.
 - Implication for downstream predictions: report ensemble CI bands; good-basin subset (n=59 with xiii_G2 R² ≥ 0.3) provides tighter band when conservative interpretation is needed.
+We tested sensitivity to the per-observable normalization by replacing the range-based scale factors with per-group standard deviations (which upweights G2 XIII by ~24x). At the baseline parameter point this lifts XIII G2 R² from 0.08 to 0.93 (single seed). However, under parametric bootstrap, the fraction of iterations with XIII G2 R² < 0 increases from 41% (range-based) to ~83% (per-group-std), indicating that the improved normalization sharpens rather than resolves the multi-modal landscape in the XIII channel. The structural under-determination of the {ax, cx, bx, kx} manifold is therefore robust to normalization choice (Supplementary, Analysis 34).
+
 - **FIGURE 2 PLACEHOLDER — bootstrap CI on key parameters + xiii_G2 R² histogram**
 - **TABLE 1 PLACEHOLDER — parameter estimates with bootstrap CI95**
 
@@ -331,7 +333,7 @@ DE settings, polish sequence, convergence criteria. Reference `src/fit.py`.
 
 ## S4. Bootstrap diagnostic plots
 
-Per-iteration cost distribution, parameter CI shrinkage with N, basin classification of XIII channel. Reference `analyses/22_predictive_check/`.
+Per-iteration cost distribution, parameter CI shrinkage with N, basin classification of XIII channel. Reference `analyses/22_predictive_check/`. The per-group-std normalization sensitivity bootstrap (§3.2) is reported in `analyses/34_pergroupstd_bootstrap/`: under per-group std the XIII G2 R² < 0 fraction rises to ~83% (vs 41% range-based), confirming the XIII under-determination is robust to normalization choice rather than an artifact of it.
 
 ## S5. Trajectories per intervention scenario
 
