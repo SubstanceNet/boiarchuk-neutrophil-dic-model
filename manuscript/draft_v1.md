@@ -46,15 +46,62 @@ Suggested scope:
 
 ## 2.1 Experimental data and protocols
 
-**[OLENA — to be drafted; Oleksiy provides data summary table]**
+*[Team-drafted from the experimental protocol; to be reviewed by O.B. for
+accuracy and ethics/approval details.]*
 
-Brief description of:
-- Animal model (species, n per group, ethics approval)
-- Envenomation protocol (Ephedra-2 dose, route)
-- Myelosan pre-treatment protocol (G2 only)
-- Sampling timepoints (G1: 16 timepoints over 19 days; G2: 9 timepoints over 8 days)
-- Six observables per timepoint: recalcification time, thrombin time, fibrinogen, factor XIII activity, acid phosphatase activity, hyaline-degranulation index
-- Data availability statement (`data/csv/`, PROVENANCE.md)
+**Animals and design.** Experiments were performed on 40 sexually mature
+rabbits of both sexes, body mass 2.5-3.0 kg, housed under standard vivarium
+conditions with free access to water and maintained according to accepted
+bioethical principles for laboratory animals. Two groups were studied. In
+Group I (control DIC), disseminated intravascular coagulation was modeled by
+a single oral dose of the inducer "Efa-2" (8330 mg/kg, administered fasting)
+without prior intervention in the granulocyte lineage. In Group II
+(suppressed granulocytopoiesis), the identical inducer and dose were
+administered after pharmacological suppression of granulocytopoiesis.
+
+**Granulocytopoiesis suppression (Group II).** Suppression was achieved by
+oral myelosan in a two-stage schedule. In the first stage, myelosan was given
+at 10 mg/day for 5-7 days, continued until the absolute peripheral neutrophil
+count fell by 40-50% from the intact level. In the second stage, a
+maintenance dose of 4 mg/day was given for approximately 8 days to stabilize
+the reduced neutrophil count without deepening the cytopenia. The inducer was
+then administered immediately, without interval. This protocol establishes a
+distinct pre-induction state, denoted "M" (post-myelosan), at which the
+absolute neutrophil count is reduced (from ~8.0 to ~3.9 x10^9/L) and
+hemostatic parameters are minimally shifted relative to intact; differences
+between intact and M are statistically significant for factor XIII
+(P < 0.001). For Group II, the effects of Efa-2 are therefore referenced to
+state M rather than to the intact state.
+
+**Sampling and observables.** Group I was sampled at 16 timepoints over 19
+days (including the baseline anchor at t=0); Group II at 9 timepoints over 8
+days (the DIC process in Group II essentially resolves by day 8, whereas in
+Group I it extends to day 19). At each timepoint, six observables were
+recorded: plasma recalcification time, thrombin time, fibrinogen
+concentration, factor XIII (fibrinase) activity, serum acid phosphatase
+activity, and the hyaline-degranulation index of circulating neutrophils.
+Recalcification time, thrombin time, fibrinogen, and factor XIII were
+determined by standard hemostasis methods; ethanol and protamine-sulfate
+tests were used to detect soluble fibrin-monomer complexes. The neutrophil
+lysosomal formula was determined by the Pigarevsky method with
+May-Grunwald staining, classifying cells into three categories by granule
+content (>30, up to 10, and <10 granules); acid phosphatase, the marker
+lysosomal enzyme, was assayed by the Bodansky method and expressed in
+Bodansky units (BU). Statistical significance was assessed by the method of
+direct differences (Monceviciute-Eringene).
+
+**Mortality.** In Group I, partial mortality of 30% (12 of 40 animals) was
+observed on days 10-12 post-induction, coinciding with the phase of maximal
+hypocoagulation; subsequent timepoints (days 13, 14, 19) therefore derive
+from a reduced surviving cohort (n ~ 28). No mortality occurred in Group II.
+
+**Data representation and availability.** All hemostatic and
+neutrophil-activity values are expressed as deltas from each group's baseline
+(Group I from the intact state; Group II from state M); neutrophil counts are
+absolute. The experimental tables are reproduced in `data/csv/` with
+per-table source mapping in `data/csv/PROVENANCE.md`. The data derive from
+the Boiarchuk dissertation (1998) and associated publications; a substantial
+portion of the Group II dynamics is reported here for the first time.
 
 ## 2.2 Mathematical model
 
