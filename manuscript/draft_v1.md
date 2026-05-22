@@ -62,6 +62,8 @@ The model comprises a 5-state ODE system tracking degranulation dynamics (D), ac
 
 The model contains 26 parameters: rate constants for degranulation and recovery (kr, krl, kcl, kca, kna, knd, Hm, kd), peak-timing parameters of the envenomation pulse (tp2, s2), and observable-specific contribution coefficients for each of the four observable channels (recalc, thrombin, fib, xiii). The G1 and G2 groups share all parameters except for group-specific modifiers (km, tm) that scale the effective rate constants in G2 to represent the myelosan effect.
 
+Two structural priors are imposed to resolve identifiability. First, a mechanism-split constraint (penalty weight W_SPLIT = 2.0) targets the day-2 neutrophil-attributable fractions of the recalcification, fibrinogen, and factor XIII channels; the target values (0.24, 0.76, 0.82) are derived independently from the day-1 (ΔG1−ΔG2)/ΔG1 ratios in the experimental data (see §3.3). Without this prior the decomposition is non-identifiable across optimizer seeds. Second, an upper bound on the factor XIII production parameter (cx ≤ 600) constrains the XIII channel to a biologically interpretable subspace; relaxing it unlocks a multi-modal landscape in which the XIII fit trades off against the other G2 observables. Both priors are validated post-hoc by superior held-out (G2) fit relative to unconstrained alternatives (Supplementary, Analyses 01-02).
+
 **Full ODE formulation, parameter definitions, and observable formulas are provided in Supplementary Methods S1.**
 
 The neutrophil count time course N(t) is provided as experimental input (one interpolator per group) rather than as a model variable; this design choice is justified by the fact that N(t) is directly measured at all sampling timepoints.
@@ -71,6 +73,9 @@ The neutrophil count time course N(t) is provided as experimental input (one int
 Joint cost function minimizes weighted sum of squared residuals across all six observables and both groups. Parameter estimation pipeline: differential evolution (popsize=15, maxiter=200, Sobol initialization) for global search, followed by sequential Nelder-Mead → Powell → Nelder-Mead polishing.
 
 Numerical implementation details: scipy 1.15, numpy 2.2, Python 3.10. Code and reproducibility tests at [repository URL placeholder].
+
+The joint architecture (24 shared parameters + 2 group-specific modifiers) trades some per-group fit quality for cross-group consistency: a separate G2-only fit attains ~22 percentage points higher mean G2 R² than the joint fit (Supplementary, Analysis 03), a gap that is largely architectural rather than attributable to overfitting. This penalty is accepted in exchange for a single shared mechanistic parameterization across both groups.
+
 
 ## 2.4 Robustness analysis
 
@@ -205,7 +210,7 @@ observation within 1% (model -77.1% vs observed -76.7%) and the fibrinogen
 nadir within 11% (-58.3 vs -52.6 mg%), while the recalcification peak is
 underestimated by ~29% (147 vs 207 s). The underestimate is localized to
 the recalcification channel (the gHn-dependent term) rather than systemic;
-it is consistent with the joint-fit architecture penalty (§3.x) and is
+it is consistent with the joint-fit architecture penalty (§2.3) and is
 reported as a known limitation. The validation is therefore qualitative and
 directional — the model reproduces the timing and the group separation
 underlying the observed mortality — rather than a quantitative mortality
