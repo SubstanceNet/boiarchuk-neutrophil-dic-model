@@ -28,20 +28,59 @@ generated from baseline-self-consistent predictions.
 
 ## Mechanism split CI (G1 day 2 neutrophil fractions)
 
-| observable | median | CI 95 | prior (W_SPLIT=2.0) |
-|-----------|--------|-------|---------------------|
-| recalc | 0.240 | [0.225, 0.249] | 0.65 |
-| fib | 0.759 | [0.738, 0.777] | 0.65 |
-| xiii | 0.806 | [0.777, 0.844] | 0.65 |
+| observable | bootstrap median | CI 95 | prior target (W_SPLIT=2.0) | unconstrained (W=0, analysis 01) |
+|-----------|------------------|-------|----------------------------|----------------------------------|
+| recalc | 0.240 | [0.225, 0.249] | 0.24 | 0.34-0.48 (seed-dependent) |
+| fib | 0.759 | [0.738, 0.777] | 0.76 | ~0.05 (seed-stable) |
+| xiii | 0.806 | [0.777, 0.844] | 0.82 | ~0.75 (seed-stable) |
 
-**Key biological finding.** Data drive mechanism split substantially away from the soft prior 0.65:
-- **recalc** falls to ~0.24 (vessel-mediated mechanism dominates).
-- **fib** and **xiii** rise to ~0.76 and ~0.81 respectively (neutrophil-mediated mechanism dominates).
+**CORRECTION (2026-05).** An earlier version of this section reported a
+single uniform prior of 0.65 and described the split as a "data-driven
+discovery" in which the data move the fractions away from the prior. That
+was wrong on both counts. The prior is **not** uniform: `config.NEUTRO_FRAC`
+specifies three per-channel targets (recalc 0.24, fib 0.76, xiii 0.82), and
+the `_mechanism_split_residual` penalty drives each channel toward its own
+target. The 0.65 value never existed in the code; it was a stale figure from
+an early single-target proposal that predates the per-channel derivation.
 
-This is a data-driven discovery, not assumed. Mechanism split CIs are
-narrow (~0.02-0.07 width), indicating high confidence in these fractions.
-The prior 0.65 was a uniform assumption; data resolves group-specific
-contributions clearly.
+**What the data actually show.** The fitted fractions sit essentially on the
+prior targets (delta <= 0.014). They are therefore **prior-specified, not
+data-emergent**. The narrow bootstrap CIs do not demonstrate that the data
+identify the fractions: every iteration was refit under the same W_SPLIT=2.0
+penalty pulling toward the targets, and the synthetic data were generated
+from a baseline that itself sits on the targets, so a narrow CI around the
+targets is structurally guaranteed and carries no independent identifiability
+information.
+
+**Prior targets are data-derived (but from a different timepoint).** The
+targets equal the day-1 neutrophil-attributable fraction estimated as
+(dG1 - dG2)/dG1 (absolute deltas from baseline, dissertation tables 4.9/5.9):
+recalc (-38.5-(-29.3))/-38.5 = 0.239; fib (28.0-6.7)/28.0 = 0.761;
+xiii (71.0-12.8)/71.0 = 0.820. The derivation is clean because G1 and G2 have
+near-identical hemostatic baselines (recalc 78.7 vs 78.0; fib 58.2 vs 58.3;
+xiii 100.0 vs 93.2) -- myelosan altered neutrophils, not baseline hemostasis.
+The targets are thus a biologically-derived prior, imposed on the day-2 fit.
+
+**Per-channel honesty (critical for manuscript).** The unconstrained (W=0)
+column above shows what the day-2 data say *without* the prior:
+- **recalc**: non-identifiable without the prior (0.34-0.48 across seeds);
+  the prior is required to pin it (and pins it to 0.24, below the W=0 range).
+- **xiii**: the prior target (0.82) is roughly consistent with the
+  unconstrained value (~0.75) -- this is the one channel where prior and
+  unconstrained data agree.
+- **fib**: the unconstrained fit places fibrinogen at ~0.05 (seed-stable),
+  i.e. vessel-dominant. The prior **overrides** this and sets it to 0.76.
+  This channel must NOT be presented as a model finding of neutrophil
+  dominance: without the prior the day-2 fib dynamics do not reproduce the
+  day-1 ratio. The 76% figure is an imposed prior target, validated only
+  indirectly (held-out G2, analysis 01), not a reproduced data feature.
+
+**Correct status of the mechanism split:** a day-1-derived, biologically
+motivated prior, required for identifiability (analysis 01, W=0 is
+non-identifiable for recalc) and validated post-hoc by superior held-out G2
+R-squared versus unconstrained fits (analysis 01: +2-7 pp R2_G2). It is NOT
+an independent data-driven discovery, and for fibrinogen it actively
+overrides the unconstrained data direction.
 
 ## Parameter CI vs profile likelihood comparison
 
@@ -182,12 +221,20 @@ sloppy CIs by another ~10-20% but would not change biological conclusions.
 ## Implications for Phase 3 / manuscript
 
 **Strong findings (robust to N=100 ensemble):**
-1. Mechanism split — data-driven, narrow CI. Manuscript can present this as a
-   key biological discovery.
-2. tp2, s2, at, tm, kd, km — well-identified, narrow CIs, suitable for
+1. tp2, s2, at, tm, kd, km — well-identified, narrow CIs, suitable for
    manuscript headline parameter estimates.
-3. G1 fit quality consistent across ensemble — model captures G1 dynamics
+2. G1 fit quality consistent across ensemble — model captures G1 dynamics
    robustly.
+
+**On the mechanism split (NOT a data-driven finding — see corrected section
+above):** the split is a day-1-derived biological prior imposed on the day-2
+fit, required for identifiability and validated post-hoc by held-out G2 R²
+(analysis 01). The narrow bootstrap CI is structurally guaranteed by the
+W_SPLIT penalty and is NOT evidence of data identifiability. Present it in
+the manuscript as a prior-regularized, held-out-validated decomposition that
+*quantifies and is consistent with* Boiarchuk's neutrophil hypothesis — not
+as an independent discovery, and explicitly note that for fibrinogen the
+unconstrained fit (~0.05) disagrees with the prior target (0.76).
 
 **Known limitations to report transparently:**
 1. xiii_G2 fit quality variable across ensemble. 41% iters R²<0.

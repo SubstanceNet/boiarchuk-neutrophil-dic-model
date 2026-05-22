@@ -19,7 +19,7 @@ Skeleton scope:
 - 1-2 sentences: context (neutrophil role in DIC, myelosan in veterinary toxicology of Ephedra-2 poisoning)
 - 1 sentence: gap (no mechanistic model decomposing neutrophil vs vessel contributions)
 - 2-3 sentences: approach (mechanistic ODE model fit to two experimental groups; identifiability + bootstrap + LOO-CV + N(t) perturbation robustness checks; three virtual experiments)
-- 3-4 sentences: key findings (mechanism split data-driven; myelosan kinetic effect 2.5-7× DIC reduction; therapeutic window 0-2.5 days; dose-timing thresholds)
+- 3-4 sentences: key findings (prior-regularized mechanism split quantifying neutrophil contribution, consistent with the neutrophil hypothesis; myelosan kinetic effect 2.5-7× DIC reduction; therapeutic window 0-2.5 days; dose-timing thresholds)
 - 1 sentence: clinical implication (narrow window requires both adequate dose AND early administration)
 
 ---
@@ -133,7 +133,7 @@ Working content:
 
 Working content (direct from analysis 22 FINDINGS):
 
-Bootstrap analysis reveals that the experimentally observed coagulation dynamics are best explained by a data-driven decomposition into vessel-mediated and neutrophil-mediated contributions. The neutrophil contribution fraction at G1 day 2 is **0.240 [0.225, 0.249]** for recalcification (vessel-dominant), **0.759 [0.738, 0.777]** for fibrinogen (neutrophil-dominant), and **0.806 [0.777, 0.844]** for factor XIII (neutrophil-dominant). The mechanism split was constrained only by a soft prior centered at 0.65 (weight = 2.0); the data drive the estimates substantially away from this prior with narrow confidence intervals, indicating that the decomposition is genuinely informed by the experimental observations rather than imposed by model architecture.
+The coagulation dynamics were decomposed into vessel-mediated and neutrophil-mediated contributions using a biologically-derived prior on the day-2 (G1) neutrophil share. The prior targets were estimated independently from the day-1 neutrophil-attributable fraction (ΔG1−ΔG2)/ΔG1 (recalc 0.24, fibrinogen 0.76, factor XIII 0.82); the derivation is well-posed because the two groups have near-identical hemostatic baselines (recalcification 78.7 vs 78.0 s; fibrinogen 58.2 vs 58.3 mg%; factor XIII 100.0 vs 93.2%), so myelosan altered neutrophil numbers without shifting baseline hemostasis. Imposing this prior (W_SPLIT = 2.0) yields fitted day-2 fractions of 0.240 [0.225, 0.249] for recalcification (vessel-dominant), 0.759 [0.738, 0.777] for fibrinogen, and 0.806 [0.777, 0.844] for factor XIII (both neutrophil-dominant). The prior is required for identifiability: without it, the recalcification fraction is non-identifiable across optimizer seeds (0.34–0.48) and the decomposition is not unique (Supplementary, W-sweep). The decomposition is validated post-hoc by superior held-out (G2) fit relative to unconstrained alternatives (+2–7 percentage points R²_G2). We therefore present these fractions as a prior-regularized, held-out-validated decomposition that quantifies and is consistent with the neutrophil hypothesis, rather than as a prior-free inference. We note one transparency caveat: for fibrinogen, an unconstrained fit places the neutrophil fraction near 0.05; the 0.76 value is the imposed day-1-derived prior target, not a feature independently reproduced by the day-2 fibrinogen dynamics.
 
 The strong neutrophil contribution to factor XIII (~80%) is consistent with the azurophilic-granule storage hypothesis: degranulating neutrophils release pre-stored F.XIII into circulation, where it is rapidly consumed in the coagulation cascade. The vessel-dominant contribution to recalcification (~76% vessel) is consistent with the rapid onset of hypocoagulation following envenomation, before neutrophil-mediated effects have time to develop.
 
@@ -193,7 +193,7 @@ A focused virtual experiment tested whether dose × timing operate as continuous
 
 Suggested structure:
 
-4.1. **Summary of findings.** Restate four-pillar narrative: (i) data-driven mechanism split confirming neutrophil contribution; (ii) quantified myelosan kinetic effect 2.5-7×; (iii) narrow therapeutic window with sharp 2.5-3 day transition; (iv) dose-timing thresholds requiring both.
+4.1. **Summary of findings.** Restate four-pillar narrative: (i) a prior-regularized mechanism split that quantifies and is consistent with (not independently confirms) the neutrophil contribution; (ii) quantified myelosan kinetic effect 2.5-7×; (iii) narrow therapeutic window with sharp 2.5-3 day transition; (iv) dose-timing thresholds requiring both.
 
 4.2. **Biological interpretation of mechanism split.** Vessel-dominant recalcification + neutrophil-dominant fib/XIII — discuss in light of known DIC pathogenesis. Connection to azurophilic-granule F.XIII storage (Boiarchuk 2008).
 
