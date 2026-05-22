@@ -1,0 +1,12 @@
+{
+  "n": 12,
+  "n_failed": 0,
+  "xiii_r2_neg_count": 10,
+  "xiii_r2_neg_frac": 0.8333333333333334,
+  "xiii_r2_median": -0.18769701456645238,
+  "bxkx_good_median": 17.63766820839244,
+  "bxkx_bad_median": 12.683347978267594,
+  "baseline_neg": 0,
+  "baseline_total": 0,
+  "verdict": "B"
+}
