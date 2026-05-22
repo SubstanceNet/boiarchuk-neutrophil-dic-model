@@ -44,17 +44,28 @@ The myelosan-induced kinetic modification (km × tm in observed dose)
 reduces peak hypocoagulation by ~7x, integrated coagulation disruption
 by ~2.5x, and XIII depletion by ~4.5x.
 
-### 2. G2 neutrophil profile alone insufficient for liver collapse
+### 2. [RETRACTED] liver_collapse metric was invalid — see analysis 33
 
-Liver collapse (Hn/Hm > 0.99) occurs in 0/22,500 simulations,
-including the no-kinetic-effect corner (km=1, tm=1).
+**This section originally reported "liver collapse (Hn/Hm > 0.99) occurs in
+0/22,500 simulations" and inferred that G2 neutrophil counts cannot produce
+fatal DIC. That claim is withdrawn.** The metric is invalid on two
+independent grounds, both verified directly (analysis 33):
 
-G2-level neutrophil counts (peak ~60) cannot produce irreversible
-liver-state bifurcation regardless of kinetic modification. G1-level
-neutrophil counts (peak ~200) are required.
+1. **Code bug.** `compute_severity` read `o["Hm"]`, but `solve_group` never
+   placed `"Hm"` in its output dict. `Hm` was therefore `None`, the collapse
+   branch never executed, and `liver_collapse` was `False` for all 22,500
+   simulations unconditionally — `0` by construction, not a result.
+2. **Conceptually empty even if fixed.** Hn reaches only ~1.15% of carrying
+   capacity Hm in the realistic parameter range; the 0.99 threshold is
+   structurally unreachable. Hn/Hm saturation cannot detect anything.
 
-Interpretation: myelosan protective effect operates primarily through
-reduction of neutrophil abundance, not kinetic modification alone.
+The metric has been removed from `run.py`. Mortality is re-validated in
+**analysis 33** through hypocoagulation severity (the clinically observed
+endpoint): pure-G1 simulation yields max_recalc ~147 s (vs G2 ~7 s), a 22x
+group separation reproducing the observed 30% G1 / 0% G2 mortality contrast,
+with peak timing (day 11) and XIII/fib nadirs matching observation within
+1-11%. The other analysis-30 severity metrics (max_recalc, min_xiii,
+auc_recalc, max_gHn) are unaffected and remain valid.
 
 ### 3. Dose-response monotonic and smooth
 
@@ -74,21 +85,20 @@ landscape observed during fitting.
 > disruption by 2.5-fold, relative to the same neutrophil profile without
 > kinetic modification (Figure X, phase diagram in (km, tm) space).
 > The observed experimental dose (km=4.93, tm=0.43) lies on the
-> dose-response curve at intermediate severity. Crucially, irreversible
-> liver-state collapse (Hn/Hm > 0.99) does not occur at any point in the
-> (km, tm) grid when G2 neutrophil counts are retained — suggesting that
-> the protective effect of myelosan operates primarily through reduction
-> of neutrophil abundance, rather than kinetic modification alone.
-> A complementary virtual experiment substituting G1 neutrophil counts
-> into the myelosan-modified dynamics would decompose the relative
-> contributions of neutrophil count reduction vs. rate constant
-> modification — addressable by the current model framework but
-> beyond the scope of the present study.
+> dose-response curve at intermediate severity. The kinetic modification
+> alone, applied to the G2 neutrophil profile, does not reproduce G1-level
+> hypocoagulation severity; pure-G1 simulation (analysis 33) yields ~22-fold
+> greater peak hypocoagulation, indicating that the protective effect of
+> myelosan operates substantially through reduction of neutrophil abundance,
+> not kinetic modification alone. (An earlier version of this analysis stated
+> this via an "irreversible liver-state collapse" metric; that metric was
+> found to be invalid and has been removed — see analysis 33.)
 
 ## Implications for analysis 31 (intervention timing)
 
-Current sweep establishes that kinetic modification alone within
-G2-context cannot cause liver collapse. Analysis 31 will explore:
+Current sweep establishes that kinetic modification alone within the
+G2-context does not reach G1-level hypocoagulation severity (analysis 33).
+Analysis 31 will explore:
 - Does delayed myelosan administration reduce its effect?
 - Is there a therapeutic window?
 - Does delayed administration approach G1-like severity?

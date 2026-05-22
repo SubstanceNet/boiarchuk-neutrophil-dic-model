@@ -29,9 +29,13 @@ TM_BASELINE_G1 = 1.0
 KM_BASELINE_G2 = 4.93     # observed G2 myelosan effect
 TM_BASELINE_G2 = 0.43
 
+# NOTE: liver_collapse (Hn/Hm > 0.99) removed — invalid metric.
+# o['Hm'] is absent from solve_group output (-> None -> always False), and
+# Hn reaches only ~1% of Hm in the realistic range so the threshold is
+# structurally unreachable. Mortality validation: see analysis 33.
 SEVERITY_METRICS = [
     "max_gHn", "min_xiii", "max_recalc", "auc_recalc",
-    "time_to_peak_gHn", "liver_collapse",
+    "time_to_peak_gHn",
 ]
 
 
@@ -40,8 +44,6 @@ def compute_severity(o, T):
     gHn = np.asarray(o["gHn"])
     xiii = np.asarray(o["xiii"])
     recalc = np.asarray(o["recalc"])
-    Hn = np.asarray(o["Hn"])
-    Hm = np.asarray(o["Hm"]) if "Hm" in o else None
     
     # max gHn — peak accumulation
     max_ghn = float(np.max(gHn))
@@ -59,19 +61,12 @@ def compute_severity(o, T):
     peak_idx = int(np.argmax(gHn))
     time_to_peak_gHn = float(T[peak_idx])
     
-    # liver_collapse: Hn approaches Hm cap (Hn/Hm > 0.99)
-    # Hm is parameter pv[7]
-    liver_collapse = False
-    if Hm is not None:
-        liver_collapse = bool(np.any(Hn / max(np.max(Hm), 1e-12) > 0.99))
-    
     return dict(
         max_gHn=max_ghn,
         min_xiii=min_xiii,
         max_recalc=max_recalc,
         auc_recalc=auc_recalc,
         time_to_peak_gHn=time_to_peak_gHn,
-        liver_collapse=liver_collapse,
     )
 
 
@@ -226,23 +221,13 @@ def main():
             for metric in SEVERITY_METRICS:
                 vals = [p[metric] for p in cell_preds]
                 vals_good = [p[metric] for p in cell_good]
-                if metric == "liver_collapse":
-                    # For binary: fraction of members where True
-                    phase_data[metric]["median"][km_idx, tm_idx] = float(np.mean(vals))
-                    phase_data[metric]["p2_5"][km_idx, tm_idx] = float(np.mean(vals))
-                    phase_data[metric]["p97_5"][km_idx, tm_idx] = float(np.mean(vals))
-                    if vals_good:
-                        phase_data[metric]["median_good"][km_idx, tm_idx] = float(np.mean(vals_good))
-                        phase_data[metric]["p2_5_good"][km_idx, tm_idx] = float(np.mean(vals_good))
-                        phase_data[metric]["p97_5_good"][km_idx, tm_idx] = float(np.mean(vals_good))
-                else:
-                    phase_data[metric]["median"][km_idx, tm_idx] = float(np.median(vals))
-                    phase_data[metric]["p2_5"][km_idx, tm_idx] = float(np.percentile(vals, 2.5))
-                    phase_data[metric]["p97_5"][km_idx, tm_idx] = float(np.percentile(vals, 97.5))
-                    if vals_good:
-                        phase_data[metric]["median_good"][km_idx, tm_idx] = float(np.median(vals_good))
-                        phase_data[metric]["p2_5_good"][km_idx, tm_idx] = float(np.percentile(vals_good, 2.5))
-                        phase_data[metric]["p97_5_good"][km_idx, tm_idx] = float(np.percentile(vals_good, 97.5))
+                phase_data[metric]["median"][km_idx, tm_idx] = float(np.median(vals))
+                phase_data[metric]["p2_5"][km_idx, tm_idx] = float(np.percentile(vals, 2.5))
+                phase_data[metric]["p97_5"][km_idx, tm_idx] = float(np.percentile(vals, 97.5))
+                if vals_good:
+                    phase_data[metric]["median_good"][km_idx, tm_idx] = float(np.median(vals_good))
+                    phase_data[metric]["p2_5_good"][km_idx, tm_idx] = float(np.percentile(vals_good, 2.5))
+                    phase_data[metric]["p97_5_good"][km_idx, tm_idx] = float(np.percentile(vals_good, 97.5))
     
     # Save phase diagrams as JSON (per metric)
     for metric in SEVERITY_METRICS:
@@ -295,7 +280,7 @@ def main():
                 "p2_5": float(np.percentile([p[metric] for p in cell_preds_g1], 2.5)),
                 "p97_5": float(np.percentile([p[metric] for p in cell_preds_g1], 97.5)),
             }
-            for metric in SEVERITY_METRICS if metric != "liver_collapse"
+            for metric in SEVERITY_METRICS
         },
     }, indent=2))
     print(f"\nSaved sanity: {sanity_path}")
