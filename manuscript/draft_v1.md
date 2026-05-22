@@ -94,7 +94,7 @@ Three virtual experiments used the 100-member bootstrap parameter ensemble to pr
 
 **Dose × timing combinations (Experiment 3):** two specific scenarios — high dose at late timing, half dose at early timing — to test the dose-timing trade-off hypothesis directly. 200 simulations.
 
-**Severity metrics.** For each trajectory: peak hypocoagulation (max Δrecalc), integrated coagulation disruption (AUC |Δrecalc|), XIII depletion nadir (min Δxiii), peak hyaline-degranulation accumulation (max gHn), and binary liver collapse (Hn/Hm > 0.99).
+**Severity metrics.** For each trajectory: peak hypocoagulation (max Δrecalc), integrated coagulation disruption (AUC |Δrecalc|), XIII depletion nadir (min Δxiii), and peak hyaline-degranulation accumulation (max gHn).
 
 **Temporal metrics** (Experiment 2 only): time of peak gHn (t_peak), time to recovery (gHn falling below 10% of peak after the peak; t_recovery), acute phase duration (Δt = t_recovery − t_peak).
 
@@ -157,9 +157,9 @@ Model sensitivity to neutrophil count input was assessed using three perturbatio
 
 Working content (direct from analysis 30):
 
-Virtual experiments using the 100-member bootstrap ensemble reveal that myelosan-induced kinetic modification of neutrophil-derived rate constants reduces peak hypocoagulation by 7-fold and integrated coagulation disruption by 2.5-fold, relative to the same neutrophil profile without kinetic modification (Figure X, phase diagram in (km, tm) space). The observed experimental dose (km=4.93, tm=0.43) lies on the dose-response curve at intermediate severity. Crucially, irreversible liver-state collapse (Hn/Hm > 0.99) does not occur at any point in the (km, tm) grid when G2 neutrophil counts are retained — suggesting that the protective effect of myelosan operates primarily through reduction of neutrophil abundance, rather than kinetic modification alone. A complementary virtual experiment substituting G1 neutrophil counts into the myelosan-modified dynamics would decompose the relative contributions of neutrophil count reduction vs. rate constant modification — addressable by the current model framework but beyond the scope of the present study.
+Virtual experiments using the 100-member bootstrap ensemble show that myelosan-induced kinetic modification of neutrophil-derived rate constants reduces peak hypocoagulation by 7-fold and integrated coagulation disruption by 2.5-fold, relative to the same neutrophil profile without kinetic modification (phase diagram in (km, tm) space). The observed experimental dose (km=4.93, tm=0.43) lies on the dose-response curve at intermediate severity. The kinetic modification alone, applied to the G2 neutrophil profile, does not reproduce G1-level hypocoagulation severity: substituting the G1 neutrophil profile into the model (§3.8) yields an ~22-fold greater peak hypocoagulation. This indicates that the protective effect of myelosan operates substantially through the reduction of neutrophil abundance, not through kinetic modification alone.
 
-- **FIGURE 3 PLACEHOLDER — phase diagram (3-panel: max_recalc, min_xiii, liver_collapse)**
+- **FIGURE 3 PLACEHOLDER — phase diagram (3-panel: max_recalc, min_xiii, max_gHn)**
 - **FIGURE 4 PLACEHOLDER — dose-response slice at tm=0.43**
 
 ## 3.6 Therapeutic window
@@ -187,6 +187,32 @@ A focused virtual experiment tested whether dose × timing operate as continuous
 
 ---
 
+## 3.8 External validation against the observed mortality pattern
+
+The model was validated against the experimentally observed mortality
+contrast (30% in Group I, days 10-12; 0% in Group II) by simulating pure
+Group I dynamics (G1 neutrophil profile, no myelosan) through the bootstrap
+ensemble. The model reproduces severe hypocoagulation in Group I (peak
+Δrecalcification 147 s [CI95 122-176], factor XIII nadir -77%, fibrinogen
+nadir -58 mg%) versus near-absent hypocoagulation in the myelosan-modified
+Group II baseline (peak Δrecalcification ~7 s), a 22-fold separation
+consistent with the observed mortality difference. The peak occurs at
+day 11, matching the observed timing of both the hypocoagulation maximum
+and the mortality window (days 10-12).
+
+Channel-level agreement is differential: the factor XIII nadir matches
+observation within 1% (model -77.1% vs observed -76.7%) and the fibrinogen
+nadir within 11% (-58.3 vs -52.6 mg%), while the recalcification peak is
+underestimated by ~29% (147 vs 207 s). The underestimate is localized to
+the recalcification channel (the gHn-dependent term) rather than systemic;
+it is consistent with the joint-fit architecture penalty (§3.x) and is
+reported as a known limitation. The validation is therefore qualitative and
+directional — the model reproduces the timing and the group separation
+underlying the observed mortality — rather than a quantitative mortality
+model.
+
+- **TABLE 4 PLACEHOLDER — G1 vs G2 severity + model-vs-observed validation**
+
 # 4. Discussion
 
 **[OLENA — to be drafted; Oleksiy provides bullet points below as scaffolding]**
@@ -201,7 +227,7 @@ Suggested structure:
 
 4.4. **The two-phase nature of the therapeutic window.** Discuss biological mechanism: prevention phase (0-2.5 days) = before cascade lock-in; mitigation phase (2.5-6+) = limiting damage extent. Half-day transition reflects sharp threshold in AP/Hn accumulation.
 
-4.5. **Liver collapse and the neutrophil-count question.** G2 neutrophils alone cannot trigger irreversible collapse — protection operates primarily through count reduction. Open question: would myelosan-kinetic effect alone (without count change) be sufficient if applied to G1-level neutrophils? Future experimental design.
+4.5. **Count reduction vs. kinetic modification.** Pure-G1 simulation (§3.8) produces ~22-fold greater hypocoagulation severity than the G2 kinetic scenario, indicating that myelosan protection operates substantially through reduction of neutrophil abundance rather than kinetic modification alone. Discuss in light of the observed mortality pattern (30% G1 vs 0% G2). Note the model limitation: the recalcification amplitude is underestimated ~30% relative to observation, though peak timing and the XIII/fibrinogen nadirs are reproduced within 1-11% (§3.8).
 
 4.6. **Limitations.** XIII channel structural under-determination; idealized myelosan pharmacokinetics (instantaneous effect); neutrophil interpolator extrapolation; veterinary translation caveats.
 
