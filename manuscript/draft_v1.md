@@ -26,19 +26,88 @@ Skeleton scope:
 
 # 1. Introduction
 
-**[OLENA — to be drafted]**
+*[Team-drafted from the source documents; to be reviewed by O.B. for
+biological accuracy and reference completeness.]*
 
-Suggested scope:
+Disseminated intravascular coagulation (DIC) is a systemic, acquired
+disorder of hemostasis in which widespread activation of coagulation leads
+first to microvascular thrombosis and consumption of clotting factors, and
+subsequently to a bleeding tendency as those factors are exhausted. DIC is
+not a primary disease but a complication of shock, sepsis, trauma, burns,
+obstetric emergencies, and envenomation, and it remains a major contributor
+to mortality in these settings [ref: Pavlovsky 1988; Chervyovy 1990]. Its
+laboratory hallmark is a characteristic temporal sequence: an initial
+hypercoagulable phase, a transitional consumption coagulopathy, and a
+terminal hypocoagulable phase in which clotting may fail almost completely.
 
-1.1. **Biological context.** DIC syndrome, pathogenesis. Neutrophil role in coagulation cascade — review of evidence for azurophilic granule storage of F.XIII, vessel-mediated vs neutrophil-mediated mechanisms.
+Neutrophilic granulocytes are classically regarded as effectors of innate
+immunity and as participants in the inflammatory response that accompanies
+DIC. A body of experimental work, however, has argued that neutrophils are
+not merely bystanders but active participants in the coagulopathy itself,
+acting through their lysosomal apparatus. The lysosomal enzymes of
+neutrophils are markedly more active than the corresponding enzymes of liver
+and brain, and they exert a potent activating effect on Hageman factor
+(factor XII), the contact-phase initiator of the intrinsic coagulation
+cascade [ref: Bakhov 1988; Baluda; Kuznik 1989]. Upon neutrophil
+degranulation, these enzymes — for which acid phosphatase serves as a
+convenient marker — are released into the circulation, where they can
+activate factor XII, promote the conversion of plasminogen to plasmin, and
+thereby amplify fibrinolytic activity. This places neutrophil degranulation
+mechanistically upstream of the fibrinolytic, hypocoagulable phase of DIC.
 
-1.2. **Experimental model.** Ephedra-2 (Vipera berus) envenomation model. Two groups: G1 (envenomation alone), G2 (envenomation + pre-treatment with myelosan to suppress neutrophil production). Reference to Boiarchuk dissertation and 2008 publication.
+The experimental model underlying the present study tests this hypothesis
+directly. DIC was induced in rabbits by a standardized inducer (the
+preparation "Efa-2", 8330 mg/kg orally), which reproduces the classical
+three-phase DIC time course — hypercoagulation (days 1-4), a transitional
+consumption phase, and deep hypocoagulation (days ~6-11, with possible
+complete incoagulability), resolving by days 19-20 [ref: Boiarchuk 1998].
+Two groups were compared: a control DIC group (Group I), and a group in
+which granulocytopoiesis was pharmacologically suppressed by myelosan prior
+to induction (Group II). The central experimental finding is that
+suppression of the neutrophil lineage largely prevents the deep
+hypocoagulable phase: in Group II the clinically significant DIC stage
+contracts from ~14-15 days to ~6 days, peak acid phosphatase activity is
+roughly 2.5-fold lower, and the 30% mortality observed in Group I (days
+10-12, at the hypocoagulation peak) is essentially absent. Together these
+observations provide a causal, not merely correlative, argument for the
+pathogenetic role of activated neutrophils in the hypocoagulable phase of
+DIC [ref: Boiarchuk 2008].
 
-1.3. **The myelosan question.** What is the mechanism by which myelosan attenuates DIC? Two hypotheses: (a) reduction of neutrophil count, (b) modification of neutrophil kinetics. Need for quantitative decomposition.
+This causal picture nonetheless leaves two questions unresolved, both of
+which are quantitative rather than qualitative. First, the observable
+coagulation defects (prolonged recalcification time, fibrinogen depletion,
+factor XIII loss) presumably reflect a combination of a direct,
+inducer-driven (vessel-mediated) contribution and an indirect,
+neutrophil-mediated contribution; the relative size of these two
+contributions in each observable has not been quantified. Second, myelosan
+attenuates DIC, but the mechanism of that protection is ambiguous: it could
+act by reducing the number of neutrophils available to degranulate, by
+altering the kinetics of the neutrophil-driven processes, or both — and the
+existing data describe the protective effect without decomposing it. The
+prior literature characterizes neutrophil involvement qualitatively and
+through stage-averaged comparisons; it does not provide a mechanistic model
+that resolves these two questions.
 
-1.4. **Gap.** Existing literature describes neutrophil involvement qualitatively. No mechanistic model that (a) quantitatively decomposes neutrophil vs vessel contributions to coagulation observables, (b) characterizes the timing dependence of myelosuppressive intervention.
+We therefore develop a mechanistic ordinary-differential-equation model of
+neutrophil-driven DIC, fit jointly to both experimental groups, with three
+aims: (i) to build and validate a dynamical model that reproduces the
+six measured hemostatic and neutrophil-activity observables in both groups;
+(ii) to quantify, with uncertainty, the decomposition of each observable
+into vessel-mediated and neutrophil-mediated contributions, and to test it
+against the held-out suppressed-granulopoiesis group; and (iii) to use the
+validated model to predict the dose-response and the timing dependence of
+myelosuppressive intervention, with a view to the therapeutic window such
+intervention would imply.
 
-1.5. **Aims.** State three: (i) build and validate ODE model; (ii) quantify mechanism split with uncertainty; (iii) predict dose-response and intervention timing relationships.
+<!-- QUESTION FOR O.B.: the nature of the "Efa-2" inducer. Open sources
+(the 1998 dissertation and later papers) describe it only as the inducer
+"Efa-2", 8330 mg/kg oral. External evidence indicates it is a commercial
+rodenticide bait based on ethylphenacin (a second-generation
+indane-1,3-dione vitamin-K-antagonist anticoagulant, ~0.015%), NOT a snake
+venom — the name "Efa" is brand-only. This is consistent with the dose
+(a ready bait, not a purified protein) and with the consumption-coagulopathy
+mechanism. Please confirm so we can add one precise sentence to Methods 2.1.
+Reviewers will ask what "Efa-2" is. -->
 
 ---
 
