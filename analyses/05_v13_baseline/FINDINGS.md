@@ -44,8 +44,34 @@ The xiii_G2 instability is a structural feature, not a v13-cost defect. Analysis
 
 The xiii channel identifiability is the central finding for Phase 2 step 2: group-specific cx (or related XIII-channel parameter) is the natural intervention to resolve both identifiability and the residual G2 fit gap simultaneously.
 
+## Fibrinogen channel diagnostic (fib_decomposition.py)
+
+Although fib_G2 R² is moderate (+0.50) and not flagged as a primary
+identifiability problem, the fib channel has a known shape limitation visible
+in Figure 1, characterized here on the fixed baseline:
+
+- **Early-phase underestimation.** The model underestimates the early
+  (hypercoagulation) fibrinogen rise: model +16 vs observed +28 mg% at day 1,
+  +13 vs +32 at day 2. The late nadir is reproduced well (model -58 vs
+  observed -53 mg%, ~11%).
+- **Non-monotonic intermediate "bump" (days 5-7).** The fib output is a small
+  difference of two large opposing terms: cf·AP (~+37) and -bf·gHn (~-40).
+  In the window days 4.5-6.5 each term is ~4.0x larger in magnitude than their
+  sum (catastrophic cancellation). Minor phase mismatches between AP and gHn
+  there produce a non-monotonic intermediate profile, and the fast-rising
+  -bf·gHn term suppresses the early rise.
+
+This is a property of the fixed jointly-estimated parameterization, not a
+fit failure, and is documented as a manuscript limitation (§4.6). It does
+not affect the channels carrying the main findings (timing, group
+separation, mechanism split). Reproduce with
+`python -m analyses.05_v13_baseline.fib_decomposition`
+(results/fib_decomposition.json).
+
 ## Run inventory
 
 - `results/fit.json` — main fit result, seed=42
 - `results/seed_check.json` — additional seeds 7, 123
 - `results/_cache/*.pkl` — hash-keyed fit caches under v13
+- `fib_decomposition.py` + `results/fib_decomposition.json` — fib channel term decomposition (catastrophic-cancellation diagnostic)
+- `make_fig1.py` + `figures/fig1_baseline_fits.{png,pdf}` — Figure 1 (baseline fits, both groups, seed=42 representative vector)

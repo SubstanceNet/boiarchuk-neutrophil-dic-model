@@ -231,8 +231,9 @@ Severity metrics were computed on the native G2 timeline (0-9 days) for Experime
 
 Working content:
 - Model fits both G1 and G2 with R² > 0.7 on most observables.
-- G1 (15 timepoints, 6 observables): mean R² ≈ 0.82.
+- G1 (15 timepoints, 6 observables): mean R² ≈ 0.83.
 - G2 (8 timepoints, 6 observables): mean R² ≈ 0.69, with known structural limitations in XIII channel (see §3.2).
+- The early (hypercoagulation-phase) amplitude in the recalcification and fibrinogen channels is underestimated; the late-phase nadirs are reproduced within 1-11% (see §4.6 for the fibrinogen channel mechanism).
 - Figure: baseline fit panels (one per observable per group).
 - **FIGURE 1 PLACEHOLDER — baseline fits**
 
@@ -325,11 +326,15 @@ and the mortality window (days 10-12).
 
 Channel-level agreement is differential: the factor XIII nadir matches
 observation within 1% (model -77.1% vs observed -76.7%) and the fibrinogen
-nadir within 11% (-58.3 vs -52.6 mg%), while the recalcification peak is
-underestimated by ~29% (147 vs 207 s). The underestimate is localized to
-the recalcification channel (the gHn-dependent term) rather than systemic;
-it is consistent with the joint-fit architecture penalty (§2.3) and is
-reported as a known limitation. The validation is therefore qualitative and
+nadir within 11% (model -58.3 vs observed -52.6 mg%; the early
+fibrinogen rise is underestimated more strongly, see §4.6), while the
+recalcification peak is
+underestimated by ~29% (147 vs 207 s). The amplitude underestimation is
+confined to the vessel-driven channels (recalcification peak and the early
+fibrinogen rise) rather than being systemic — the XIII and AP nadirs and
+the peak timing are reproduced accurately; it is consistent with the
+joint-fit architecture penalty (§2.3) and is reported as a known
+limitation (§4.6). The validation is therefore qualitative and
 directional — the model reproduces the timing and the group separation
 underlying the observed mortality — rather than a quantitative mortality
 model.
@@ -352,7 +357,7 @@ Suggested structure:
 
 4.5. **Count reduction vs. kinetic modification.** Pure-G1 simulation (§3.8) produces ~22-fold greater hypocoagulation severity than the G2 kinetic scenario, indicating that myelosan protection operates substantially through reduction of neutrophil abundance rather than kinetic modification alone. Discuss in light of the observed mortality pattern (30% G1 vs 0% G2). Note the model limitation: the recalcification amplitude is underestimated ~30% relative to observation, though peak timing and the XIII/fibrinogen nadirs are reproduced within 1-11% (§3.8).
 
-4.6. **Limitations.** XIII channel structural under-determination; idealized myelosan pharmacokinetics (instantaneous effect); neutrophil interpolator extrapolation; veterinary translation caveats.
+4.6. **Limitations.** XIII channel structural under-determination (robust to normalization, §3.2); idealized myelosan pharmacokinetics (instantaneous effect); neutrophil interpolator extrapolation; veterinary translation caveats. Two vessel-driven channels (recalcification, fibrinogen) underestimate the early hypercoagulation-phase amplitude while reproducing the late nadir well. For fibrinogen the cause is explicit in the channel decomposition (Supplementary, fib channel decomposition at baseline): the fibrinogen output is a small difference of two large opposing terms, the acid-phosphatase contribution (cf·AP) and the neutrophil-dependent contribution (−bf·gHn), each roughly four-fold larger in magnitude than their sum near days 5-7. Minor phase mismatches between AP and gHn in that window therefore produce a non-monotonic intermediate profile, and the fast-rising −bf·gHn term suppresses the early fibrinogen rise relative to observation (model +16 vs +28 mg% at day 1). This is a consequence of the fixed, jointly-estimated parameterization and does not affect the channels carrying the main findings.
 
 4.7. **Future directions.** Additional G2 timepoints to constrain XIII; explicit PK/PD layer for myelosan; combined intervention exploration.
 
