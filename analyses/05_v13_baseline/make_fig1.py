@@ -48,15 +48,29 @@ MORT_BAND = (10, 12)  # G1 mortality / hypocoagulation peak
 # observable: (attr, panel label, y-axis label)
 PANELS = [
     ("recalc", "(a)", r"$\Delta$ Recalcification time (s)", True),
-    ("thrombin", "(b)", r"$\Delta$ Thrombin time (s)", False),
+    ("thrombin", "(b)", r"$\Delta$ Thrombin time (s)", True),
     ("fib", "(c)", r"$\Delta$ Fibrinogen (mg%)", True),
     ("xiii", "(d)", r"$\Delta$ Factor XIII activity (%)", True),
-    ("AP", "(e)", r"$\Delta$ Acid phosphatase (BU)", False),
+    ("AP", "(e)", r"$\Delta$ Acid phosphatase (Bodansky U.)", False),
     ("deg", "(f)", r"$\Delta$ Degranulation index (%)", False),
 ]
 # model output key per attr (deg -> 'D')
 MODEL_KEY = {"recalc": "recalc", "thrombin": "thrombin", "fib": "fib",
              "xiii": "xiii", "AP": "AP", "deg": "D"}
+# sigma CSV column per attr
+SE_COL = {"recalc": "recalc_se", "thrombin": "thrombin_se", "fib": "fib_se",
+          "xiii": "xiii_se", "AP": "acid_phosphatase_se", "deg": "degranulation_se"}
+
+
+def _load_sigma(path):
+    """Load a sigma_group CSV ('#' comments) -> dict col -> ndarray."""
+    import numpy as _np
+    with open(path) as f:
+        lines = [ln for ln in f if not ln.lstrip().startswith("#") and ln.strip()]
+    header = lines[0].strip().split(",")
+    rows = [ln.strip().split(",") for ln in lines[1:]]
+    arr = _np.asarray(rows, dtype=float)
+    return {name: arr[:, i] for i, name in enumerate(header)}
 
 
 def main():
@@ -70,6 +84,11 @@ def main():
     pv = np.array(fit["best_x"])
     r2_g1 = fit.get("avg_r2_g1")
     r2_g2 = fit.get("avg_r2_g2")
+
+    # measurement SEM (M+/-m) for error bars
+    DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data" / "csv"
+    se1 = _load_sigma(DATA_DIR / "sigma_group1.csv")
+    se2 = _load_sigma(DATA_DIR / "sigma_group2.csv")
 
     # dense model curves on each group's own range (no extrapolation)
     tdense_g1 = np.linspace(0, 19, 300)
@@ -92,11 +111,15 @@ def main():
             ax.axvspan(MORT_BAND[0], MORT_BAND[1], color="0.5",
                        alpha=0.15, lw=0, zorder=0)
 
-        # data points
-        ax.plot(g1.T, d1, "o", color=C_G1, ms=4, mfc=C_G1, mec=C_G1,
-                zorder=3, label="Group I (data)")
-        ax.plot(g2.T, d2, "^", color=C_G2, ms=4, mfc=C_G2, mec=C_G2,
-                zorder=3, label="Group II (data)")
+        # data points with SEM error bars
+        e1 = se1[SE_COL[attr]]
+        e2 = se2[SE_COL[attr]]
+        ax.errorbar(g1.T, d1, yerr=e1, fmt="o", color=C_G1, ms=4,
+                    mfc=C_G1, mec=C_G1, ecolor=C_G1, elinewidth=0.7,
+                    capsize=1.8, capthick=0.7, zorder=3, label="Group I (data)")
+        ax.errorbar(g2.T, d2, yerr=e2, fmt="^", color=C_G2, ms=4,
+                    mfc=C_G2, mec=C_G2, ecolor=C_G2, elinewidth=0.7,
+                    capsize=1.8, capthick=0.7, zorder=3, label="Group II (data)")
 
         # model curves (within range only)
         ax.plot(tdense_g1, np.array(o1[mkey]), "-", color=C_G1, lw=1.4,
@@ -108,8 +131,8 @@ def main():
         ax.set_ylabel(ylab)
         ax.set_xlim(-0.5, 19.5)
         ax.set_xticks([0, 5, 10, 15])
-        ax.text(0.02, 0.97, lbl, transform=ax.transAxes, fontweight="bold",
-                fontsize=10, va="top", ha="left")
+        ax.text(0.97, 0.95, lbl, transform=ax.transAxes, fontweight="bold",
+                fontsize=10, va="top", ha="right")
         # x-label only on bottom row
         ax.set_xlabel("Time (days)")
         ax.tick_params(direction="out", length=3)
