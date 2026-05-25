@@ -12,38 +12,17 @@ from __future__ import annotations
 import json
 from pathlib import Path
 import numpy as np
-import matplotlib
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib import font_manager
 
 from src.data import load_data, build_neutrophil_interpolators
 from src.model import make_fine_grids, solve_group
+from analyses._fig_style import (apply_style, C_G1, C_G2, MORT_BAND,
+                                 despine, panel_label, mortality_band, save_fig)
 
 ANALYSIS_DIR = Path(__file__).resolve().parent
 FIG_DIR = ANALYSIS_DIR / "figures"
 
-# ---- style ----
-SERIF = "Nimbus Roman"  # metrically Times-compatible, available here
-plt.rcParams.update({
-    "font.family": "serif",
-    "font.serif": [SERIF, "Liberation Serif", "DejaVu Serif"],
-    "font.size": 9,
-    "axes.titlesize": 9,
-    "axes.labelsize": 9,
-    "xtick.labelsize": 8,
-    "ytick.labelsize": 8,
-    "legend.fontsize": 8,
-    "axes.linewidth": 0.8,
-    "xtick.major.width": 0.8,
-    "ytick.major.width": 0.8,
-    "lines.linewidth": 1.4,
-    "figure.dpi": 300,
-})
-
-C_G1 = "#2166AC"  # dark blue
-C_G2 = "#B2182B"  # dark red
-MORT_BAND = (10, 12)  # G1 mortality / hypocoagulation peak
+apply_style()
 
 # observable: (attr, panel label, y-axis label)
 PANELS = [
@@ -108,8 +87,7 @@ def main():
 
         # mortality band (G1-relevant panels only), under everything
         if show_mort:
-            ax.axvspan(MORT_BAND[0], MORT_BAND[1], color="0.5",
-                       alpha=0.15, lw=0, zorder=0)
+            mortality_band(ax)
 
         # data points with SEM error bars
         e1 = se1[SE_COL[attr]]
@@ -131,13 +109,10 @@ def main():
         ax.set_ylabel(ylab)
         ax.set_xlim(-0.5, 19.5)
         ax.set_xticks([0, 5, 10, 15])
-        ax.text(0.97, 0.95, lbl, transform=ax.transAxes, fontweight="bold",
-                fontsize=10, va="top", ha="right")
+        panel_label(ax, lbl)
         # x-label only on bottom row
         ax.set_xlabel("Time (days)")
-        ax.tick_params(direction="out", length=3)
-        for sp in ("top", "right"):
-            ax.spines[sp].set_visible(False)
+        despine(ax)
 
     # shared legend (one), below the panels
     handles, labels = axes[0].get_legend_handles_labels()
@@ -146,10 +121,7 @@ def main():
 
     fig.tight_layout(rect=[0, 0.04, 1, 1])
 
-    png = FIG_DIR / "fig1_baseline_fits.png"
-    pdf = FIG_DIR / "fig1_baseline_fits.pdf"
-    fig.savefig(png, dpi=300, bbox_inches="tight")
-    fig.savefig(pdf, bbox_inches="tight")
+    png, pdf = save_fig(fig, FIG_DIR, "fig1_baseline_fits")
     plt.close(fig)
     print(f"Saved: {png}")
     print(f"Saved: {pdf}")
