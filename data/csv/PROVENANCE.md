@@ -78,6 +78,32 @@ For reconstructing original measurements from CSV deltas, baselines are:
 
 Baselines beyond neutrophil count are documented in the dissertation tables but were not numerically required by v12 (which works on deltas). They will be added to `data/csv/baselines.csv` if needed for absolute-value plots in the manuscript.
 
+## Standard errors (sigma_group1.csv, sigma_group2.csv)
+
+Per-timepoint standard errors of the mean (SEM, the "m" in M±m) for all six
+observables, for use as error bars in figures. Aligned point-for-point with
+`group1.csv` / `group2.csv`. Values are SEM of the DELTA at each timepoint
+(same paired-difference convention as the data).
+
+Source rows (dissertation numbering / analytical-summary numbering):
+- recalc, thrombin, fibrinogen, F.XIII — Table 4.9 (G1) / 5.9 (G2);
+  summary Tables 2 (G1) / 5 (G2).
+- acid phosphatase — Table 5.7; summary Table 3 (G1) AP row / 5.7 (G2).
+- degranulation — Table 5.2 ("лізосомальна формула", % distribution);
+  summary Tables 4a (G1) / 7a (G2), the "понад 30 лізосом %" row.
+
+IMPORTANT — degranulation definition: `degranulation_delta_pct` in the data
+CSVs is the NEGATIVE of the delta of the ">30 lysosomes %" category (the drop
+in the intact-neutrophil fraction, expressed as positive degranulation), NOT
+the "<10 lysosomes %" category. The SE is taken from the ">30 lysosomes %"
+row accordingly. This was verified by matching CSV values against the summary
+tables point-for-point.
+
+OCR/transcription corrections applied (verified against the clean analytical
+summary): factor XIII G1 day-5 SE = 2.61; fibrinogen G2 day-4 SE = 3.32;
+degranulation G1 day-8 SE = 1.99, day-11 SE = 4.37. SEM reflect the surviving
+cohort (n ~ 28) for G1 after day 12.
+
 ## Audit trail
 
 All numerical values in `group1.csv` and `group2.csv` are byte-identical to the arrays in `archive/v12/model_v12.py` lines 42–58 (RECALC1, THROMB1, FIB1, XIII1, AP1, DEG1, N1_DATA; RECALC2 etc.). The migration from Python literals to CSV is verified by `tests/test_data_integrity.py`.
