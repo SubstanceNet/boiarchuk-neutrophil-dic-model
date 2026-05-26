@@ -277,8 +277,8 @@ Working content (direct from analysis 30):
 
 Virtual experiments using the 100-member bootstrap ensemble show that myelosan-induced kinetic modification of neutrophil-derived rate constants reduces peak hypocoagulation by 7-fold and integrated coagulation disruption by 2.5-fold, relative to the same neutrophil profile without kinetic modification (phase diagram in (km, tm) space). The observed experimental dose (km=4.93, tm=0.43) lies on the dose-response curve at intermediate severity. The kinetic modification alone, applied to the G2 neutrophil profile, does not reproduce G1-level hypocoagulation severity: substituting the G1 neutrophil profile into the model (§3.8) yields an ~22-fold greater peak hypocoagulation. This indicates that the protective effect of myelosan operates substantially through the reduction of neutrophil abundance, not through kinetic modification alone.
 
-- **FIGURE 3 PLACEHOLDER — phase diagram (3-panel: max_recalc, min_xiii, max_gHn)**
-- **FIGURE 4 PLACEHOLDER — dose-response slice at tm=0.43**
+- **FIGURE 4 PLACEHOLDER — phase diagram (3-panel: max_recalc, min_xiii, max_gHn)**
+- **FIGURE 5 PLACEHOLDER — dose-response slice at tm=0.43**
 
 ## 3.6 Therapeutic window
 
@@ -290,8 +290,8 @@ Myelosan intervention provides near-complete DIC attenuation when administered w
 
 Notably, intervention at t=0 and t=1 produce indistinguishable outcomes, indicating that the inducer toxicity pulse V(t) (peaking at τ_v=1.5 days, reflecting the time to peak ethylphenacin effect) does not produce sufficient hyaline accumulation in the first 24 hours to trigger the DIC cascade independently. This is consistent with the expected latency between anticoagulant exposure and onset of measurable coagulopathy.
 
-- **FIGURE 5 PLACEHOLDER — severity vs timing (3 panels) with critical transition shaded**
-- **FIGURE 6 PLACEHOLDER — temporal metrics vs timing**
+- **FIGURE 6 PLACEHOLDER — severity vs timing (3 panels) with critical transition shaded**
+- **FIGURE 7 PLACEHOLDER — temporal metrics vs timing**
 
 ## 3.7 Dose × timing thresholds
 
