@@ -348,7 +348,15 @@ Working content (direct from analysis 32):
 
 A focused virtual experiment tested whether dose × timing operate as continuous trade-offs or as independent thresholds. Doubling the myelosan dose at late intervention (t=4 days, km=10 instead of 4.93) produced no measurable improvement in peak severity (28.0 vs 28.2), indicating a dose ceiling once the DIC cascade is established. Conversely, halving the dose at optimal timing (t=0, km=2.5) produced markedly worse outcome (34.0 vs 7.1), exceeding even the severity of late full-dose intervention. The protective effect of myelosan thus requires both adequate dose (above the kr-suppression threshold) AND timely administration (before cascade lock-in), not either alone.
 
-- **TABLE 3 PLACEHOLDER — dose × timing combination outcomes**
+**Table 3.** Dose × timing combinations, testing whether dose and timing trade off continuously or act as independent thresholds. Peak hypocoagulation (max Δrecalc, s) is median [95% CI] from the 100-member ensemble. Each combination is compared with its full-dose reference at the same timing.
+
+| Scenario | Dose (km) | Timing (d) | Max Δrecalc [95% CI] | Reference (full dose, same timing) | Outcome |
+|---|---|---|---|---|---|
+| Double dose, late | 10.0 | 4 | 28.0 [0.0, 38.9] | 28.2 (full dose, t=4) | No improvement (dose ceiling) |
+| Half dose, early | 2.5 | 0 | 34.0 [22.7, 44.0] | 7.1 (full dose, t=0) | Markedly worse (dose floor) |
+| _Full dose, early (ref)_ | 4.93 | 0 | 7.1 [0.6, 14.7] | — | Prevention |
+| _Full dose, late (ref)_ | 4.93 | 4 | 28.2 [1.5, 39.0] | — | Mitigation |
+| _No intervention (ref)_ | — | — | 75.6 [60.5, 92.0] | — | Untreated |
 
 ---
 
