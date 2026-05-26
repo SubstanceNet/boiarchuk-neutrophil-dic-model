@@ -8,7 +8,7 @@ Mechanistic ODE model of the role of neutrophilic lysosomal apparatus in the pat
 
 ## What this project is
 
-The dataset is a 25-year experimental series on rabbit DIC induced by Эфа-2 venom, with a control group (n=40) and a granulocytopoiesis-suppressed group (myelosan pre-treatment, n=40). Group II demonstrates that suppressing the neutrophil compartment prevents the clinically significant phase of DIC — a key piece of evidence for the central hypothesis that activated neutrophils are an active causal factor in DIC pathogenesis (rather than passive bystanders).
+The dataset is a 25-year experimental series on rabbit DIC induced by Эфа-2 (ethylphenacin), with a control group (n=40) and a granulocytopoiesis-suppressed group (myelosan pre-treatment, n=40). Group II demonstrates that suppressing the neutrophil compartment prevents the clinically significant phase of DIC — a key piece of evidence for the central hypothesis that activated neutrophils are an active causal factor in DIC pathogenesis (rather than passive bystanders).
 
 The wet lab in Luhansk has been lost as a result of the war. New experiments cannot be run. The mathematical model is therefore both (a) a tool for quantitative validation of the existing experimental record and (b) a platform for in-silico continuation experiments where physical follow-up is no longer possible.
 

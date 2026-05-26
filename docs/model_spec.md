@@ -8,13 +8,13 @@
 |--------|--------|---------|
 | D      | [0, 1] (fraction) | Fraction of degranulated neutrophils |
 | AP     | ℝ⁺, BO units      | Acid phosphatase activity in plasma (delta from baseline) |
-| Hc     | ℝ⁺, arbitrary     | Venom-driven coagulation reservoir |
+| Hc     | ℝ⁺, arbitrary     | Inducer-driven coagulation reservoir |
 | Hn     | [0, Hm]           | Neutrophil-driven coagulation reservoir |
 | X      | ℝ, %              | Δ Factor XIII activity |
 
 ## Driving inputs
 
-- **Venom pulse** (gamma-shape, peak at t = τ_v):
+- **Inducer pulse** (gamma-shape, peak at t = τ_v):
   V(t) = (t/τ_v) · exp(1 − t/τ_v) for t ≥ 0, else 0.  τ_v = 1.5 d (fixed).
 
 - **Neutrophil count** N(t): linear interpolation of measured values from `data/csv/group{1,2}.csv`, normalised as Nr(t) = N(t) / N0 with N0 = 7.3 × 10⁹/L (G1 baseline).
