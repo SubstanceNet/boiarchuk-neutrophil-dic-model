@@ -16,7 +16,7 @@ status: "skeleton v1 — 12 May 2026"
 **[PLACEHOLDER — fill last, ~250 words]**
 
 Skeleton scope:
-- 1-2 sentences: context (neutrophil role in DIC, myelosan in veterinary toxicology of Ephedra-2 poisoning)
+- 1-2 sentences: context (neutrophil role in DIC, myelosan in the neutrophil compartment; Efa-2 / ethylphenacin anticoagulant-rodenticide DIC model)
 - 1 sentence: gap (no mechanistic model decomposing neutrophil vs vessel contributions)
 - 2-3 sentences: approach (mechanistic ODE model fit to two experimental groups; identifiability + bootstrap + LOO-CV + N(t) perturbation robustness checks; three virtual experiments)
 - 3-4 sentences: key findings (prior-regularized mechanism split quantifying neutrophil contribution, consistent with the neutrophil hypothesis; myelosan kinetic effect 2.5-7× DIC reduction; therapeutic window 0-2.5 days; dose-timing thresholds)
@@ -119,7 +119,7 @@ without prior intervention in the granulocyte lineage. In Group II
 administered after pharmacological suppression of granulocytopoiesis.
 
 **Granulocytopoiesis suppression (Group II).** Suppression was achieved by
-oral myelosan in a two-stage schedule. In the first stage, myelosan was given
+oral myelosan (busulfan, an alkylating agent — 1,4-butanediol dimethanesulfonate; marketed elsewhere as Myleran or Busulfex — which at low doses selectively depresses granulocytopoiesis) in a two-stage schedule. In the first stage, myelosan was given
 at 10 mg/day for 5-7 days, continued until the absolute peripheral neutrophil
 count fell by 40-50% from the intact level. In the second stage, a
 maintenance dose of 4 mg/day was given for approximately 8 days to stabilize
