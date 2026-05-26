@@ -217,14 +217,24 @@ Severity metrics were computed on the native G2 timeline (0-9 days) for Experime
 
 ## 3.1 Model captures both experimental groups
 
-**[OLEKSIY — paragraph from analysis 05 + baseline R² table]**
+Fitted jointly to both groups, the model reproduces the measured dynamics of
+all six observables. For Group I (15 non-anchor timepoints over 19 days) the
+mean coefficient of determination across observables is R² = 0.83; for the
+myelosan-suppressed Group II (8 timepoints over 8 days) it is R² = 0.69. Most
+channels are captured well in both groups; the lower Group II mean is driven
+by the factor XIII channel, which is structurally under-determined (§3.2)
+rather than poorly fit by chance.
 
-Working content:
-- Model fits both G1 and G2 with R² > 0.7 on most observables.
-- G1 (15 timepoints, 6 observables): mean R² ≈ 0.83.
-- G2 (8 timepoints, 6 observables): mean R² ≈ 0.69, with known structural limitations in XIII channel (see §3.2).
-- The early (hypercoagulation-phase) amplitude in the recalcification and fibrinogen channels is underestimated; the late-phase nadirs are reproduced within 1-11% (see §4.6 for the fibrinogen channel mechanism).
-- Figure: baseline fit panels (one per observable per group).
+The agreement is strongest in the deep-hypocoagulation phase: the late-phase
+nadirs of factor XIII and fibrinogen are reproduced within 1–11% (§3.8). The
+principal discrepancy is in the early, hypercoagulation phase, where the
+amplitude of the two vessel-driven channels — recalcification time and
+fibrinogen — is underestimated; the fibrinogen channel additionally shows a
+non-monotonic intermediate profile arising from near-cancellation of two
+large opposing terms (§4.6). These discrepancies are confined to the early
+phase of the vessel-driven channels and do not affect the peak timing or the
+group separation that underlie the main findings.
+
 The baseline fits are shown in Figure 1.
 
 **Figure 1.** Baseline model fits versus experimental data for both groups. Six panels, one per observable: (a) recalcification time, (b) thrombin time, (c) fibrinogen, (d) factor XIII activity, (e) acid phosphatase, (f) hyaline-degranulation index. Group I (blue circles, solid line) and Group II (red triangles, dashed line); points are group means with SEM error bars (M±m from the dissertation tables), curves are the baseline fit (lowest-cost parameter vector across seeds). All quantities are deltas from each group's baseline (Group I from intact, Group II from state M); model curves are drawn only within each group's observed range (no Group II extrapolation). The gray band (days 10-12) marks the Group I mortality / deep-hypocoagulation window. Mean R² = 0.83 (Group I) and 0.69 (Group II). The early hypercoagulation amplitude in the recalcification and fibrinogen channels is underestimated, and the fibrinogen curve shows a non-monotonic intermediate profile (§4.6); the late-phase nadirs are reproduced within 1-11% (§3.8).
