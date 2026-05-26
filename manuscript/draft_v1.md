@@ -380,7 +380,15 @@ directional — the model reproduces the timing and the group separation
 underlying the observed mortality — rather than a quantitative mortality
 model.
 
-- **TABLE 4 PLACEHOLDER — G1 vs G2 severity + model-vs-observed validation**
+**Table 4.** Group I versus Group II severity and validation against the observed Group I values. Modeled values are median [95% CI] from the 100-member ensemble (pure Group I dynamics: G1 neutrophil profile, no myelosan; and the myelosan-modified G2 baseline). Observed Group I values are from the dissertation tables. Agreement is reported as the model/observed relation.
+
+| Metric | G1 model [95% CI] | G1 observed | Agreement | G2 model [95% CI] |
+|---|---|---|---|---|
+| Peak hypocoagulation (max Δrecalc) (s) | 147 [122, 176] | 207 | model 29% below obs | 7 [3, 11] |
+| Factor XIII nadir (min ΔXIII) (%) | -77.1 [-94.4, -61.4] | -76.7 | within 1% | -13.8 [-19.7, -7.3] |
+| Fibrinogen nadir (min Δfib) (mg%) | -58.3 [-69.1, -46.4] | -52.6 | within 11% | -1.4 [-8.1, 0.0] |
+| Time of peak (t_max recalc) (d) | 11 [10, 11] | 11 | exact | 5 [5, 6] |
+| **G1/G2 separation (max Δrecalc)** | **22.2×** | — | — | — |
 
 # 4. Discussion
 
