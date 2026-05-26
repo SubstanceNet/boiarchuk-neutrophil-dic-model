@@ -301,7 +301,7 @@ Notably, intervention at t=0 and t=1 produce indistinguishable outcomes, indicat
 The therapeutic window is shown in Figure 6.
 
 **Figure 6.** Therapeutic window: DIC severity versus myelosan intervention time, from the 100-member bootstrap ensemble (median, 95% CI band). (a) Peak hypocoagulation (max Δrecalcification), (b) factor XIII nadir (min ΔXIII), (c) peak neutrophil load (max gHn). The shaded band (days 2.5-3) marks the critical transition, across which peak hypocoagulation roughly doubles (median 7.9 → 14.4 s). The dotted line on each panel is the no-intervention reference. All three metrics share the same window: a prevention phase (0-2.5 days, where early timings give near-identical low severity — reflecting the latency of the inducer pulse V(t)) and a mitigation phase (2.5-6+ days), where intervention still reduces severity 2-3-fold relative to no intervention but cannot prevent acute onset. The transition is reported as occurring between days 2.5 and 3 (the sampled timings) rather than at a single interpolated value.
-- **FIGURE 7 PLACEHOLDER — temporal metrics vs timing**
+Temporal metrics (time to peak gHn, time to recovery, acute-phase duration) vary within the bootstrap CI across all intervention timings, indicating that myelosan timing modulates the severity of the DIC episode but not its temporal structure (Supplementary Figure S5).
 
 ## 3.7 Dose × timing thresholds
 
@@ -413,9 +413,9 @@ DE settings, polish sequence, convergence criteria. Reference `src/fit.py`.
 
 Per-iteration cost distribution, parameter CI shrinkage with N, basin classification of XIII channel. Reference `analyses/22_predictive_check/`. The per-group-std normalization sensitivity bootstrap (§3.2) is reported in `analyses/34_pergroupstd_bootstrap/`: under per-group std the XIII G2 R² < 0 fraction rises to ~83% (vs 41% range-based), confirming the XIII under-determination is robust to normalization choice rather than an artifact of it.
 
-## S5. Trajectories per intervention scenario
+## S5. Intervention-timing trajectories and temporal metrics
 
-Reference `analyses/31_intervention_timing/figures/fig3_trajectories.png`.
+Per-scenario gHn trajectories and the temporal metrics (time to peak gHn, time to recovery, acute-phase duration) versus intervention timing. The temporal metrics vary within the bootstrap CI across all timings (median ranges below the mean CI widths), i.e. timing modulates severity (§3.6, Figure 6) but not the temporal structure of the episode. Reference `analyses/31_intervention_timing/` (figures/fig3_trajectories.png and results/summary_by_timing.json).
 
 ## S6. Phase diagrams for all six severity metrics
 
