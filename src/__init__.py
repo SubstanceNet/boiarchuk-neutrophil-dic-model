@@ -5,7 +5,7 @@ boiarchuk_neutrophil_dic_model
 Mechanistic ODE model of neutrophil-driven DIC syndrome pathogenesis,
 calibrated on Boyarchuk O. D. experimental data (1998-2023).
 
-Group I:  control DIC (Эфа-2 venom challenge, n=40)
+Group I:  control DIC (Эфа-2 / ethylphenacin challenge, n=40)
 Group II: granulocytopoiesis-suppressed (myelosan + Эфа-2, n=40)
 
 Joint fit: 24 shared biochemical parameters + 2 myelosan modifiers (km, tm).

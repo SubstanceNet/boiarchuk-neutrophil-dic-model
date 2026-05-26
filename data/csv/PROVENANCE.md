@@ -7,7 +7,7 @@ This document maps every numerical value in `group1.csv` and `group2.csv` to its
 | Item | Value | Source |
 |------|-------|--------|
 | Animal model | Mature rabbits, 2.5–3.0 kg, both sexes | Boyarchuk diss. (1998), Methods |
-| DIC inducer | "Эфа-2" venom preparation, 8330 mg/kg, p.o., fasting | Boyarchuk diss. (1998), Methods |
+| DIC inducer | "Эфа-2" (ethylphenacin, first-generation 1,3-indandione vitamin-K-antagonist rodenticide bait), 8330 mg/kg ready bait, p.o., fasting | Boyarchuk diss. (1998), Methods; inducer identity confirmed by O.B. |
 | Group I size | n = 40 (12 deaths, 30%, on days 10–12) | Boyarchuk commentary (mortality 30% — not in 2008 paper which states 27%) |
 | Group II size | n = 40 (effectively 0% mortality) | Boyarchuk commentary |
 | G2 myelosan protocol | 10 mg/day × 5–7 days + 4 mg/day × 8 days, p.o. | Boyarchuk commentary; **not published in any journal article** |

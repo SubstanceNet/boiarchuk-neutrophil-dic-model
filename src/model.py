@@ -8,13 +8,13 @@ State variables
 ---------------
 D     dimensionless [0, 1]   fraction of degranulated neutrophils
 AP    BO units                acid phosphatase activity in plasma
-Hc    arbitrary               venom-driven coagulation factor reservoir
+Hc    arbitrary               inducer-driven (vessel) coagulation factor reservoir
 Hn    arbitrary, [0, Hm]      neutrophil-driven coagulation factor reservoir
 X     %                       Factor XIII activity (delta)
 
 Driving inputs
 --------------
-V(t)  gamma-like venom pulse,  V(t) = (t/tv) * exp(1 - t/tv)  with tv = TV_FIX
+V(t)  gamma-like inducer pulse, V(t) = (t/tv) * exp(1 - t/tv)  with tv = TV_FIX
 N(t)  measured neutrophil count, normalised as Nr = N(t) / N1_BASE
 S(t)  inflammatory signal,  S = V + a2 * gauss(tp2, s2) * Nr * (1 - D)
       The (1 - D) factor enforces self-limiting inflammation: degranulated
@@ -45,7 +45,7 @@ def _gauss(t: np.ndarray | float, mu: float, sig: float) -> np.ndarray | float:
 
 
 def _V_scalar(t: float, tv: float = cfg.TV_FIX) -> float:
-    """Gamma-like venom pulse, scalar (used inside ODE rhs)."""
+    """Gamma-like inducer toxicity pulse, scalar (used inside ODE rhs)."""
     if t <= 0:
         return 0.0
     r = t / tv
@@ -53,7 +53,7 @@ def _V_scalar(t: float, tv: float = cfg.TV_FIX) -> float:
 
 
 def _V(t: np.ndarray | float, tv: float = cfg.TV_FIX) -> np.ndarray:
-    """Vectorised venom pulse for post-hoc evaluation on time grids."""
+    """Vectorised inducer toxicity pulse for post-hoc evaluation on time grids."""
     t = np.asarray(t, dtype=float)
     r = t / tv
     return np.where(t >= 0, r * np.exp(1.0 - r), 0.0)
