@@ -411,17 +411,42 @@ Brief restatement of:
 
 # References
 
-**[PLACEHOLDER — collect during draft refinement]**
+*Intermediate format (author, year, title, journal, volume:pages, DOI).
+Final styling to JTB at submission. Entries marked [TO FIND] still need a
+verified source — not yet confirmed, deliberately not fabricated.*
 
-Categories to assemble:
-- Boiarchuk dissertation + 2008 publication on azurophilic granule F.XIII
-- Toxicology of 1,3-indandione anticoagulant rodenticides (vitamin-K-antagonist mechanism; vascular injury) [refs at References stage: e.g. Hadler & Buckle 1992; EPA indandione R.E.D.]
-- Myelosan pharmacology
-- DIC pathogenesis reviews
-- Identifiability methodology (Raue 2009, Kreutz 2013, etc.)
-- Bootstrap and LOO-CV in systems biology
-- ODE model fitting methodology
-- Related mechanistic models of coagulation
+**Primary experimental sources (Boiarchuk series)**
+
+1. Boiarchuk OD (1998) Experimental model of DIC syndrome. Visnyk Problem Biolohii i Medytsyny (7):132–138. [dissertation basis; full protocol tables]
+2. Boiarchuk OD, Koval SB, Lunina NV (2000) Changes in the lysosomal apparatus of neutrophilic leukocytes in disseminated intravascular coagulation syndrome. Fiziolohichnyi Zhurnal 46(3):72–77.
+3. Boiarchuk OD (2008) Changes in neutrophil activity during formation of disseminated intravascular coagulation syndrome. Naukovyi Visnyk Mykolaivskoho Derzhavnoho Universytetu im. V.O. Sukhomlynskoho 23(3):14–17.
+4. Boiarchuk OD, Lunina NV (2012) Histochemical features of neutrophils in DIC syndrome. Visnyk LNU imeni Tarasa Shevchenka 17(252):[pages TO FIND].
+5. Boiarchuk OD (2013) Dynamics of granulocyte acid phosphatase in DIC syndrome. Visnyk LNU imeni Tarasa Shevchenka 19(278), Part I:[pages TO FIND].
+6. Boiarchuk OD (2023) Features of neutrophils in DIC syndrome. InterConf (Orléans). doi:10.51582/interconf.19-20.04.2023.042
+
+**Methods (hemostasis, lysosomal apparatus)**
+
+7. Pigarevsky VE (1975) The lysosomal-cationic test. Patologicheskaya Fiziologiya i Eksperimentalnaya Terapiya (3):86–88.
+8. Baluda VP, Barkagan ZS, Goldberg ED (eds., 1980) Laboratory methods for studying the hemostatic system. Tomsk, 314 pp.
+9. Myelosan (busulfan) pharmacology — granulocytopoiesis suppression protocol. [TO FIND: primary pharmacology reference; protocol details from author commentary, Cherstvoy/AO Oktyabr source to confirm]
+
+**Identifiability and uncertainty methodology**
+
+10. Raue A, Kreutz C, Maiwald T, Bachmann J, Schilling M, Klingmüller U, Timmer J (2009) Structural and practical identifiability analysis of partially observed dynamical models by exploiting the profile likelihood. Bioinformatics 25(15):1923–1929. doi:10.1093/bioinformatics/btp358
+11. Kreutz C, Raue A, Kaschek D, Timmer J (2013) Profile likelihood in systems biology. FEBS Journal 280(11):2564–2571. doi:10.1111/febs.12276
+12. Gutenkunst RN, Waterfall JJ, Casey FP, Brown KS, Myers CR, Sethna JP (2007) Universally sloppy parameter sensitivities in systems biology models. PLoS Computational Biology 3(10):e189. doi:10.1371/journal.pcbi.0030189
+13. Bootstrap confidence intervals for dynamical-model parameters. [TO FIND: Efron & Tibshirani 1993, An Introduction to the Bootstrap, or a systems-biology bootstrap-CI reference]
+14. Cross-validation / PRESS for model assessment. [TO FIND: Stone 1974, J. R. Stat. Soc. B 36(2):111–147, to verify]
+
+**Inducer toxicology (anticoagulant rodenticides)**
+
+15. Watt BE, Proudfoot AT, Bradberry SM, Vale JA (2005) Anticoagulant rodenticides. Toxicological Reviews 24(4):259–269.
+16. Hadler MR, Buckle AP (1992) Forty-five years of anticoagulant rodenticides — past, present and future trends. Proceedings of the Fifteenth Vertebrate Pest Conference, Paper 36. University of California, Davis.
+
+**DIC pathogenesis**
+
+17. DIC pathogenesis review(s). [TO FIND: a current authoritative DIC review, e.g. Levi & ten Cate NEJM 1999 or a recent ISTH consensus, to verify]
+18. Barkagan ZS, Momot AP — DIC pathogenesis/diagnosis/therapy. [TO FIND: full citation; cited in Boiarchuk 2012 ref list as Vestn. Gematol. 2005;1(2):5–14, to verify]
 
 ---
 
