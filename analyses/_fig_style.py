@@ -52,10 +52,11 @@ def despine(ax):
         ax.spines[sp].set_visible(False)
 
 
-def panel_label(ax, lbl):
-    """Bold (a)/(b)/... label in the top-right corner (clear of data)."""
+def panel_label(ax, lbl, color="black"):
+    """Bold (a)/(b)/... label in the top-right corner (clear of data).
+    Use color="white" on dark backgrounds (e.g. heatmaps)."""
     ax.text(0.97, 0.95, lbl, transform=ax.transAxes, fontweight="bold",
-            fontsize=10, va="top", ha="right")
+            fontsize=10, va="top", ha="right", color=color)
 
 
 def mortality_band(ax, band=MORT_BAND):
