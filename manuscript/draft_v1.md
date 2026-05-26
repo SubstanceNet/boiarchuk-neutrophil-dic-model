@@ -281,7 +281,13 @@ The decomposition is shown in Figure 3.
 
 **Figure 3.** Mechanism-split decomposition: neutrophil-attributable fraction of each coagulation channel at Group I day 2. Median and 95% CI from the 100-member bootstrap ensemble. The decomposition is prior-regularized (W_SPLIT = 2.0): target fractions (recalcification 0.24, fibrinogen 0.76, factor XIII 0.82) were derived independently from the day-1 (ΔG1−ΔG2)/ΔG1 ratios and imposed as soft constraints. Narrow CIs reflect both data consistency and prior strength. For fibrinogen, an unconstrained fit (W = 0) places the neutrophil fraction near 0.05; the 0.76 value is the imposed prior target, validated by the superior held-out Group II fit. Dashed vertical lines (full plot height) mark the prior targets for reference; each channel's CI sits on its target, with factor XIII pulled marginally below (median 0.806 vs target 0.82).
 
-- **TABLE 2 PLACEHOLDER — mechanism split fractions with bootstrap CI95**
+**Table 2.** Mechanism-split decomposition: neutrophil-attributable fraction of each coagulation channel at Group I day 2. Prior targets are the day-1 (ΔG1−ΔG2)/ΔG1 ratios imposed as soft constraints (W_SPLIT = 2.0); fitted values are the median and 95% CI across the 100-member bootstrap ensemble.
+
+| Channel | Prior target | Fitted median [95% CI] | Interpretation |
+|---|---|---|---|
+| Recalcification time | 0.24 | 0.240 [0.225, 0.249] | Vessel-dominant |
+| Fibrinogen | 0.76 | 0.759 [0.738, 0.777] | Neutrophil-dominant |
+| Factor XIII | 0.82 | 0.806 [0.777, 0.844] | Neutrophil-dominant |
 
 ## 3.4 Robustness validation
 
