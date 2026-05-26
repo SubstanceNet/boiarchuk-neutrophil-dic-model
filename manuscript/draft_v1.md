@@ -284,7 +284,9 @@ Virtual experiments using the 100-member bootstrap ensemble show that myelosan-i
 The dose-response phase diagrams are shown in Figure 4.
 
 **Figure 4.** Myelosan dose-response phase diagrams across the (km, tm) parameter space. Each cell: median across the 100-member bootstrap ensemble. (a) Peak hypocoagulation (max Δrecalcification, s); contour lines at 10, 20, 30, 40 s. (b) Factor XIII nadir (min ΔXIII activity, %). (c) Peak neutrophil load (max gHn), the mechanistic driver of DIC severity. Circle: no kinetic myelosan effect (km=1, tm=1); star: observed G2 dose (km=4.93, tm=0.43). The G2 neutrophil profile is retained throughout; severity reflects kinetic modification only. All three metrics decrease monotonically with increasing km (verified: 15/15 timing-columns monotonic for each metric), confirming that rate-constant suppression is the primary determinant of DIC attenuation within the G2 neutrophil context.
-- **FIGURE 5 PLACEHOLDER — dose-response slice at tm=0.43**
+A dose-response slice at the observed timing is shown in Figure 5.
+
+**Figure 5.** Dose-response slice: peak hypocoagulation (max Δrecalcification) versus the rate modifier km at fixed timing modifier tm ≈ 0.45 (the nearest grid value to the observed G2 timing modifier tm = 0.43). Median (blue line) and 95% CI (band) across the 100-member bootstrap ensemble. The dotted line marks the no-myelosan severity (km = 1, median 92 s); the dashed line and triangle mark the observed G2 operating point (km = 4.93), where the median peak hypocoagulation is 7.4 s, consistent with the observed Group II outcome (§3.6). The CI band narrows with increasing km — from [65, 110] s at km = 1 to [1, 14] s near km = 5 — indicating that the predicted attenuation is more certain at higher kinetic suppression. This is the dose-axis detail that the Figure 4 heatmaps cannot resolve.
 
 ## 3.6 Therapeutic window
 
