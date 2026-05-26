@@ -241,13 +241,25 @@ The baseline fits are shown in Figure 1.
 
 ## 3.2 Parameter identifiability and uncertainty
 
-**[OLEKSIY — paragraphs synthesized from analyses 09 + 22 FINDINGS]**
+Profile-likelihood analysis of all 26 parameters identifies six as
+well-identified (relative depth > 5%: tp2, km, tm, kd, s2, at), with the
+remaining parameters weakly identified or sloppy — the universal sloppiness
+pattern typical of mechanistic systems-biology models. The parametric
+bootstrap (N = 100) yields marginal confidence intervals that are consistent
+with the profile-likelihood classification: tight for the well-identified
+parameters and wide for the sloppy ones, as expected.
 
-Working content:
-- Profile likelihood: 6 well-identified parameters (tp2, km, tm, kd, s2, at).
-- Bootstrap: marginal CIs broadly consistent with PL for well-identified parameters; wider for sloppy parameters as expected.
-- XIII channel structurally under-determined: 41% of bootstrap iterations yield xiii_G2 R² < 0, reflecting fundamental limitation of the available data rather than parameter identification failure.
-- Implication for downstream predictions: report ensemble CI bands; good-basin subset (n=59 with xiii_G2 R² ≥ 0.3) provides tighter band when conservative interpretation is needed.
+The exception is the factor XIII channel in Group II, which is structurally
+under-determined rather than merely sloppy: 41 of the 100 bootstrap members
+(41%) yield a negative Group II XIII R², and the ensemble distribution is
+bimodal (Figure 2b), reflecting the optimizer settling in different basins
+across resamples. This is a limitation of the information content of the
+available Group II data, not a failure of the estimation pipeline — the cost
+is otherwise stable across members. For downstream predictions we therefore
+report full-ensemble CI bands; where a conservative XIII interpretation is
+needed, a good-basin subset (n = 27 members with Group II XIII R² ≥ 0.3,
+the same criterion used in the virtual experiments) provides a tighter band.
+
 We tested sensitivity to the per-observable normalization by replacing the range-based scale factors with per-group standard deviations (which upweights G2 XIII by ~24x). At the baseline parameter point this lifts XIII G2 R² from 0.08 to 0.93 (single seed). However, under parametric bootstrap, the fraction of iterations with XIII G2 R² < 0 increases from 41% (range-based) to ~83% (per-group-std), indicating that the improved normalization sharpens rather than resolves the multi-modal landscape in the XIII channel. The structural under-determination of the {ax, cx, bx, kx} manifold is therefore robust to normalization choice (Supplementary, Analysis 34).
 
 The identifiability results are shown in Figure 2.
