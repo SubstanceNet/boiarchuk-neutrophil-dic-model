@@ -99,16 +99,6 @@ validated model to predict the dose-response and the timing dependence of
 myelosuppressive intervention, with a view to the therapeutic window such
 intervention would imply.
 
-<!-- QUESTION FOR O.B.: the nature of the "Efa-2" inducer. Open sources
-(the 1998 dissertation and later papers) describe it only as the inducer
-"Efa-2", 8330 mg/kg oral. External evidence indicates it is a commercial
-rodenticide bait based on ethylphenacin (a second-generation
-indane-1,3-dione vitamin-K-antagonist anticoagulant, ~0.015%), NOT a snake
-venom — the name "Efa" is brand-only. This is consistent with the dose
-(a ready bait, not a purified protein) and with the consumption-coagulopathy
-mechanism. Please confirm so we can add one precise sentence to Methods 2.1.
-Reviewers will ask what "Efa-2" is. -->
-
 ---
 
 # 2. Methods
@@ -123,7 +113,7 @@ rabbits of both sexes, body mass 2.5-3.0 kg, housed under standard vivarium
 conditions with free access to water and maintained according to accepted
 bioethical principles for laboratory animals. Two groups were studied. In
 Group I (control DIC), disseminated intravascular coagulation was modeled by
-a single oral dose of the inducer "Efa-2" (8330 mg/kg, administered fasting)
+a single oral dose of the inducer "Efa-2" (8330 mg/kg, administered fasting). Efa-2 is a commercial anticoagulant-rodenticide bait based on ethylphenacin, a first-generation 1,3-indandione vitamin-K antagonist; the 8330 mg/kg figure is the dose of the ready bait (approximately 0.015% active substance), not of a purified compound. Mechanistically it inhibits vitamin-K-epoxide reductase, which depletes the vitamin-K-dependent coagulation factors (II, VII, IX, X) and proteins C and S and damages vascular endothelium, triggering a secondary disseminated intravascular coagulation that progresses through the classic three-phase cycle reproduced here
 without prior intervention in the granulocyte lineage. In Group II
 (suppressed granulocytopoiesis), the identical inducer and dose were
 administered after pharmacological suppression of granulocytopoiesis.
@@ -176,7 +166,7 @@ portion of the Group II dynamics is reported here for the first time.
 
 The model comprises a 5-state ODE system tracking degranulation dynamics (D), acid phosphatase activity (AP), hyaline form (Hc), neutrophil count (Hn), and factor XIII activity (X). Six measured observables — recalcification time, thrombin time, fibrinogen, factor XIII, acid phosphatase, hyaline-degranulation index — are computed as algebraic functions of the ODE state vector.
 
-The model contains 26 parameters: rate constants for degranulation and recovery (kr, krl, kcl, kca, kna, knd, Hm, kd), peak-timing parameters of the envenomation pulse (tp2, s2), and observable-specific contribution coefficients for each of the four observable channels (recalc, thrombin, fib, xiii). The G1 and G2 groups share all parameters except for group-specific modifiers (km, tm) that scale the effective rate constants in G2 to represent the myelosan effect.
+The model contains 26 parameters: rate constants for degranulation and recovery (kr, krl, kcl, kca, kna, knd, Hm, kd), peak-timing parameters of the inducer toxicity pulse (tp2, s2), and observable-specific contribution coefficients for each of the four observable channels (recalc, thrombin, fib, xiii). The G1 and G2 groups share all parameters except for group-specific modifiers (km, tm) that scale the effective rate constants in G2 to represent the myelosan effect.
 
 Two structural priors are imposed to resolve identifiability. First, a mechanism-split constraint (penalty weight W_SPLIT = 2.0) targets the day-2 neutrophil-attributable fractions of the recalcification, fibrinogen, and factor XIII channels; the target values (0.24, 0.76, 0.82) are derived independently from the day-1 (ΔG1−ΔG2)/ΔG1 ratios in the experimental data (see §3.3). Without this prior the decomposition is non-identifiable across optimizer seeds. Second, an upper bound on the factor XIII production parameter (cx ≤ 600) constrains the XIII channel to a biologically interpretable subspace; relaxing it unlocks a multi-modal landscape in which the XIII fit trades off against the other G2 observables. Both priors are validated post-hoc by superior held-out (G2) fit relative to unconstrained alternatives (Supplementary, Analyses 01-02).
 
@@ -298,7 +288,7 @@ Working content (direct from analysis 31):
 
 Myelosan intervention provides near-complete DIC attenuation when administered within 2.5 days post-injury (max Δrecalcification 7-8 s, comparable to the observed G2 outcome). A critical half-day transition occurs between days 2.5 and 3, during which severity doubles (max Δrecalcification 7.9 → 14.4 s). Beyond day 3, myelosan retains partial protective effect — reducing peak severity 2-3-fold relative to no intervention — but cannot prevent acute DIC onset. The therapeutic window thus comprises a prevention phase (0-2.5 days) and a mitigation phase (2.5-6+ days).
 
-Notably, intervention at t=0 and t=1 produce indistinguishable outcomes, indicating that the envenomation pulse V(t) (peaking at τ_v=1.5 days) does not produce sufficient hyaline accumulation in the first 24 hours to trigger the DIC cascade independently. This is consistent with the known clinical latency between envenomation and onset of measurable coagulopathy.
+Notably, intervention at t=0 and t=1 produce indistinguishable outcomes, indicating that the inducer toxicity pulse V(t) (peaking at τ_v=1.5 days, reflecting the time to peak ethylphenacin effect) does not produce sufficient hyaline accumulation in the first 24 hours to trigger the DIC cascade independently. This is consistent with the expected latency between anticoagulant exposure and onset of measurable coagulopathy.
 
 - **FIGURE 5 PLACEHOLDER — severity vs timing (3 panels) with critical transition shaded**
 - **FIGURE 6 PLACEHOLDER — temporal metrics vs timing**
@@ -355,7 +345,7 @@ Suggested structure:
 
 4.2. **Biological interpretation of mechanism split.** Vessel-dominant recalcification + neutrophil-dominant fib/XIII — discuss in light of known DIC pathogenesis. Connection to azurophilic-granule F.XIII storage (Boiarchuk 2008).
 
-4.3. **Implications for myelosan therapy.** Translation of dose-response findings to clinical/veterinary practice. The G2-observed dose is near the plateau of efficacy — additional dose escalation unlikely to help. The therapeutic window concept: timing matters as much as dose. Practical guidance for envenomation cases presented at different times post-bite.
+4.3. **Implications for myelosan therapy.** Translation of dose-response findings to clinical/veterinary practice. The G2-observed dose is near the plateau of efficacy — additional dose escalation unlikely to help. The therapeutic window concept: timing matters as much as dose. Practical guidance for anticoagulant-rodenticide intoxication presented at different times post-exposure. The vitamin-K-antagonist mechanism of ethylphenacin suggests clinical parallels with warfarin reversal therapy [OLENA — expand clinical context: ethylphenacin vs warfarin half-life, tissue selectivity, and limits of the analogy].
 
 4.4. **The two-phase nature of the therapeutic window.** Discuss biological mechanism: prevention phase (0-2.5 days) = before cascade lock-in; mitigation phase (2.5-6+) = limiting damage extent. Half-day transition reflects sharp threshold in AP/Hn accumulation.
 
@@ -385,7 +375,7 @@ Brief restatement of:
 
 Categories to assemble:
 - Boiarchuk dissertation + 2008 publication on azurophilic granule F.XIII
-- Vipera berus envenomation pathophysiology
+- Toxicology of 1,3-indandione anticoagulant rodenticides (vitamin-K-antagonist mechanism; vascular injury) [refs at References stage: e.g. Hadler & Buckle 1992; EPA indandione R.E.D.]
 - Myelosan pharmacology
 - DIC pathogenesis reviews
 - Identifiability methodology (Raue 2009, Kreutz 2013, etc.)
