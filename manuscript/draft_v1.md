@@ -298,7 +298,9 @@ Myelosan intervention provides near-complete DIC attenuation when administered w
 
 Notably, intervention at t=0 and t=1 produce indistinguishable outcomes, indicating that the inducer toxicity pulse V(t) (peaking at τ_v=1.5 days, reflecting the time to peak ethylphenacin effect) does not produce sufficient hyaline accumulation in the first 24 hours to trigger the DIC cascade independently. This is consistent with the expected latency between anticoagulant exposure and onset of measurable coagulopathy.
 
-- **FIGURE 6 PLACEHOLDER — severity vs timing (3 panels) with critical transition shaded**
+The therapeutic window is shown in Figure 6.
+
+**Figure 6.** Therapeutic window: DIC severity versus myelosan intervention time, from the 100-member bootstrap ensemble (median, 95% CI band). (a) Peak hypocoagulation (max Δrecalcification), (b) factor XIII nadir (min ΔXIII), (c) peak neutrophil load (max gHn). The shaded band (days 2.5-3) marks the critical transition, across which peak hypocoagulation roughly doubles (median 7.9 → 14.4 s). The dotted line on each panel is the no-intervention reference. All three metrics share the same window: a prevention phase (0-2.5 days, where early timings give near-identical low severity — reflecting the latency of the inducer pulse V(t)) and a mitigation phase (2.5-6+ days), where intervention still reduces severity 2-3-fold relative to no intervention but cannot prevent acute onset. The transition is reported as occurring between days 2.5 and 3 (the sampled timings) rather than at a single interpolated value.
 - **FIGURE 7 PLACEHOLDER — temporal metrics vs timing**
 
 ## 3.7 Dose × timing thresholds
