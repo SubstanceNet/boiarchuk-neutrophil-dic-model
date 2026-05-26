@@ -265,7 +265,16 @@ We tested sensitivity to the per-observable normalization by replacing the range
 The identifiability results are shown in Figure 2.
 
 **Figure 2.** Parameter identifiability and uncertainty from the 100-member bootstrap ensemble. (a) Coefficient of determination R² for all six observables in both groups (median, 95% CI). Eleven of the twelve intervals are tight and high; factor XIII in Group II is the sole wide interval, spanning negative values — the signature of its structural under-determination. (b) Distribution of the factor XIII (Group II) R² across the ensemble; 41% of members fall below zero (computed from the same 100 members). The bimodal shape reflects optimizer basin-switching in the XIII channel. R² is computed identically to the ensemble aggregation, so the two panels share one source of truth.
-- **TABLE 1 PLACEHOLDER — parameter estimates with bootstrap CI95**
+**Table 1.** Estimates and 95% bootstrap confidence intervals for the six well-identified parameters (profile-likelihood relative depth > 5%). Median and CI are from the 100-member ensemble. “Well-identified” refers to profile-likelihood depth (local curvature of the cost surface); the bootstrap CIs for kd and s2 are wider, reflecting a long right tail in the global resample distribution (the multi-scale cost-surface structure). Estimates for all 26 parameters are given in Supplementary Table S2.
+
+| Parameter | Median [95% CI] | Role |
+|---|---|---|
+| tp2 | 9.217 [8.889, 10.034] | Peak time of the inflammatory pulse (days) |
+| km | 4.918 [3.462, 5.734] | Group II rate modifier (myelosan effect on rate constants) |
+| tm | 0.427 [0.392, 0.467] | Group II timing modifier (myelosan effect on pulse timing) |
+| kd | 0.264 [0.218, 1.054] | Degranulation recovery rate |
+| s2 | 1.757 [1.513, 2.712] | Width of the inflammatory pulse |
+| at | 5.659 [4.893, 6.437] | Thrombin / inducer-pulse coefficient |
 
 ## 3.3 Mechanism split — neutrophil vs vessel contributions
 
