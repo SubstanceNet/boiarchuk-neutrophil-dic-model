@@ -182,7 +182,6 @@ Numerical implementation details: scipy 1.15, numpy 2.2, Python 3.10. Code and r
 
 The joint architecture (24 shared parameters + 2 group-specific modifiers) trades some per-group fit quality for cross-group consistency: a separate G2-only fit attains ~22 percentage points higher mean G2 R² than the joint fit (Supplementary, Analysis 03), a gap that is largely architectural rather than attributable to overfitting. This penalty is accepted in exchange for a single shared mechanistic parameterization across both groups.
 
-
 ## 2.4 Robustness analysis
 
 We assessed model robustness through three complementary protocols.
@@ -278,10 +277,6 @@ The identifiability results are shown in Figure 2.
 
 ## 3.3 Mechanism split — neutrophil vs vessel contributions
 
-**[OLEKSIY — paragraph from analysis 22 FINDINGS; manuscript-ready]**
-
-Working content (direct from analysis 22 FINDINGS):
-
 The coagulation dynamics were decomposed into vessel-mediated and neutrophil-mediated contributions using a biologically-derived prior on the day-2 (G1) neutrophil share. The prior targets were estimated independently from the day-1 neutrophil-attributable fraction (ΔG1−ΔG2)/ΔG1 (recalc 0.24, fibrinogen 0.76, factor XIII 0.82); the derivation is well-posed because the two groups have near-identical hemostatic baselines (recalcification 78.7 vs 78.0 s; fibrinogen 58.2 vs 58.3 mg%; factor XIII 100.0 vs 93.2%), so myelosan altered neutrophil numbers without shifting baseline hemostasis. Imposing this prior (W_SPLIT = 2.0) yields fitted day-2 fractions of 0.240 [0.225, 0.249] for recalcification (vessel-dominant), 0.759 [0.738, 0.777] for fibrinogen, and 0.806 [0.777, 0.844] for factor XIII (both neutrophil-dominant). The prior is required for identifiability: without it, the recalcification fraction is non-identifiable across optimizer seeds (0.34–0.48) and the decomposition is not unique (Supplementary, W-sweep). The decomposition is validated post-hoc by superior held-out (G2) fit relative to unconstrained alternatives (+2–7 percentage points R²_G2). We therefore present these fractions as a prior-regularized, held-out-validated decomposition that quantifies and is consistent with the neutrophil hypothesis, rather than as a prior-free inference. We note one transparency caveat: for fibrinogen, an unconstrained fit places the neutrophil fraction near 0.05; the 0.76 value is the imposed day-1-derived prior target, not a feature independently reproduced by the day-2 fibrinogen dynamics.
 
 The strong neutrophil contribution to factor XIII (~80%) is consistent with the azurophilic-granule storage hypothesis: degranulating neutrophils release pre-stored F.XIII into circulation, where it is rapidly consumed in the coagulation cascade. The vessel-dominant contribution to recalcification (~76% vessel) is consistent with the rapid onset of hypocoagulation following inducer administration, before neutrophil-mediated effects have time to develop.
@@ -300,21 +295,11 @@ The decomposition is shown in Figure 3.
 
 ## 3.4 Robustness validation
 
-**[OLEKSIY — paragraphs from analyses 20 + 21 FINDINGS; manuscript-ready]**
-
-Working content (direct from analysis 20):
-
 Leave-one-out cross-validation reveals that Group I predictions are robust to removal of any single timepoint (median PRESS = 6.5 across 6 observables; worst case t=11, PRESS = 24.5, reflecting the critical role of peak DIC observation). Group II predictions are more sensitive to individual timepoint removal (median PRESS = 21.5), consistent with the smaller sample size (8 informative timepoints vs 15 in Group I). The high PRESS at G2 t=1 (76.6, dominated by AP channel) identifies early AP dynamics as the least constrained aspect of the G2 fit — a direct consequence of having only one observation (t=1) between AP onset and the first post-onset measurement (t=2). These results characterize the information content of the experimental design, not model overfitting: all LOO refits converge to costs within 10% of baseline (range 0.94-1.06), indicating stable parameter identification.
-
-Working content (direct from analysis 21):
 
 Model sensitivity to neutrophil count input was assessed using three perturbation protocols: deterministic scaling (α ∈ {0.8, 0.9, 1.0, 1.1, 1.2}), and stochastic per-timepoint lognormal noise at CV=10% and CV=20% (N=20 each). Aggregate G1 fit quality remained stable across all perturbations (R² ∈ [0.78, 0.83]). G2 fit quality showed sensitivity to XIII channel parameters as expected from their profile likelihood classification (§3.2), but stochastic perturbation did not produce systematic shifts in well-identified parameters (km, tm, cf, kd). The non-monotonic α-scan pattern (R²_G2 = 0.65, 0.68, 0.65, 0.74, 0.77 at α = 0.8, 0.9, 1.0, 1.1, 1.2) reflects the multi-modal optimization landscape characterized in earlier analyses, not biological signal about neutrophil count accuracy. Doubling the noise level from CV=10% to 20% produced only marginally wider cost CIs (0.140 vs 0.139), demonstrating sub-linear sensitivity for well-identified parameters.
 
 ## 3.5 Myelosan dose-response
-
-**[OLEKSIY — paragraph from analysis 30 FINDINGS]**
-
-Working content (direct from analysis 30):
 
 Virtual experiments using the 100-member bootstrap ensemble show that myelosan-induced kinetic modification of neutrophil-derived rate constants reduces peak hypocoagulation by 7-fold and integrated coagulation disruption by 2.5-fold, relative to the same neutrophil profile without kinetic modification (phase diagram in (km, tm) space). The observed experimental dose (km=4.93, tm=0.43) lies on the dose-response curve at intermediate severity. The kinetic modification alone, applied to the G2 neutrophil profile, does not reproduce G1-level hypocoagulation severity: substituting the G1 neutrophil profile into the model (§3.8) yields an ~22-fold greater peak hypocoagulation. This indicates that the protective effect of myelosan operates substantially through the reduction of neutrophil abundance, not through kinetic modification alone.
 
@@ -327,10 +312,6 @@ A dose-response slice at the observed timing is shown in Figure 5.
 
 ## 3.6 Therapeutic window
 
-**[OLEKSIY — paragraph from analysis 31 FINDINGS; manuscript-ready]**
-
-Working content (direct from analysis 31):
-
 Myelosan intervention provides near-complete DIC attenuation when administered within 2.5 days post-injury (max Δrecalcification 7-8 s, comparable to the observed G2 outcome). A critical half-day transition occurs between days 2.5 and 3, during which severity doubles (max Δrecalcification 7.9 → 14.4 s). Beyond day 3, myelosan retains partial protective effect — reducing peak severity 2-3-fold relative to no intervention — but cannot prevent acute DIC onset. The therapeutic window thus comprises a prevention phase (0-2.5 days) and a mitigation phase (2.5-6+ days).
 
 Notably, intervention at t=0 and t=1 produce indistinguishable outcomes, indicating that the inducer toxicity pulse V(t) (peaking at τ_v=1.5 days, reflecting the time to peak ethylphenacin effect) does not produce sufficient hyaline accumulation in the first 24 hours to trigger the DIC cascade independently. This is consistent with the expected latency between anticoagulant exposure and onset of measurable coagulopathy.
@@ -341,10 +322,6 @@ The therapeutic window is shown in Figure 6.
 Temporal metrics (time to peak gHn, time to recovery, acute-phase duration) vary within the bootstrap CI across all intervention timings, indicating that myelosan timing modulates the severity of the DIC episode but not its temporal structure (Supplementary Figure S5).
 
 ## 3.7 Dose × timing thresholds
-
-**[OLEKSIY — paragraph from analysis 32 FINDINGS]**
-
-Working content (direct from analysis 32):
 
 A focused virtual experiment tested whether dose × timing operate as continuous trade-offs or as independent thresholds. Doubling the myelosan dose at late intervention (t=4 days, km=10 instead of 4.93) produced no measurable improvement in peak severity (28.0 vs 28.2), indicating a dose ceiling once the DIC cascade is established. Conversely, halving the dose at optimal timing (t=0, km=2.5) produced markedly worse outcome (34.0 vs 7.1), exceeding even the severity of late full-dose intervention. The protective effect of myelosan thus requires both adequate dose (above the kr-suppression threshold) AND timely administration (before cascade lock-in), not either alone.
 
