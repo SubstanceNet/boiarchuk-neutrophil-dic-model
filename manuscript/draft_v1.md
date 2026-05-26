@@ -225,7 +225,9 @@ Working content:
 - G2 (8 timepoints, 6 observables): mean R² ≈ 0.69, with known structural limitations in XIII channel (see §3.2).
 - The early (hypercoagulation-phase) amplitude in the recalcification and fibrinogen channels is underestimated; the late-phase nadirs are reproduced within 1-11% (see §4.6 for the fibrinogen channel mechanism).
 - Figure: baseline fit panels (one per observable per group).
-- **FIGURE 1 PLACEHOLDER — baseline fits**
+The baseline fits are shown in Figure 1.
+
+**Figure 1.** Baseline model fits versus experimental data for both groups. Six panels, one per observable: (a) recalcification time, (b) thrombin time, (c) fibrinogen, (d) factor XIII activity, (e) acid phosphatase, (f) hyaline-degranulation index. Group I (blue circles, solid line) and Group II (red triangles, dashed line); points are group means with SEM error bars (M±m from the dissertation tables), curves are the baseline fit (lowest-cost parameter vector across seeds). All quantities are deltas from each group's baseline (Group I from intact, Group II from state M); model curves are drawn only within each group's observed range (no Group II extrapolation). The gray band (days 10-12) marks the Group I mortality / deep-hypocoagulation window. Mean R² = 0.83 (Group I) and 0.69 (Group II). The early hypercoagulation amplitude in the recalcification and fibrinogen channels is underestimated, and the fibrinogen curve shows a non-monotonic intermediate profile (§4.6); the late-phase nadirs are reproduced within 1-11% (§3.8).
 
 ## 3.2 Parameter identifiability and uncertainty
 
@@ -238,7 +240,9 @@ Working content:
 - Implication for downstream predictions: report ensemble CI bands; good-basin subset (n=59 with xiii_G2 R² ≥ 0.3) provides tighter band when conservative interpretation is needed.
 We tested sensitivity to the per-observable normalization by replacing the range-based scale factors with per-group standard deviations (which upweights G2 XIII by ~24x). At the baseline parameter point this lifts XIII G2 R² from 0.08 to 0.93 (single seed). However, under parametric bootstrap, the fraction of iterations with XIII G2 R² < 0 increases from 41% (range-based) to ~83% (per-group-std), indicating that the improved normalization sharpens rather than resolves the multi-modal landscape in the XIII channel. The structural under-determination of the {ax, cx, bx, kx} manifold is therefore robust to normalization choice (Supplementary, Analysis 34).
 
-- **FIGURE 2 PLACEHOLDER — bootstrap CI on key parameters + xiii_G2 R² histogram**
+The identifiability results are shown in Figure 2.
+
+**Figure 2.** Parameter identifiability and uncertainty from the 100-member bootstrap ensemble. (a) Coefficient of determination R² for all six observables in both groups (median, 95% CI). Eleven of the twelve intervals are tight and high; factor XIII in Group II is the sole wide interval, spanning negative values — the signature of its structural under-determination. (b) Distribution of the factor XIII (Group II) R² across the ensemble; 41% of members fall below zero (computed from the same 100 members). The bimodal shape reflects optimizer basin-switching in the XIII channel. R² is computed identically to the ensemble aggregation, so the two panels share one source of truth.
 - **TABLE 1 PLACEHOLDER — parameter estimates with bootstrap CI95**
 
 ## 3.3 Mechanism split — neutrophil vs vessel contributions
@@ -277,7 +281,9 @@ Working content (direct from analysis 30):
 
 Virtual experiments using the 100-member bootstrap ensemble show that myelosan-induced kinetic modification of neutrophil-derived rate constants reduces peak hypocoagulation by 7-fold and integrated coagulation disruption by 2.5-fold, relative to the same neutrophil profile without kinetic modification (phase diagram in (km, tm) space). The observed experimental dose (km=4.93, tm=0.43) lies on the dose-response curve at intermediate severity. The kinetic modification alone, applied to the G2 neutrophil profile, does not reproduce G1-level hypocoagulation severity: substituting the G1 neutrophil profile into the model (§3.8) yields an ~22-fold greater peak hypocoagulation. This indicates that the protective effect of myelosan operates substantially through the reduction of neutrophil abundance, not through kinetic modification alone.
 
-- **FIGURE 4 PLACEHOLDER — phase diagram (3-panel: max_recalc, min_xiii, max_gHn)**
+The dose-response phase diagrams are shown in Figure 4.
+
+**Figure 4.** Myelosan dose-response phase diagrams across the (km, tm) parameter space. Each cell: median across the 100-member bootstrap ensemble. (a) Peak hypocoagulation (max Δrecalcification, s); contour lines at 10, 20, 30, 40 s. (b) Factor XIII nadir (min ΔXIII activity, %). (c) Peak neutrophil load (max gHn), the mechanistic driver of DIC severity. Circle: no kinetic myelosan effect (km=1, tm=1); star: observed G2 dose (km=4.93, tm=0.43). The G2 neutrophil profile is retained throughout; severity reflects kinetic modification only. All three metrics decrease monotonically with increasing km (verified: 15/15 timing-columns monotonic for each metric), confirming that rate-constant suppression is the primary determinant of DIC attenuation within the G2 neutrophil context.
 - **FIGURE 5 PLACEHOLDER — dose-response slice at tm=0.43**
 
 ## 3.6 Therapeutic window
