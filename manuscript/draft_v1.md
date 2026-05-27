@@ -271,7 +271,7 @@ The identifiability results are shown in Figure 2.
 | tp2 | 9.217 [8.889, 10.034] | Peak time of the inflammatory pulse (days) |
 | km | 4.918 [3.462, 5.734] | Group II rate modifier (myelosan effect on rate constants) |
 | tm | 0.427 [0.392, 0.467] | Group II timing modifier (myelosan effect on pulse timing) |
-| kd | 0.264 [0.218, 1.054] | Degranulation recovery rate |
+| kd | 0.264 [0.218, 1.054] | Degranulation rate constant |
 | s2 | 1.757 [1.513, 2.712] | Width of the inflammatory pulse |
 | at | 5.659 [4.893, 6.437] | Thrombin / inducer-pulse coefficient |
 
