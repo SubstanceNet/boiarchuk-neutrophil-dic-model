@@ -460,36 +460,36 @@ Will be auto-generated from `src/model.py` source.
 
 DE settings, polish sequence, convergence criteria. Reference `src/fit.py`.
 
-**Table S2.** Estimates and 95% bootstrap confidence intervals for all 26 model parameters (100-member ensemble), sorted by relative CI width (an identifiability spectrum: tightest first). Parameters flagged † are the six classified as well-identified by profile likelihood (relative depth > 5%). Relative width is (CI upper − lower) / |median|; entries with median near zero (width reported as —) are unconstrained in sign.
+**Table S2.** Estimates and 95% bootstrap confidence intervals for all 26 model parameters (100-member ensemble), sorted by relative CI width (an identifiability spectrum: tightest first). Parameters flagged † are the six classified as well-identified by profile likelihood (relative depth > 5%). Relative width is (CI upper − lower) / |median|. Descriptions follow the parameter glossary (Supplementary Methods S1).
 
-| Parameter | Median [95% CI] | Rel. width | Well-id. |
-|---|---|---|---|
-| tp2 | 9.217 [8.889, 10.03] | 0.12× | † |
-| tm | 0.4267 [0.3918, 0.4675] | 0.18× | † |
-| at | 5.659 [4.893, 6.437] | 0.27× | † |
-| ar | 34.74 [28, 40.01] | 0.35× |  |
-| km | 4.918 [3.462, 5.734] | 0.46× | † |
-| cr | 35.61 [27.55, 45.11] | 0.49× |  |
-| cx | 545.8 [294.8, 600] | 0.56× |  |
-| s2 | 1.757 [1.513, 2.712] | 0.68× | † |
-| ax | 47.21 [25.63, 67.73] | 0.89× |  |
-| bf | 6.219 [2.335, 7.999] | 0.91× |  |
-| cf | 99.68 [59.87, 154.7] | 0.95× |  |
-| af | 9.949 [5.527, 15.03] | 0.96× |  |
-| kx | 2.604 [1.408, 4.047] | 1.01× |  |
-| bx | 34.07 [11.77, 49.01] | 1.09× |  |
-| br | 8.876 [3.043, 13.49] | 1.18× |  |
-| bt | 0.5546 [0.1854, 0.8652] | 1.23× |  |
-| kcl | 12.01 [3.372, 18.25] | 1.24× |  |
-| krl | 12.69 [4.001, 19.97] | 1.26× |  |
-| knd | 6.167 [1.94, 9.999] | 1.31× |  |
-| a2 | 3.423 [2.654, 8.312] | 1.65× |  |
-| kna | 257.4 [80.92, 644.6] | 2.19× |  |
-| kd | 0.2635 [0.2179, 1.054] | 3.17× | † |
-| Hm | 290.5 [11.11, 999.8] | 3.40× |  |
-| kca | 3.834 [0.1334, 33.34] | 8.66× |  |
-| kr | 0.247 [0.1802, 2.693] | 10.17× |  |
-| df | 1.037 [0.1221, 13.01] | 12.43× |  |
+| Parameter | Description | Median [95% CI] | Rel. width | Well-id. |
+|---|---|---|---|---|
+| tp2 | Inflammatory pulse peak time (G1) | 9.217 [8.889, 10.03] | 0.12× | † |
+| tm | G2 myelosan modifier on τ_p2 (timing) | 0.4267 [0.3918, 0.4675] | 0.18× | † |
+| at | Thrombin / inducer-pulse coefficient | 5.659 [4.893, 6.437] | 0.27× | † |
+| ar | Recalcification / inducer-pulse coefficient | 34.74 [28, 40.01] | 0.35× |  |
+| km | G2 myelosan modifier on k_r (rate) | 4.918 [3.462, 5.734] | 0.46× | † |
+| cr | Recalcification / AP coefficient | 35.61 [27.55, 45.11] | 0.49× |  |
+| cx | XIII production / AP·Nr (azurophil-granule store) | 545.8 [294.8, 600] | 0.56× |  |
+| s2 | Inflammatory pulse width | 1.757 [1.513, 2.712] | 0.68× | † |
+| ax | XIII production / inducer-pulse | 47.21 [25.63, 67.73] | 0.89× |  |
+| bf | Fibrinogen / gHn coefficient (consumption) | 6.219 [2.335, 7.999] | 0.91× |  |
+| cf | Fibrinogen / AP coefficient (neutrophil-secretion-driven) | 99.68 [59.87, 154.7] | 0.95× |  |
+| af | Fibrinogen / inducer-pulse coefficient | 9.949 [5.527, 15.03] | 0.96× |  |
+| kx | XIII liver-modulated resynthesis | 2.604 [1.408, 4.047] | 1.01× |  |
+| bx | XIII degradation / gHn | 34.07 [11.77, 49.01] | 1.09× |  |
+| br | Recalcification / gHn coefficient | 8.876 [3.043, 13.49] | 1.18× |  |
+| bt | Thrombin / gHn coefficient | 0.5546 [0.1854, 0.8652] | 1.23× |  |
+| kcl | AP clearance rate | 12.01 [3.372, 18.25] | 1.24× |  |
+| krl | AP release rate from degranulated cells | 12.69 [4.001, 19.97] | 1.26× |  |
+| knd | Hn decay rate | 6.167 [1.94, 9.999] | 1.31× |  |
+| a2 | Inflammatory pulse amplitude | 3.423 [2.654, 8.312] | 1.65× |  |
+| kna | Hn formation rate (from AP²) | 257.4 [80.92, 644.6] | 2.19× |  |
+| kd | Degranulation rate constant | 0.2635 [0.2179, 1.054] | 3.17× | † |
+| Hm | Hn carrying capacity | 290.5 [11.11, 999.8] | 3.40× |  |
+| kca | Hc accumulation from inducer | 3.834 [0.1334, 33.34] | 8.66× |  |
+| kr | Recovery/clearance of degranulated state (G1) | 0.247 [0.1802, 2.693] | 10.17× |  |
+| df | Fibrinogen / Hc coefficient (inducer pathway) | 1.037 [0.1221, 13.01] | 12.43× |  |
 
 ## S3. Profile likelihood plots — all 26 parameters
 
