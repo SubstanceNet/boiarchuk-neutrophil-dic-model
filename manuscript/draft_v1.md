@@ -420,8 +420,8 @@ verified source — not yet confirmed, deliberately not fabricated.*
 1. Boiarchuk OD (1998) Experimental model of DIC syndrome. Visnyk Problem Biolohii i Medytsyny (7):132–138. [dissertation basis; full protocol tables]
 2. Boiarchuk OD, Koval SB, Lunina NV (2000) Changes in the lysosomal apparatus of neutrophilic leukocytes in disseminated intravascular coagulation syndrome. Fiziolohichnyi Zhurnal 46(3):72–77.
 3. Boiarchuk OD (2008) Changes in neutrophil activity during formation of disseminated intravascular coagulation syndrome. Naukovyi Visnyk Mykolaivskoho Derzhavnoho Universytetu im. V.O. Sukhomlynskoho 23(3):14–17.
-4. Boiarchuk OD, Lunina NV (2012) Histochemical features of neutrophils in DIC syndrome. Visnyk LNU imeni Tarasa Shevchenka 17(252):[pages TO FIND].
-5. Boiarchuk OD (2013) Dynamics of granulocyte acid phosphatase in DIC syndrome. Visnyk LNU imeni Tarasa Shevchenka 19(278), Part I:[pages TO FIND].
+4. Boiarchuk OD, Lunina NV (2012) Histochemical features of neutrophils in DIC syndrome. Visnyk LNU imeni Tarasa Shevchenka 17(252):19–25 (in Ukrainian).
+5. Boiarchuk OD (2013) Dynamics of granulocyte acid phosphatase in DIC syndrome. Visnyk LNU imeni Tarasa Shevchenka 19(278), Part I:6–13 (in Ukrainian).
 6. Boiarchuk OD (2023) Features of neutrophils in DIC syndrome. InterConf (Orléans). doi:10.51582/interconf.19-20.04.2023.042
 
 **Methods (hemostasis, lysosomal apparatus)**
@@ -446,7 +446,7 @@ verified source — not yet confirmed, deliberately not fabricated.*
 **DIC pathogenesis**
 
 17. Levi M, ten Cate H (1999) Disseminated intravascular coagulation. New England Journal of Medicine 341(8):586–592. doi:10.1056/NEJM199908193410807
-18. Barkagan ZS, Momot AP (2001) Diagnosis and controlled therapy of hemostasis disorders [Diagnostika i kontroliruemaya terapiya narushenii gemostaza]. Newdiamed, Moscow, 285 pp. (in Russian).
+18. Barkagan ZS, Momot AP (2001) Diagnosis and controlled therapy of hemostasis disorders [Diagnostika i kontroliruemaya terapiya narushenii gemostaza]. Newdiamed, Moscow, 285 pp. (in Russian). [Alternatively, the source cited in Boiarchuk 2012: Barkagan ZS, Momot AP (2005) Current aspects of DIC pathogenesis, diagnosis and therapy. Vestnik Gematologii 1(2):5–14.]
 
 ---
 
