@@ -428,7 +428,7 @@ verified source — not yet confirmed, deliberately not fabricated.*
 
 7. Pigarevsky VE (1975) The lysosomal-cationic test. Patologicheskaya Fiziologiya i Eksperimentalnaya Terapiya (3):86–88.
 8. Baluda VP, Barkagan ZS, Goldberg ED (eds., 1980) Laboratory methods for studying the hemostatic system. Tomsk, 314 pp.
-9. Busulfan (myelosan) — alkylating agent with selective depression of granulocytopoiesis at low doses. Myleran (busulfan) Prescribing Information, GlaxoSmithKline (FDA label). [The two-stage dosing protocol used here is from author commentary; the AO Oktyabr / Cherstvoy primary source is still TO FIND.]
+9. Busulfan (myelosan) — alkylating agent with selective depression of granulocytopoiesis at low doses; for the substance pharmacology see Myleran (busulfan) Prescribing Information, GlaxoSmithKline (FDA label). The two-stage suppression protocol (10 mg/day for 5–7 days to a 40–50% neutrophil reduction, then 4 mg/day for ~8 days) is the authors' own methodology, described in Boiarchuk (1998, dissertation) and detailed in the authors' methodological notes; it was not published explicitly in the journal articles.
 
 **Identifiability and uncertainty methodology**
 
