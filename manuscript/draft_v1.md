@@ -435,8 +435,8 @@ verified source — not yet confirmed, deliberately not fabricated.*
 10. Raue A, Kreutz C, Maiwald T, Bachmann J, Schilling M, Klingmüller U, Timmer J (2009) Structural and practical identifiability analysis of partially observed dynamical models by exploiting the profile likelihood. Bioinformatics 25(15):1923–1929. doi:10.1093/bioinformatics/btp358
 11. Kreutz C, Raue A, Kaschek D, Timmer J (2013) Profile likelihood in systems biology. FEBS Journal 280(11):2564–2571. doi:10.1111/febs.12276
 12. Gutenkunst RN, Waterfall JJ, Casey FP, Brown KS, Myers CR, Sethna JP (2007) Universally sloppy parameter sensitivities in systems biology models. PLoS Computational Biology 3(10):e189. doi:10.1371/journal.pcbi.0030189
-13. Bootstrap confidence intervals for dynamical-model parameters. [TO FIND: Efron & Tibshirani 1993, An Introduction to the Bootstrap, or a systems-biology bootstrap-CI reference]
-14. Cross-validation / PRESS for model assessment. [TO FIND: Stone 1974, J. R. Stat. Soc. B 36(2):111–147, to verify]
+13. Efron B, Tibshirani RJ (1993) An Introduction to the Bootstrap. 1st ed. Chapman & Hall, New York, 456 pp. ISBN 978-0412042317.
+14. Stone M (1974) Cross-validatory choice and assessment of statistical predictions. Journal of the Royal Statistical Society, Series B (Methodological) 36(2):111–133. doi:10.1111/j.2517-6161.1974.tb00994.x
 
 **Inducer toxicology (anticoagulant rodenticides)**
 
@@ -445,8 +445,8 @@ verified source — not yet confirmed, deliberately not fabricated.*
 
 **DIC pathogenesis**
 
-17. DIC pathogenesis review(s). [TO FIND: a current authoritative DIC review, e.g. Levi & ten Cate NEJM 1999 or a recent ISTH consensus, to verify]
-18. Barkagan ZS, Momot AP — DIC pathogenesis/diagnosis/therapy. [TO FIND: full citation; cited in Boiarchuk 2012 ref list as Vestn. Gematol. 2005;1(2):5–14, to verify]
+17. Levi M, ten Cate H (1999) Disseminated intravascular coagulation. New England Journal of Medicine 341(8):586–592. doi:10.1056/NEJM199908193410807
+18. Barkagan ZS, Momot AP (2001) Diagnosis and controlled therapy of hemostasis disorders [Diagnostika i kontroliruemaya terapiya narushenii gemostaza]. Newdiamed, Moscow, 285 pp. (in Russian).
 
 ---
 
