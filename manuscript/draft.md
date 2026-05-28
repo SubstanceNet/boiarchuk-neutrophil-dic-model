@@ -10,9 +10,19 @@ Olena D. Boiarchuk¹ and Oleksiy Onasenko²
 
 *ORCID:* [to be supplied]
 
+# Highlights
+
+- A mechanistic ODE model is jointly fit to DIC with and without neutrophil suppression
+- The model decomposes coagulation defects into vessel- and neutrophil-mediated parts
+- Neutrophil suppression attenuates modeled DIC severity 2.5- to 7-fold
+- Protection requires both adequate suppression and intervention within ~2.5 days
+- Dose and timing act as independent thresholds, not a continuous trade-off
+
 # Abstract
 
 Disseminated intravascular coagulation (DIC) progresses through a hypercoagulable phase to a deep hypocoagulable phase in which clotting may fail almost completely. Experimental work has implicated neutrophils, acting through their lysosomal apparatus, as active participants in this coagulopathy rather than passive bystanders, but no mechanistic model has quantified their contribution relative to direct vascular injury. Here we develop a mechanistic ordinary-differential-equation model of neutrophil-driven DIC and fit it jointly to two experimental rabbit groups — a control group and a group in which granulocytopoiesis was suppressed with busulfan before induction — in an anticoagulant-rodenticide (ethylphenacin) experimental model of DIC with six hemostatic and neutrophil-activity observables. Uncertainty was characterized by profile likelihood, a parametric bootstrap (N = 100), leave-one-out cross-validation, and neutrophil-count perturbation, and three virtual experiments explored the effect of suppression strength and timing. A prior-regularized decomposition assigned the recalcification channel predominantly to a vessel-mediated source and the fibrinogen and factor XIII channels predominantly to a neutrophil-mediated source, quantifying — consistent with, rather than independently confirming — the neutrophil hypothesis. The kinetic effect of busulfan attenuated modeled DIC severity 2.5- to 7-fold, and its protection was confined to a narrow therapeutic window: near-complete prevention within the first 2.5 days, with a sharp transition to partial mitigation thereafter. The model reproduced the observed roughly 22-fold separation in hypocoagulation severity between groups, with the severity peak matching the timing of the observed mortality window (day 11). Dose and timing behaved as independent thresholds, each necessary and neither sufficient alone. The model gives quantitative, mechanistically explicit form to the role of neutrophils in the hypocoagulable phase of DIC and yields a testable two-phase prediction for the timing of myelosuppressive intervention.
+
+**Keywords:** disseminated intravascular coagulation; neutrophil degranulation; mechanistic ODE model; parameter identifiability; mechanism decomposition; myelosuppressive intervention
 
 # 1. Introduction
 
