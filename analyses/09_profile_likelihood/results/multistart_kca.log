@@ -1,0 +1,26 @@
+nohup: ввод игнорируется
+Loaded v13 baseline: cost=0.958907
+Grid for kca: [0.2316, 0.2559, 0.2828, 0.3126, 0.3455, 0.3818, 0.4219, 0.4663, 0.5154, 0.5696, 0.6295]
+
+  [1/11] kca=0.2316: single=0.956994, per-start=['0.9570', '2.3702', '1.3549', '1.7077', '2.0212'], min=0.956994, Δ=+0.000000, elapsed=221s
+  [2/11] kca=0.2559: single=0.956794, per-start=['0.9568', '2.3519', '1.4666', '1.7685', '1.9839'], min=0.956794, Δ=+0.000000, elapsed=452s
+  [3/11] kca=0.2828: single=0.957113, per-start=['0.9571', '2.7011', '1.3824', '1.7607', '2.4063'], min=0.957113, Δ=+0.000000, elapsed=740s
+  [4/11] kca=0.3126: single=0.957143, per-start=['0.9571', '3.4663', '1.4768', '1.8149', '2.0017'], min=0.957143, Δ=+0.000000, elapsed=1080s
+  [5/11] kca=0.3455: single=0.956900, per-start=['0.9569', '3.2480', '1.3719', '1.9696', '1.6358'], min=0.956900, Δ=+0.000000, elapsed=1375s
+  [6/11] kca=0.3818: single=0.956551, per-start=['0.9566', '3.1140', '1.3497', '1.3998', '2.4074'], min=0.956551, Δ=+0.000000, elapsed=1643s
+  [7/11] kca=0.4219: single=0.956089, per-start=['0.9561', '3.1388', '1.2993', '1.5628', '2.5862'], min=0.956089, Δ=+0.000000, elapsed=1863s
+  [8/11] kca=0.4663: single=0.956557, per-start=['0.9566', '3.2056', '1.5781', '1.5261', '2.3387'], min=0.956557, Δ=+0.000000, elapsed=2080s
+  [9/11] kca=0.5154: single=0.956931, per-start=['0.9569', '2.9487', '1.5506', '1.5518', '2.0882'], min=0.956931, Δ=+0.000000, elapsed=2295s
+  [10/11] kca=0.5696: single=0.957537, per-start=['0.9575', '2.7725', '1.5328', '1.8968', '2.3415'], min=0.957537, Δ=+0.000000, elapsed=2531s
+  [11/11] kca=0.6295: single=0.957847, per-start=['0.9578', '2.4982', '1.5195', '1.9580', '1.9853'], min=0.957847, Δ=+0.000000, elapsed=2756s
+
+================================================================================
+Summary: kca multi-start diagnostic
+  Δ range: [+0.000000, +0.000000]
+  max improvement of multistart over single: 0.000000
+  median Δ: 0.000000
+
+  CONCLUSION: profile likelihood single-start is RELIABLE.
+  Interpretation A confirmed: kca is genuinely sloppy.
+
+Saved: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/09_profile_likelihood/results/multistart_diagnostic_kca.json

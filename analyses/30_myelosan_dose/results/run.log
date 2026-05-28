@@ -1,0 +1,62 @@
+nohup: ввод игнорируется
+/media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/30_myelosan_dose/run.py:56: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  auc_recalc = float(np.trapz(np.abs(recalc), T))
+/media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/30_myelosan_dose/run.py:273: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  print(f"  AUC |recalc|: {float(np.trapz(np.abs(g1.recalc), g1.T)):.1f}")
+/media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/30_myelosan_dose/run.py:290: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  "auc_recalc": float(np.trapz(np.abs(g1.recalc), g1.T)),
+======================================================================
+Analysis 30: myelosan dose-response
+======================================================================
+Loaded 100 bootstrap ensemble members
+km grid: [1.0, 1.18, 1.39, 1.64, 1.93, 2.28, 2.68, 3.16, 3.73, 4.39, 5.18, 6.11, 7.2, 8.48, 10.0]
+tm grid: [0.2, 0.224, 0.252, 0.282, 0.317, 0.355, 0.399, 0.447, 0.502, 0.563, 0.631, 0.708, 0.795, 0.891, 1.0]
+Good-basin members (xiii_G2 R²>=0.3): 27/100
+
+Starting sweep...
+  km=1.00 (1/15) done. elapsed=0.1m ETA=1.7m
+  km=1.18 (2/15) done. elapsed=0.2m ETA=1.6m
+  km=1.39 (3/15) done. elapsed=0.4m ETA=1.5m
+  km=1.64 (4/15) done. elapsed=0.5m ETA=1.4m
+  km=1.93 (5/15) done. elapsed=0.6m ETA=1.3m
+  km=2.28 (6/15) done. elapsed=0.8m ETA=1.2m
+  km=2.68 (7/15) done. elapsed=0.9m ETA=1.1m
+  km=3.16 (8/15) done. elapsed=1.1m ETA=0.9m
+  km=3.73 (9/15) done. elapsed=1.2m ETA=0.8m
+  km=4.39 (10/15) done. elapsed=1.4m ETA=0.7m
+  km=5.18 (11/15) done. elapsed=1.5m ETA=0.6m
+  km=6.11 (12/15) done. elapsed=1.7m ETA=0.4m
+  km=7.20 (13/15) done. elapsed=1.8m ETA=0.3m
+  km=8.48 (14/15) done. elapsed=2.0m ETA=0.1m
+  km=10.00 (15/15) done. elapsed=2.1m ETA=0.0m
+
+Sweep complete in 2.1m. Failed: 0
+Saved raw: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/30_myelosan_dose/results/ensemble_predictions_raw.pkl
+
+Aggregating per cell...
+  Saved: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/30_myelosan_dose/results/phase_diagram_max_gHn.json
+  Saved: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/30_myelosan_dose/results/phase_diagram_min_xiii.json
+  Saved: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/30_myelosan_dose/results/phase_diagram_max_recalc.json
+  Saved: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/30_myelosan_dose/results/phase_diagram_auc_recalc.json
+  Saved: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/30_myelosan_dose/results/phase_diagram_time_to_peak_gHn.json
+  Saved: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/30_myelosan_dose/results/phase_diagram_liver_collapse.json
+
+======================================================================
+Sanity check: km=1, tm=1 (G1 equivalent)
+======================================================================
+Grid closest to G1: km=1.000, tm=1.000
+
+G1 observed (from data):
+  max gHn (proxy AUC of degranulation rate): N/A (model state)
+  min xiii: -76.7
+  max recalc: 206.7
+  AUC |recalc|: 1023.3
+
+Model prediction at km=1, tm=1 (ensemble median, n=100):
+  min_xiii: median=-52.5, CI95=[-73.2, -33.0]
+  max_recalc: median=41.6, CI95=[30.1, 53.5]
+  auc_recalc: median=206.2, CI95=[123.8, 255.5]
+
+Saved sanity: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/30_myelosan_dose/results/sanity_check_km1.json
+
+Total: 2.1m

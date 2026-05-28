@@ -1,0 +1,13 @@
+nohup: ввод игнорируется
+/home/doc/python_projects/my_env/lib/python3.10/site-packages/scipy/optimize/_differentialevolution.py:486: UserWarning: differential_evolution: the 'workers' keyword has overridden updating='immediate' to updating='deferred'
+  with DifferentialEvolutionSolver(func, bounds, args=args,
+[v13_baseline seed=7] running v13 fit (key=9a293c08323be094, quick=True, seeds=[7], w_group=(1.0, 1.0))...
+[v13_baseline seed=7] DONE  (470s, cost=0.9666, R2_G1=0.834, R2_G2=0.714)
+[v13_baseline seed=123] running v13 fit (key=60bfe847e0140be0, quick=True, seeds=[123], w_group=(1.0, 1.0))...
+[v13_baseline seed=123] DONE  (676s, cost=0.9622, R2_G1=0.828, R2_G2=0.752)
+
+ seed |    cost |   R²_G1 |   R²_G2 |  recalc |     thr |     fib |    xiii |      AP |       D |      cx
+----------------------------------------------------------------------------------------------------
+   42 |  0.9589 | +0.8334 | +0.6920 | +0.9068 | +0.9468 | +0.4977 | +0.0772 | +0.9638 | +0.7594 |   570.9    [from analysis 05 main]
+    7 |  0.9666 | +0.8342 | +0.7141 | +0.8396 | +0.9356 | +0.4460 | +0.3581 | +0.9514 | +0.7539 |   600.0
+  123 |  0.9622 | +0.8275 | +0.7517 | +0.9231 | +0.9413 | +0.4875 | +0.4307 | +0.9604 | +0.7673 |   599.9

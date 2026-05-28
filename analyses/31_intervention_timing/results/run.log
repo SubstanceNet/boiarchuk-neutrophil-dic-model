@@ -1,0 +1,36 @@
+nohup: ввод игнорируется
+======================================================================
+Analysis 31: myelosan intervention timing
+Scenarios: ['t=0', 't=1', 't=2', 't=2.5', 't=3', 't=3.5', 't=4', 't=6', 'no intervention']
+Dose: km=4.93, tm=0.43
+Fine grid: 400 points, [0, 19.0]
+======================================================================
+Loaded 100 ensemble members (27 in good basin)
+
+Starting sweep...
+  Scenario t=0: done (0 failed)
+  Scenario t=1: done (0 failed)
+  Scenario t=2: done (0 failed)
+  Scenario t=2.5: done (0 failed)
+  Scenario t=3: done (0 failed)
+  Scenario t=3.5: done (0 failed)
+  Scenario t=4: done (0 failed)
+  Scenario t=6: done (0 failed)
+  Scenario no intervention: done (0 failed)
+
+Sweep complete in 0.12m. Total failed: 0
+Saved raw: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/31_intervention_timing/results/intervention_predictions_raw.pkl
+Saved summary: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/31_intervention_timing/results/summary_by_timing.json
+
+==========================================================================================
+         scenario |  max_recalc |  auc_recalc |   min_xiii |  t_peak | t_recovery
+------------------------------------------------------------------------------------------
+              t=0 |        7.13 |       91.52 |     -14.56 |    3.86 |       8.24
+              t=1 |        7.13 |       92.09 |     -14.57 |    3.86 |       8.24
+              t=2 |        7.19 |       84.24 |     -15.28 |    2.71 |       8.14
+            t=2.5 |        7.93 |       84.77 |     -19.02 |    2.71 |       8.00
+              t=3 |       14.39 |       95.56 |     -30.24 |    3.14 |       7.81
+            t=3.5 |       22.74 |      107.84 |     -40.48 |    3.57 |       7.71
+              t=4 |       28.18 |      119.55 |     -47.40 |    4.00 |       7.69
+              t=6 |       31.77 |      167.28 |     -51.15 |    4.17 |       7.95
+  no intervention |       75.57 |      606.00 |    -108.27 |   10.52 |      17.14

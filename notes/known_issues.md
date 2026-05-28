@@ -102,6 +102,10 @@ This is the running log of known issues, methodological concerns, and open quest
 
 **Resolution path.** Phase 2 task. After identifiability analysis is done in Phase 1, propose model variants and select via AIC/BIC.
 
+**Investigation update (analysis 08).** Group-specific cf tested in v13_gs[cf], 3 quick fits (seeds 42, 7, 123). Result: fib_G2 R² unchanged (Δ ≈ -0.01); cf_g2/cf_g1 ratio inconsistent across seeds (0.86, 0.86, 1.04 — direction split). **Hypothesis rejected.** Single-parameter group-specific extension does not address I-4. Resolution deferred to Phase 2 step 3 (profile likelihood) and possibly Phase 3 (multi-parameter group-specific or architectural changes to fib channel).
+**Investigation update (analysis 09).** Profile likelihood for the fib channel parameters confirms structural under-determination: `af`, `bf`, `df` are sloppy (depth_rel < 0.02), `cf` weakly identified (depth_rel 0.024). The fib observable is genuinely under-constrained by data, not by architecture. Resolution would require additional fib timepoints in future experiments. **Closing as: structurally explained, no in-model fix possible with current data.**
+
+
 ## I-5: Survivor weighting is qualitative (RESOLVED in Phase 1, analysis 04)
 
 **Original concern.** `W_SURV = [1.0]*10 + [0.7]*3 + [0.3]*3` weights G1 timepoints to reflect 30% mortality on days 10-12 and further dropout afterward. The values 0.7 and 0.3 are qualitative — they roughly match surviving fraction but are not derived from a likelihood justification.
@@ -149,3 +153,53 @@ This is the running log of known issues, methodological concerns, and open quest
 `pyproject.toml` license field updated to `"Apache-2.0 AND CC-BY-4.0"`. Both licenses permit reuse with attribution.
 
 **Status.** Resolved.
+
+## I-9: XIII channel identifiability under v13 cost (open, target: Phase 2 step 2)
+
+**Concern.** Under v13 cost (analysis 05, baseline cx ≤ 600), the XIII channel exhibits multi-modal landscape: at seed=42 the optimiser finds xiii_G2 R² = 0.077, while seeds {7, 123} find R² ∈ [0.358, 0.431] at near-equal cost. Analysis 06 sweep across cx bounds {500, 600, 700, 1000, 2000} shows that this is a structural feature of the {ax, cx, bx, kx} parameter manifold under v13 cost: only cx ≤ 500 yields a seed-stable unique optimum (Zone A), while wider bounds expose multiple cost-equivalent local optima (Zone B).
+
+**Resolution path.** Phase 2 step 2: make cx group-specific (G1 cx, G2 cx as separate parameters). Expected to resolve identifiability by giving the channel enough degrees of freedom to fit both groups well simultaneously, eliminating the G1-vs-G2 XIII trade-off that drives multi-modality.
+
+If group-specific cx insufficient, extend to {bx, kx} similarly.
+
+**Investigation update (analysis 07).** Group-specific cx tested in v13_gs (`src/cost_v13_groupspec.py`), 4 quick fits (3 seeds at default bounds + 1 seed at extended bounds (10, 2000)). All four fits converged to `cx_g1 ≈ cx_g2` (ratio in [0.987, 1.000]). Data do not require group-specific cx. **Hypothesis rejected.** v13_gs achieved seed-stability through regularisation effect, not through architectural resolution. R²_G2 not improved. I-9 remains open. Next candidate: c_f (analysis 08).
+
+**Investigation update (analysis 08).** Second candidate (group-specific cf) also rejected (analysis 08). Pattern of negative results across two candidates suggests single-parameter group-specific extensions are insufficient. Resolution deferred to Phase 2 step 3 (profile likelihood) for systematic identifiability characterisation.
+
+**Investigation update (analysis 09).** Profile likelihood explains identifiability issue. All four XIII channel parameters {ax, cx, bx, kx} are sloppy (depth_rel < 0.02) or grid-truncated (cx upper bound). The channel is genuinely under-constrained by data. Multi-modality observed in analyses 05/06 reflects different points on the sloppy plateau, all with near-equivalent cost. **Closing as: structurally explained.**
+
+**Status.** Open. Diagnostic complete (analysis 06).
+
+## I-10: Zone-A vs Zone-B fit quality trade-off (deferred to Phase 2 step 2)
+
+**Concern.** Analysis 06 reveals a fundamental trade-off in v13 cost landscape: Zone A (cx ≤ 500) is seed-stable but yields lower mean G2 fit (R²_G2 avg ≈ 0.66) than Zone B (cx ≥ 600) which gives R²_G2 avg ≈ 0.69-0.75 in the favourable basin. v12 prior (cx ≤ 600) sits at the transition.
+
+**Resolution path.** Same as I-9: group-specific cx in Phase 2 step 2 should permit best of both — unique optimum AND high R²_G2 fit quality. If unsuccessful, fall back to Zone A (bound = 500) is documented but methodologically sub-optimal.
+
+**Investigation update (analysis 07).** Group-specific cx (analysis 07) does not resolve the trade-off. Even with extended bounds, optimiser settles in regularised symmetric solution (Zone A quality), R²_G2 not improved beyond Zone A. **Hypothesis rejected.** Next candidate: c_f.
+
+**Investigation update (analysis 09).** Zone A vs Zone B trade-off explained as different points on `cx` sloppy plateau, both achieving similar cost. Profile likelihood for cx is grid-truncated (baseline 570 near bound 600). **Closing as: structurally explained, no architectural fix needed.**
+
+**Status.** Open. Tied to I-9 resolution.
+
+## TODO-1: Production-quality tests for v13 group-specific architecture (Phase 2 step 2)
+
+**Context.** Analysis 07 introduces `src/cost_v13_groupspec.py` as a parallel implementation of v13 cost with one additional group-specific parameter (`cx_g2`). For the diagnostic experiment, only smoke-tests are added (no full test suite, to avoid premature investment).
+
+**If the experiment succeeds** (group-specific cx resolves I-9, I-10):
+- Promote `cost_v13_groupspec.py` to production-quality module.
+- Write full `tests/test_cost_v13_groupspec.py` mirroring `test_cost_v13.py` (10 tests minimum: smoke, scalar==decomposition, sum==total, perturbation, soft v12 compatibility, group_weights override, failed integration, etc.).
+- Update `docs/parameter_glossary.md` to document `cx_g2`.
+- Update `docs/model_spec.md` to add `cx_g2` to the parameter list and explain group-specific architecture.
+- Consider generalising the group-specific mechanism in `src/config.py` (see Phase 2 step 2 plan: `GROUP_SPECIFIC_MULTIPLIERS` registry).
+
+**If the experiment fails** (group-specific cx does not resolve identifiability):
+- Delete `src/cost_v13_groupspec.py` and `analyses/07_groupspec_cx/`.
+- Document negative result in commit message and Phase 2 plan.
+- Consider next candidate (`c_f` or `kna`).
+
+**Update (analysis 07 outcome):** Group-specific cx experiment **failed** (cx_g1 ≈ cx_g2 in data; not architectural fix). Per pragmatic discussion, `src/cost_v13_groupspec.py` and `run_with_overrides_v13_gs` are RETAINED in src/ as a template for subsequent group-specific candidate analyses (analysis 08 will use it for `c_f`). Final cleanup deferred to manuscript-preparation phase.
+
+**Update (analysis 08 outcome):** Group-specific cf experiment also failed (cf_g1 ≈ cf_g2 in 2 of 3 seeds; fib_G2 R² unchanged). Pattern of negative results across both attempted candidates (cx, cf). `src/cost_v13_groupspec.py` (now factory-based, generalised) and `run_with_overrides_v13_gs` retained; final cleanup decision deferred to manuscript phase. Phase 2 step 2 closes with 0 successful candidates; proceeding to Phase 2 step 3 (profile likelihood).
+
+**Status.** Pending experiment outcome.

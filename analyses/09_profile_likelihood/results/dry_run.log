@@ -1,0 +1,68 @@
+nohup: ввод игнорируется
+Loaded v13 baseline best_x from analyses/05_v13_baseline/results/fit.json
+  baseline cost: 0.958907
+  shape: (26,)
+
+============================================================
+Profile param: km  (log_grid=False)
+============================================================
+  [km grid 1/11] theta=2.466, cost=1.1040
+  [km grid 2/11] theta=2.96, cost=1.0367
+  [km grid 3/11] theta=3.453, cost=1.0024
+  [km grid 4/11] theta=3.946, cost=0.9740
+  [km grid 5/11] theta=4.44, cost=0.9609
+  [km grid 6/11] theta=4.933, cost=0.9568
+  [km grid 7/11] theta=5.426, cost=0.9600
+  [km grid 8/11] theta=5.919, cost=0.9685
+  [km grid 9/11] theta=6.413, cost=0.9794
+  [km grid 10/11] theta=6.906, cost=0.9932
+  [km grid 11/11] theta=7.399, cost=1.0089
+  Saved: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/09_profile_likelihood/results/profile_dry_km.json
+  Elapsed: 572.3s
+
+============================================================
+Profile param: tm  (log_grid=False)
+============================================================
+  [tm grid 1/11] theta=0.2135, cost=1.0911
+  [tm grid 2/11] theta=0.2562, cost=1.0671
+  [tm grid 3/11] theta=0.2989, cost=1.0384
+  [tm grid 4/11] theta=0.3415, cost=1.0007
+  [tm grid 5/11] theta=0.3842, cost=0.9697
+  [tm grid 6/11] theta=0.4269, cost=0.9564
+  [tm grid 7/11] theta=0.4696, cost=0.9663
+  [tm grid 8/11] theta=0.5123, cost=0.9897
+  [tm grid 9/11] theta=0.555, cost=1.0204
+  [tm grid 10/11] theta=0.5977, cost=1.0509
+  [tm grid 11/11] theta=0.6404, cost=1.0797
+  Saved: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/09_profile_likelihood/results/profile_dry_tm.json
+  Elapsed: 711.1s
+
+============================================================
+Profile param: cx  (log_grid=True)
+============================================================
+  WARNING: grid clipped at bound. requested=(346.3, 941.2), bounds=(10.0, 600.0), unique values: 7/11
+  [cx grid 1/11] theta=346.3, cost=0.9728
+  [cx grid 2/11] theta=382.7, cost=0.9686
+  [cx grid 3/11] theta=422.9, cost=0.9654
+  [cx grid 4/11] theta=467.4, cost=0.9622
+  [cx grid 5/11] theta=516.6, cost=0.9600
+  [cx grid 6/11] theta=570.9, cost=0.9574
+  [cx grid 7/11] theta=600, cost=0.9569
+  [cx grid 8/11] theta=600, cost=0.9569
+  [cx grid 9/11] theta=600, cost=0.9569
+  [cx grid 10/11] theta=600, cost=0.9569
+  [cx grid 11/11] theta=600, cost=0.9569
+  Saved: /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/09_profile_likelihood/results/profile_dry_cx.json
+  Elapsed: 612.2s
+
+
+================================================================================
+param |   baseline |    min_C |    max_C |     CI low |      CI hi |                class |    sec
+--------------------------------------------------------------------------------
+   km |     4.9328 |   0.9568 |   1.1040 |     3.4530 |     6.9060 |    weakly_identified |  572.3
+   tm |     0.4269 |   0.9564 |   1.0911 |     0.3415 |     0.5123 | moderately_identified |  711.1
+   cx |   570.8779 |   0.9569 |   0.9728 |   346.2549 |   600.0000 | grid_truncated_inconclusive_grid_truncated |  612.2
+
+Total dry run time: 1895.5s
+Average per param: 631.8s
+Estimated full sweep (26 params): 274 min = 4.6 h

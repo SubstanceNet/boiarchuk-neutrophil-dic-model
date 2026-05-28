@@ -22,7 +22,7 @@ NAMES: list[str] = [
     "kr",    # 1  recovery / clearance of degranulated state (G1 base; G2 = kr * km)
     "krl",   # 2  AP release rate from degranulated cells
     "kcl",   # 3  AP clearance rate
-    "kca",   # 4  Hc accumulation from venom
+    "kca",   # 4  Hc accumulation from inducer (vessel-driven)
     # Hn dynamics (shared 5-7)
     "kna",   # 5  Hn formation rate (saturable in AP)
     "knd",   # 6  Hn decay rate
@@ -92,7 +92,7 @@ assert len(NAMES) == len(BOUNDS) == 26, "Parameter inventory mismatch"
 #  Fixed constants (not optimised)
 # ============================================================
 
-TV_FIX: float = 1.5      # venom pulse time-scale (peak at t = TV_FIX)
+TV_FIX: float = 1.5      # inducer toxicity pulse time-scale (peak at t = TV_FIX)
 KCD_FIX: float = 0.2     # Hc clearance rate
 
 # Baseline neutrophil count for normalisation Nr = N(t) / N1_BASE.
@@ -125,12 +125,15 @@ W_SPLIT: float = 2.0
 # Derived from G2/G1 day-1 ratios in dissertation tables 4.9 / 5.9.
 # See v12_report.docx section 3.3 for derivation.
 NEUTRO_FRAC: dict[str, float] = {
-    "recalc": 0.24,   # 24% neutrophil-mediated, 76% venom-mediated
+    "recalc": 0.24,   # 24% neutrophil-mediated, 76% vessel/inducer-mediated
     "fib":    0.76,   # 76% neutrophil-mediated (IL-6 hepatic stimulation)
     "xiii":   0.82,   # 82% neutrophil-mediated (XIII stored in azurophil granules)
 }
 
-# Survivor weighting for G1 cost.
+# Survivor weighting for G1 cost (LEGACY: defined but NOT used by the v13
+# cost function src.cost_v13.joint_cost_v13, which weights G1 uniformly;
+# analysis 04 showed this down-weighting is non-influential). Retained for
+# the v12 cost path (src.fit.joint_cost) and reference.
 # 30% mortality occurred on days 10-12; weights downweight late timepoints
 # proportionally to surviving sample size (qualitative, not exact n_t/N).
 # Length 16 = len(T1).

@@ -1,4 +1,9 @@
 """
+LEGACY: v12 cost function. The canonical v13 baseline is produced by
+analyses/05_v13_baseline/fit.py via src.fit_runner (src.cost_v13.joint_cost_v13).
+This module is retained for v12 reproducibility (the archive/v12 contract
+checked by tests/test_reproducibility.py) and historical reference.
+
 Command-line entry point for fitting.
 
 Usage:

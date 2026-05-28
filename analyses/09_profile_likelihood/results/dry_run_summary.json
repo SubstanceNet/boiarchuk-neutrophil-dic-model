@@ -1,0 +1,47 @@
+{
+  "analysis": "09_profile_likelihood_dry_run",
+  "baseline_seed": 42,
+  "n_points": 11,
+  "span_factor": 0.5,
+  "params": [
+    {
+      "param_name": "km",
+      "baseline_value": 4.932846642799645,
+      "baseline_cost": 0.9589071937356771,
+      "ci_95": [
+        3.4529926499597514,
+        6.905985299919502
+      ],
+      "classification": "weakly_identified",
+      "elapsed_s": 572.2760200500488,
+      "min_profile_cost": 0.9567531249408244,
+      "max_profile_cost": 1.1039912543173682
+    },
+    {
+      "param_name": "tm",
+      "baseline_value": 0.4269355066592478,
+      "baseline_cost": 0.9589071937356771,
+      "ci_95": [
+        0.3415484053273983,
+        0.5123226079910974
+      ],
+      "classification": "moderately_identified",
+      "elapsed_s": 711.0588777065277,
+      "min_profile_cost": 0.956374065034445,
+      "max_profile_cost": 1.0911252898820778
+    },
+    {
+      "param_name": "cx",
+      "baseline_value": 570.8778884315129,
+      "baseline_cost": 0.9589071937356771,
+      "ci_95": [
+        346.2549422857207,
+        600.0
+      ],
+      "classification": "grid_truncated_inconclusive_grid_truncated",
+      "elapsed_s": 612.1685080528259,
+      "min_profile_cost": 0.9568942987424577,
+      "max_profile_cost": 0.9727700340287286
+    }
+  ]
+}

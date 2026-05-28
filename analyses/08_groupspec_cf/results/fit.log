@@ -1,0 +1,36 @@
+nohup: ввод игнорируется
+/home/doc/python_projects/my_env/lib/python3.10/site-packages/scipy/optimize/_differentialevolution.py:486: UserWarning: differential_evolution: the 'workers' keyword has overridden updating='immediate' to updating='deferred'
+  with DifferentialEvolutionSolver(func, bounds, args=args,
+======================================================================
+v13_gs[cf] (group-specific cf) — analysis 08
+  parameter space: 27 (26 v13 + cf_g2)
+  cf_g2 bounds: (5, 350) — same as cf_g1
+  seeds: [42, 7, 123], quick mode
+======================================================================
+[v13_gs[cf] seed=42] running v13_gs fit (key=76b8726906125209, quick=True, seeds=[42], w_group=(1.0, 1.0), groupspec_param=cf)...
+[v13_gs[cf] seed=42] DONE  (864s, cost=0.9617, R2_G1=0.828, R2_G2=0.751, cf_g1=103.9, cf_g2=93.0, ratio=0.895)
+[v13_gs[cf] seed=7] running v13_gs fit (key=28617370a5d0c939, quick=True, seeds=[7], w_group=(1.0, 1.0), groupspec_param=cf)...
+[v13_gs[cf] seed=7] DONE  (1211s, cost=0.9594, R2_G1=0.830, R2_G2=0.734, cf_g1=97.2, cf_g2=83.7, ratio=0.861)
+[v13_gs[cf] seed=123] running v13_gs fit (key=bf1f76d45ff2b3a3, quick=True, seeds=[123], w_group=(1.0, 1.0), groupspec_param=cf)...
+[v13_gs[cf] seed=123] DONE  (976s, cost=0.9699, R2_G1=0.831, R2_G2=0.710, cf_g1=102.0, cf_g2=106.4, ratio=1.043)
+
+==============================================================================================================
+seed |    cost |   R²_G1 |   R²_G2 |  cf_g1 |  cf_g2 |  ratio |   fib_G2 |  xiii_G2 |   AP_G2 |    D_G2
+--------------------------------------------------------------------------------------------------------------
+  42 |  0.9617 | +0.8284 | +0.7507 |  103.9 |   93.0 |  0.895 |  +0.4845 |  +0.4336 | +0.9599 | +0.7641
+   7 |  0.9594 | +0.8302 | +0.7344 |   97.2 |   83.7 |  0.861 |  +0.4845 |  +0.3359 | +0.9592 | +0.7680
+ 123 |  0.9699 | +0.8307 | +0.7102 |  102.0 |  106.4 |  1.043 |  +0.4317 |  +0.2949 | +0.9499 | +0.7592
+
+Comparison to analysis 05 v13 baseline (cf shared, default):
+  baseline R²_G2 avg by seed: [42: 0.6920, 7: 0.7141, 123: 0.7517]
+  baseline fib_G2 R² by seed: [42: 0.4977, 7: 0.4460, 123: 0.4875]
+
+Spreads across seeds:
+  Δcost      = 0.0104
+  ΔR²_G2 avg = 0.0405
+  Δfib_G2    = 0.0528
+  Δcf_g1     = 6.7
+  Δcf_g2     = 22.8
+  Δratio     = 0.183
+
+Saved -> /media/ssd2/ai_projects/boiarchuk_neutrophil_dic_model_final/analyses/08_groupspec_cf/results/summary.json
