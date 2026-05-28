@@ -1,30 +1,73 @@
-# Robustness analyses
+# Analyses
 
-Empty in Phase 0. Populated in Phase 1+ as analyses are written.
+Each subdirectory is a self-contained analysis: a runnable script (or scripts),
+a `README.md` stating the question and method, and a `results/` directory with
+saved outputs (JSON summaries are tracked; large `.pkl` caches under
+`results/_cache/` are git-ignored and regenerated on demand). Shared figure
+styling lives in `_fig_style.py`. Ad-hoc probes live under `_diagnostic/`
+(git-ignored) and are not part of the formal record.
 
-## Planned (Phase 1)
+## Dependency order
 
-- `01_profile_likelihood/`         — per-parameter profile likelihood
-- `02_local_sensitivity/`          — Fisher Information Matrix; eigenvalue analysis (sloppiness)
-- `03_global_sensitivity/`         — Sobol indices for output observables
-- `04_bootstrap_or_mcmc/`          — uncertainty quantification (parametric bootstrap or emcee)
-- `05_mechanism_split_profile/`    — fit cost and parameters as function of W_split (issue I-3)
+Most analyses are independent, but the Phase-4.5 virtual experiments depend on
+the bootstrap ensemble produced by analysis 22:
 
-## Planned (Phase 2)
+ 05_v13_baseline      → establishes the baseline fit (results/fit.json)
+ │
+ 22_predictive_check  → bootstrap ensemble (100 members)
+ │                writes ensemble.json + ensemble_members.json
+ ├── 30_myelosan_dose
+ ├── 31_intervention_timing
+ ├── 32_combinations
+ └── 33_g1_severity_validation
 
-- `10_model_variants/`             — alternative structural forms; AIC/BIC comparison
-- `11_g2_fib_channel/`             — investigation of issue I-4
+Downstream analyses load the ensemble through `src.ensemble.load_ensemble()`,
+which reads the consolidated `ensemble_members.json` (so a fresh clone needs no
+re-run) and falls back to the `_cache/` pkls if that artifact is absent.
 
-## Planned (Phase 3)
+## Identifiability and model structure
 
-- `20_loo_timepoint/`              — leave-one-timepoint-out cross-validation
-- `21_perturbation/`               — robustness to perturbed N(t)
-- `22_predictive_check/`           — posterior / bootstrap predictive intervals
+| # | Analysis | Question | Entry point |
+|---|----------|----------|-------------|
+| 01 | W_split profile | Cost and mechanism-split fractions as a function of the prior weight W_split | `sweep.py` |
+| 02 | cx bound | Why the factor XIII production bound cx ≤ 600 is required | `sweep.py` |
+| 03 | Separate G2 fit | Group-II-only fit, to quantify the joint-architecture penalty | `fit.py` |
+| 04 | Survivor weighting | Whether the ad-hoc late-G1 down-weighting is influential (it is not) | `fit.py` |
+| 05 | v13 baseline | The reference joint fit; source of the baseline parameter vector | `fit.py` |
+| 06 | cx diagnostic | Where the cx bound should sit (five bound levels × three seeds) | `sweep.py` |
+| 07 | Group-specific cx | Tests a group-specific cx; rejected (sloppy direction) | `fit.py` |
+| 08 | Group-specific cf | Tests a group-specific cf; rejected (sloppy direction) | `fit.py` |
+| 09 | Profile likelihood | Per-parameter identifiability over all 26 parameters | `full_sweep.py` |
 
-## Planned (Phase 4.5: virtual experiments)
+## Robustness
 
-- `30_myelosan_dose/`              — variation in myelosan effect strength
-- `31_intervention_timing/`        — late vs early myelosan
-- `32_combination/`                — hypothetical combined interventions
+| # | Analysis | Question | Entry point |
+|---|----------|----------|-------------|
+| 20 | LOO timepoint | Leave-one-timepoint-out cross-validation (23 points) | `run.py` |
+| 21 | Perturbation | Sensitivity to the neutrophil-count input N(t): deterministic α-scan and stochastic noise | `run_alpha_scan.py`, `run_stochastic.py` |
+| 22 | Predictive check | Parametric bootstrap (N=100); produces the ensemble used downstream | `run.py` → `aggregate.py` |
 
-Each subfolder contains: a runnable script, a README with the analysis question and method, and saved outputs (CSV / pickle / figures).
+## Virtual experiments
+
+| # | Analysis | Question | Entry point |
+|---|----------|----------|-------------|
+| 30 | Busulfan dose-response | DIC severity over the (km, tm) dose grid — 15×15×100 simulations | `run.py` → `make_fig4.py`, `make_fig5.py` |
+| 31 | Intervention timing | DIC severity vs busulfan intervention time — the therapeutic window | `run.py` → `make_fig6.py` |
+| 32 | Combinations | Dose × timing: are they independent thresholds? | `run.py` |
+| 33 | G1 severity validation | Pure-G1 dynamics vs the observed mortality pattern | `run.py` |
+| 34 | Per-group-std bootstrap | Sensitivity of the XIII channel to the normalization choice | `run.py` → `aggregate.py` |
+
+## Running an analysis
+
+Analyses are run as modules from the repository root, e.g.:
+
+```bash
+python -m analyses.05_v13_baseline.fit
+python -m analyses.22_predictive_check.run
+python -m analyses.22_predictive_check.aggregate
+python -m analyses.30_myelosan_dose.run
+```
+
+Figure scripts (`make_figN.py`) are run the same way and read the saved results
+of their analysis. Wall-clock times vary from seconds (33) to hours (22, 30);
+see each analysis README and `docs/reproduction_protocol.md`.

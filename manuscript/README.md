@@ -1,20 +1,23 @@
 # Manuscript
 
-Empty in Phase 0. Populated in Phase 5.
+The manuscript targets a Q1/Q2 mathematical-biology journal (working format:
+*Journal of Theoretical Biology*).
 
-## Planned structure
+## Contents
 
-- `paper.tex` (or `paper.md` if Markdown-based pipeline)
-- `references.bib`
-- `figures/` — publication-quality figures (PDF + PNG)
-- `supplementary/` — supplementary materials, including data CSV copies
-- `cover_letter.md`
+- `draft.md` — the working manuscript. Methods (§2) and Results (§3) are
+  complete; the Abstract, Discussion (§4), and Conclusions (§5) are in progress.
+  A document log at the end of the file records the editorial history.
+- `README.md` — this file.
 
-## Target venues (Q1/Q2)
+Publication-quality figures and tables are generated at runtime by the
+`make_figN.py` scripts under `analyses/` (Fig. 1 from analysis 05; Figs. 2–3
+from analysis 22; Fig. 4–5 from analysis 30; Fig. 6 from analysis 31). The
+supplementary sections S1–S10 live in `supplementary/`.
 
-- Bull. Math. Biol.
-- J. Theor. Biol.
-- PLOS Comput. Biol.
-- J. R. Soc. Interface
+## Division of work
 
-Final venue selection deferred to Phase 5 after fit and analyses are stable.
+- **Numerical modelling, Methods, Results** — Oleksiy Onasenko.
+- **Biological interpretation, Introduction, Discussion** — Olena D. Boiarchuk.
+
+The Abstract and Conclusions are written last, after the Discussion is settled.
