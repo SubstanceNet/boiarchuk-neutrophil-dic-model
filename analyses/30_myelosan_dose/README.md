@@ -1,14 +1,14 @@
-# Analysis 30 — Myelosan dose-response (Phase 4.5 virtual experiment)
+# Analysis 30 — Busulfan dose-response
 
 ## Question
 
 How does the severity of DIC depend on the strength of neutrophil
-suppression by myelosan? What dose-response surface in (km, tm)
+suppression by busulfan? What dose-response surface in (km, tm)
 parameter space defines the transition from full DIC progression to
 DIC prevention?
 
 This is the core biological prediction of the model: a phase diagram
-quantifying the relationship between myelosan effect strength and
+quantifying the relationship between busulfan effect strength and
 clinical outcome.
 
 ## Method
@@ -31,16 +31,19 @@ Total simulations: 225 × 100 = 22,500. Each ~0.3s → ~2 hours wall-clock
 ## Severity metrics
 
 Per-trajectory metrics:
-- **max gHn** — peak hyaline-degranulation accumulation
+- **max gHn** — peak effective coagulation load (neutrophil-derived)
 - **min XIII** — XIII channel nadir (lowest fXIII delta)
 - **max recalc** — peak hypocoagulation (largest positive recalcification time delta)
 - **AUC recalc** — overall coagulation disruption (integrated |Δrecalc|)
 - **time to peak gHn** — temporal indicator of DIC trajectory speed
-- **liver_collapse** — binary: did Hn/Hm exceed 0.99? (proxy for fatal outcome)
+
+(Mortality is validated separately in analysis 33; an earlier liver_collapse
+proxy was removed as invalid — the Hn/Hm threshold was unreachable by
+construction.)
 
 ## Reference points on phase diagrams
 
-- **(km=1.0, tm=1.0)**: no myelosan effect → expected G1-like outcome.
+- **(km=1.0, tm=1.0)**: no busulfan effect → expected G1-like outcome.
   Internal validation: severity here should match G1 observed severity.
 - **(km=4.93, tm=0.43)**: G2 baseline (observed experimental dose).
 - **(km, tm) other**: hypothetical doses (lower or higher than observed).
