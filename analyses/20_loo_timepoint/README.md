@@ -1,4 +1,4 @@
-# Analysis 20 — Leave-One-Timepoint-Out Cross-Validation (Phase 3)
+# Analysis 20 — Leave-One-Timepoint-Out Cross-Validation
 
 ## Question
 

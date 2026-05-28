@@ -1,4 +1,4 @@
-# Analysis 10 — Parametric bootstrap (Phase 3 step 1)
+# Analysis 22 — Parametric bootstrap (predictive check)
 
 ## Question
 

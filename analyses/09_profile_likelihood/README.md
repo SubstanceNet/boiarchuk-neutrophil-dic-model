@@ -1,4 +1,4 @@
-# Analysis 09 — Profile likelihood (Phase 2 step 3)
+# Analysis 09 — Profile likelihood
 
 ## Question
 

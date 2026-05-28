@@ -1,4 +1,4 @@
-# Analysis 32 — Dose × timing combinations (Phase 4.5)
+# Analysis 32 — Dose × timing combinations
 
 ## Question
 

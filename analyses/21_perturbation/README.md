@@ -1,4 +1,4 @@
-# Analysis 21 — Perturbation of N(t) (Phase 3)
+# Analysis 21 — Perturbation of N(t)
 
 ## Question
 
