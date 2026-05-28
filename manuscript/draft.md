@@ -174,8 +174,7 @@ Channel-level agreement was differential: the factor XIII nadir matched observat
 
 # 5. Conclusions
 
-**[PLACEHOLDER — one paragraph, to be written last.]**
-To restate: the model decomposes neutrophil and vessel contributions to DIC; the busulfan kinetic effect is quantified and bracketed; the therapeutic window is characterized as two-phase with a sharp half-day transition between days 2.5 and 3; and protection requires both an adequate dose and timely administration.
+We developed a mechanistic ODE model of neutrophil-driven disseminated intravascular coagulation and used it to decompose the coagulopathy into vessel-mediated and neutrophil-mediated contributions, to quantify the protective effect of granulocytopoietic suppression, and to characterize its therapeutic window. Within the model, the deep hypocoagulable phase of DIC is predominantly neutrophil-mediated through the fibrinogen and factor XIII channels, while the early disturbance of recalcification is vessel-driven; suppression of the neutrophil lineage acts chiefly by reducing neutrophil abundance rather than by modifying reaction kinetics, and confers protection only within a narrow window that closes sharply between days 2.5 and 3 after injury, requiring both adequate suppression and early administration. The predicted two-phase window — prevention before day 2.5, mitigation thereafter — constitutes a testable prediction for future time-resolved intervention experiments. These results give a quantitative, mechanistically explicit form to the long-standing hypothesis that activated neutrophils are causal participants in the hypocoagulable phase of DIC, and they identify the factor XIII channel and the pharmacokinetics of suppression as the primary targets for further experimental and modeling work. More broadly, the approach illustrates how jointly fitting matched experimental groups can separate mechanistic contributions that a single group cannot resolve.
 
 # References
 
