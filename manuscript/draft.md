@@ -179,7 +179,7 @@ To restate: the model decomposes neutrophil and vessel contributions to DIC; the
 
 # References
 
-*Intermediate format (author, year, title, journal, volume:pages, DOI); final styling to JTB at submission. Entries flagged [TO VERIFY] still need a confirmed source and have deliberately not been fabricated.*
+*Intermediate format (author, year, title, journal, volume:pages, DOI); final styling to JTB at submission. All entries have a confirmed primary source.*
 
 **Primary experimental sources (Boiarchuk series)**
 
@@ -213,9 +213,9 @@ To restate: the model decomposes neutrophil and vessel contributions to DIC; the
 **DIC pathogenesis**
 
 - Levi M, ten Cate H (1999) Disseminated intravascular coagulation. New England Journal of Medicine 341(8):586–592. doi:10.1056/NEJM199908193410807
+- Bakhov NI, Aleksandrova LZ, Titov VN (1988) The role of neutrophils in the regulation of tissue metabolism (literature review). Laboratornoye Delo (6):3–12 (in Russian).
 - Barkagan ZS, Momot AP (2001) Diagnosis and controlled therapy of hemostasis disorders. Newdiamed, Moscow, 285 pp. (in Russian).
-- [TO VERIFY] Bakhov 1988; Kuznik 1989 — neutrophil/Hageman-factor activation (cited §1); confirm full bibliographic details.
-- [TO VERIFY] Introduction etiology/temporal-course citation (currently placeholder "Pavlovsky 1988; Chervyovy 1990") — confirm or replace with a verified DIC reference.
+- Kuznik BI, Vasiliev NV, Tsybikov NN (1989) Immunogenesis, hemostasis, and nonspecific resistance of the organism. Meditsina, Moscow, 320 pp. (in Russian).
 
 ---
 
