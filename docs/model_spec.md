@@ -1,6 +1,6 @@
 # Model specification
 
-> **Status (Phase 0):** placeholder. The mathematical content here will be expanded into a publication-ready specification during Phase 4. For now, this document records the v12 model as migrated, sufficient for any reader of the code to reconstruct the equations.
+This document specifies the model: state variables, driving inputs, the ODE system, observation equations, and the cost function. The full publication-form derivation is given in Supplementary §S1.
 
 ## State variables
 
@@ -31,7 +31,7 @@ dHc/dt = k_ca · V(t)  −  k_cd · Hc                  (k_cd = 0.2, fixed)
 dHn/dt = k_na · min(AP², 10) · max(1 − Hn/Hm, 0.005) · 1  −  k_nd · Hn
 dX/dt  = a_x · V(t)  +  c_x · AP · Nr  −  b_x · gHn  −  k_x · max(1 − Hn/Hm, 0) · X
 
-with auxiliary quantity gHn(t) = Hn / max(1 − Hn/Hm, 0.005).
+with auxiliary quantity gHn(t) = Hn / (1 − Hn/Hm). In code the denominator is floored at 0.005 — i.e. max(1 − Hn/Hm, 0.005) — as a computational guard against division by zero as Hn approaches the carrying capacity Hm; the manuscript reports the clean algebraic form.
 
 **Group differences** enter only through k_r,eff and τ_p2:
 - G1: k_r,eff = k_r,            τ_p2 = τ_p2
@@ -50,14 +50,14 @@ with auxiliary quantity gHn(t) = Hn / max(1 − Hn/Hm, 0.005).
 
 ## Cost function
 
-Joint cost = (G1 survivor-weighted normalised RMSE over 6 observables) + (G2 uniform normalised RMSE over 6 observables) + Hn-saturation penalty + W_split · mechanism-split residual at G1 day 2.
+Joint cost = (G1 uniform normalised RMSE over 6 observables) + (G2 uniform normalised RMSE over 6 observables) + Hn-saturation penalty + W_split · mechanism-split residual at G1 day 2. (An earlier ad-hoc down-weighting of late G1 timepoints was tested and found non-influential — analysis 04 — so uniform weighting is used.)
 
 Mechanism-split fixes pro-coagulant fractions on G1 day 2:
 - recalc: 24% neutrophil-mediated
 - fib:    76% neutrophil-mediated
 - xiii:   82% neutrophil-mediated
 
-These targets are derived from G2/G1 day-1 ratios in the dissertation tables. The use of these as a hard prior on the same data is a methodological concern flagged in `notes/known_issues.md` and will be addressed in Phase 1 by sensitivity to W_split and Phase 2 by potential reformulation.
+These targets are derived from the G1/G2 day-1 ratios in the dissertation tables and imposed as a soft prior on the day-2 fit. The prior is required for identifiability and is validated post-hoc by superior held-out Group II fit; its sensitivity to W_split is characterised in Supplementary §S8. For fibrinogen the unconstrained fit settles near 0.05, so the 0.76 target is imposed rather than reproduced by the day-2 dynamics — a transparency caveat restated in §S8.
 
 ## Numerical integration
 
@@ -65,7 +65,7 @@ These targets are derived from G2/G1 day-1 ratios in the dissertation tables. Th
 
 ## Structural priors
 
-The model uses two structural priors, both validated in Phase 1:
+The model uses two structural priors, both validated post-hoc by held-out Group II fit:
 
 ### W_split = 2.0 (mechanism-split constraint)
 
@@ -85,9 +85,9 @@ Both priors are post-hoc validated by the same criterion: G2 observable balance.
 
 This validation criterion is conservative: it does not require the constrained fit to be objectively "best" by every metric, only that it remains balanced. Unconstrained fits can achieve lower aggregate cost or higher per-observable R-squared on individual observables, but at the price of catastrophic degradation on at least one other observable. We argue this trade-off is biologically uninformative and the constrained regime is therefore preferred.
 
-## Open structural questions (Phase 2)
+## Open structural questions
 
-1. Is the (1 − D) self-limiting factor sufficient to capture G2 dynamics, or does fibrinogen-G2 require an additional channel? (current G2 fib R² = 0.26 — see v12 report §7.5)
+1. Is the (1 − D) self-limiting factor sufficient to capture G2 dynamics, or does the fibrinogen-G2 channel require an additional term? (the fibrinogen channel reaches only a moderate Group II fit, ensemble-median R² ≈ 0.41; the factor XIII channel is separately under-determined — Supplementary §S9)
 2. Should the W_split mechanism-split constraint be replaced by an external prior derived independently of the fitted dataset, or relaxed and treated as a soft target across a profile of W values?
 3. Is k_cd = 0.2 (Hc clearance) a defensible biological constant, or should it be fitted with a narrow prior?
 4. Does the joint architecture (24 shared + 2 modifiers) have a principled extension that recovers the per-group separate-fit R² without overfitting?

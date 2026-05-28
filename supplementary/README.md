@@ -15,9 +15,9 @@ and parallel editing.
 - **S5** — Intervention-timing trajectories and temporal metrics (`S5_intervention_timing.md`)
 - **S6** — Phase diagrams for all six severity metrics (`S6_phase_diagrams.md`)
 - **S7** — Reproducibility and data provenance (`S7_reproducibility.md`)
-- **S8** — Mechanism-split prior weight (W_SPLIT) sensitivity *[scaffold]* (`S8_mechanism_split_prior.md`)
-- **S9** — Upper bound on cx as a structural prior *[scaffold]* (`S9_xiii_bound.md`)
-- **S10** — Joint vs Group-II-only fit: architectural penalty *[scaffold]* (`S10_joint_architecture.md`)
+- **S8** — Mechanism-split prior weight (W_SPLIT) sensitivity (`S8_mechanism_split_prior.md`)
+- **S9** — Upper bound on cx as a structural prior (`S9_xiii_bound.md`)
+- **S10** — Joint vs Group-II-only fit: architectural penalty (`S10_joint_architecture.md`)
 
 Main-text references to “Supplementary §S〈n〉” throughout
 `manuscript/draft.md` map to the files above by section number.
