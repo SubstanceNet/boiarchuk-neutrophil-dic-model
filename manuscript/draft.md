@@ -1,4 +1,4 @@
-*[Working title]* A mechanistic model of neutrophil-driven disseminated intravascular coagulation reveals a narrow therapeutic window for myelosuppressive intervention
+A mechanistic model of neutrophil-driven disseminated intravascular coagulation predicts a narrow therapeutic window for myelosuppressive intervention
 
 # Abstract
 
