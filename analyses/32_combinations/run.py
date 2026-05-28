@@ -9,6 +9,7 @@ from pathlib import Path
 import numpy as np
 
 from src.data import load_data, build_neutrophil_interpolators
+from src.ensemble import load_ensemble, good_basin_mask
 
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "31_intervention_timing"))
@@ -31,22 +32,10 @@ def main():
     g1, g2 = load_data()
     _, n2 = build_neutrophil_interpolators(g1, g2)
 
-    # Load ensemble
-    boot = Path("analyses/22_predictive_check/results/_cache")
-    members = []
-    good_mask = []
-    for p in sorted(boot.glob("iter_*.pkl")):
-        with p.open("rb") as f:
-            rec = pickle.load(f)
-        if rec.get("failed"):
-            continue
-        members.append(np.array(rec["best_x"]))
-        xiii_pred = np.asarray(rec["g2_predictions"]["xiii"])
-        ss_res = np.sum((xiii_pred - g2.xiii) ** 2)
-        ss_tot = np.sum((g2.xiii - g2.xiii.mean()) ** 2)
-        r2 = 1.0 - ss_res / ss_tot if ss_tot > 0 else float("nan")
-        good_mask.append(r2 >= 0.3)
-    good_mask = np.array(good_mask)
+    # Load ensemble (shared consolidated artifact, _cache fallback)
+    _ens = load_ensemble()
+    members = [m["best_x"] for m in _ens]
+    good_mask = good_basin_mask(_ens, g2.xiii)
     print(f"Loaded {len(members)} members ({good_mask.sum()} in good basin)")
 
     # Scenarios

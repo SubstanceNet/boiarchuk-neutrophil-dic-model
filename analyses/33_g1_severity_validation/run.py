@@ -32,6 +32,7 @@ import numpy as np
 
 from src.data import load_data, build_neutrophil_interpolators
 from src.model import make_fine_grids, solve_group
+from src.ensemble import load_ensemble
 
 ANALYSIS_DIR = Path(__file__).resolve().parent
 RESULTS_DIR = ANALYSIS_DIR / "results"
@@ -84,11 +85,7 @@ def main():
     n1, n2 = build_neutrophil_interpolators(g1, g2)
     tfg1, tfg2 = make_fine_grids()
 
-    members = []
-    for p in sorted(CACHE.glob("iter_*.pkl")):
-        rec = pickle.load(p.open("rb"))
-        if not rec.get("failed"):
-            members.append(np.array(rec["best_x"]))
+    members = [m["best_x"] for m in load_ensemble()]
     print(f"Loaded {len(members)} ensemble members\n")
 
     g1_results, g2_results = [], []

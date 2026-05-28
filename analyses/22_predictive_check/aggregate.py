@@ -232,6 +232,27 @@ def main():
     out_path.write_text(json.dumps(out, indent=2, default=float))
     print(f"\nSaved: {out_path}")
 
+    # Consolidated, VCS-tracked ensemble artifact for downstream analyses
+    # (30/31/32/33). Holds the minimal per-member data those analyses need
+    # (best_x + Group II XIII prediction), so a fresh clone can reproduce the
+    # Phase-4.5 experiments without re-running the bootstrap. See src/ensemble.py.
+    members_out = dict(
+        analysis="22_predictive_check",
+        n_members=len(iters),
+        note="best_x: (26,) params; g2_xiii: (9,) Group II XIII prediction",
+        members=[
+            dict(
+                best_x=[float(v) for v in rec["best_x"]],
+                g2_xiii=[float(v) for v in rec["g2_predictions"]["xiii"]],
+                failed=bool(rec.get("failed", False)),
+            )
+            for rec in iters
+        ],
+    )
+    members_path = RESULTS_DIR / "ensemble_members.json"
+    members_path.write_text(json.dumps(members_out, indent=2))
+    print(f"Saved: {members_path}")
+
 
 if __name__ == "__main__":
     main()

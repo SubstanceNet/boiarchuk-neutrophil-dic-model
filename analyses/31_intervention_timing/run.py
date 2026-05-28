@@ -17,6 +17,7 @@ from scipy.interpolate import interp1d
 from src import config as cfg
 from src.data import load_data, build_neutrophil_interpolators
 from src.model import _rhs, _V
+from src.ensemble import load_ensemble, good_basin_mask as compute_good_basin_mask
 
 ANALYSIS_DIR = Path(__file__).resolve().parent
 RESULTS_DIR = ANALYSIS_DIR / "results"
@@ -184,22 +185,9 @@ def main():
     g1, g2 = load_data()
     _, n2_interp = build_neutrophil_interpolators(g1, g2)
     
-    bootstrap_cache = Path("analyses/22_predictive_check/results/_cache")
-    ensemble_members = []
-    good_basin_mask = []
-    for p in sorted(bootstrap_cache.glob("iter_*.pkl")):
-        with p.open("rb") as f:
-            rec = pickle.load(f)
-        if rec.get("failed"):
-            continue
-        ensemble_members.append(np.array(rec["best_x"]))
-        # good basin: xiii_G2 R² >= 0.3
-        xiii_pred = np.asarray(rec["g2_predictions"]["xiii"])
-        ss_res = np.sum((xiii_pred - g2.xiii) ** 2)
-        ss_tot = np.sum((g2.xiii - g2.xiii.mean()) ** 2)
-        r2 = 1.0 - ss_res / ss_tot if ss_tot > 0 else float("nan")
-        good_basin_mask.append(r2 >= 0.3)
-    good_basin_mask = np.array(good_basin_mask)
+    _ens = load_ensemble()
+    ensemble_members = [m["best_x"] for m in _ens]
+    good_basin_mask = compute_good_basin_mask(_ens, g2.xiii)
     print(f"Loaded {len(ensemble_members)} ensemble members "
           f"({good_basin_mask.sum()} in good basin)")
     

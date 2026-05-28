@@ -14,6 +14,7 @@ import numpy as np
 from src import config as cfg
 from src.data import load_data, build_neutrophil_interpolators
 from src.model import make_fine_grids, solve_group
+from src.ensemble import load_ensemble, good_basin_mask as compute_good_basin_mask
 
 ANALYSIS_DIR = Path(__file__).resolve().parent
 RESULTS_DIR = ANALYSIS_DIR / "results"
@@ -110,14 +111,9 @@ def main():
     _, n2_interp = build_neutrophil_interpolators(g1, g2)
     t_fine_g1, t_fine_g2 = make_fine_grids()
     
-    # Load bootstrap ensemble (100 members)
-    bootstrap_cache = Path("analyses/22_predictive_check/results/_cache")
-    ensemble_members = []
-    for p in sorted(bootstrap_cache.glob("iter_*.pkl")):
-        with p.open("rb") as f:
-            rec = pickle.load(f)
-        if not rec.get("failed"):
-            ensemble_members.append(np.array(rec["best_x"]))
+    # Load bootstrap ensemble (shared consolidated artifact, _cache fallback)
+    _ens = load_ensemble()
+    ensemble_members = [m["best_x"] for m in _ens]
     print(f"Loaded {len(ensemble_members)} bootstrap ensemble members")
     
     # Build grid (log-spaced for km, log-spaced for tm)
@@ -127,23 +123,7 @@ def main():
     print(f"tm grid: {tm_grid.round(3).tolist()}")
     
     # Identify good-basin ensemble members (xiii_G2 R² >= 0.3 from analysis 22)
-    boot_aggregated = json.loads(
-        Path("analyses/22_predictive_check/results/ensemble.json").read_text())
-    
-    # Compute per-member xiii_G2 R² for filtering
-    g1_d, g2_d = load_data()
-    good_basin_mask = []
-    for m_idx, p in enumerate(sorted(bootstrap_cache.glob("iter_*.pkl"))):
-        with p.open("rb") as f:
-            rec = pickle.load(f)
-        if rec.get("failed"):
-            continue
-        xiii_pred = np.asarray(rec["g2_predictions"]["xiii"])
-        ss_res = np.sum((xiii_pred - g2_d.xiii) ** 2)
-        ss_tot = np.sum((g2_d.xiii - g2_d.xiii.mean()) ** 2)
-        r2 = 1.0 - ss_res / ss_tot if ss_tot > 0 else float('nan')
-        good_basin_mask.append(r2 >= 0.3)
-    good_basin_mask = np.array(good_basin_mask)
+    good_basin_mask = compute_good_basin_mask(_ens, g2.xiii)
     print(f"Good-basin members (xiii_G2 R²>=0.3): {good_basin_mask.sum()}/{len(good_basin_mask)}")
     
     # Sweep
