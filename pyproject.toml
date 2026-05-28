@@ -38,8 +38,6 @@ analysis = [
     "tqdm>=4.66",
 ]
 
-[project.scripts]
-boiarchuk-fit = "src.cli:main"
 
 [tool.setuptools]
 packages = ["src"]
