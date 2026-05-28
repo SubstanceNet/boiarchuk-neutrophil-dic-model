@@ -55,7 +55,7 @@ Per trajectory:
 - `results/intervention_predictions_raw.pkl` — all per-member predictions
 - `results/summary_by_timing.json` — ensemble percentiles per scenario
 - `figures/fig1_severity_vs_timing.png` — severity metrics vs t_intervention
-- `figures/fig2_temporal_metrics.png` — t_peak, t_recovery vs t_intervention
+- `figures/fig2_temporal_vs_timing.png` — t_peak, t_recovery vs t_intervention
 - `figures/fig3_trajectories.png` — example gHn trajectories per scenario
 - `FINDINGS.md` — interpretation
 
