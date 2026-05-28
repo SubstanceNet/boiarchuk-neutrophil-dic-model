@@ -1,5 +1,15 @@
 A mechanistic model of neutrophil-driven disseminated intravascular coagulation predicts a narrow therapeutic window for myelosuppressive intervention
 
+Olena D. Boiarchuk¹ and Oleksiy Onasenko²
+
+¹ [Affiliation to be supplied — institution, department, city, country]
+
+² [Affiliation to be supplied — institution, department, city, country]
+
+*Corresponding author:* [name and email to be supplied]
+
+*ORCID:* [to be supplied]
+
 # Abstract
 
 Disseminated intravascular coagulation (DIC) progresses through a hypercoagulable phase to a deep hypocoagulable phase in which clotting may fail almost completely. Experimental work has implicated neutrophils, acting through their lysosomal apparatus, as active participants in this coagulopathy rather than passive bystanders, but no mechanistic model has quantified their contribution relative to direct vascular injury. Here we develop a mechanistic ordinary-differential-equation model of neutrophil-driven DIC and fit it jointly to two experimental rabbit groups — a control group and a group in which granulocytopoiesis was suppressed with busulfan before induction — in an anticoagulant-rodenticide (ethylphenacin) experimental model of DIC with six hemostatic and neutrophil-activity observables. Uncertainty was characterized by profile likelihood, a parametric bootstrap (N = 100), leave-one-out cross-validation, and neutrophil-count perturbation, and three virtual experiments explored the effect of suppression strength and timing. A prior-regularized decomposition assigned the recalcification channel predominantly to a vessel-mediated source and the fibrinogen and factor XIII channels predominantly to a neutrophil-mediated source, quantifying — consistent with, rather than independently confirming — the neutrophil hypothesis. The kinetic effect of busulfan attenuated modeled DIC severity 2.5- to 7-fold, and its protection was confined to a narrow therapeutic window: near-complete prevention within the first 2.5 days, with a sharp transition to partial mitigation thereafter. The model reproduced the observed roughly 22-fold separation in hypocoagulation severity between groups, with the severity peak matching the timing of the observed mortality window (day 11). Dose and timing behaved as independent thresholds, each necessary and neither sufficient alone. The model gives quantitative, mechanistically explicit form to the role of neutrophils in the hypocoagulable phase of DIC and yields a testable two-phase prediction for the timing of myelosuppressive intervention.
@@ -174,6 +184,20 @@ Channel-level agreement was differential: the factor XIII nadir matched observat
 # 5. Conclusions
 
 We developed a mechanistic ODE model of neutrophil-driven disseminated intravascular coagulation and used it to decompose the coagulopathy into vessel-mediated and neutrophil-mediated contributions, to quantify the protective effect of granulocytopoietic suppression, and to characterize its therapeutic window. Within the model, the deep hypocoagulable phase of DIC is predominantly neutrophil-mediated through the fibrinogen and factor XIII channels, while the early disturbance of recalcification is vessel-driven; suppression of the neutrophil lineage acts chiefly by reducing neutrophil abundance rather than by modifying reaction kinetics, and confers protection only within a narrow window that closes sharply between days 2.5 and 3 after injury, requiring both adequate suppression and early administration. The predicted two-phase window — prevention before day 2.5, mitigation thereafter — constitutes a testable prediction for future time-resolved intervention experiments. These results give a quantitative, mechanistically explicit form to the long-standing hypothesis that activated neutrophils are causal participants in the hypocoagulable phase of DIC, and they identify the factor XIII channel and the pharmacokinetics of suppression as the primary targets for further experimental and modeling work. More broadly, the approach illustrates how jointly fitting matched experimental groups can separate mechanistic contributions that a single group cannot resolve.
+
+# Declarations
+
+**Ethics approval.** The animal experiments underlying this study were conducted in accordance with accepted bioethical principles for the use of laboratory animals. [Ethics approval reference to be supplied — approving committee/institution and protocol number.]
+
+**Funding.** The authors received no external funding; the work was self-funded.
+
+**Conflict of interest.** The authors declare no conflict of interest.
+
+**Data and code availability.** The experimental data (group-level time series with standard errors), the model source code, the analysis scripts, and the result artifacts that support the findings are available in the project repository [repository URL to be supplied]; the per-value data provenance and the reproduction protocol are included therein. Additional detail is provided in the Supplementary Information (§S1–§S10).
+
+**Author contributions.** O.D.B. designed and performed the experimental work, contributed the biological interpretation, and led the Introduction and Discussion. O.O. developed the mathematical model, performed the numerical estimation, robustness analyses, and virtual experiments, implemented the analysis code, and led the Methods and Results. Both authors reviewed and approved the manuscript. *[Contribution statement to be confirmed by the authors.]*
+
+**Acknowledgments.** [To be supplied, if any.]
 
 # References
 
