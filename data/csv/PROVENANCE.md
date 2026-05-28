@@ -7,10 +7,10 @@ This document maps every numerical value in `group1.csv` and `group2.csv` to its
 | Item | Value | Source |
 |------|-------|--------|
 | Animal model | Mature rabbits, 2.5–3.0 kg, both sexes | Boyarchuk diss. (1998), Methods |
-| DIC inducer | "Эфа-2" (ethylphenacin, first-generation 1,3-indandione vitamin-K-antagonist rodenticide bait), 8330 mg/kg ready bait, p.o., fasting | Boyarchuk diss. (1998), Methods; inducer identity confirmed by O.B. |
+| DIC inducer | "Efa-2" (ethylphenacin, first-generation 1,3-indandione vitamin-K-antagonist rodenticide bait), 8330 mg/kg ready bait, p.o., fasting | Boyarchuk diss. (1998), Methods; inducer identity confirmed by O.B. |
 | Group I size | n = 40 (12 deaths, 30%, on days 10–12) | Boyarchuk commentary (mortality 30% — not in 2008 paper which states 27%) |
 | Group II size | n = 40 (effectively 0% mortality) | Boyarchuk commentary |
-| G2 myelosan protocol | 10 mg/day × 5–7 days + 4 mg/day × 8 days, p.o. | Boyarchuk commentary; **not published in any journal article** |
+| G2 busulfan protocol | 10 mg/day × 5–7 days + 4 mg/day × 8 days, p.o. | Boyarchuk commentary; **not published in any journal article** |
 | Target G2 baseline | ~40–50% reduction in peripheral neutrophils | Boyarchuk commentary |
 
 ## Variable definitions and conventions
@@ -55,13 +55,13 @@ Per the analytical summary (Boyarchuk 1998–2023 retrospective), the publicatio
 | Neutrophil count G2 (absolute)           | **Not published** | — |
 | Bone marrow granulocytopoiesis G2        | **Not published** | — |
 | Mortality figures (30% / ~0%)            | Partially (27% in 2000) | 2000 |
-| Myelosan protocol details                | **Not published** | — |
+| Busulfan protocol details                | **Not published** | — |
 
 This means a substantial portion of `group2.csv` and the "M" pre-treatment state are reconstructed from the dissertation directly, not from any peer-reviewed article. Any publication using this dataset must:
 
 1. cite the dissertation as primary source (Boyarchuk O. D., 1998);
 2. include the data files (or equivalent supplementary tables) so reviewers can audit numbers;
-3. acknowledge that the myelosan protocol description is original to the present work (per author commentary).
+3. acknowledge that the busulfan protocol description is original to the present work (per author commentary).
 
 ## Baseline (t=0) absolute values
 
@@ -74,9 +74,9 @@ For reconstructing original measurements from CSV deltas, baselines are:
 | Fibrinogen | (per protocol) | (per protocol) | Diss. tables |
 | Factor XIII | 100% (by definition) | 100% (by definition) | Standard |
 | Acid phosphatase | (low baseline, BO) | (low baseline, BO) | Diss. table 5.7 |
-| Neutrophil count | 7.3 × 10⁹/L | 3.9 × 10⁹/L (post-myelosan) | Diss. table 5.1 |
+| Neutrophil count | 7.3 × 10⁹/L | 3.9 × 10⁹/L (post-busulfan, state M) | Diss. table 5.1 |
 
-Baselines beyond neutrophil count are documented in the dissertation tables but were not numerically required by v12 (which works on deltas). They will be added to `data/csv/baselines.csv` if needed for absolute-value plots in the manuscript.
+Baselines beyond neutrophil count are documented in the dissertation tables but are not numerically required by the model (which works on deltas). They will be added to `data/csv/baselines.csv` if needed for absolute-value plots in the manuscript.
 
 ## Standard errors (sigma_group1.csv, sigma_group2.csv)
 

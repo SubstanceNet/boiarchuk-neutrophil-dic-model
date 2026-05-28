@@ -32,7 +32,7 @@ Parametric Gaussian bootstrap, N=100 iterations:
 python -m analyses.10_bootstrap.run
 ```
 
-Wall-clock estimate: ~20 hours, two nights overnight.
+Wall-clock: 23.4 hours (actual, 100 members, zero failed).
 
 ## Outputs
 

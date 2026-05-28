@@ -130,7 +130,10 @@ NEUTRO_FRAC: dict[str, float] = {
     "xiii":   0.82,   # 82% neutrophil-mediated (XIII stored in azurophil granules)
 }
 
-# Survivor weighting for G1 cost.
+# Survivor weighting for G1 cost (LEGACY: defined but NOT used by the v13
+# cost function src.cost_v13.joint_cost_v13, which weights G1 uniformly;
+# analysis 04 showed this down-weighting is non-influential). Retained for
+# the v12 cost path (src.fit.joint_cost) and reference.
 # 30% mortality occurred on days 10-12; weights downweight late timepoints
 # proportionally to surviving sample size (qualitative, not exact n_t/N).
 # Length 16 = len(T1).
