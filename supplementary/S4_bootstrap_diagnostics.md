@@ -1,25 +1,28 @@
-# S4. Bootstrap diagnostic plots
+# S4. Bootstrap Diagnostic Plots
 
-*Part of the Supplementary Information for the manuscript "A mechanistic model of neutrophil-driven disseminated intravascular coagulation…" Main-text references to the bootstrap ensemble: Methods §2.4 (pipeline), Results §3.2 (XIII under-determination, Figure 2), Table 1 (well-identified parameter CIs), Table S2 (full ensemble). This section is the methodological appendix to the bootstrap: cost distribution, convergence diagnostic, mechanistic interpretation of the XIII basin classification, and normalization sensitivity.*
+*Part of the Supplementary Information for Boyarchuk & Onasenko (2026). Bootstrap ensemble in the main text: §2.4 (pipeline), §3.2 (factor XIII under-determination, Figure 2), Table 1 (CIs for well-identified parameters), Table S2 (full ensemble). This appendix provides the methodological supplement: cost distribution, convergence diagnostics, mechanistic interpretation of the factor XIII basin classification, and sensitivity to normalisation.*
 
 ---
 
-## S4.1 Bootstrap setup
+## S4.1 Bootstrap settings
 
-The parametric bootstrap pipeline is fully specified in §S2.3. The specifics for this run:
+The parametric bootstrap pipeline is fully specified in §S2.3. Particulars of this run:
 
-- **Synthetic-data generator.** Each of the 100 iterations samples a synthetic dataset y_synth = y_baseline + ε, where y_baseline is the baseline-fit prediction at the real observation timepoints and ε is Gaussian noise with zero mean. The standard deviation σ is set per-observable per-group equal to the baseline RMSE on the real data (range-based normalisation; see §S4.5 for the sensitivity check under per-group standard deviations).
-- **Iterations.** N = 100, seeds i = 1–1 to 100 (deterministic for reproducibility).
-- **Computational profile.** Total wall-clock 23.4 hours on a single workstation using `workers=-1` (all CPU cores) in scipy.differential_evolution.
-- **Failures.** Zero failed iterations: every refit converged to a finite cost and a non-NaN trajectory.
+- **Synthetic data generator.** Each of the 100 iterations samples a synthetic dataset $y_{\text{synth}} = y_{\text{baseline}} + \varepsilon$, where $y_{\text{baseline}}$ is the baseline fitted prediction at the real observation time points and $\varepsilon$ is zero-mean Gaussian noise. The standard deviation $\sigma$ is set for each observable in each group equal to the baseline RMSE on real data (range-based normalisation; sensitivity analysis with per-group standard deviations is described in subsection S4.5 below).
+
+- **Iterations.** $N = 100$, seeds $i = 1$ to $100$ (deterministic for reproducibility).
+
+- **Computational profile.** Total wall-clock time 23.4 hours on a single workstation using `workers=-1` (all CPU cores) in `scipy.differential_evolution`.
+
+- **Failures.** Zero failed iterations: every re-fit converged to a finite cost and NaN-free trajectory.
 
 ---
 
 ## S4.2 Cost distribution and convergence
 
-Aggregated cost statistics across the 100 bootstrap iterations:
+Aggregate cost statistics across 100 bootstrap iterations:
 
-| Metric | Value |
+| **Metric** | **Value** |
 |---|---|
 | Mean cost | 0.8750 |
 | Standard deviation | 0.0737 |
@@ -28,56 +31,56 @@ Aggregated cost statistics across the 100 bootstrap iterations:
 | Maximum | 1.0888 |
 | Baseline cost (real data) | 0.9590 |
 
-The bootstrap mean (0.875) sits slightly below the baseline cost on real data (0.959). This is expected for parametric bootstrap: synthetic data are generated from the baseline predictions themselves, so the optimiser starts each iteration at near-zero residual on at least one trajectory and converges to costs systematically lower than the real-data fit. The standard deviation of 0.0737 (CV ≈ 8%) and the absence of failed iterations together indicate a stable pipeline; the multi-modal landscape described in §S4.3 manifests in *parameter-space* spread, not in cost-space outliers.
+The bootstrap mean (0.875) sits slightly below the baseline cost on real data (0.959). This is expected for parametric bootstrap: synthetic data are generated from the baseline predictions themselves, so the optimiser starts each iteration near zero residual on at least one trajectory and converges to costs systematically lower than the real-data fit. Standard deviation 0.0737 (CV $\approx$ 8%) and the absence of failed iterations together indicate a stable pipeline; the multimodal landscape described in S4.3 manifests in *parameter-space* scatter, not in cost-space outliers.
 
-**Convergence check.** We compared 95% CI widths at N = 50 (first half of the ensemble) and N = 100 (full ensemble) to test whether the ensemble has converged for the well-identified parameters:
+**Convergence check.** We compared 95% CI widths at $N = 50$ (first half of the ensemble) versus $N = 100$ (full ensemble) to verify whether the ensemble had converged for the well-identified parameters:
 
-| Parameter | Δ width (N = 50 → N = 100) | Note |
+| **Parameter** | **$\Delta$ width ($N = 50 \to N = 100$)** | **Note** |
 |---|---|---|
-| tp2 | +2.9% | converged |
-| kd | −6.2% | converged |
-| at | +5.1% | converged |
-| tm | +8.8% | converged |
-| s2 | +8.9% | converged |
-| km | +26.4% | slightly under-converged |
+| $t_{p2}$ | +2.9% | converged |
+| $k_d$ | −6.2% | converged |
+| $a_t$ | +5.1% | converged |
+| $t_m$ | +8.8% | converged |
+| $s_2$ | +8.9% | converged |
+| $k_m$ | +26.4% | slightly under-converged |
 
-Five of the six well-identified parameters show CI width changes below 10% between half-ensemble and full-ensemble, consistent with convergence. The exception is **km**, whose CI width changed by 26.4% across the doubling; the published interval [3.46, 5.73] may be slightly narrower than the true bootstrap CI, which is closer to [3.2, 6.0]. The difference does not affect any biological conclusion, but is reported here transparently. For sloppy parameters (§S3.2), the half-to-full-ensemble change is larger — e.g. df −47.7%, kx +27.2%, kr −23.8%, cr +19.7% — reflecting the wider intrinsic resample distribution of those parameters; this is expected and does not threaten the well-identified estimates. The aggregate mean of |Δ width| across all 26 parameters is 12.2%.
+Five of the six well-identified parameters show CI width changes below 10% between the half and full ensembles, consistent with convergence. The exception is **$k_m$**, whose CI width changed by 26.4% upon doubling; the reported interval [3.46, 5.73] may be slightly narrower than the true bootstrap CI, which is closer to [3.2, 6.0]. This difference does not affect any biological conclusion, but is reported here for transparency. For sloppy parameters (§S3.2), the change from half to full ensemble is larger — for example, $d_f$ −47.7%, $k_x$ +27.2%, $k_r$ −23.8%, $c_r$ +19.7% — reflecting the wider internal re-sampling distribution of these parameters; this is expected and does not threaten the well-identified estimates. The aggregate mean $|\Delta\text{width}|$ across all 26 parameters is 12.2%.
 
 ---
 
 ## S4.3 Factor XIII basin classification
 
-The defining diagnostic from the bootstrap is the bimodal distribution of Group II XIII R² across the 100 iterations. The full breakdown:
+The defining diagnostic from the bootstrap is the bimodal distribution of $R^2$ for Group II factor XIII across 100 iterations. Full breakdown:
 
-| R²_G2 (XIII) range | Iterations | Fraction |
+| **$R^2_{\text{G2}}(\text{XIII})$ range** | **Iterations** | **Fraction** |
 |---|---|---|
-| < 0 | 41 | 41% |
-| [0, 0.3) | 32 | 32% |
-| [0.3, 0.6) | 19 | 19% |
-| ≥ 0.6 | 8 | 8% |
+| $< 0$ | 41 | 41% |
+| $[0, 0.3)$ | 32 | 32% |
+| $[0.3, 0.6)$ | 19 | 19% |
+| $\geq 0.6$ | 8 | 8% |
 
-The full ensemble median is R²_G2(XIII) = 0.075 with 95% CI [−1.019, 0.649], reflecting the bimodal shape rather than a unimodal central tendency (Figure 2, main-text panel b). For downstream analyses that depend on accurate XIII predictions, we define a **good-basin subset** by the criterion R²_G2(XIII) ≥ 0.3; this gives **n = 27 members** (the 19 + 8 from the table above). The same n = 27 criterion is used for the conservative confidence bands in the virtual experiments (main-text §3.5–3.8) and in Figures 4–6.
+The full-ensemble median is $R^2_{\text{G2}}(\text{XIII}) = 0.075$ with 95% CI $[-1.019, 0.649]$, reflecting the bimodal shape rather than a unimodal central tendency (Figure 2, panel b, main text). For subsequent analyses depending on accurate factor XIII predictions, we define a **"good-basin" subset** by the criterion $R^2_{\text{G2}}(\text{XIII}) \geq 0.3$; this yields **$n = 27$ members** (19 + 8 from the table above). The same $n = 27$ criterion is used for conservative confidence bands in the virtual experiments (main text §3.5) and in Figures 4–6.
 
-**Mechanism: the bx/kx ratio.** The bimodality is not arbitrary stochastic settling — it traces to a single parameter ratio that distinguishes the two basins. Comparing the 41 bad-basin iterations (R² < 0) with the 19 good-basin iterations (R² ≥ 0.3):
+**Mechanism: the $b_x/k_x$ ratio.** The bimodality is not arbitrary stochastic settling — it traces to a single parameter ratio that distinguishes the two basins. Comparison of 41 poor-basin iterations ($R^2 < 0$) with 19 good-basin iterations ($R^2 \geq 0.3$):
 
-| Parameter | Bad-basin median | Good-basin median | Ratio (bad / good) |
+| **Parameter** | **Poor-basin median** | **Good-basin median** | **Ratio (poor/good)** |
 |---|---|---|---|
-| bx (XIII degradation rate) | 35.74 | 27.91 | 1.28 |
-| ax (XIII production / inducer) | 47.78 | 42.21 | 1.13 |
-| cx (XIII production / AP·Nr) | 575.1 | 507.3 | 1.13 |
-| kx (XIII liver-modulated resynthesis) | 2.43 | 3.03 | 0.80 |
+| $b_x$ (factor XIII degradation rate) | 35.74 | 27.91 | 1.28 |
+| $a_x$ (factor XIII production / inducer) | 47.78 | 42.21 | 1.13 |
+| $c_x$ (factor XIII production / $AP \cdot N_r$) | 575.1 | 507.3 | 1.13 |
+| $k_x$ (liver-modulated factor XIII resynthesis) | 2.43 | 3.03 | 0.80 |
 
-The mechanism is direct: high bx combined with low kx gives XIII degradation exceeding hepatic resynthesis, so the integrated XIII trajectory diverges from observation. Low bx with adequate kx gives degradation that resynthesis can compensate. The separation is continuous rather than discrete — the Pearson correlation between bootstrap-iteration bx/kx and R²_G2(XIII) is −0.33, moderate but not high — consistent with drift along the XIII sloppy direction identified in §S3.2 (ax, cx, bx, kx all classified as sloppy or grid-truncated). The XIII bimodality is therefore best described as the projection of a continuous sloppy manifold onto the binary fit-quality criterion, not as switching between two structurally distinct regimes.
+The mechanism is straightforward: high $b_x$ combined with low $k_x$ gives degradation of factor XIII that exceeds hepatic resynthesis, so the integrated factor XIII trajectory diverges from the observation. Low $b_x$ with sufficient $k_x$ gives degradation that resynthesis can compensate. The separation is rather continuous than discrete — the Pearson correlation between a bootstrap iteration's $b_x/k_x$ ratio and its $R^2_{\text{G2}}(\text{XIII})$ is −0.33, moderate but not high — consistent with drift along the sloppy factor XIII direction identified in §S3.2 ($a_x$, $c_x$, $b_x$, $k_x$ are all classified as sloppy or grid-truncated). The factor XIII bimodality is therefore best described as the projection of a continuous sloppy manifold onto a binary fit-quality criterion, not as a switch between two structurally distinct regimes.
 
-By contrast, **the well-identified parameters are essentially identical between bad-basin and good-basin iterations** (ratios in [0.95, 1.03] for kd, tp2, km, tm). The mechanism split, the busulfan modifiers, and the inducer-pulse timing are robust to the XIII basin choice; the main biological conclusions of the manuscript are independent of which XIII basin a given iteration occupies.
+In contrast, **well-identified parameters are virtually identical between poor- and good-basin iterations** (ratio in [0.95, 1.03] for $k_d$, $t_{p2}$, $k_m$, $t_m$). The mechanism decomposition, busulfan modifiers, and inducer impulse timing are robust to which basin the factor XIII channel occupies; the main biological conclusions of the manuscript do not depend on which basin a given iteration occupies.
 
 ---
 
-## S4.4 Per-observable R² across the ensemble
+## S4.4 Per-observable $R^2$ across the ensemble
 
-Median R² with 95% CI across 100 iterations:
+Median $R^2$ with 95% CI across 100 iterations:
 
-| Observable | Group I median [95% CI] | Group II median [95% CI] |
+| **Observable** | **Group I median [95% CI]** | **Group II median [95% CI]** |
 |---|---|---|
 | recalc | 0.768 [0.703, 0.813] | 0.881 [0.768, 0.940] |
 | thrombin | 0.850 [0.801, 0.883] | 0.935 [0.861, 0.966] |
@@ -86,16 +89,16 @@ Median R² with 95% CI across 100 iterations:
 | AP | 0.809 [0.724, 0.862] | 0.952 [0.754, 0.974] |
 | D | 0.882 [0.807, 0.930] | 0.737 [0.590, 0.827] |
 
-Group I fit quality is robust across the ensemble — every observable shows median R² > 0.70. Group II shows the expected XIII degradation; fibrinogen sits at median R² = 0.407 with a lower CI bound near zero, consistent with the fibrinogen-channel cancellation diagnostic discussed in main-text §4.6. Only 5 of 100 iterations achieve R²_G2 ≥ 0.4 across *all six* observables simultaneously, underscoring that the joint G2 fit is constrained by the XIII channel rather than by the data fit at large.
+Group I fit quality is robust across the ensemble — each observable shows median $R^2 > 0.70$. Group II shows the expected degradation in factor XIII; fibrinogen sits at median $R^2 = 0.407$ with the CI lower bound near zero, consistent with the fibrinogen channel cancellation diagnostic discussed in main text §4.4. Only 5 of 100 iterations achieve $R^2_{\text{G2}} \geq 0.4$ across *all six* observables simultaneously, highlighting that the joint Group II fit is constrained by the factor XIII channel, not by the data fit overall.
 
 ---
 
-## S4.5 Normalization sensitivity (per-group standard deviations)
+## S4.5 Sensitivity to normalisation (per-group standard deviations)
 
-A colleague review raised the question of whether the XIII under-determination might be an artefact of the range-based per-observable scale factors. The range-based factor for XIII (SC[xiii] = 150) is set from the union of Group I and Group II value ranges. Per-group standard deviations differ sharply: σ(G1 xiii) = 48.6 vs σ(G2 xiii) = 6.36, so a per-group-std normalisation would up-weight the Group II XIII residual roughly 24-fold relative to the range-based default. A single-seed refit on real data under per-group-std lifted R²_G2(XIII) from 0.08 to 0.93 — superficially suggesting that the under-determination is a normalisation artefact.
+A peer-review query raised whether the factor XIII under-determination could be an artefact of the range-based scale factors for each observable. The range-based multiplier for factor XIII ($SC[\text{xiii}] = 150$) is set from the pooled value range of Group I and Group II. Per-group standard deviations differ sharply: $\sigma(\text{G1 xiii}) = 48.6$ vs. $\sigma(\text{G2 xiii}) = 6.36$, so normalising by per-group standard deviation would raise the weight of the Group II factor XIII residual approximately 24-fold relative to the default range-based multiplier. A single-seed re-fit on real data under per-group standard deviation normalisation raised $R^2_{\text{G2}}(\text{XIII})$ from 0.08 to 0.93 — superficially suggesting that the under-determination is a normalisation artefact.
 
-**Bootstrap test (analysis 34).** We re-ran the parametric bootstrap (identical to S4.1 in every other respect) with the per-group-std normalisation. The R²_G2(XIII) < 0 fraction rose to **10 of 12 iterations (83%)**, *higher* than the 41% observed under range-based normalisation, not lower. The run was stopped at 12 of a planned 50 iterations because the 83% rate was already overwhelming relative to the 16% decision threshold and further iterations would not change the conclusion.
+**Bootstrap test (analysis 34).** We re-ran the parametric bootstrap (identical to S4.1 in all other respects) with per-group standard deviation normalisation. The fraction of $R^2_{\text{G2}}(\text{XIII}) < 0$ rose to **10 of 12 iterations (83%)**, *higher* than the 41% observed under range normalisation, not lower. The run was stopped at 12 of the planned 50 iterations because the 83% fraction was already decisive relative to the 16% decision threshold, and further iterations would not have changed the conclusion.
 
-**Interpretation.** Up-weighting the Group II XIII residual by ~24× makes the cost surface in the XIII channel steeper, so the optimiser falls into the poor-bx/kx basin (§S4.3) *more often* under bootstrap noise, even though the good basin gives a better fit when reached on the real data. The range-based normalisation is too soft for G2 XIII (under-weighting by 24×); the per-group-std normalisation is too sharp (83% R² < 0). Both endpoints confirm the same structural property: the XIII under-determination is a property of the {ax, cx, bx, kx} parameter manifold, robust to the normalisation choice rather than an artefact of it.
+**Interpretation.** Raising the weight of the Group II factor XIII residual approximately 24-fold makes the cost surface steeper in the factor XIII channel, so the optimiser falls into the poor $b_x/k_x$ basin (subsection S4.3) *more often* under bootstrap noise, even though the good basin gives a better fit when reached on real data. Range-based normalisation is too soft for Group II factor XIII (under-weighted by 24×); per-group standard-deviation normalisation is too harsh (83% $R^2 < 0$). Both extremes confirm the same structural property: factor XIII under-determination is a property of the parameter manifold $\{a_x, c_x, b_x, k_x\}$, robust to the normalisation choice, not an artefact of it.
 
-We retain the range-based normalisation as the production setting (the N = 100 ensemble in §S4.1–S4.4 and Table S2) and report the per-group-std bootstrap as a sensitivity check. The full structural justification for the cx upper bound, the most identifiable single constraint on this manifold, is in §S9.
+We retain range-based normalisation as the production setting (subsections S4.1–S4.4 and Table S2) and report the per-group standard deviation bootstrap as a sensitivity check. The full structural justification for the $c_x$ upper bound — the single most identifiable individual constraint on this manifold — is given in §S9.

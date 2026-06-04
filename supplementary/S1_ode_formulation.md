@@ -1,6 +1,6 @@
-# S1. Full ODE formulation and observable equations
+# S1. Full ODE Formulation and Observable Equations
 
-*Part of the Supplementary Information for the manuscript "A mechanistic model of neutrophil-driven disseminated intravascular coagulation…" This section is the complete mathematical specification of the model; parameter symbols are defined in Table S2 (Supplementary S2), and the numerical estimates appear in Table 1 (main text) and Table S2. Cross-references in main text point here for: state-space definition (§2.2), gHn nonlinearity (§4.6), initial-condition convention (§2.1), and group-specific structure (§3.5).*
+*Part of the Supplementary Information for the manuscript "A mechanistic model of neutrophil-mediated disseminated intravascular coagulation predicts a narrow therapeutic window for myelosuppressive intervention…". This appendix provides the complete mathematical specification of the model; parameter symbols are defined in Table S2 of Appendix S2, which also consolidates the numerical estimates (a selection of well-identified parameters is given in Table 1 of the main text). Cross-references from the main text: state-space definition (§2.2), $g_{Hn}$ nonlinearity (§4.4), initial-condition convention (§2.1), definition of group-specific modifiers $k_m$/$t_m$ (§2.2; quantitative application — §3.5).*
 
 ---
 
@@ -8,192 +8,201 @@
 
 The model has five state variables, all initialised to zero (§S1.5):
 
-| Symbol | Range | Units | Meaning |
+| **Symbol** | **Range** | **Units** | **Meaning** |
 |---|---|---|---|
-| D | [0, 1] | dimensionless | Fraction of degranulated neutrophils |
-| AP | ≥ 0 | Bodansky units (BO) | Acid phosphatase activity in plasma (Δ from baseline) |
-| Hc | ≥ 0 | arbitrary | Inducer-derived coagulation pool |
-| Hn | [0, Hm] | arbitrary | Neutrophil-derived coagulation pool |
-| X | ℝ | % | Factor XIII activity (Δ from baseline) |
+| $D$ | $[0, 1]$ | dimensionless | Fraction of degranulated neutrophils |
+| $AP$ | $\geq 0$ | Bodansky units (BO) | Plasma acid phosphatase activity ($\Delta$ from baseline) |
+| $H_c$ | $\geq 0$ | arbitrary | Inducer-derived coagulation pool |
+| $H_n$ | $[0, H_m]$ | arbitrary | Neutrophil-derived coagulation pool |
+| $X$ | $\mathbb{R}$ | % | Factor XIII activity ($\Delta$ from baseline) |
 
-Time t is in days. The parameter vector pv has length 26; symbol-to-index mapping follows `src/config.NAMES` and is given in Table S2.
+Time $t$ is in days. The parameter vector $p_v$ has length 26; the mapping of symbols to indices follows `src/config.NAMES` and is given in Table S2.
 
-The two pools Hc and Hn appear in the source dissertation under the term *hyaline microthrombi*, reflecting the historical association with fibrin clots in the microvasculature characteristic of DIC. In the ODE these are abstract coagulation pools rather than literal microthrombi; the present text uses "inducer-derived coagulation pool" (Hc) and "neutrophil-derived coagulation pool" (Hn) accordingly.
+The two pools $H_c$ and $H_n$ appear in the source dissertation under the term *hyaline microthrombi*, reflecting the historical association with fibrin clots in the microvascular bed characteristic of DIC. In the ODE they are abstract coagulation pools, not literal microthrombi; the present text accordingly uses "inducer-derived coagulation pool" ($H_c$) and "neutrophil-derived coagulation pool" ($H_n$).
 
 Group differences are encapsulated in two effective parameters:
 
-- Group I:  kr_eff = kr,  tp2_eff = tp2
-- Group II: kr_eff = kr · km,  tp2_eff = tp2 · tm
+$$\text{Group I:} \quad k_{r,\text{eff}} = k_r, \quad t_{p2,\text{eff}} = t_{p2}$$
 
-All other 24 parameters are shared between groups. See §S1.9 for the biological interpretation.
+$$\text{Group II:} \quad k_{r,\text{eff}} = k_r \cdot k_m, \quad t_{p2,\text{eff}} = t_{p2} \cdot t_m$$
+
+All other 24 parameters are shared between groups. For the biological interpretation, see §S1.9.
 
 ---
 
 ## S1.2 Driving inputs
 
-Three driving terms enter the ODE: a deterministic inducer-toxicity pulse V(t), a measured neutrophil signal N(t), and a self-limiting inflammatory composite S(t).
+Three driving terms enter the ODE: a deterministic inducer toxicity impulse $V(t)$, the measured neutrophil signal $N(t)$, and a self-limiting inflammatory composite $S(t)$.
 
-**Inducer-toxicity pulse.** The pulse V(t) has a gamma-like shape:
+**Inducer toxicity impulse.** The impulse $V(t)$ has a gamma-like shape:
 
-> V(t) = (t/τv) · exp(1 − t/τv) for t ≥ 0, and V(t) = 0 for t < 0.
+$$V(t) = \frac{t}{\tau_v} \exp\!\left(1 - \frac{t}{\tau_v}\right) \quad \text{for } t \geq 0, \qquad V(t) = 0 \quad \text{for } t < 0.$$
 
-This is a Gamma(2, 1) shape rescaled to peak at V(τv) = 1, with the timescale τv held fixed (§S1.7). It reaches its maximum at t = τv and decays smoothly thereafter.
+This is a $\text{Gamma}(2, 1)$ form, rescaled to a peak of $V(\tau_v) = 1$, with time scale $\tau_v$ held fixed (§S1.7). It reaches its maximum at $t = \tau_v$ and smoothly decays thereafter.
 
-**Neutrophil signal.** The measured neutrophil count N(t) is supplied as a per-group linear interpolator over the experimentally sampled timepoints. It is normalised by the Group I baseline count N1_BASE (§S1.7) to a relative form:
+**Neutrophil signal.** The measured neutrophil count $N(t)$ is supplied as a linear interpolator for each group over the experimentally sampled time points. It is normalised by the Group I baseline count $N_{1,\text{BASE}}$ (§S1.7) to a relative form:
 
-> Nr(t) = N(t) / N1_BASE.
+$$N_r(t) = N(t) \;/\; N_{1,\text{BASE}}.$$
 
-**Gaussian shape.** An unnormalised peak-1 Gaussian appears in the inflammatory composite:
+**Gaussian shape.** An unnormalised Gaussian with peak 1 appears in the inflammatory composite:
 
-> g(t; μ, σ) = exp(−½ ((t − μ) / σ)²).
+$$g(t;\, \mu, \sigma) = \exp\!\left(-\tfrac{1}{2}\left(\frac{t - \mu}{\sigma}\right)^2\right).$$
 
-**Inflammatory signal.** The self-limiting inflammatory drive combines the inducer pulse and a delayed neutrophil-mediated burst, modulated by the available (non-degranulated) fraction of the neutrophil pool:
+**Inflammatory signal.** The self-limiting inflammatory drive combines the inducer impulse and a delayed neutrophil-mediated burst, modulated by the available (non-degranulated) fraction of the neutrophil pool:
 
-> S(t) = V(t) + a2 · g(t; tp2_eff, s2) · Nr(t) · (1 − D).
+$$S(t) = V(t) + a_2 \cdot g(t;\, t_{p2,\text{eff}},\, s_2) \cdot N_r(t) \cdot (1 - D).$$
 
-The factor (1 − D) enforces self-limitation: once neutrophils have degranulated, they cannot sustain further cytokine output. The Gaussian centred at tp2_eff with width s2 represents the secondary inflammatory peak.
+The multiplier $(1 - D)$ ensures self-limitation: once neutrophils have degranulated, they cannot sustain further cytokine release. The Gaussian centred on $t_{p2,\text{eff}}$ with width $s_2$ represents the secondary inflammatory peak.
 
 ---
 
 ## S1.3 State equations
 
-The five ordinary differential equations are given below. Each right-hand side is evaluated against clipped state values to keep biology and numerics consistent: D ∈ [0, 1], AP ≥ 0, Hc ≥ 0, Hn ∈ [0, Hm · 0.999].
+The five ordinary differential equations are given below. Each right-hand side is evaluated at clipped state values to keep biology and numerics consistent: $D \in [0, 1]$, $AP \geq 0$, $H_c \geq 0$, $H_n \in [0,\, H_m \cdot 0.999]$.
 
 **Degranulation:**
 
-> dD/dt = kd · S(t) · (1 − D) − kr_eff · D
+$$\frac{dD}{dt} = k_d \cdot S(t) \cdot (1 - D) - k_{r,\text{eff}} \cdot D$$
 
-The first term drives degranulation in proportion to the inflammatory signal, saturating as D → 1. The second term is first-order recovery / clearance of the degranulated state; in Group II its rate is amplified by km (§S1.9).
+The first term drives degranulation proportional to the inflammatory signal, saturating as $D \to 1$. The second term is first-order recovery/clearance of the degranulated state; in Group II its rate is amplified by $k_m$ (§S1.9).
 
 **Acid phosphatase:**
 
-> dAP/dt = krl · D − kcl · AP
+$$\frac{dAP}{dt} = k_{rl} \cdot D - k_{cl} \cdot AP$$
 
-First-order release from degranulated cells (proportional to D) and first-order plasma clearance.
+First-order release from degranulated cells (proportional to $D$) and first-order plasma clearance.
 
 **Inducer-derived coagulation pool:**
 
-> dHc/dt = kca · V(t) − k_cd · Hc
+$$\frac{dH_c}{dt} = k_{ca} \cdot V(t) - k_{cd} \cdot H_c$$
 
-The pool accumulates while the inducer is active and decays with rate constant k_cd held fixed (§S1.7).
+The pool accumulates while the inducer is active and decays with rate constant $k_{cd}$, held fixed (§S1.7).
 
 **Neutrophil-derived coagulation pool:**
 
-> dHn/dt = kna · min(AP², 10) · max(1 − Hn/Hm, 0.005) − knd · Hn
+$$\frac{dH_n}{dt} = k_{na} \cdot \min(AP^2,\, 10) \cdot \max\!\left(1 - \frac{H_n}{H_m},\, 0.005\right) - k_{nd} \cdot H_n$$
 
-Production is driven by AP² (a phenomenological model of neutrophil-burst amplification), capped at AP² = 10 to prevent runaway during transient AP excursions. The factor max(1 − Hn/Hm, 0.005) is a saturation-with-floor: production tapers off as Hn approaches the carrying capacity Hm, with a numerical floor of 0.005 preventing division-by-zero in the gHn formula (§S1.4). The second term is first-order clearance.
+Production is driven by $AP^2$ (a phenomenological model of neutrophil burst amplification), capped at $AP^2 = 10$ to prevent unbounded growth during transient $AP$ excursions. The factor $\max(1 - H_n/H_m,\, 0.005)$ is a saturation floor: production wanes as $H_n$ approaches the limiting capacity $H_m$, with a numerical floor of 0.005 that prevents division by zero in the $g_{Hn}$ formula (§S1.4). The second term is first-order clearance.
 
 **Factor XIII activity:**
 
-> dX/dt = ax · V(t) + cx · AP · Nr(t) − bx · gHn − kx · liver(Hn) · X,
-> with liver(Hn) = max(1 − Hn/Hm, 0).
+$$\frac{dX}{dt} = a_x \cdot V(t) + c_x \cdot AP \cdot N_r(t) - b_x \cdot g_{Hn} - k_x \cdot \text{liver}(H_n) \cdot X,$$
 
-X is itself a state with its own dynamics, in contrast to recalcification, thrombin time, and fibrinogen (which are algebraic functions of the state; §S1.6). The right-hand side has four terms: direct inducer stimulation (ax · V), neutrophil-mediated production proportional to acid phosphatase and to the relative neutrophil signal (cx · AP · Nr; this models release of azurophilic-granule-stored XIII into circulation), gHn-mediated consumption (bx · gHn; see §S1.4 for the gHn nonlinearity), and liver-modulated resynthesis (kx · liver · X). The resynthesis term is gated by liver function, modelled as max(1 − Hn/Hm, 0): when Hn saturates the carrying capacity, hepatic resynthesis halts.
+where $\text{liver}(H_n) = \max(1 - H_n/H_m,\, 0)$.
+
+$X$ is itself a state with its own dynamics, unlike recalcification time, thrombin time, and fibrinogen (which are algebraic functions of the state; §S1.6). The right-hand side has four terms: direct stimulation by the inducer ($a_x \cdot V$); neutrophil-mediated production proportional to acid phosphatase and to the relative neutrophil signal ($c_x \cdot AP \cdot N_r$; this models elastase-mediated activation of plasma factor XIII, where $AP$ serves as a marker of the degranulation that releases neutrophil elastase from the same azurophilic granules [Henriksson et al., 1980; Bagoly et al., 2008]; biological rationale — main text §4.2); $g_{Hn}$-mediated consumption ($b_x \cdot g_{Hn}$; see the $g_{Hn}$ nonlinearity in §S1.4); and liver-modulated resynthesis ($k_x \cdot \text{liver} \cdot X$). The resynthesis term is limited by liver function, modelled as $\max(1 - H_n/H_m, 0)$: when $H_n$ saturates the limiting capacity, hepatic resynthesis ceases.
 
 ---
 
-## S1.4 The gHn nonlinearity
+## S1.4 The $g_{Hn}$ nonlinearity
 
-Three of the observable equations (§S1.6) and the XIII state equation (§S1.3) depend on Hn through the nonlinear quantity gHn:
+Three of the observable equations (§S1.6) and the factor XIII state equation (§S1.3) depend on $H_n$ through the nonlinear quantity $g_{Hn}$:
 
-> gHn(Hn) = Hn / max(1 − Hn/Hm, 0.005).
+$$g_{Hn}(H_n) = \frac{H_n}{\max\!\left(1 - H_n/H_m,\; 0.005\right)}.$$
 
-The behaviour of gHn changes character with the ratio Hn / Hm:
+The behaviour of $g_{Hn}$ changes character with the ratio $H_n / H_m$:
 
-- **Linear regime** (Hn ≪ Hm): the denominator is close to 1, so gHn ≈ Hn. Coagulation effects scale linearly with the neutrophil-derived pool.
-- **Accelerating regime** (Hn → Hm): the denominator approaches zero and gHn diverges. Each additional unit of Hn contributes progressively more to the observables and to XIII consumption. This models a *cascading collapse* of coagulation as the neutrophil-derived pool saturates its carrying capacity — the mechanism by which neutrophil burden translates into the deep-hypocoagulation phase observed clinically.
+- **Linear regime** ($H_n \ll H_m$): the denominator is close to 1, so $g_{Hn} \approx H_n$. Coagulation effects scale linearly with the neutrophil-derived pool.
 
-The numerical floor 0.005 in the denominator bounds gHn ≤ 200 · Hn; this ceiling is never approached in practice (across all 100 bootstrap ensemble members and 22,500 dose-response simulations, Hn never exceeds approximately 1% of Hm). The floor exists purely to keep the integrator well-defined at the saturation boundary.
+- **Accelerating regime** ($H_n \to H_m$): the denominator approaches zero, and $g_{Hn}$ diverges. Each additional unit of $H_n$ contributes increasingly to the observables and to factor XIII consumption. This models *cascade collapse* of coagulation as the neutrophil-derived pool saturates its limiting capacity — the mechanism by which neutrophil load translates into the deep hypocoagulable phase observed clinically.
 
-gHn enters the XIII channel doubly: it appears (i) in the algebraic recalcification, thrombin, and fibrinogen maps (§S1.6) and (ii) inside the XIII ODE itself as −bx · gHn (§S1.3). This double dependency explains the structurally high sensitivity of the XIII channel to Hn dynamics noted in main-text §3.2 and §4.6: phase mismatches between AP and gHn near the carrying capacity (the catastrophic-cancellation regime described in §4.6) amplify into the XIII fit.
+The two regimes are activated in different experimental configurations. In the Group II baseline configuration (preserved neutrophil profile with busulfan-modified rate constants), the ratio $H_n/H_m$ remains small — median 0.018 across 100 ensemble members, max 0.35 — and $g_{Hn}$ operates predominantly in the linear regime. In the pure Group I configuration (Group I neutrophil profile, no busulfan modifiers), $H_n/H_m$ grows substantially larger — median 0.090, $p_{97.5} = 0.62$, max $= 0.75$ across 100 ensemble members; 31 of 100 members exceed 0.30, and 11 exceed 0.50. In these members the denominator $1 - H_n/H_m$ falls to 0.25–0.40, giving a nonlinear $g_{Hn}/H_n$ lift of 2–4-fold. The accelerating regime is therefore active precisely in the deep-hypocoagulation mode of Group I (max $\Delta$recalcification 147 s) — the biologically significant region corresponding to the observed lethality window.
+
+The numerical floor 0.005 in the denominator bounds $g_{Hn} \leq 200 \cdot H_n$; this ceiling is never approached in practice — even in the most severe Group I members, max $H_n/H_m = 0.75$ gives only a ~4-fold lift, far from the 200-fold ceiling. The floor exists purely to keep the integrator well-defined at the saturation boundary.
+
+$g_{Hn}$ enters the factor XIII channel twice: it appears (i) in the algebraic maps for recalcification, thrombin, and fibrinogen (§S1.6), and (ii) inside the factor XIII ODE itself as $-b_x \cdot g_{Hn}$ (§S1.3). This double dependence explains the structurally high sensitivity of the XIII channel to $H_n$ dynamics noted in the main text §3.2 and §4.4: phase mismatches between $AP$ and $g_{Hn}$ near the limiting capacity (the catastrophic-cancellation mode described in §4.4) are amplified in the XIII fit.
 
 ---
 
 ## S1.5 Initial conditions
 
-All five states are initialised to zero at t = 0:
+All five states are initialised to zero at $t = 0$:
 
-> y(0) = [D(0), AP(0), Hc(0), Hn(0), X(0)] = (0, 0, 0, 0, 0).
+$$\mathbf{y}(0) = \bigl[D(0),\; AP(0),\; H_c(0),\; H_n(0),\; X(0)\bigr] = (0, 0, 0, 0, 0).$$
 
-These zeros are deltas, not absolute values. Each group's measurements are reported as changes from its own pre-induction baseline: Group I from the intact state, Group II from state M (the post-busulfan, pre-inducer state). See main-text §2.1 — "all Group II changes were therefore measured relative to state M rather than to the intact baseline" — for the experimental rationale and the statistical-significance footnote on the intact-to-M shift.
+These zeros are deltas, not absolute values. Measurements for each group are reported as changes from that group's own pre-induction baseline: Group I from the intact state, Group II from the post-busulfan state "M" (prior to inducer administration). The experimental rationale and note on the statistical significance of the shift from intact to M are given in §2.1 of the main text — "all changes in Group II are measured relative to state M, not to the intact baseline."
 
-In particular, X(0) = 0 does not mean "no factor XIII at t = 0"; it means "no change from baseline at t = 0". Absolute baseline activity (100% in Group I, 93.2% in Group II) is a property of the experimental groups, not of the ODE state.
+In particular, $X(0) = 0$ does not mean "no factor XIII at $t = 0$"; it means "no change from baseline at $t = 0$." The absolute baseline activity (100% in Group I, 93.2% in Group II) is a property of the experimental groups, not of the ODE state.
 
 ---
 
-## S1.6 Observable maps
+## S1.6 Observable mappings
 
-The six observables fall into three categories by how they relate to the state vector:
+The six observables fall into three categories according to how they are linked to the state vector:
 
 **Algebraic observables** are computed as linear combinations of the state at each evaluation time, with no separate ODE:
 
-> recalc = −ar · V(t) − cr · AP + br · gHn
-> thrombin = −at · V(t) + bt · gHn
-> fib = +af · V(t) + cf · AP − bf · gHn − df · Hc
+$$\text{recalc} = -a_r V(t) - c_r AP + b_r g_{Hn}$$
 
-All coefficients (ar, cr, br, at, bt, af, cf, bf, df) are constrained to be non-negative (Table S2). The signs in the formulas above encode the biological direction of each effect:
+$$\text{thrombin} = -a_t V(t) + b_t g_{Hn}$$
 
-- ar · V(t) shortens recalcification (initial hypercoagulation phase); cr · AP also shortens it; br · gHn lengthens it (the dominant hypocoagulation term in the late phase).
-- For thrombin time the structure is similar but with only two terms.
-- For fibrinogen: V and AP raise the concentration (acute-phase response); gHn and Hc deplete it (consumption coagulopathy).
+$$\text{fib} = a_f V(t) + c_f AP - b_f g_{Hn} - d_f H_c$$
 
-The opposing-signs structure of the fibrinogen channel is the origin of the catastrophic-cancellation phenomenon discussed in main-text §4.6: in the days 5–7 window, cf · AP and −bf · gHn are each roughly four-fold larger in magnitude than their sum, so the observable is the difference of two large quantities.
+All coefficients ($a_r, c_r, b_r, a_t, b_t, a_f, c_f, b_f, d_f$) are constrained to be non-negative (Table S2). The signs in the formulas above encode the biological direction of each effect:
 
-**Dynamic-state observable** is the integrated state of an ODE:
+- $a_r \cdot V(t)$ shortens recalcification time (initial hypercoagulable phase); $c_r \cdot AP$ also shortens it; $b_r \cdot g_{Hn}$ prolongs it (the dominant late-phase hypocoagulation term).
+- For thrombin time, the structure is analogous but with only two terms.
+- For fibrinogen: $V$ and $AP$ raise concentration (acute-phase response); $g_{Hn}$ and $H_c$ deplete it (consumptive coagulopathy).
 
-> xiii = X (defined by §S1.3).
+The opposing-sign structure of the fibrinogen channel is the source of the catastrophic-cancellation phenomenon discussed in main text §4.4: in the window of days 5–7, $c_f \cdot AP$ and $-b_f \cdot g_{Hn}$ are each roughly fourfold larger in magnitude than their sum, so the observable is the difference of two large quantities.
 
-The XIII channel is therefore architecturally different from recalc / thrombin / fib: its parameters (ax, cx, bx, kx) are *rate constants* in an ODE, not algebraic coefficients in a map.
+**Dynamic-state observable** — the integrated ODE state:
 
-**Direct-state observables** are read straight from the state vector with no separate coefficients:
+$$\text{xiii} = X \quad \text{(defined in §S1.3)}.$$
 
-> acid_phosphatase = AP
-> degranulation_index = D · 100  (presented as %)
+The factor XIII channel is therefore architecturally distinct from recalc / thrombin / fib: its parameters ($a_x, c_x, b_x, k_x$) are *rate constants* in the ODE, not algebraic coefficients in the mapping.
 
-These two observables therefore have no contribution coefficients to estimate — they are identifiable up to the parameters governing the AP and D dynamics (§S1.3).
+**Direct-state observables** are read directly from the state vector without separate coefficients:
 
-The three-tier organisation of the six observables (algebraic / dynamic-state / direct-state) is what reduces the apparent "four contribution coefficient" channels of main-text §2.2 to a more nuanced structure: only three (recalc, thrombin, fib) are algebraic maps with their own coefficients; the fourth nominally "hemostatic" observable (xiii) is the integrated state of a dynamical equation.
+$$\text{acid\_phosphatase} = AP$$
+
+$$\text{degranulation\_index} = D \times 100 \quad \text{(expressed in \%)}$$
+
+These two observables therefore carry no contribution coefficients to estimate — they are identified up to the parameters governing the dynamics of $AP$ and $D$ (§S1.3).
+
+The three-tier organisation of the six observables (algebraic / dynamic-state / direct-state) is what reduces the apparent "four haemostatic channels with contribution coefficients" from main text §2.2 to a finer structure: only three (recalc, thrombin, fib) are algebraic maps with their own coefficients; the fourth nominally "haemostatic" observable (xiii) is an integrated dynamic-equation state.
 
 ---
 
 ## S1.7 Fixed (non-optimised) parameters
 
-The following constants are set outside the optimisation. Their values are from `src/config.py`:
+The following constants are specified outside of optimisation. Their values are from `src/config.py`:
 
-| Symbol | Value | Units | Role |
+| **Symbol** | **Value** | **Units** | **Role** |
 |---|---|---|---|
-| τv (TV_FIX) | 1.5 | days | Inducer-toxicity pulse time-scale; biologically motivated by the peak of acute systemic ethylphenacin effect in rabbit at ~36 hours post-administration. |
-| k_cd (KCD_FIX) | 0.2 | day⁻¹ | Inducer-derived coagulation pool (Hc) clearance rate; held fixed at the diagnostic-phase value, an open candidate for a future refit with prior. |
-| N1_BASE | 7.3 | 10⁹/L | Baseline neutrophil count used to normalise Nr(t) = N(t) / N1_BASE; matches the Group I intact baseline. |
+| $\tau_v$ (TV\_FIX) | 1.5 | days | Time scale of the inducer toxicity impulse; biologically motivated by the peak acute systemic effect of ethylphenacin in rabbits at ~36 h after administration. |
+| $k_{cd}$ (KCD\_FIX) | 0.2 | day$^{-1}$ | Clearance rate of the inducer-derived coagulation pool ($H_c$); held fixed at a diagnostic-phase value, an open candidate for future refitting with a prior. |
+| $N_{1,\text{BASE}}$ | 7.3 | $10^9$/L | Baseline neutrophil count for normalisation $N_r(t) = N(t) / N_{1,\text{BASE}}$; corresponds to the intact Group I baseline. |
 
-These three constants and the 26 optimised parameters in Table S2 are the complete parameterisation of the model.
+These three constants and the 26 optimised parameters of Table S2 constitute the complete model parametrisation.
 
 ---
 
 ## S1.8 Numerical integration
 
-The ODE is integrated with `scipy.integrate.odeint` (LSODA, switching between non-stiff Adams and stiff BDF methods as needed). Tolerances and limits (from `src/config.py`):
+The ODE is integrated using `scipy.integrate.odeint` (LSODA, switching between a non-stiff Adams method and stiff BDF as needed). Tolerances and bounds (from `src/config.py`):
 
-> rtol = 1 × 10⁻⁵,  atol = 1 × 10⁻⁷,  mxstep = 5000.
+$$\text{rtol} = 1 \times 10^{-5}, \quad \text{atol} = 1 \times 10^{-7}, \quad \text{mxstep} = 5000.$$
 
-Integration is performed on group-specific fine time grids and then linearly interpolated onto the evaluation grid for observable computation:
+Integration is performed on group-specific fine time grids and then linearly interpolated to the evaluation grid for computing observables:
 
-- Group I fine grid: 250 points uniformly over [0, 20] days (covers the 19-day observation window).
-- Group II fine grid: 200 points uniformly over [0, 9] days (covers the 8-day observation window).
+- **Group I fine grid:** 250 points uniformly on $[0, 20]$ days (covering the 19-day observation window).
+- **Group II fine grid:** 200 points uniformly on $[0, 9]$ days (covering the 8-day observation window).
 
-A NaN check on the integrator output guards against silent failure: any NaN in the trajectory raises a `RuntimeError`, ensuring that bootstrap or LOO iterations cannot drift unnoticed into pathological regions of parameter space.
+NaN-checking of integrator output guards against silent failure: any NaN in a trajectory raises a `RuntimeError`, ensuring that bootstrap or LOO iterations cannot silently drift into pathological regions of parameter space.
 
-For the intervention-timing virtual experiment (main-text §2.5), the ODE is integrated in two segments with the state vector continuous across the intervention boundary; only the two effective rate constants (kr_eff, tp2_eff) change instantaneously at t = t_intervention. See main-text §2.5 for the full protocol.
+For the timing-of-intervention virtual experiment (main text §2.5), the ODE is integrated in two segments with the state vector continuous across the intervention boundary; only the two effective rate constants ($k_{r,\text{eff}}$, $t_{p2,\text{eff}}$) change instantaneously at $t = t_{\text{intervention}}$. Full protocol in §2.5 of the main text.
 
 ---
 
 ## S1.9 Group-specific structure
 
-The joint model fits both groups with a shared 24-parameter core plus two group-specific modifiers — km and tm — that capture the effect of busulfan on Group II:
+The shared model fits both groups with a common 24-parameter core plus two group-specific modifiers — $k_m$ and $t_m$ — that capture the busulfan effect on Group II:
 
-> Group I:  kr_eff = kr,        tp2_eff = tp2
-> Group II: kr_eff = kr · km,   tp2_eff = tp2 · tm
+$$\text{Group I:} \quad k_{r,\text{eff}} = k_r, \qquad t_{p2,\text{eff}} = t_{p2}$$
 
-The biological interpretation is that busulfan acts on the neutrophil compartment in two distinct ways. The rate modifier km > 1 represents accelerated clearance of activated neutrophils under reduced bone-marrow output (with km ≈ 4.9 in the fitted Group II, see Table 1). The timing modifier tm < 1 represents an earlier inflammatory peak in the depleted Group II compartment (with tm ≈ 0.43 in the fitted Group II, shifting the peak from tp2 ≈ 9.2 days in Group I to ≈ 3.9 days in Group II).
+$$\text{Group II:} \quad k_{r,\text{eff}} = k_r \cdot k_m, \qquad t_{p2,\text{eff}} = t_{p2} \cdot t_m$$
 
-Critically, all per-cell biochemistry (kd, krl, kcl, kna, knd, ax, cx, bx, kx, the carrying capacity Hm, the inducer parameters kca, k_cd, τv, the pulse-width s2 and amplitude a2, and all nine algebraic-observable coefficients) is held identical between groups. The two-modifier architecture therefore encodes the hypothesis that busulfan modifies the *kinetics and timing* of the neutrophil compartment without altering its *per-cell function*. Main-text §3.5 quantifies how much of the observed Group II protection is attributable to this kinetic modification alone versus the reduction in neutrophil abundance encoded in N(t).
+Biologically, this means busulfan acts on the neutrophil compartment in two distinct ways. The rate modifier $k_m > 1$ represents accelerated clearance of activated neutrophils under reduced bone-marrow output (with $k_m \approx 4.9$ in the fitted Group II; see Table 1). The time modifier $t_m < 1$ represents an earlier inflammatory peak in the depleted Group II compartment (with $t_m \approx 0.43$ in the fitted Group II, shifting the peak from $t_{p2} \approx 9.2$ days in Group I to $\approx 3.9$ days in Group II).
+
+Critically, all per-cell biochemistry ($k_d, k_{rl}, k_{cl}, k_{na}, k_{nd}, a_x, c_x, b_x, k_x$, limiting capacity $H_m$, inducer parameters $k_{ca}, k_{cd}, \tau_v$, impulse width $s_2$ and amplitude $a_2$, and all nine coefficients of the algebraic observables) is held identical between groups. The two-modifier architecture therefore encodes the hypothesis that busulfan modifies the *kinetics and timing* of the neutrophil compartment without altering its *per-cell function*. Main text §3.5 quantifies what fraction of the observed Group II protection is attributable to this kinetic modification alone, and what fraction to the reduction in neutrophil count encoded in $N(t)$.
