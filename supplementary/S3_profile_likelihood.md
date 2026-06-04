@@ -1,6 +1,6 @@
 # S3. Profile Likelihood Plots — All 26 Parameters
 
-*Part of the Supplementary Information for Boyarchuk & Onasenko (2026). The parameter classification (§2.4: well-identified, weakly identified, sloppy) used in the main text for interpreting bootstrap intervals (§3.2, Table 1, Table S2). This appendix describes the profiling method, presents full per-parameter results, and provides multi-start validation of the sloppy classification.*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). The parameter classification (§2.4: well-identified, weakly identified, sloppy) used in the main text for interpreting bootstrap intervals (§3.2, Table 1, Table S2). This appendix describes the profiling method, presents full per-parameter results, and provides multi-start validation of the sloppy classification.*
 
 ---
 

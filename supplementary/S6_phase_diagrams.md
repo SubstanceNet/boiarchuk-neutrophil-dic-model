@@ -1,6 +1,6 @@
 # S6. Phase Diagrams for Dose–Response Severity Metrics
 
-*Part of the Supplementary Information for Boyarchuk & Onasenko (2026). Cross-references from the main text: §2.5 (dose–response protocol), §3.5 (± Figure 4 for three of four metrics; Figure 5 for the dose–response slice at observed timing). This appendix describes the dose–response setup with internal validation, each of the four valid severity metrics as a phase diagram on the $(k_m, t_m)$ grid, the reason why the fifth computed metric (time to $g_{Hn}$ peak) is not elevated to a figure, and documents the historical retraction of the sixth metric (liver\_collapse), recognised as invalid.*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: §2.5 (dose–response protocol), §3.5 (± Figure 4 for three of four metrics; Figure 5 for the dose–response slice at observed timing). This appendix describes the dose–response setup with internal validation, each of the four valid severity metrics as a phase diagram on the $(k_m, t_m)$ grid, the reason why the fifth computed metric (time to $g_{Hn}$ peak) is not elevated to a figure, and documents the historical retraction of the sixth metric (liver\_collapse), recognised as invalid.*
 
 ---
 

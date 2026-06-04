@@ -1,6 +1,6 @@
 # S8. Sensitivity to the Mechanism-Decomposition Prior Weight ($W_{\text{SPLIT}}$)
 
-*Part of the Supplementary Information for Boyarchuk & Onasenko (2026). Cross-references from the main text: §2.2 (introduction of $W_{\text{SPLIT}}$ as one of two structural priors), §3.3 ("The prior is necessary for identifiability: without it, the recalcification fraction is not identified across different optimiser seeds"; mechanism decomposition fractions and Table 2), and the definition of the cost term $J_{\text{split}}$ in §S2.1. This appendix provides empirical evidence for the two central claims about the $W_{\text{SPLIT}} = 2.0$ prior: it is necessary for identifiability and validated post-hoc by improved fit on the held-out (Group II) sample.*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: §2.2 (introduction of $W_{\text{SPLIT}}$ as one of two structural priors), §3.3 ("The prior is necessary for identifiability: without it, the recalcification fraction is not identified across different optimiser seeds"; mechanism decomposition fractions and Table 2), and the definition of the cost term $J_{\text{split}}$ in §S2.1. This appendix provides empirical evidence for the two central claims about the $W_{\text{SPLIT}} = 2.0$ prior: it is necessary for identifiability and validated post-hoc by improved fit on the held-out (Group II) sample.*
 
 ---
 

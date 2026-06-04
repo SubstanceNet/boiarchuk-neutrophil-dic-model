@@ -1,6 +1,6 @@
 # S4. Bootstrap Diagnostic Plots
 
-*Part of the Supplementary Information for Boyarchuk & Onasenko (2026). Bootstrap ensemble in the main text: §2.4 (pipeline), §3.2 (factor XIII under-determination, Figure 2), Table 1 (CIs for well-identified parameters), Table S2 (full ensemble). This appendix provides the methodological supplement: cost distribution, convergence diagnostics, mechanistic interpretation of the factor XIII basin classification, and sensitivity to normalisation.*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Bootstrap ensemble in the main text: §2.4 (pipeline), §3.2 (factor XIII under-determination, Figure 2), Table 1 (CIs for well-identified parameters), Table S2 (full ensemble). This appendix provides the methodological supplement: cost distribution, convergence diagnostics, mechanistic interpretation of the factor XIII basin classification, and sensitivity to normalisation.*
 
 ---
 

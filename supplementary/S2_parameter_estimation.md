@@ -1,6 +1,6 @@
 # S2. Parameter Estimation Pipeline and Full Estimates
 
-*Part of the Supplementary Information for Boyarchuk & Onasenko (2026). The high-level pipeline is described in the main text (§2.3 — base; §2.4 — ensemble); this appendix provides the full technical specification: the cost function, stage-by-stage settings for both pipelines, and full parameter estimates. Related appendices: the $W_{\text{SPLIT}}$ prior is justified in S8; the shared-vs.-Group-II-only architecture trade-off in S10; bootstrap diagnostics in S4.*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). The high-level pipeline is described in the main text (§2.3 — base; §2.4 — ensemble); this appendix provides the full technical specification: the cost function, stage-by-stage settings for both pipelines, and full parameter estimates. Related appendices: the $W_{\text{SPLIT}}$ prior is justified in S8; the shared-vs.-Group-II-only architecture trade-off in S10; bootstrap diagnostics in S4.*
 
 ---
 

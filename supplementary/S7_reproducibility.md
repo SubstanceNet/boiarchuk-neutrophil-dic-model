@@ -1,6 +1,6 @@
 # S7. Reproducibility and Data Provenance
 
-*Part of the Supplementary Information for Boyarchuk & Onasenko (2026). Cross-references from the main text: §2.3 (parameter estimation), §2.4 (robustness pipeline), and §2.5 (virtual experiments). This appendix documents the provenance of every data value and the full repository-level reproduction protocol (`docs/reproduction_protocol.md`, `data/csv/PROVENANCE.md`).*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: §2.3 (parameter estimation), §2.4 (robustness pipeline), and §2.5 (virtual experiments). This appendix documents the provenance of every data value and the full repository-level reproduction protocol (`docs/reproduction_protocol.md`, `data/csv/PROVENANCE.md`).*
 
 ---
 
@@ -30,9 +30,9 @@ The virtual experiments (analyses 30–33) do not re-fit the model; they propaga
 
 ## S7.4 Data provenance
 
-Every value in `data/csv/group1.csv` and `group2.csv` is a delta from each animal's pre-experiment baseline (the paired-difference convention of the original tables) and is mapped to its primary source — the tables of the Boyarchuk (1998) dissertation — in `data/csv/PROVENANCE.md`. That document records the source table for each observable, the unit and method, sources of standard errors, and OCR/transcription corrections applied during reconstruction.
+Every value in `data/csv/group1.csv` and `group2.csv` is a delta from each animal's pre-experiment baseline (the paired-difference convention of the original tables) and is mapped to its primary source — the tables of the Boiarchuk (1998) dissertation — in `data/csv/PROVENANCE.md`. That document records the source table for each observable, the unit and method, sources of standard errors, and OCR/transcription corrections applied during reconstruction.
 
-Three provenance points directly bear on interpretation. First, Group II measurements are deltas from the post-suppression state "M" (after the busulfan protocol), not from the intact baseline; the M-alignment was verified point-by-point during reconstruction, and Group II results should be read relative to M, not relative to the Group I baseline. Second, a substantial portion of the Group II dynamics — the full time course of neutrophil count, bone-marrow granulopoiesis, and the busulfan suppression protocol — was reconstructed from the dissertation and is presented here for the first time, not taken from a peer-reviewed article; any use of this dataset should cite the dissertation as the primary source and include the data files for audit. Third, Group I lethality is 30% (12 of 40, days 10–12) per the dissertation and author commentary; the lower figure of 27% that appears in one of the Boyarchuk series publications is a less precise published value, and the manuscript uses 30%.
+Three provenance points directly bear on interpretation. First, Group II measurements are deltas from the post-suppression state "M" (after the busulfan protocol), not from the intact baseline; the M-alignment was verified point-by-point during reconstruction, and Group II results should be read relative to M, not relative to the Group I baseline. Second, a substantial portion of the Group II dynamics — the full time course of neutrophil count, bone-marrow granulopoiesis, and the busulfan suppression protocol — was reconstructed from the dissertation and is presented here for the first time, not taken from a peer-reviewed article; any use of this dataset should cite the dissertation as the primary source and include the data files for audit. Third, Group I lethality is 30% (12 of 40, days 10–12) per the dissertation and author commentary; the lower figure of 27% that appears in one of the Boiarchuk series publications is a less precise published value, and the manuscript uses 30%.
 
 ---
 

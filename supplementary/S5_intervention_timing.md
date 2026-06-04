@@ -1,6 +1,6 @@
 # S5. Intervention Timing Trajectories and Temporal Metrics
 
-*Part of the Supplementary Information for Boyarchuk & Onasenko (2026). Cross-references from the main text: §2.5 (two-segment ODE protocol), §3.5 (therapeutic window), Figure 6 (severity vs. timing). This appendix provides the complete numerical table across nine timing scenarios, the per-phase numerical signature of the biphasic therapeutic window, the rationale for choosing $t_{\text{recovery}}$ over $t_{\text{peak}}$ as the primary temporal metric, and methodological caveats.*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: §2.5 (two-segment ODE protocol), §3.5 (therapeutic window), Figure 6 (severity vs. timing). This appendix provides the complete numerical table across nine timing scenarios, the per-phase numerical signature of the biphasic therapeutic window, the rationale for choosing $t_{\text{recovery}}$ over $t_{\text{peak}}$ as the primary temporal metric, and methodological caveats.*
 
 ---
 

@@ -1,6 +1,6 @@
 # S10. Shared Architecture Versus Group-II-Only
 
-*Part of the Supplementary Information for Boyarchuk & Onasenko (2026). Cross-references from the main text: §2.3 ("separate fitting of Group II alone achieves approximately 22 percentage points higher average $R^2$ for Group II than joint fitting (Supplementary Methods), a gap that is predominantly architectural rather than due to overfitting"). Related appendices: §S1.9 (24-shared + 2-modifier architecture), §S2.7 (architecture pointer in the estimation appendix), §S3.2 (parameter identifiability), §S9 ($c_x \leq 600$ bound, which already partially alleviates the factor XIII channel).*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: §2.3 ("separate fitting of Group II alone achieves approximately 22 percentage points higher average $R^2$ for Group II than joint fitting (Supplementary Methods), a gap that is predominantly architectural rather than due to overfitting"). Related appendices: §S1.9 (24-shared + 2-modifier architecture), §S2.7 (architecture pointer in the estimation appendix), §S3.2 (parameter identifiability), §S9 ($c_x \leq 600$ bound, which already partially alleviates the factor XIII channel).*
 
 ---
 
