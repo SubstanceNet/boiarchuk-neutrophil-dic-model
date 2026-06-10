@@ -56,7 +56,7 @@ def compute_severity(o, T):
     max_recalc = float(np.max(recalc))
     
     # AUC recalc — using trapezoid rule on |recalc|
-    auc_recalc = float(np.trapz(np.abs(recalc), T))
+    auc_recalc = float(np.trapezoid(np.abs(recalc), T))
     
     # time to peak gHn
     peak_idx = int(np.argmax(gHn))
@@ -217,55 +217,6 @@ def main():
         out_path.write_text(json.dumps(d, indent=2, default=float))
         print(f"  Saved: {out_path}")
     
-    # Sanity check at km=1, tm=1 (G1-like) — compare against G1 observed severity
-    print()
-    print("=" * 70)
-    print("Sanity check: km=1, tm=1 (G1 equivalent)")
-    print("=" * 70)
-    # Find grid cells closest to km=1, tm=1
-    km1_idx = int(np.argmin(np.abs(km_grid - 1.0)))
-    tm1_idx = int(np.argmin(np.abs(tm_grid - 1.0)))
-    
-    print(f"Grid closest to G1: km={km_grid[km1_idx]:.3f}, tm={tm_grid[tm1_idx]:.3f}")
-    cell_preds_g1 = [p for p in all_predictions
-                     if p["km_idx"] == km1_idx and p["tm_idx"] == tm1_idx]
-    
-    # G1 observed
-    print(f"\nG1 observed (from data):")
-    print(f"  max gHn (proxy AUC of degranulation rate): N/A (model state)")
-    print(f"  min xiii: {float(g1.xiii.min()):.1f}")
-    print(f"  max recalc: {float(g1.recalc.max()):.1f}")
-    print(f"  AUC |recalc|: {float(np.trapz(np.abs(g1.recalc), g1.T)):.1f}")
-    
-    if cell_preds_g1:
-        print(f"\nModel prediction at km=1, tm=1 (ensemble median, n={len(cell_preds_g1)}):")
-        for metric in ["min_xiii", "max_recalc", "auc_recalc"]:
-            vals = [p[metric] for p in cell_preds_g1]
-            print(f"  {metric}: median={np.median(vals):.1f}, "
-                  f"CI95=[{np.percentile(vals, 2.5):.1f}, {np.percentile(vals, 97.5):.1f}]")
-    
-    sanity_path = RESULTS_DIR / "sanity_check_km1.json"
-    sanity_path.write_text(json.dumps({
-        "km_grid_value": float(km_grid[km1_idx]),
-        "tm_grid_value": float(tm_grid[tm1_idx]),
-        "n_members": len(cell_preds_g1),
-        "g1_observed": {
-            "min_xiii": float(g1.xiii.min()),
-            "max_recalc": float(g1.recalc.max()),
-            "auc_recalc": float(np.trapz(np.abs(g1.recalc), g1.T)),
-        },
-        "model_at_km1_tm1": {
-            metric: {
-                "median": float(np.median([p[metric] for p in cell_preds_g1])),
-                "p2_5": float(np.percentile([p[metric] for p in cell_preds_g1], 2.5)),
-                "p97_5": float(np.percentile([p[metric] for p in cell_preds_g1], 97.5)),
-            }
-            for metric in SEVERITY_METRICS
-        },
-    }, indent=2))
-    print(f"\nSaved sanity: {sanity_path}")
-    
-    print(f"\nTotal: {(time.time() - t_start)/60:.1f}m")
 
 
 if __name__ == "__main__":

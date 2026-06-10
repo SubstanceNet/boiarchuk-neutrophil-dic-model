@@ -20,7 +20,7 @@ C_G2 = "#B2182B"  # Group II — dark red
 # G1 mortality / deep-hypocoagulation window (days). Use on G1 hemostatic panels.
 MORT_BAND = (10, 12)
 
-# JTB full-width single column (mm). Convert to inches at call sites: W_MM/25.4.
+# Full-width single column (mm); revisit when target journal layout is finalised. Convert to inches at call sites: W_MM/25.4.
 WIDTH_MM_FULL = 180.0
 
 _SERIF = "Nimbus Roman"  # metrically Times-compatible, available in this env

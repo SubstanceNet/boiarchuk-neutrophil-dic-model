@@ -1,5 +1,5 @@
 """
-ODE model: 5 states [D, AP, Hc, Hn, X] and 4 hemostatic observables.
+ODE model: 5 states [D, AP, Hc, Hn, X] and 6 observables (3 algebraic + 1 dynamic-state + 2 direct-state).
 
 Mathematical content is byte-identical to archive/v12/model_v12.py.
 Phase 0 contract: numerical equivalence (verified by tests/test_reproducibility.py).
@@ -119,7 +119,7 @@ def solve_group(
     Returns a dict with keys:
       - state arrays: D (as %), AP, Hc, Hn, gHn, X
       - drivers:      V, Nr
-      - observables:  recalc, thrombin, fib, xiii  (deltas, model output)
+      - observables:  recalc, thrombin, fib (algebraic), xiii (=X, dynamic-state), AP and D (direct-state); deltas, model output
 
     Raises RuntimeError if the integrator returns NaN.
     """
