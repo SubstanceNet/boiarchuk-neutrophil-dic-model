@@ -22,7 +22,7 @@ where $C_{\text{edge}}$ is the smaller of the two grid-edge cost values. A sharp
 - **Weakly identified:** $2\% \leq \text{depth\_rel} \leq 5\%$
 - **Sloppy:** $\text{depth\_rel} < 2\%$
 
-The 95% confidence interval is read from the profile as the connected range of $\theta_i$ for which $C(\theta_i)$ remains within the $\chi^2$-based statistical threshold of $C_{\text{baseline}}$; this CI is reported for each parameter in Table S2 (derived from bootstrap) and is also recoverable from the per-panel figures referenced in S3.5.
+The 95% confidence interval used in the profile-likelihood code is read as the connected range of $\theta_i$ over which the relative cost increase $(C(\theta_i) - C_{\text{baseline}})/C_{\text{baseline}}$ stays below 5%. A $\chi^2$ likelihood-ratio threshold is *not* used: the cost here is a sum of normalised RMSE (S2.1), not a log-likelihood, so the standard $\chi^2$ calibration does not apply. The confidence intervals reported per parameter in Table S2 are obtained from the parametric bootstrap (analysis 22), not from this profile threshold, and are also broadly recoverable from the per-panel figures referenced in S3.5.
 
 ---
 
@@ -30,7 +30,7 @@ The 95% confidence interval is read from the profile as the connected range of $
 
 Twenty-three parameters fall cleanly into the three depth-rel categories above; three additional parameters reach the grid boundary before a clearly defined minimum is found and are reported separately as *grid-truncated*. In total: 6 + 5 + 12 + 3 = 26.
 
-**Well-identified or moderately identified (6 parameters, depth\_rel $> 5\%$).** These parameters carry the model's predictive content: their values are constrained by the data above the statistical threshold.
+**Well-identified or moderately identified (6 parameters, depth\_rel $> 5\%$).** These parameters carry the model's predictive content: their values are constrained by the data above the 5% relative-cost threshold. Within this group identifiability is graded rather than uniform: $t_{p2}$ is sharply identified (depth\_rel 0.473), $k_m$ and $t_m$ are moderately identified (depth\_rel $\approx 0.14$–$0.15$), and $k_d$, $s_2$, $a_t$ sit just above the threshold (depth\_rel $\approx 0.07$). The two parameters that carry the therapeutic-window prediction, $k_m$ and $t_m$, are therefore only moderately identified.
 
 **Weakly identified (5 parameters, $2\% \leq$ depth\_rel $\leq 5\%$).** Constrained by the data, but with wide confidence intervals; predictions depending solely on them will carry visible uncertainty.
 
@@ -69,7 +69,7 @@ The full per-parameter table follows. depth\_rel values are from `analyses/09_pr
 | $k_{rl}$ | — | grid-truncated |
 | $k_{cl}$ | — | grid-truncated |
 
-† $t_{p2}$ (depth\_rel 0.473) has grid truncation at the upper end because its baseline value (9.22 d) sits near the parameter's upper bound (10 d); the well-identified classification is unaffected because the depth is large, but the bootstrap CI in Table S2 ([8.89, 10.03] d) is a more reliable uncertainty estimate for this parameter.
+† $t_{p2}$ (depth\_rel 0.473) is the most sharply identified parameter, with an internal cost minimum at the baseline value (9.22 d) well inside its bounds $[6, 12]$ d. The *grid-truncated* tag here arises only because the $\pm 50\%$ logarithmic profiling grid is formally clipped at both bounds — it does *not* indicate that the parameter sits at a bound. Because the profile is steep and the 11-node grid coarse, the relative-cost interval collapses onto the single baseline node; the bootstrap CI in Table S2 ([8.89, 10.03] d) is therefore the reliable uncertainty estimate for this parameter.
 
 The sorting in this table — by depth\_rel (profile likelihood spectrum) — complements the sorting in Table S2 by relative bootstrap CI width (re-sampling spectrum). The two orderings are similar but not identical; the most informative divergence is **$k_d$** (well-identified by depth, wide bootstrap CI; interpretation in §S2.6).
 
@@ -79,7 +79,7 @@ The sorting in this table — by depth\_rel (profile likelihood spectrum) — co
 
 The well-identified ratio $6/26 \approx 23\%$ places this model squarely within the typical range for mechanistic systems-biology models. Gutenkunst et al. (2007, PLoS Comput. Biol.) demonstrated across seventeen published biological models that *universal sloppiness* — the coexistence of a few stiff parametric directions with many soft ones — is a structural property of ODE models whose parameter count exceeds the effective dimensionality of the available data, not a defect of any particular fit.
 
-The consequence is two-sided. **Predictions depending on well-identified parameters** — inducer impulse time $t_{p2}$, busulfan modifiers $k_m$ and $t_m$, degranulation rate constant $k_d$, impulse width $s_2$, and thrombin–inducer coefficient $a_t$ — are robust to data limitations and propagate narrow uncertainty bands. **Predictions isolating effects of sloppy parameters** (e.g. a counterfactual that varies only $k_{ca}$ with everything else held fixed) are not data-constrained and will carry wide uncertainty bands; we therefore do not present such isolated counterfactuals as results.
+The consequence is two-sided. **Predictions depending on well-identified parameters** — inducer impulse time $t_{p2}$, busulfan modifiers $k_m$ and $t_m$, degranulation rate constant $k_d$, impulse width $s_2$, and thrombin–inducer coefficient $a_t$ — are comparatively robust to data limitations, subject to the graded identifiability noted in S3.2 (only $t_{p2}$ is sharply identified; $k_m$ and $t_m$ are moderate). **Predictions isolating effects of sloppy parameters** (e.g. a counterfactual that varies only $k_{ca}$ with everything else held fixed) are not data-constrained and will carry wide uncertainty bands; we therefore do not present such isolated counterfactuals as results.
 
 ---
 

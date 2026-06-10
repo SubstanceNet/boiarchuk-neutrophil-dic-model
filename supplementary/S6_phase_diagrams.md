@@ -25,6 +25,8 @@ Two reference points orient the phase diagrams. The point **$(k_m = 1, t_m = 1)$
 
 All three observed values fall within the model's 95% CI at the Group II baseline cell. The phase diagrams are therefore interpreted starting from a cell that the model reproduces correctly within bootstrap uncertainty.
 
+These baseline-cell figures are produced by a dedicated, reproducible script (`analyses/30_myelosan_dose/g2_baseline_validation.py`): it computes the observed values (9.10, −9.30, 70.55) directly from the Group II data and the model predictions at the exact fitted dose $(k_m = 4.93, t_m = 0.43)$ through the ensemble, recovering the tabulated model median for max\_recalc (5.84 s on the good-basin subset) and the other two metrics to within grid resolution. (The somewhat higher Group II baseline value quoted in main-text Table 3, ≈ 6.6–7 s, is the corresponding median over the full 100-member ensemble; the small difference between the two reflects the good-basin-versus-full-ensemble distinction together with grid resolution.)
+
 ---
 
 ## S6.2 Four valid severity metrics
@@ -70,3 +72,25 @@ This claim is retracted. Two independent reasons, both verified directly in anal
 The metric has been removed from `analyses/30_myelosan_dose/run.py`. Lethality validation now rests on **hypocoagulation severity**, which is what the experimental endpoint actually measured (animals died at the peak of hypocoagulation, days 10–12, not at any abstract saturation threshold). Analysis 33 runs the joint model v13 in the pure Group I configuration (Group I neutrophil profile, no busulfan modifiers) through the same 100-member bootstrap ensemble and obtains max\_recalc $\approx 147$ s for Group I vs. $\approx 7$ s for the Group II baseline — a 22-fold separation, with the peak on day 11 (matching the observed lethality window) and factor XIII and fibrinogen nadirs reproduced to within 1–11% of observation. This validation is reported in main text §3.4 and Table 3.
 
 We document the retraction transparently here, because it was discovered during internal methodological review rather than raised in peer review; readers encountering the earlier "0 of 22,500" claim in pre-archive drafts should treat it as retracted. The four severity metrics in §S6.2 are unaffected by the error and remain the production metrics for the dose–response experiment.
+
+---
+
+## S6.5 Decomposition of the protective effect: count versus kinetics
+
+The dose–response phase diagrams above isolate the *kinetic* axis: the Group II neutrophil profile is preserved throughout, so the severity gradient reflects the $k_m, t_m$ modifiers only. To attribute the full Group I → Group II protection between its two routes — the reduction in neutrophil **count** (encoded in the profile $N(t)$) and the **kinetic** modification ($k_m, t_m$) — we evaluate all four cells of a $2 \times 2$ design, crossing the neutrophil profile (Group I vs. Group II) with the kinetic modifier (off, $k_m = t_m = 1$, vs. on, the fitted $k_m, t_m$ applied per ensemble member). The script is `decompose_2x2.py` (built on analysis 33). Values are median `max_recalc` (s) over the good-basin subset (consistent with §S6.1 and main-text §3.5):
+
+| **Neutrophil profile** | **Kinetics off** ($k_m=t_m=1$) | **Kinetics on** (fitted) |
+|---|---|---|
+| **Group I** (high count) | [A] 150.8 | [B] 39.6 |
+| **Group II** (low count) | [C] 44.5 | [D] 7.1 |
+
+Each route is defined by varying one axis with the other held fixed, which gives two conditional values per route (the difference between them is the interaction):
+
+| **Route** | **Conditional factor 1** | **Conditional factor 2** | **Main effect** (geom. mean) |
+|---|---|---|---|
+| Kinetic modification | $[A]/[B]=3.8\times$ (Group I profile) | $[C]/[D]=6.3\times$ (Group II profile) | $\approx 4.9\times$ |
+| Count reduction | $[A]/[C]=3.4\times$ (kinetics off) | $[B]/[D]=5.6\times$ (kinetics on) | $\approx 4.3\times$ |
+
+Three points follow. **(i)** Taken in isolation from the unsuppressed baseline [A], the two routes are of comparable magnitude: kinetic modification alone reaches cell [B] (3.8-fold) and count reduction alone reaches cell [C] (3.4-fold) — note that [B] and [C] are nearly equal. **(ii)** The two routes combine to the full $[A]/[D] \approx 21\times$ separation through a positive interaction: the route applied *second* contributes a larger factor (5.6–6.3×) than the same route applied first (3.4–3.8×), because the $g_{Hn}$ nonlinearity makes each route more effective once the other is in place. The decomposition is therefore path-dependent and approximately multiplicative ($3.8 \times 5.6 \approx 21$; $3.4 \times 6.3 \approx 21$). **(iii)** By the symmetric main-effect measure, the kinetic contribution ($\approx 4.9\times$) is marginally larger than the count contribution ($\approx 4.3\times$), but the two are comparable and **neither dominates**.
+
+This is the quantitative basis for the statement in main-text §3.5 that busulfan acts through *both* routes. It also shows that the earlier informal reading of the $\approx 22\times$ contrast as "predominantly count" is not supported: the count reduction alone accounts for only $\approx 3.4\times$ of the separation. The full-ensemble run (100 members) gives the same qualitative picture (kinetic main effect $\approx 4.9\times$, count $\approx 4.4\times$). The earlier reading arose from comparing the pure Group I cell [A] directly with the Group II baseline [D], a single comparison that changes both axes at once and so cannot separate the two routes.
