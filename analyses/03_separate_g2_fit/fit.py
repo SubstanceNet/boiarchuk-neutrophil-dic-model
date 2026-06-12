@@ -140,8 +140,11 @@ def main():
     for k, v in metrics.items():
         print(f"  {k:>10s}: R^2 = {v['R2']:+.4f}, RMSE = {v['RMSE']:.3f}")
     print()
-    print("Comparison to joint-fit baseline (analysis 02):")
-    print("  joint  R^2_G2 avg:  +0.6204")
+    # NOTE: 0.6204 is the STALE v12 joint baseline (reference only, kept for
+    # historical delta). The current v13 production joint baseline is 0.6920
+    # (analyses/05_v13_baseline/results/fit.json avg_r2_g2). See S10.
+    print("Comparison to joint-fit baseline (v12 reference 0.6204; v13 = 0.6920):")
+    print("  joint  R^2_G2 avg:  +0.6204  [v12 reference, superseded]")
     print(f"  separate R^2_G2 avg: {avg_r2:+.4f}")
     print(f"  Δ = {avg_r2 - 0.6204:+.4f}")
     print()

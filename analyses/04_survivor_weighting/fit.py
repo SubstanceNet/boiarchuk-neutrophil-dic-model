@@ -52,8 +52,12 @@ def main():
     print()
     print("Comparison to analysis 02 baseline (default W_SURV):")
     print("  baseline cost: 1.0431")
-    print("  baseline R^2_G1 avg: +0.8340")
-    print("  baseline R^2_G2 avg: +0.6204")
+    # NOTE: 0.8340 / 0.6204 are STALE v12 baselines (reference only). The v13
+    # production baselines are 0.8334 / 0.6920 (analyses/05). The W_SURV effect
+    # measured here is unaffected: it isolates the weighting change within one
+    # cost version. See S10.
+    print("  baseline R^2_G1 avg: +0.8340  [v12 reference, superseded]")
+    print("  baseline R^2_G2 avg: +0.6204  [v12 reference, superseded]")
     print()
     print(f"Δcost: {result['best_cost'] - 1.0431:+.4f}")
     print(f"ΔR^2_G1: {result['avg_r2_g1'] - 0.8340:+.4f}")

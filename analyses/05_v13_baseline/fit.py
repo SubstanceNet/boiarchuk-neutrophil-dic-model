@@ -74,7 +74,9 @@ def main():
     print(f"  v13 R^2_G1 avg: {result['avg_r2_g1']:+.4f}")
     print(f"  Δ = {result['avg_r2_g1'] - 0.8340:+.4f}")
     print()
-    print("  v12 R^2_G2 avg: +0.6204")
+    # 0.6204 is the v12 reference; 0.6920 (below, computed) is the v13 production
+    # baseline cited in the manuscript and S10.
+    print("  v12 R^2_G2 avg: +0.6204  [reference, superseded by v13 below]")
     print(f"  v13 R^2_G2 avg: {result['avg_r2_g2']:+.4f}")
     print(f"  Δ = {result['avg_r2_g2'] - 0.6204:+.4f}")
     print()
