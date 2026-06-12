@@ -2,47 +2,49 @@
 
 ## What is here
 
-- `model_v12.py` — original v12 fit script, byte-identical copy of the file
-  delivered in the project root before migration to `src/`. Self-contained:
-  loads its own data as numpy literals, runs DE + NM + Powell + NM2 pipeline,
-  saves `results_v12.pkl`.
+- `model_v12.py` — the original v12 fit script, a byte-identical copy of the
+  file delivered in the project root before migration to `src/`. Self-contained:
+  loads its own data as numpy literals, runs the DE + NM + Powell + NM2 pipeline,
+  saves `results_v12.pkl`. **This file is the reproducibility reference** against
+  which `src/` is checked (see "Reproducibility role" below).
 
-- `v12_report.md` — internal modelling report (v9 -> v12 development trail).
-  Originally distributed as `v12_report.docx`, but the file was UTF-8 text
-  with an incorrect extension; renamed `.md` here to reflect actual content.
-  Author: Oleksiy Onasenko. Companion document to `model_v12.py`.
+- `v12_report.md` — the internal v9->v12 model-development report (in Ukrainian,
+  the language of the original work). A historical document; its numbers reflect
+  the v12 era and were later revised (see the banner at the top of that file and
+  the manuscript / Supplementary Information for current values).
 
 ## Status
 
-v12 is a **research prototype**. Per Olena Boiarchuk: "the main goal of v12
-was to establish whether a more sophisticated research model is feasible."
-The answer is yes: v12 demonstrated joint-fittability of two experimental
-groups under a shared 24-parameter mechanistic core plus 2 myelosan
-modifiers, with mechanism-split decomposition of pro-coagulant action.
+v12 was the **research prototype** that established the feasibility of jointly
+fitting both experimental groups under a shared mechanistic core plus two
+myelosan modifiers. It is **not** the manuscript model. The production model,
+its current parameter estimates, and all published numbers are in `src/`, the
+manuscript, and the Supplementary Information (S1-S10).
 
-v12 is **NOT** the manuscript model. The migrated package in `src/` reproduces
-v12 byte-for-byte (Phase 0 contract, verified by `tests/test_reproducibility.py`)
-to provide a clean foundation for Phase 1 onwards. Substantive model decisions
-are revisited in Phase 2:
+## Reproducibility role
 
-- relaxation / replacement of the W=2.0 mechanism-split constraint;
-- investigation of the G2 R^2 drop from 0.868 (separate fits, v11.2) to 0.598
-  (joint fit, v12);
-- structural alternatives for the fibrinogen-G2 channel (R^2 = 0.26 in v12);
-- reconciliation of the cx parameter (v12 script bound at 600; v12 report
-  text quotes a fitted value of 1481, which lies outside the script's bounds —
-  see `notes/known_issues.md`).
+The migrated package in `src/` reproduces the v12 cost function and data
+byte-for-byte. This equivalence is the "Phase 0 contract", verified
+automatically by the test suite:
+
+- `tests/test_reproducibility.py` — `src.fit.joint_cost` is numerically
+  identical to `model_v12.py._cost_core` for the same parameter vector.
+- `tests/test_data_integrity.py` — the CSV data files are byte-identical to the
+  numpy literals embedded in `model_v12.py`.
+
+This is why `model_v12.py` must remain unchanged: it is the fixed reference that
+guarantees the refactored production code did not alter the underlying model.
 
 ## Provenance
 
-- File `model_v12.py`: delivered by Oleksiy Onasenko on 2025-05-06,
-  reflecting state of v12 development as of that date.
-- File `v12_report.md`: produced concurrently with `model_v12.py`, describes
-  the same model. Internal document; not intended for publication as-is.
+- `model_v12.py`: delivered 2025-05-06, reflecting the state of v12 development
+  at that date.
+- `v12_report.md`: produced concurrently, describing the same model. Internal
+  document, retained for provenance; not intended for publication as-is.
 
 ## Do not modify
 
-These files are the historical record of the v12 prototype. Bug-fixes,
-refactoring, and improvements happen in `src/`. If a real defect is found
-in v12 that affects historical claims, document it in `notes/known_issues.md`
-rather than editing the archived files.
+These files are the historical record of the v12 prototype and the fixed
+reproducibility reference. Bug-fixes, refactoring, and improvements happen in
+`src/`. If a real defect in v12 is found that affects historical claims,
+document it in `notes/known_issues.md` rather than editing the archived files.

@@ -1,3 +1,19 @@
+> **⚠ HISTORICAL DOCUMENT (v12 development report).** This is the original
+> v9→v12 model-development report, retained for provenance and written in
+> Ukrainian (the language of the original development work). It documents the
+> **v12 research prototype**, which preceded the production v13 model. Several
+> figures here reflect the v12 era and were later revised: the inducer dose is
+> stated as the ready-bait figure (8330 mg/kg) rather than the active
+> ingredient (1.25 mg/kg ethylphenacin); cohort sizes and per-group counts were
+> later clarified (Group I = Group II = 40; 80 total); and the parameter values
+> (e.g. cx = 1481) are v12 fits, superseded by the v13 estimates. **The
+> canonical, current model, numbers, and interpretation are in the manuscript
+> and Supplementary Information (S1–S10).** This document is kept only as a
+> record of how the model was developed; `model_v12.py` in this folder remains
+> the byte-identical reproducibility reference used by the test suite.
+
+---
+
 **ЧИСЕЛЬНЕ МОДЕЛЮВАННЯ**
 
 **РОЛІ НЕЙТРОФІЛІВ У ПАТОГЕНЕЗІ ДВЗ-СИНДРОМУ**
