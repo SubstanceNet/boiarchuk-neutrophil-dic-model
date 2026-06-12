@@ -116,6 +116,23 @@ Profile likelihood analysis [Raue et al., 2009; Kreutz et al., 2013] systematica
 ### Virtual experiments
 Three virtual experiments propagate parameter uncertainty by running the 100-member bootstrap ensemble through prediction tasks. In the dose–response experiment, the Group II effective rate constants are redefined on a $15 \times 15$ log-uniform grid in $(k_m, t_m)$, with the Group II neutrophil profile preserved throughout (22,500 simulations in total). In the timing experiment, the busulfan effect is switched on at a variable time $t_{\text{intervention}}$ via two-segment ODE integration across nine timing scenarios. In the dose × time experiment, scenarios testing high dose at late timing and half-dose at early timing evaluate the interaction of these thresholds. Severity and temporal metrics are evaluated on extended time scales, with the time to peak defined as the first local maximum of $g_{Hn}(t)$ to avoid finite-horizon boundary artefacts.
 
+## Declarations
+
+### Data and code availability
+The experimental data (group time series with standard errors), model source code, analytical scripts, and result artefacts supporting the findings are available in the project repository <REPO_URL> (release <RELEASE_TAG>) and permanently archived at Zenodo (DOI <ZENODO_DOI>); the provenance of each data value (`data/csv/PROVENANCE.md`) and the reproduction protocol (`docs/reproduction_protocol.md`; see also §S7) are included therein. The data files are released under the Creative Commons Attribution 4.0 International licence (CC-BY-4.0) and the code under the Apache License 2.0. Additional details are in Supplementary Information (§S1–§S10).
+
+### Competing interests
+The authors declare no conflict of interest.
+
+### Funding
+The authors received no external funding; the work was carried out at personal expense.
+
+### Ethics approval
+Not applicable: no new animal experiments were performed. Experimental data are taken from previously published sources [Boiarchuk, 1998a; Boiarchuk, 2014].
+
+### Author contributions
+O.D.B. developed and conducted the experimental work, provided biological interpretation, and led the Introduction and Discussion. O.O. developed the mathematical model, performed numerical estimation, robustness analyses, and virtual experiments, implemented the analytical code, and led the Methods and Results. Both authors reviewed and approved the manuscript.
+
 ## References
 
 - Boiarchuk O.D. (1998a) The role of the lysosomal apparatus of neutrophilic leukocytes in the formation of disseminated intravascular coagulation syndrome: abstract of the thesis for the degree of Candidate of Biological Sciences, speciality 03.00.13. Institute of Physiology named after O.O. Bohomolets, NAS of Ukraine, Kyiv. 16 pp. *(in Ukrainian)*
