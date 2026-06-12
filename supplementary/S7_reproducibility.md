@@ -6,7 +6,7 @@
 
 ## S7.1 Software environment
 
-The model and analyses are implemented in Python ($\geq 3.10$) on top of NumPy, SciPy, and Matplotlib, with pinned versions recorded in `requirements.txt` (NumPy 2.2.6, SciPy $\geq$ 1.13, Matplotlib 3.10.3). The reference platform was an AMD Ryzen 9 8945HS (8 cores / 16 threads), 32 GB DDR5, running Pop!\_OS 22.04 with Python 3.10.12. Exact bit-reproducible results require matching Python, NumPy, and SciPy versions and the same number of worker processes, because the global optimiser (`scipy.optimize.differential_evolution`) is sensitive to the order of parallel computations.
+The model and analyses are implemented in Python ($\geq 3.10$) on top of NumPy, SciPy, and Matplotlib, with exact pinned versions recorded in `requirements.txt` (NumPy 2.2.6, SciPy 1.15.3, Matplotlib 3.10.6; `pyproject.toml` records compatible version floors for installation). The reference platform was an AMD Ryzen 9 8945HS (8 cores / 16 threads), 32 GB DDR5, running Pop!\_OS 22.04 with Python 3.10.12. Exact bit-reproducible results require matching Python, NumPy, and SciPy versions and the same number of worker processes, because the global optimiser (`scipy.optimize.differential_evolution`) is sensitive to the order of parallel computations.
 
 ---
 
@@ -14,7 +14,7 @@ The model and analyses are implemented in Python ($\geq 3.10$) on top of NumPy, 
 
 Reproduction is structured at three levels of computational cost, so that a reader can verify results to whatever depth they choose.
 
-**Level 1 — verify (seconds).** The test suite (`pytest -m "not slow"`) confirms structural integrity and asserts the documented findings directly from tracked result artefacts, without re-running any fit. The scientific-invariant tests (`tests/test_invariants.py`) check Group I / Group II hypocoagulation separation (~22×), factor XIII nadir (~−77%), peak on day 11, mechanism decomposition fractions, biphasic therapeutic window, good-basin count ($n = 27$), and dose/time thresholds. Tolerances in these tests are deliberately wide: they trigger when a *conclusion* changes, not when a value shifts in the last digit.
+**Level 1 — verify (seconds).** The test suite (`pytest -m "not slow"`) confirms structural integrity and asserts the documented findings directly from tracked result artefacts, without re-running any fit. The scientific-invariant tests (`tests/test_invariants.py`) check Group I / Group II hypocoagulation separation (~21×), factor XIII nadir (~−77%), peak on day 11, mechanism decomposition fractions, biphasic therapeutic window, good-basin count ($n = 27$), and dose/time thresholds. Tolerances in these tests are deliberately wide: they trigger when a *conclusion* changes, not when a value shifts in the last digit.
 
 **Level 2 — reproduce the key result (hours).** Re-running the baseline fit (analysis 05, ~12 min) and the bootstrap ensemble (analysis 22, ~23 h wall-clock for 100 members) regenerates the central artefacts; the aggregation step overwrites `ensemble.json` and `ensemble_members.json`, which should match the stored values within the reported confidence intervals. The dose–response phase diagram (analysis 30, ~2 h) is a cheaper Level 2 target that re-uses the existing ensemble.
 
@@ -44,4 +44,4 @@ All CSV values are byte-identical to the source arrays archived in `archive/v12/
 
 ## S7.6 Versioned history
 
-The repository history is tagged at every development milestone, allowing any intermediate state of the model and analyses to be checked out for comparison.
+The repository history is tagged at every development milestone, allowing any intermediate state of the model and analyses to be checked out for comparison. The public release accompanying this manuscript is hosted at `<REPO_URL>` (release tag `<RELEASE_TAG>`) and archived at Zenodo under DOI `<ZENODO_DOI>`, which is the canonical citable reference for the code and the reconstructed dataset.

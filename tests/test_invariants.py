@@ -32,8 +32,12 @@ def _load(p: Path):
 
 # --- Analysis 33: G1 severity & mortality-pattern validation -----------------
 
-def test_g1_g2_separation_about_22x():
-    """G1 vs G2 hypocoagulation separation ~22x (manuscript Table 4).
+def test_g1_g2_separation_about_21x():
+    """G1 vs G2 hypocoagulation separation ~21x (manuscript Table 3, S6).
+    The raw median ratio is 147.05 / 6.63 = 22.2x; the manuscript reports
+    21x from the rounded Group II baseline (147 / 7), consistent with Table 3.
+    The tolerance below is wide on purpose: it flags a change of conclusion,
+    not the last-digit rounding convention.
     Source: 33/g1_severity.json, g1/g2 max_recalc medians (147.05 / 6.63)."""
     d = _load(A33 / "g1_severity.json")
     g1 = d["g1"]["max_recalc"]["median"]
