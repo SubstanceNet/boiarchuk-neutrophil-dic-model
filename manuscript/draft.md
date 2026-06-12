@@ -118,17 +118,19 @@ Three virtual experiments propagate parameter uncertainty by running the 100-mem
 
 ## Declarations
 
-### Data and code availability
-The experimental data (group time series with standard errors), model source code, analytical scripts, and result artefacts supporting the findings are available in the project repository <REPO_URL> (release <RELEASE_TAG>) and permanently archived at Zenodo (DOI <ZENODO_DOI>); the provenance of each data value (`data/csv/PROVENANCE.md`) and the reproduction protocol (`docs/reproduction_protocol.md`; see also §S7) are included therein. The data files are released under the Creative Commons Attribution 4.0 International licence (CC-BY-4.0) and the code under the Apache License 2.0. Additional details are in Supplementary Information (§S1–§S10).
+### Data availability
+The experimental dataset (group time series with standard errors), together with full per-value provenance, is available in the project repository at <REPO_URL> and permanently archived at Zenodo (DOI <ZENODO_DOI>). The primary source for all measured values is the Boiarchuk (1998) dissertation [Boiarchuk, 1998a]; see `data/csv/PROVENANCE.md` and Supplementary Information S7 for the provenance of each value. The data files are released under the Creative Commons Attribution 4.0 International licence (CC-BY-4.0).
+### Code availability
+The model source code, analysis scripts, result artefacts, and a documented reproduction protocol are available in the project repository at <REPO_URL> (release <RELEASE_TAG>) and permanently archived at Zenodo (DOI <ZENODO_DOI>). Reproduction instructions are given in Supplementary Information S7 and `docs/reproduction_protocol.md`. The code is released under the Apache License 2.0.
 
 ### Competing interests
-The authors declare no conflict of interest.
+The authors declare no financial or non-financial competing interests.
 
 ### Funding
 The authors received no external funding; the work was carried out at personal expense.
 
 ### Ethics approval
-Not applicable: no new animal experiments were performed. Experimental data are taken from previously published sources [Boiarchuk, 1998a; Boiarchuk, 2014].
+This study is a retrospective computational analysis of archival in vivo data; no new animal experiments were performed. The original experiments [Boiarchuk, 1998a; Boiarchuk, 2014] were conducted on rabbits housed in accordance with the bioethical principles for laboratory animals, and the protocols were approved by the relevant institutional ethics committee at the time (see Methods).
 
 ### Author contributions
 O.D.B. developed and conducted the experimental work, provided biological interpretation, and led the Introduction and Discussion. O.O. developed the mathematical model, performed numerical estimation, robustness analyses, and virtual experiments, implemented the analytical code, and led the Methods and Results. Both authors reviewed and approved the manuscript.
