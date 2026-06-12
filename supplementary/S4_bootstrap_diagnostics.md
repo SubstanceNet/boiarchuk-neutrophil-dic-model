@@ -50,7 +50,7 @@ Five of the six well-identified parameters show CI width changes below 10% betwe
 
 ## S4.3 Factor XIII basin classification
 
-The defining diagnostic from the bootstrap is the bimodal distribution of $R^2$ for Group II factor XIII across 100 iterations. Full breakdown:
+The defining diagnostic from the bootstrap is the broad, right-skewed distribution of $R^2$ for Group II factor XIII across 100 iterations. Full breakdown:
 
 | **$R^2_{\text{G2}}(\text{XIII})$ range** | **Iterations** | **Fraction** |
 |---|---|---|
@@ -59,9 +59,9 @@ The defining diagnostic from the bootstrap is the bimodal distribution of $R^2$ 
 | $[0.3, 0.6)$ | 19 | 19% |
 | $\geq 0.6$ | 8 | 8% |
 
-The full-ensemble median is $R^2_{\text{G2}}(\text{XIII}) = 0.075$ with 95% CI $[-1.019, 0.649]$, reflecting the bimodal shape rather than a unimodal central tendency (Figure 2, panel b, main text). For subsequent analyses depending on accurate factor XIII predictions, we define a **"good-basin" subset** by the criterion $R^2_{\text{G2}}(\text{XIII}) \geq 0.3$; this yields **$n = 27$ members** (19 + 8 from the table above). The same $n = 27$ criterion is used for conservative confidence bands in the virtual experiments (main text §3.5) and in Figures 4–6.
+The full-ensemble median is $R^2_{\text{G2}}(\text{XIII}) = 0.075$ with 95% CI $[-1.019, 0.649]$, reflecting the broad, right-skewed shape rather than a tight central tendency (Figure 2, panel b, main text). For subsequent analyses depending on accurate factor XIII predictions, we define a **"good-basin" subset** by the criterion $R^2_{\text{G2}}(\text{XIII}) \geq 0.3$; this yields **$n = 27$ members** (19 + 8 from the table above). The same $n = 27$ criterion is used for conservative confidence bands in the virtual experiments (main text §3.5) and in Figures 4–6.
 
-**Mechanism: the $b_x/k_x$ ratio.** The bimodality is not arbitrary stochastic settling — it traces to a single parameter ratio that distinguishes the two basins. Comparison of 41 poor-basin iterations ($R^2 < 0$) with 19 good-basin iterations ($R^2 \geq 0.3$):
+**Mechanism: the $b_x/k_x$ ratio.** This spread is not arbitrary stochastic settling — it traces to a single parameter ratio that distinguishes the good- and poor-fitting basins. Comparison of 41 poor-basin iterations ($R^2 < 0$) with 19 good-basin iterations ($R^2 \geq 0.3$):
 
 | **Parameter** | **Poor-basin median** | **Good-basin median** | **Ratio (poor/good)** |
 |---|---|---|---|
@@ -70,7 +70,7 @@ The full-ensemble median is $R^2_{\text{G2}}(\text{XIII}) = 0.075$ with 95% CI $
 | $c_x$ (factor XIII production / $AP \cdot N_r$) | 575.1 | 507.3 | 1.13 |
 | $k_x$ (liver-modulated factor XIII resynthesis) | 2.43 | 3.03 | 0.80 |
 
-The mechanism is straightforward: high $b_x$ combined with low $k_x$ gives degradation of factor XIII that exceeds hepatic resynthesis, so the integrated factor XIII trajectory diverges from the observation. Low $b_x$ with sufficient $k_x$ gives degradation that resynthesis can compensate. The separation is rather continuous than discrete — the Pearson correlation between a bootstrap iteration's $b_x/k_x$ ratio and its $R^2_{\text{G2}}(\text{XIII})$ is −0.33, moderate but not high — consistent with drift along the sloppy factor XIII direction identified in §S3.2 ($a_x$, $c_x$, $b_x$, $k_x$ are all classified as sloppy or grid-truncated). The factor XIII bimodality is therefore best described as the projection of a continuous sloppy manifold onto a binary fit-quality criterion, not as a switch between two structurally distinct regimes.
+The mechanism is straightforward: high $b_x$ combined with low $k_x$ gives degradation of factor XIII that exceeds hepatic resynthesis, so the integrated factor XIII trajectory diverges from the observation. Low $b_x$ with sufficient $k_x$ gives degradation that resynthesis can compensate. The separation is rather continuous than discrete — the Pearson correlation between a bootstrap iteration's $b_x/k_x$ ratio and its $R^2_{\text{G2}}(\text{XIII})$ is −0.33, moderate but not high — consistent with drift along the sloppy factor XIII direction identified in §S3.2 ($a_x$, $c_x$, $b_x$, $k_x$ are all classified as sloppy or grid-truncated). The factor XIII fit-quality spread is therefore best described as the projection of a continuous sloppy manifold onto a binary fit-quality criterion, not as a switch between two structurally distinct regimes.
 
 In contrast, **well-identified parameters are virtually identical between poor- and good-basin iterations** (ratio in [0.95, 1.03] for $k_d$, $t_{p2}$, $k_m$, $t_m$). The mechanism decomposition, busulfan modifiers, and inducer impulse timing are robust to which basin the factor XIII channel occupies; the main biological conclusions of the manuscript do not depend on which basin a given iteration occupies.
 

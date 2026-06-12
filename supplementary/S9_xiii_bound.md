@@ -56,7 +56,7 @@ Sorting the 8 unconstrained fits ($c_x \leq 2000$ and $c_x \leq 5000$) by fitted
 | 1997.5 | −0.047 | transitional |
 | 2153.0 | −0.338 | sacrifice |
 
-Two $c_x$ values 170 units apart (1408.7 and 1579.8, a $\approx 9\%$ difference) yield $R^2_{\text{xiii,G2}}$ of $+0.150$ and $-0.479$ — *opposite* basins. The factor XIII channel is governed by a four-parameter sloppy direction $\{a_x, c_x, b_x, k_x\}$ (§S3.2: all four classified as sloppy or grid-truncated by profile likelihood; §S4.3: the same manifold gives a bimodal bootstrap distribution via the $b_x/k_x$ ratio). $c_x$ is one component of this direction, not its primary determinant. Constraining $c_x$ with a fixed upper bound therefore selects a *subspace* of the manifold, not a single point.
+Two $c_x$ values 170 units apart (1408.7 and 1579.8, a $\approx 9\%$ difference) yield $R^2_{\text{xiii,G2}}$ of $+0.150$ and $-0.479$ — *opposite* basins. The factor XIII channel is governed by a four-parameter sloppy direction $\{a_x, c_x, b_x, k_x\}$ (§S3.2: all four classified as sloppy or grid-truncated by profile likelihood; §S4.3: the same manifold gives a broad, right-skewed bootstrap distribution via the $b_x/k_x$ ratio). $c_x$ is one component of this direction, not its primary determinant. Constraining $c_x$ with a fixed upper bound therefore selects a *subspace* of the manifold, not a single point.
 
 ---
 
