@@ -1,5 +1,7 @@
 # Analysis 05 — v13 baseline Findings
 
+> **Note (v3.16):** the architectural penalty cross-referenced from analysis 03 as "~22 R² points" was later corrected to ≈14 pp and shown to be concentrated in the factor XIII channel rather than uniform (see S10 / analysis 05 baseline). This notebook's observation that the v13 baseline improves 5 of 6 Group II observables, with factor XIII the exception, remains consistent with that corrected picture; only the "~22" figure is superseded.
+
 **Status:** closed. Reference baseline for Phase 2 v13-cost analyses.
 
 ## Summary

@@ -1,5 +1,7 @@
 # Analysis 03 — Findings
 
+> **⚠ SUPERSEDED (v3.16) — central conclusion corrected.** This notebook's headline finding — that the joint→separate gap is a *"systematic, uniform improvement across all six observables"* — was **found to be incorrect** on later recomputation. The joint baseline used below (R²_G2 = 0.6204) is a **stale v12 cost constant**; the correct v13 production baseline is **R²_G2 = 0.6920**, giving a **14-percentage-point** gap, not ~22. Recomputed per-channel under v13, the gap is **concentrated almost entirely in factor XIII** (Δ ≈ +0.72; joint R² = 0.077), **not** uniform — two channels (recalcification, acid phosphatase) are in fact fit marginally *better* under joint fitting (Δ < 0). The in-text claim that factor XIII has the *smallest* gap is therefore **reversed** (it carries the largest). The factor-XIII deficit decomposes into architecture-sharing (≈ −0.52) and the W_SPLIT prior (≈ −0.20). **Canonical treatment: S10** (and `analyses/05`). The per-observable table and the "all six rise together" / "smallest for XIII" statements below reflect the superseded v12 numbers.
+
 **Status:** closed. Result feeds back into `notes/known_issues.md` issue I-2.
 
 ## Summary
@@ -34,9 +36,9 @@ Wall time: 510 s.
 
 ## Interpretation
 
-**Case C confirmed (Δavg > 0.15).** The joint fit systematically constrains parameters toward G1-optimal regions, costing ~22 percentage points of G2 R² average. The deficit is largest for D (+0.314) and fib (+0.285), and smallest for XIII (+0.070, partly because XIII G2 is already supported by the cx ≤ 600 structural prior).
+**Case C confirmed (Δavg > 0.15).** The joint fit systematically constrains parameters toward G1-optimal regions, costing ~22 percentage points of G2 R² average. **[SUPERSEDED — v12 per-channel numbers; under v13 the gap is XIII-largest, +0.72. See top note + S10.]** The deficit is largest for D (+0.314) and fib (+0.285), and smallest for XIII (+0.070, partly because XIII G2 is already supported by the cx ≤ 600 structural prior).
 
-Note that the data/parameter ratio for separate G2 fit is 2.08, which raises overfitting concerns. However, the **systematic, uniform improvement across all 6 observables** (rather than spiky over-fits on individual observables) suggests the gap is largely architectural, not pure overfitting. If this were pure overfitting, we would expect very high R² on a few observables and modest improvement on others; instead, all six rise together.
+Note that the data/parameter ratio for separate G2 fit is 2.08, which raises overfitting concerns. **[SUPERSEDED — refuted: 2 of 6 channels (recalc, AP) have Δ<0; the gap is XIII-concentrated, not uniform. See top note + S10.]** However, the **systematic, uniform improvement across all 6 observables** (rather than spiky over-fits on individual observables) suggests the gap is largely architectural, not pure overfitting. If this were pure overfitting, we would expect very high R² on a few observables and modest improvement on others; instead, all six rise together.
 
 ## Implications for Phase 2
 

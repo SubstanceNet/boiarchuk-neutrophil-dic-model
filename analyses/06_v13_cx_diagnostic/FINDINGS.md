@@ -1,5 +1,7 @@
 # Analysis 06 — v13 cx-bound diagnostic Findings
 
+> **Note (v3.16):** the architectural penalty cross-referenced from analysis 03 as "~22 R² points" was later corrected to ≈14 pp, concentrated in the factor XIII channel (see S10). This notebook's structural conclusion — that the deficit localises to factor XIII and motivates group-specific XIII parameters — remains consistent with that corrected picture; only the "~22" figure is superseded.
+
 **Status:** closed. Identifies multi-modal landscape structure in XIII channel under v13 cost.
 
 ## Summary

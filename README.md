@@ -13,9 +13,9 @@ robustness analysis).
 The dataset is an experimental series on rabbit DIC induced by ethylphenacin (a
 vitamin-K-antagonist anticoagulant rodenticide), comparing a control DIC group
 (Group I) with a group in which granulocytopoiesis was suppressed by busulfan
-before induction (Group II). Group II demonstrates that suppressing the
-neutrophil compartment prevents the clinically significant phase of DIC —
-evidence that activated neutrophils are an active causal factor in DIC
+before induction (Group II). Group II shows that suppressing the
+neutrophil compartment largely prevents the clinically significant phase of DIC —
+evidence that activated neutrophils are an active contributor to DIC
 pathogenesis rather than passive bystanders.
 
 The model is a five-state system of ordinary differential equations with 26
@@ -46,8 +46,7 @@ pip install -e .
 ```
 
 Requires Python ≥ 3.10. Runtime dependencies: NumPy, SciPy, Matplotlib (pinned
-in `requirements.txt`). Optional analysis extras (SALib, emcee, corner, arviz)
-are declared under the `analysis` extra in `pyproject.toml`.
+in `requirements.txt`).
 
 ## Quick start
 
@@ -96,6 +95,10 @@ Results are reproducible at three levels, described in
 - `docs/model_spec.md` — state equations, observation equations, cost function.
 - `docs/parameter_glossary.md` — all 26 parameters with bounds and meaning.
 - `data/csv/PROVENANCE.md` — data sources and provenance.
+
+### A note on `analyses/*/FINDINGS.md`
+
+Each `analyses/NN_*/FINDINGS.md` is a **dated lab notebook**: it records what that analysis computed and how it was interpreted **at the time it was run**, and is retained for process transparency. These notebooks are **not** maintained as current claims. Where later work revised a number or overturned a conclusion, the canonical, up-to-date result lives in the manuscript and the Supplementary Information (S1–S10); where a notebook's conclusion was superseded, a dated note marks it at the top of that file. **In any discrepancy between a `FINDINGS.md` and the manuscript/SI, the manuscript and SI are authoritative.**
 
 ## License
 

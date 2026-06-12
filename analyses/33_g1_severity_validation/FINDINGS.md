@@ -1,5 +1,7 @@
 # Analysis 33 — G1 hypocoagulation severity validation
 
+> **Note (v3.16):** the "~22 pp" architecture penalty and "22×" separation quoted here were later corrected to **14 pp** (concentrated in factor XIII; see S10) and **21×** (main text §3.4). The reference to analysis 03 points to a notebook whose "uniform across all six" conclusion was superseded — see the note at the top of `analyses/03_separate_g2_fit/FINDINGS.md`.
+
 **Status:** closed. Pure-G1 run of the joint v13 model through the 100-member
 bootstrap ensemble, validated against Olena's observed G1 severity and the
 observed mortality pattern. Replaces the defunct `liver_collapse` metric.

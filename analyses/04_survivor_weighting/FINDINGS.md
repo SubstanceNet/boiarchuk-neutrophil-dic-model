@@ -1,5 +1,7 @@
 # Analysis 04 — Findings
 
+> **Note (v3.16):** the joint baseline R²_G2 = 0.6204 referenced here is a **stale v12 cost constant** (the v13 production baseline is 0.6920; see S10 / `analyses/05`). The W_SURV effect measured in this notebook — uniform vs survivor-weighted G1 weighting — is unaffected, since it isolates the weighting change within one cost version.
+
 **Status:** closed. Result feeds back into `notes/known_issues.md` issue I-5.
 
 ## Summary

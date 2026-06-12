@@ -1,5 +1,7 @@
 # Analysis 30 — Myelosan dose-response phase diagram (Phase 4.5)
 
+> **⚠ SUPERSEDED (v3.16) — two corrections.** (1) The severity separation quoted here as *"22×"* / *"~22-fold"* was unified to **21×** in later work (endpoint/rounding convention; main text §3.4). (2) The interpretation that *"myelosan operates substantially through reduction of neutrophil abundance"* (i.e. predominantly via neutrophil count) was **not supported** by the later 2×2 decomposition. With good-basin cells max_recalc = 150.8 / 39.6 / 44.5 / 7.1 s for (G1/off, G1/on, G2/off, G2/on), the protective effect splits into **comparable count and kinetic main effects with a positive interaction** (total ≈ 21×); **neither axis dominates.** **Canonical treatment: §S6.5** and main text §3.4–3.5. The "neutrophil abundance" framing below is superseded.
+
 **Status:** closed. 22,500 simulations completed (225 grid cells × 100
 bootstrap ensemble members), ~2 minutes wall-clock, zero failures.
 
@@ -87,6 +89,7 @@ landscape observed during fitting.
 > The observed experimental dose (km=4.93, tm=0.43) lies on the
 > dose-response curve at intermediate severity. The kinetic modification
 > alone, applied to the G2 neutrophil profile, does not reproduce G1-level
+> **[SUPERSEDED — count and kinetics contribute comparably (2×2 decomposition); neither dominates. See top note + §S6.5.]**
 > hypocoagulation severity; pure-G1 simulation (analysis 33) yields ~22-fold
 > greater peak hypocoagulation, indicating that the protective effect of
 > myelosan operates substantially through reduction of neutrophil abundance,
