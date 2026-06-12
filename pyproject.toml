@@ -30,14 +30,6 @@ dependencies = [
 dev = [
     "pytest>=8.0",
 ]
-analysis = [
-    "SALib>=1.5",
-    "emcee>=3.1",
-    "corner>=2.2",
-    "arviz>=0.17",
-    "tqdm>=4.66",
-]
-
 
 [tool.setuptools]
 packages = ["src"]

@@ -1,8 +1,13 @@
-# Pinned runtime dependencies (reference: Pop!_OS 22.04, Python 3.10.12).
-# These are exact pins for runtime reproducibility. Optional analysis extras
-# (SALib, emcee, corner, arviz) are declared under the 'analysis' extra in pyproject.toml.
-
+# Pinned runtime dependencies for reproducibility.
+# Reference environment: Pop!_OS 22.04, Python 3.10.12 (venv).
+# Exact pins so that the published numerical results reproduce; the core
+# scientific stack (numpy, scipy, matplotlib) is pinned exactly because minor
+# version changes can shift optimizer defaults and numerical tolerances.
+#
+# The project is installed with `pip install -e .` (see pyproject.toml).
+# These are the runtime requirements; no optional analysis extras are used by
+# the code in this repository.
 numpy==2.2.6
-scipy>=1.13.0,<2.0      # required for numpy 2.x compatibility; any 1.13+ is fine
-matplotlib==3.10.3
-pytest>=8.0
+scipy==1.15.3
+matplotlib==3.10.6
+pytest==9.0.3
