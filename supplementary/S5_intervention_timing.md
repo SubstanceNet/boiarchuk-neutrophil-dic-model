@@ -56,7 +56,7 @@ The $t_{\text{peak}}$ column in the table above shows a non-monotonic pattern wi
 
 **$t_{\text{recovery}}$ is the cleaner temporal metric.** Across the prevention and mitigation phases, $t_{\text{recovery}}$ sits in a narrow band (7.69–8.24 d), with the no-intervention reference far outside it (17.14 d). Mitigation-phase values are marginally earlier than prevention-phase values (7.69–7.95 vs. 8.00–8.24 d), because there is less severity to recover from.
 
-**Acute-phase duration** ($t_{\text{recovery}} - t_{\text{peak}}$) approximately halves under intervention, from $\approx 8\;\text{d}$ in the no-intervention reference to $\approx 4\;\text{d}$ in intervention scenarios, with little variation across timing within the intervention group. The qualitative result is consistent across all nine scenarios: **timing modulates severity, but not the temporal structure of the episode**. Once intervention is applied, the acute phase compresses to a similar duration regardless of precisely when within the therapeutic window the intervention occurred; only severity scales with timing.
+**Acute-phase duration** ($t_{\text{recovery}} - t_{\text{peak}}$) approximately halves under intervention, from $\approx 8\;\text{d}$ in the no-intervention reference to $\approx 4\;\text{d}$ in intervention scenarios, with little variation across timing within the intervention group. The qualitative result is consistent across all nine scenarios: **timing modulates severity, but leaves the temporal structure of the episode largely intact**. Once intervention is applied, the acute phase compresses to a similar duration regardless of precisely when within the therapeutic window the intervention occurred; only severity scales with timing.
 
 ---
 

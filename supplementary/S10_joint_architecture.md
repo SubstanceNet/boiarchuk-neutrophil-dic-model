@@ -47,7 +47,7 @@ The mean improvement $\Delta \approx 0.144$ is the **$\approx 14$ percentage poi
 
 - The gap is dominated by a single channel: **factor XIII** ($\Delta = +0.72$), where joint fitting reaches only $R^2 = 0.077$ — consistent with the bootstrap median $R^2_{\text{G2}}(\text{XIII}) = 0.075$ (§S4.3).
 - Across the other five observables the mean $\Delta$ is only **+0.03**; two of them (**recalcification** and **acid phosphatase**) are fit marginally better under joint fitting ($\Delta < 0$).
-- The separate-fit advantage is therefore not a diffuse, multi-channel improvement but a near-isolated recovery of the factor XIII channel.
+- The separate-fit advantage is therefore not a diffuse, multi-channel improvement, but rather a nearly isolated recovery of the factor XIII channel.
 
 ---
 

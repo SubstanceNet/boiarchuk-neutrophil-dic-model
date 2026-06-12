@@ -18,7 +18,7 @@ The model has five state variables, all initialised to zero (§S1.5):
 
 Time $t$ is in days. The parameter vector $p_v$ has length 26; the mapping of symbols to indices follows `src/config.NAMES` and is given in Table S2.
 
-The two pools $H_c$ and $H_n$ appear in the source dissertation under the term *hyaline microthrombi*, reflecting the historical association with fibrin clots in the microvascular bed characteristic of DIC. In the ODE they are abstract coagulation pools, not literal microthrombi; the present text accordingly uses "inducer-derived coagulation pool" ($H_c$) and "neutrophil-derived coagulation pool" ($H_n$).
+The two pools $H_c$ and $H_n$ appear in the source dissertation under the term *hyaline microthrombi*, reflecting the historical association with fibrin clots in the microvascular bed characteristic of DIC. Within the ODE, they represent abstract coagulation pools rather than literal microthrombi; accordingly, the present text uses "inducer-derived coagulation pool" ($H_c$) and "neutrophil-derived coagulation pool" ($H_n$).
 
 Group differences are encapsulated in two effective parameters:
 
@@ -160,7 +160,7 @@ $$\text{degranulation\_index} = D \times 100 \quad \text{(expressed in \%)}$$
 
 These two observables therefore carry no contribution coefficients to estimate — they are identified up to the parameters governing the dynamics of $AP$ and $D$ (§S1.3).
 
-The three-tier organisation of the six observables (algebraic / dynamic-state / direct-state) is what reduces the apparent "four haemostatic channels with contribution coefficients" from main text §2.2 to a finer structure: only three (recalc, thrombin, fib) are algebraic maps with their own coefficients; the fourth nominally "haemostatic" observable (xiii) is an integrated dynamic-equation state.
+This three-tier organisation (algebraic / dynamic-state / direct-state) refines the apparent "four haemostatic channels with contribution coefficients" (main text §2.2) into a more precise structure: only three (recalc, thrombin, fib) are algebraic maps with their own coefficients; the fourth nominally "haemostatic" observable (xiii) is an integrated dynamic-equation state.
 
 ---
 

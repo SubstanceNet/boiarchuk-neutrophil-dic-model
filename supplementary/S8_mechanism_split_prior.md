@@ -1,6 +1,6 @@
 # S8. Sensitivity to the Mechanism-Decomposition Prior Weight ($W_{\text{SPLIT}}$)
 
-*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: §2.2 (introduction of $W_{\text{SPLIT}}$ as one of two structural priors), §3.3 ("The prior is necessary for identifiability: without it, the recalcification fraction is not identified across different optimiser seeds"; mechanism decomposition fractions and Table 2), and the definition of the cost term $J_{\text{split}}$ in §S2.1. This appendix provides empirical evidence for the two central claims about the $W_{\text{SPLIT}} = 2.0$ prior: it is necessary for identifiability and validated post-hoc by improved fit on the held-out (Group II) sample.*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: §2.2 (introduction of $W_{\text{SPLIT}}$ as one of two structural priors), §3.3 ("The prior is necessary for identifiability: without it, the recalcification fraction is not identified across different optimiser seeds"; mechanism decomposition fractions and Table 2), and the definition of the cost term $J_{\text{split}}$ in §S2.1. This appendix provides empirical evidence for the two central claims about the $W_{\text{SPLIT}} = 2.0$ prior: it is necessary for identifiability and validated post-hoc by improved fit in the parallel (Group II) cohort.*
 
 ---
 
@@ -67,11 +67,11 @@ The five-point scan at seed 42 (with stability-across-seeds established for $W =
 
 Three patterns are visible. **The decomposition locks onto the targets between $W = 0.3$ and $W = 1.0$:** $f_{\text{recalc}}$ falls from 0.302 to 0.250 as $W$ rises from 0.3 to 1.0 and stabilises within 0.01 of the target 0.24 for $W \geq 1.0$. **$R^2_{\text{G1}}$ is effectively flat** across the scan (0.83–0.85): the prior does not harm Group I fit. **$R^2_{\text{G2}}$ improves monotonically** from 0.548 ($W = 0$) through 0.620 ($W = 2.0$) to 0.645 ($W = 5.0$), confirming the post-hoc validation claim (§S8.5).
 
-$W = 2.0$ was chosen as the smallest weight at which the decomposition is robustly locked across multiple seeds (S8.3), while retaining the $R^2_{\text{G2}}$ gain on the held-out sample. Higher $W$ (5.0) gives marginally better $R^2_{\text{G2}}$ (+0.025), but the cost function changes character — the prior starts to dominate the data-fitting term — and the trade-off is not justified by the marginal gain.
+$W = 2.0$ was chosen as the smallest weight at which the decomposition is robustly locked across multiple seeds (S8.3), while retaining the $R^2_{\text{G2}}$ gain in the parallel cohort. Higher $W$ (5.0) gives marginally better $R^2_{\text{G2}}$ (+0.025), but the cost function changes character — the prior starts to dominate the data-fitting term — and the trade-off is not justified by the marginal gain.
 
 ---
 
-## S8.5 Post-hoc validation: fit on the held-out (Group II) sample
+## S8.5 Post-hoc validation: improved fit in the parallel experimental cohort
 
 Re-reading the $R^2_{\text{G2}}$ column from the seed-stability tables for $W = 0$ and $W = 2.0$ (S8.2, S8.3):
 
@@ -81,14 +81,14 @@ Re-reading the $R^2_{\text{G2}}$ column from the seed-stability tables for $W = 
 | 7 | 0.605 | 0.621 | +0.016 |
 | 123 | 0.577 | 0.602 | +0.025 |
 
-$R^2_{\text{G2}}$ is **higher at $W = 2.0$ than at $W = 0$ across all three seeds**, by 2–7 percentage points. The prior derived from the Group I / Group II day-1 contrast therefore makes correct out-of-sample predictions for *Group II day-2 dynamics*, which the day-2 Group I fit alone could not constrain. $R^2_{\text{G1}}$ is virtually unchanged across the same comparison (0.834–0.854 at $W = 0$; 0.833–0.837 at $W = 2.0$). The prior pays no Group I cost for its Group II improvement; it uses *Group I day-1 information* to constrain the *Group I day-2 mechanism decomposition* in a way that *Group II day-2 fit quality validates*.
+$R^2_{\text{G2}}$ is **higher at $W = 2.0$ than at $W = 0$ across all three seeds**, by 2–7 percentage points. The prior derived from the Group I / Group II day-1 contrast therefore guides the model to a mechanism decomposition that improves the day-2 fit for the parallel Group II cohort—a feature that the day-2 Group I fit alone could not constrain. $R^2_{\text{G1}}$ is virtually unchanged across the same comparison (0.834–0.854 at $W = 0$; 0.833–0.837 at $W = 2.0$). The prior pays no Group I cost for its Group II improvement; it uses *Group I day-1 information* to constrain the *Group I day-2 mechanism decomposition* in a way that *Group II day-2 fit quality validates*.
 
 ---
 
 ## S8.6 Conclusion
 
-The mechanism-decomposition prior $W_{\text{SPLIT}} = 2.0$ is therefore (i) **necessary** for identifiability — without it, three optimiser seeds find equicost solutions with recalcification fractions spanning 13 percentage points and fibrinogen fractions near 0.05 (S8.2); (ii) **validated** post-hoc — $R^2_{\text{G2}}$ on the held-out sample improves by 2–7 pp across all three seeds (S8.5); and (iii) **biologically motivated** — the targets are day-1 ratios $(\Delta G_1 - \Delta G_2)/\Delta G_1$, derived from a different time point than the day-2 fit they constrain, and the two groups have nearly identical haemostatic baselines that make the derivation correctly posed (main text §3.3).
+The mechanism-decomposition prior $W_{\text{SPLIT}} = 2.0$ is therefore (i) **necessary** for identifiability — without it, three optimiser seeds find equicost solutions with recalcification fractions spanning 13 percentage points and fibrinogen fractions near 0.05 (S8.2); (ii) **validated** post-hoc — $R^2_{\text{G2}}$ in the parallel cohort improves by 2–7 pp across all three seeds (S8.5); and (iii) **biologically motivated** — the targets are day-1 ratios $(\Delta G_1 - \Delta G_2)/\Delta G_1$, derived from a different time point than the day-2 fit they constrain, and the two groups have nearly identical haemostatic baselines that make the derivation correctly posed (main text §3.3).
 
 One transparency caveat applies, repeated here for self-contained reading: at $W = 0$, the neutrophil fibrinogen fraction settles near 0.05 across seeds (S8.2), so the prior target of 0.76 is an *imposed* day-1-derived goal, not a feature *reproduced* by day-2 fibrinogen dynamics. Main text §3.3 already states this caveat; §S8 confirms it directly from the $W = 0$ fits.
 
-The decomposition is therefore best described as a regularised, prior-constrained, held-out-validated estimate consistent with the day-1 biological signal, not as a prior-free inference from day-2 fitting alone. This is the framing used in main text §3.3; §S8 provides the empirical evidence underlying it.
+The decomposition is therefore best described as a regularised, prior-constrained estimate consistent with the day-1 biological signal, not as a prior-free inference from day-2 fitting alone. This is the framing used in main text §3.3; §S8 provides the empirical evidence underlying it.
