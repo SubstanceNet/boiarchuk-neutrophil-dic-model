@@ -14,18 +14,21 @@ Group differences enter only through:
   - kr_eff:   neutrophil clearance rate (G1: kr; G2: kr * km)
   - tp2_eff:  inflammatory peak time   (G1: tp2; G2: tp2 * tm)
 
-Public API:
-    from boiarchuk_dic import config, load_data, solve_group, joint_cost, run_fit
+Public API (the importable package root is ``src``):
+    from src import config, load_data, solve_group, run_fit
+    from src import joint_cost_v13        # canonical v13 cost (manuscript baseline)
+    from src import joint_cost            # legacy v12 cost (reproducibility only)
 """
 
-__version__ = "0.1.0+phase0"
+__version__ = "1.0.1"
 __authors__ = ["Olena D. Boiarchuk", "Oleksiy Onasenko"]
 __status__ = "Research"
 
 from .config import NAMES, BOUNDS, N1_BASE
 from .data import load_data, build_neutrophil_interpolators
 from .model import solve_group
-from .fit import joint_cost, run_fit, r_squared
+from .cost_v13 import joint_cost_v13          # canonical production cost (v13)
+from .fit import joint_cost, run_fit, r_squared   # joint_cost is the legacy v12 cost
 
 __all__ = [
     "NAMES",
@@ -34,7 +37,8 @@ __all__ = [
     "load_data",
     "build_neutrophil_interpolators",
     "solve_group",
-    "joint_cost",
+    "joint_cost_v13",   # canonical v13 cost
+    "joint_cost",       # legacy v12 cost (kept for archive/v12 reproducibility)
     "run_fit",
     "r_squared",
 ]

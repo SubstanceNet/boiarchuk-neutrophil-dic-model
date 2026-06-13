@@ -143,15 +143,8 @@ def profile_param(
                 cost_25dim, x0, args=(theta_fixed,),
                 method="Nelder-Mead", options=optimizer_options,
             )
-            if np.isfinite(r.fun) and r.fun < cfg.COST_PENALTY_NAN:
-                profile_costs[k] = float(r.fun)
-                profile_best_xs[k] = make_full_x(r.x, theta_fixed)
-                # Use found x as warm-start for next neighbouring grid point
-                # if we expect smooth profile (though we keep baseline x0 default)
-                # ... currently NOT warm-starting between grid points.
-            else:
-                profile_costs[k] = float(r.fun)
-                profile_best_xs[k] = make_full_x(r.x, theta_fixed)
+            profile_costs[k] = float(r.fun)
+            profile_best_xs[k] = make_full_x(r.x, theta_fixed)
         except Exception as e:
             if verbose:
                 print(f"  [{param_name} grid {k}] failed: {e}", flush=True)

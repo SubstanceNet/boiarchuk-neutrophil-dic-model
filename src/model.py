@@ -92,10 +92,10 @@ def _rhs(
     dAP = pv[2] * D - pv[3] * AP
     dHc = pv[4] * V - cfg.KCD_FIX * Hc
 
-    cap = max(1.0 - Hn / pv[7], 0.005)
-    dHn = pv[5] * min(AP * AP, 10.0) * cap - pv[6] * Hn
+    cap = max(1.0 - Hn / pv[7], cfg.HN_DENOM_FLOOR)
+    dHn = pv[5] * min(AP * AP, cfg.AP2_CAP) * cap - pv[6] * Hn
 
-    gHn = Hn / max(1.0 - Hn / pv[7], 0.005)
+    gHn = Hn / max(1.0 - Hn / pv[7], cfg.HN_DENOM_FLOOR)
     liver = max(1.0 - Hn / pv[7], 0.0)
     dX = pv[20] * V + pv[21] * AP * Nr - pv[22] * gHn - pv[23] * liver * X
 
@@ -147,7 +147,7 @@ def solve_group(
     X = interps[4](t_eval)
 
     V_at = _V(t_eval)
-    gHn = Hn / np.maximum(1.0 - Hn / pv[7], 0.005)
+    gHn = Hn / np.maximum(1.0 - Hn / pv[7], cfg.HN_DENOM_FLOOR)
     Nr = Nf(t_eval) / cfg.N1_BASE
 
     return dict(

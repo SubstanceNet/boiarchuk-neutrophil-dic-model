@@ -212,7 +212,7 @@ def main():
 
     # --- Save ---
     out = dict(
-        analysis="10_bootstrap_aggregated",
+        analysis="22_predictive_check_aggregated",
         n_iters=len(iters),
         cost=cost_summary,
         param_ci=param_ci,

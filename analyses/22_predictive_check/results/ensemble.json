@@ -1,5 +1,5 @@
 {
-  "analysis": "10_bootstrap_aggregated",
+  "analysis": "22_predictive_check_aggregated",
   "n_iters": 100,
   "cost": {
     "p2.5": 0.7553502830373129,

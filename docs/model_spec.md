@@ -28,7 +28,7 @@ This document specifies the model: state variables, driving inputs, the ODE syst
 dD/dt  = k_d · S(t) · (1 − D)  −  k_r,eff · D
 dAP/dt = k_rl · D  −  k_cl · AP
 dHc/dt = k_ca · V(t)  −  k_cd · Hc                  (k_cd = 0.2, fixed)
-dHn/dt = k_na · min(AP², 10) · max(1 − Hn/Hm, 0.005) · 1  −  k_nd · Hn
+dHn/dt = k_na · min(AP², 10) · max(1 − Hn/Hm, 0.005)  −  k_nd · Hn
 dX/dt  = a_x · V(t)  +  c_x · AP · Nr  −  b_x · gHn  −  k_x · max(1 − Hn/Hm, 0) · X
 
 with auxiliary quantity gHn(t) = Hn / (1 − Hn/Hm). In code the denominator is floored at 0.005 — i.e. max(1 − Hn/Hm, 0.005) — as a computational guard against division by zero as Hn approaches the carrying capacity Hm; the manuscript reports the clean algebraic form.
@@ -57,7 +57,7 @@ Mechanism-split fixes pro-coagulant fractions on G1 day 2:
 - fib:    76% neutrophil-mediated
 - xiii:   82% neutrophil-mediated
 
-These targets are derived from the G1/G2 day-1 ratios in the dissertation tables and imposed as a soft prior on the day-2 fit. The prior is required for identifiability and is validated post-hoc by superior held-out Group II fit; its sensitivity to W_split is characterised in Supplementary §S8. For fibrinogen the unconstrained fit settles near 0.05, so the 0.76 target is imposed rather than reproduced by the day-2 dynamics — a transparency caveat restated in §S8.
+These targets are derived from the G1/G2 day-1 ratios in the dissertation tables and imposed as a soft prior on the day-2 fit. The prior is required for identifiability and is validated post-hoc by superior Group II (parallel-cohort) fit; its sensitivity to W_split is characterised in Supplementary §S8. For fibrinogen the unconstrained fit settles near 0.05, so the 0.76 target is imposed rather than reproduced by the day-2 dynamics — a transparency caveat restated in §S8.
 
 ## Numerical integration
 
@@ -65,13 +65,13 @@ These targets are derived from the G1/G2 day-1 ratios in the dissertation tables
 
 ## Structural priors
 
-The model uses two structural priors, both validated post-hoc by held-out Group II fit:
+The model uses two structural priors, both validated post-hoc by Group II (parallel-cohort) fit:
 
 ### W_split = 2.0 (mechanism-split constraint)
 
 Forces day-2 pro-coagulant decomposition fractions on G1 toward (24%, 76%, 82%) for (recalc, fib, xiii). Targets derived from G2/G1 day-1 ratios in Boyarchuk dissertation (1998).
 
-**Validated by analysis 01** (see `analyses/01_w_split_profile/FINDINGS.md`): without this constraint (W_split = 0), the model exhibits a cost-equivalent manifold of distinct mechanistic decompositions with no unique optimum. Three independent random seeds at W_split = 2 converge to identical fractions (Δ < 0.005). The constraint selects a single optimum and is independently validated by superior held-out R-squared on G2 across all tested seeds.
+**Validated by analysis 01** (see `analyses/01_w_split_profile/FINDINGS.md`): without this constraint (W_split = 0), the model exhibits a cost-equivalent manifold of distinct mechanistic decompositions with no unique optimum. Three independent random seeds at W_split = 2 converge to identical fractions (Δ < 0.005). The constraint selects a single optimum and is independently validated by superior R-squared on the Group II (parallel-cohort) fit across all tested seeds.
 
 ### Upper bound on cx ∈ (10, 600)
 

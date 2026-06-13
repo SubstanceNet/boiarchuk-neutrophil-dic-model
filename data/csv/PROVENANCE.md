@@ -76,7 +76,7 @@ For reconstructing original measurements from CSV deltas, baselines are:
 | Acid phosphatase | (low baseline, BO) | (low baseline, BO) | Diss. table 5.7 |
 | Neutrophil count | 7.3 × 10⁹/L | 3.9 × 10⁹/L (post-busulfan, state M) | Diss. table 5.1 |
 
-Baselines beyond neutrophil count are documented in the dissertation tables but are not numerically required by the model (which works on deltas). They will be added to `data/csv/baselines.csv` if needed for absolute-value plots in the manuscript.
+Baselines beyond neutrophil count are documented in the dissertation tables but are not numerically required by the model (which works on deltas). They are not shipped as a separate file; the absolute values above (and the dissertation tables) are sufficient to reconstruct absolute trajectories from the CSV deltas if needed for absolute-value plots.
 
 ## Standard errors (sigma_group1.csv, sigma_group2.csv)
 

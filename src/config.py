@@ -148,3 +148,11 @@ ODE_ATOL: float = 1e-7
 ODE_MXSTEP: int = 5000
 COST_PENALTY_NAN: float = 1e6
 HN_SATURATION_PENALTY: float = 2.0  # added if any Hn value approaches Hm
+
+# Numerical guards in the Hn / gHn terms (model.py). Documented in S1.3-S1.4.
+#  - HN_DENOM_FLOOR: floor on (1 - Hn/Hm) so the gHn denominator never hits 0
+#    (caps gHn <= Hn/HN_DENOM_FLOOR); never binding at the fitted optimum.
+#  - AP2_CAP: ceiling on AP^2 in the Hn production term, an anti-blowup guard
+#    against transient AP excursions; set above the AP^2 range realised at the fit.
+HN_DENOM_FLOOR: float = 0.005
+AP2_CAP: float = 10.0

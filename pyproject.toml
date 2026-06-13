@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "boiarchuk-neutrophil-dic-model"
-version = "0.1.0+phase0"
+version = "1.0.1"
 description = "Mechanistic ODE model of neutrophil-driven DIC pathogenesis (Boiarchuk 1998-2023 dataset)"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -14,7 +14,7 @@ authors = [
     { name = "Oleksiy Onasenko" },
 ]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Bio-Informatics",
     "Topic :: Scientific/Engineering :: Mathematics",
@@ -28,7 +28,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.0",
+    "pytest>=9.0",
 ]
 
 [tool.setuptools]

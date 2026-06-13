@@ -230,7 +230,5 @@ def joint_cost_v13_gs_decomposed(pv, g1, g2, n1_interp, n2_interp, t_fine_g1, t_
     convenience keys.
     """
     d = _cx_cost.cost_decomposed(pv, g1, g2, n1_interp, n2_interp, t_fine_g1, t_fine_g2, w_group)
-    # legacy keys:
-    d["cx_g1"] = d["cx_g1"]
-    d["cx_g2"] = d["cx_g2"]
+    # The decomposition already carries the convenience keys 'cx_g1' / 'cx_g2'.
     return d

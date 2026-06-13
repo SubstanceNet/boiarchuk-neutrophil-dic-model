@@ -28,15 +28,19 @@ only rate constants change instantaneously.
 | 0 | baseline G2 (myelosan from start) |
 | 1 | early intervention (before V(t) peak at τ_v=1.5) |
 | 2 | intervention after V(t) peak |
+| 2.5 | transition-window lower edge |
+| 3 | transition-window upper edge |
+| 3.5 | early mitigation phase |
 | 4 | mid-DIC intervention |
 | 6 | late intervention |
 | ∞ | no intervention (reference: G1-like) |
 
-Dose fixed at G2-observed (km=4.93, tm=0.43).
+Dose fixed at G2-observed (km=4.93, tm=0.43). The 2.5 / 3 / 3.5 day points
+resolve the biphasic-window transition reported in the manuscript and §S5.
 
 ### Compute
 
-6 scenarios × 100 bootstrap ensemble members = 600 simulations.
+9 scenarios × 100 bootstrap ensemble members = 900 simulations.
 ~3 minutes wall-clock.
 
 ## Severity metrics

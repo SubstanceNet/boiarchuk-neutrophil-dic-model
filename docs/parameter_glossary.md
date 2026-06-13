@@ -31,7 +31,7 @@ This glossary lists the 26 fitted parameters, their bounds, type (shared vs Grou
 | 18 | b_f  | 0.001–8    | shared | Fib / gHn coefficient | Consumption of fibrinogen via Hn pathway | v12 (expanded from 5) |
 | 19 | d_f  | 0.1–30     | shared | Fib / Hc coefficient | Consumption of fibrinogen via inducer pathway | v12 |
 | 20 | a_x  | 1–250      | shared | XIII production / V | Direct stimulation of XIII activity by inducer | v12 |
-| 21 | c_x  | 10–600     | shared | XIII production / AP·Nr | Neutrophil-mediated XIII contribution (XIII is stored in azurophil granules). **Upper bound is a structural prior** validated by analysis 02 — without it, XIII-channel parameter manifold {ax, cx, bx, kx} becomes non-identifiable and at least one G2 observable collapses to R-squared < 0. See FINDINGS in `analyses/02_cx_bound/`. | v12 + analysis 02 |
+| 21 | c_x  | 10–600     | shared | XIII production / AP·Nr | Neutrophil-mediated XIII contribution (elastase-mediated activation of plasma factor XIII; AP marks the degranulation that co-releases neutrophil elastase from azurophilic granules — Henriksson et al. 1980; Bagoly et al. 2008). **Upper bound is a structural prior** validated by analysis 02 — without it, XIII-channel parameter manifold {ax, cx, bx, kx} becomes non-identifiable and at least one G2 observable collapses to R-squared < 0. See FINDINGS in `analyses/02_cx_bound/`. | v12 + analysis 02 |
 | 22 | b_x  | 0.001–50   | shared | XIII degradation / gHn | Consumption of XIII via neutrophil pathway | v12 |
 | 23 | k_x  | 0.05–15    | shared | XIII liver-modulated resynthesis | Rate of hepatic XIII resynthesis, gated by liver function (1 − Hn/Hm) | v12 |
 | 24 | k_m  | 1.5–15     | G2-mod | Busulfan modifier on k_r | Multiplier (G2: k_r,eff = k_r · k_m). Reflects accelerated clearance of activated neutrophils under granulocytopoiesis suppression | v12 |
@@ -48,6 +48,6 @@ Profile-likelihood plots of each parameter are given in Supplementary S3 (analys
 
 ## Further documentation
 
-- Literature citations for each biological interpretation (e.g. azurophil granule storage of XIII: Schroeder et al. 2007).
+- Literature citations for each biological interpretation (e.g. elastase-mediated plasma factor XIII activation: Henriksson et al. 1980; Bagoly et al. 2008).
 - Independent biological-prior values for parameters where they exist (e.g. neutrophil-pool half-life from labelled-cell studies).
 - The per-parameter identifiability classification (well-identified / weakly-identified / sloppy) is reported in Supplementary S3 and Table S2.
