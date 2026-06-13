@@ -211,3 +211,21 @@ If group-specific cx insufficient, extend to {bx, kx} similarly.
 **Update (analysis 08 outcome):** Group-specific cf experiment also failed (cf_g1 ≈ cf_g2 in 2 of 3 seeds; fib_G2 R² unchanged). Pattern of negative results across both attempted candidates (cx, cf). `src/cost_v13_groupspec.py` (now factory-based, generalised) and `run_with_overrides_v13_gs` retained; final cleanup decision deferred to manuscript phase. Phase 2 step 2 closes with 0 successful candidates; proceeding to Phase 2 step 3 (profile likelihood).
 
 **Status.** Pending experiment outcome.
+
+## R-1: Release-reference update pending v1.0.1 (open — authors' action at release)
+
+**Context.** The v1.0.1 remediation pass (audit 2026-06-13) bumped the **code**
+version to 1.0.1 (`pyproject.toml`, `src/__init__.py`) but deliberately did **not**
+touch the published-release references, because v1.0.0 is already archived on
+Zenodo and is immutable there.
+
+**Action required at the v1.0.1 release (authors).** `manuscript/draft.md`
+Declarations (both **Data availability** and **Code availability**) and
+`supplementary/S7_reproducibility.md` §S7.6 currently cite **Zenodo DOI
+`10.5281/zenodo.20673521`** and **tag `v1.0.0`** (the published v1.0.0 archive).
+When cutting v1.0.1: (1) reserve a new Zenodo version DOI for v1.0.1 (pre-reserve
+workflow, same as v1.0.0); (2) write the reserved DOI into draft.md Declarations
+and S7.6; (3) create the `v1.0.1` git tag; (4) publish the Zenodo version. Do not
+move or delete the existing `v1.0.0` tag/DOI.
+
+**Status.** Open — scheduled for the v1.0.1 release step.

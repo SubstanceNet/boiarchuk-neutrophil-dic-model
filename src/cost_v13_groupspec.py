@@ -1,6 +1,14 @@
 """
 v13 group-specific cost: factory pattern for any one parameter.
 
+QUARANTINE / STATUS. This module supports ONLY rejected-hypothesis diagnostics
+(group-specific cx in analysis 07 and group-specific cf in analysis 08; both
+found cx_g1 ≈ cx_g2 / cf_g1 ≈ cf_g2 and no architectural improvement). It is
+NOT part of the production fitting pipeline (that is src/cost_v13.py with
+run_with_overrides_v13). It is retained solely as the executable evidence cited
+by Supplementary S9 (rejected resolutions of the XIII bound) and S10 (failed
+single-parameter group-specific alternatives). Do not build new analyses on it.
+
 Generalised from initial implementation (analysis 07: cx group-specific).
 Now supports any parameter from cfg.NAMES via make_cost_groupspec(name).
 

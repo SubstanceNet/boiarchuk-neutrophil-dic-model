@@ -1,5 +1,7 @@
 # Analysis 08 — Group-specific c_f (v13_gs[cf] diagnostic)
 
+> Rejected hypothesis; retained as evidence cited by S9/S10. Not part of the production pipeline.
+
 ## Question
 
 Does making `cf` group-specific (separate `cf_g1` and `cf_g2` parameters)

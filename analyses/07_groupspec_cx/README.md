@@ -1,5 +1,7 @@
 # Analysis 07 — Group-specific cx (v13_gs diagnostic)
 
+> Rejected hypothesis; retained as evidence cited by S9/S10. Not part of the production pipeline.
+
 ## Question
 
 Does making `cx` group-specific (separate `cx_g1` and `cx_g2` parameters)

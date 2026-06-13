@@ -44,19 +44,27 @@ def _gauss(t: np.ndarray | float, mu: float, sig: float) -> np.ndarray | float:
     return np.exp(-0.5 * ((t - mu) / sig) ** 2)
 
 
+def _gamma_pulse(r: np.ndarray | float) -> np.ndarray | float:
+    """Rescaled Gamma(2, 1) pulse value at normalised time r = t / tv.
+
+    Shared core of `_V_scalar` and `_V` (peak value 1 at r = 1). This is a pure
+    formula; the zero-for-t<=0 boundary is applied by the callers, so the scalar
+    and vectorised entry points produce identical values.
+    """
+    return r * np.exp(1.0 - r)
+
+
 def _V_scalar(t: float, tv: float = cfg.TV_FIX) -> float:
     """Gamma-like inducer toxicity pulse, scalar (used inside ODE rhs)."""
     if t <= 0:
         return 0.0
-    r = t / tv
-    return r * np.exp(1.0 - r)
+    return _gamma_pulse(t / tv)
 
 
 def _V(t: np.ndarray | float, tv: float = cfg.TV_FIX) -> np.ndarray:
     """Vectorised inducer toxicity pulse for post-hoc evaluation on time grids."""
     t = np.asarray(t, dtype=float)
-    r = t / tv
-    return np.where(t >= 0, r * np.exp(1.0 - r), 0.0)
+    return np.where(t >= 0, _gamma_pulse(t / tv), 0.0)
 
 
 # ============================================================
