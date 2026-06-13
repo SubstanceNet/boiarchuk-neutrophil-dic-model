@@ -18,6 +18,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
+A05 = ROOT / "analyses/05_v13_baseline/results"
 A22 = ROOT / "analyses/22_predictive_check/results"
 A31 = ROOT / "analyses/31_intervention_timing/results"
 A32 = ROOT / "analyses/32_combinations/results"
@@ -104,9 +105,42 @@ def test_window_good_basin_27():
 def test_dose_and_timing_both_required():
     """Half-dose-early (combo2) is WORSE than full-dose-late (combo1): dose and
     timing are independent thresholds, not a continuous trade-off (manuscript
-    §3.7, Table 3). Source: 32/combinations_summary.json max_recalc medians."""
+    Results, Virtual experiments — dose x time; Table 4). Source:
+    32/combinations_summary.json max_recalc medians."""
     d = _load(A32 / "combinations_summary.json")
     by = {s["scenario"]: s["max_recalc"]["median"] for s in d["scenarios"]}
     combo1 = by["combo1_high_dose_late"]
     combo2 = by["combo2_half_dose_early"]
     assert combo2 > combo1, f"combo2 ({combo2:.1f}) should exceed combo1 ({combo1:.1f})"
+
+
+# --- Analysis 05 / 22: headline fit-quality numbers --------------------------
+
+def test_baseline_mean_r2():
+    """Joint baseline point-fit mean R^2: Group I ~0.83, Group II ~0.69
+    (manuscript Results, 'Simultaneous model fitting'). Wide bands flag a change
+    of conclusion, not last-digit drift.
+    Source: 05_v13_baseline/results/fit.json avg_r2_g1 / avg_r2_g2."""
+    d = _load(A05 / "fit.json")
+    assert 0.78 < d["avg_r2_g1"] < 0.88, f"G1 mean R2 {d['avg_r2_g1']:.3f} outside [0.78,0.88]"
+    assert 0.62 < d["avg_r2_g2"] < 0.76, f"G2 mean R2 {d['avg_r2_g2']:.3f} outside [0.62,0.76]"
+
+
+def test_xiii_g2_negative_r2_fraction():
+    """~41% of bootstrap members have a negative Group II factor XIII R^2 — the
+    XIII channel is structurally under-determined (manuscript Results,
+    'Identifiability analysis'; Supplementary §S4). Recomputed from each member's
+    stored Group II XIII prediction vs. the data.
+    Source: 22/ensemble_members.json g2_xiii + data/csv."""
+    import numpy as np
+    from src.data import load_data
+    from src.fit import r_squared
+
+    m = _load(A22 / "ensemble_members.json")["members"]
+    _, g2 = load_data()
+    n = len(g2.xiii)
+    r2s = [r_squared(np.asarray(mem["g2_xiii"])[:n], g2.xiii)
+           for mem in m if not mem.get("failed")]
+    frac_neg = sum(r2 < 0 for r2 in r2s) / len(r2s)
+    assert 0.30 < frac_neg < 0.52, (
+        f"negative-R2 fraction {frac_neg:.2f} outside [0.30,0.52] (~0.41 expected)")
