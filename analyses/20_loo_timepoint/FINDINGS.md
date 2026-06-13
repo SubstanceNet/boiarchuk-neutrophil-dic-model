@@ -124,7 +124,7 @@ design**, not model overfitting. Three findings to report:
    late hypocoagulation (t=8, PRESS = 18.3) are critical structural
    anchors.
 
-2. **G2 sensitive** to timepoint removal (median PRESS = 21.5),
+2. **G2 sensitive** to timepoint removal (median PRESS = 20.6),
    consistent with smaller sample size (8 vs 15 timepoints).
    AP onset timing identified as the least constrained aspect.
 
@@ -138,7 +138,7 @@ design**, not model overfitting. Three findings to report:
 > to removal of any single timepoint (median PRESS = 6.5 across 6 observables;
 > worst case t=11, PRESS = 24.5, reflecting the critical role of peak DIC
 > observation). Group II predictions are more sensitive to individual
-> timepoint removal (median PRESS = 21.5), consistent with the smaller
+> timepoint removal (median PRESS = 20.6), consistent with the smaller
 > sample size (8 informative timepoints vs 15 in Group I). The high PRESS at
 > G2 t=1 (76.6, dominated by AP channel) identifies early AP dynamics as the
 > least constrained aspect of the G2 fit — a direct consequence of having

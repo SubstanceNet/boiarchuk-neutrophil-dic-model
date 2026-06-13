@@ -6,7 +6,7 @@
 
 ## Summary
 
-Separate-G2 fit gives R²_G2 avg = 0.8363. Joint-fit baseline (analysis 02): 0.6204. Δ = +0.2160 (Case C, Δ > 0.15). Joint architecture systematically sacrifices ~22 percentage points of G2 fit quality for G1 compatibility.
+Separate-G2 fit gives R²_G2 avg = 0.8363. Joint-fit baseline (analysis 02): 0.6204. Δ = +0.2160 (Case C, Δ > 0.15). Joint architecture systematically sacrifices ~22 percentage points of G2 fit quality for G1 compatibility. **[SUPERSEDED — this 0.6204 baseline and ~22 pp gap are v12 values; under v13 the joint-G2 baseline is 0.6920 and the gap is ≈14.4 pp, concentrated in factor XIII. See the top note and S10.]**
 
 ## Method
 

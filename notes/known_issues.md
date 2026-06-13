@@ -63,7 +63,7 @@ This is the running log of known issues, methodological concerns, and open quest
 - This systematic pattern (uniform improvement) is more consistent with **interpretation 2** (architectural pull) than with **interpretation 1** (overfitting). Pure overfitting would produce spiky improvements on a few observables, not uniform gains across all six.
 - Caveat: data/parameter ratio of 2.08 means some overfitting in the separate fit is unavoidable. The 0.868 v11.2 value likely was inflated by overfitting; the true separate-fit quality at current bounds is 0.836. The architectural penalty (joint vs separate) is therefore ~0.22 R² units, not the full 0.27.
 
-**Conclusion.** The joint architecture has a real architectural penalty of approximately 22 percentage points of R²_G2 average. The penalty is the price of parameter sharing across groups — currently only `km` and `tm` are group-specific, while 24 parameters are shared.
+**Conclusion.** The joint architecture has a real architectural penalty (the price of parameter sharing across groups — currently only `km` and `tm` are group-specific, while 24 parameters are shared). Under the v13 recompute this penalty is **≈14.4 pp** of R²_G2 average (separate-v13 0.8363 vs joint-v13 0.6920) and is **concentrated in the factor XIII channel**, not uniform across observables; see the update banner at the top of this issue and Supplementary S10. (The ~22 pp figure originally stated here was a cross-version artefact against the stale joint-v12 value 0.6204.)
 
 **Action items for Phase 2.**
 - Address via expanded group-specific parameter set in v13. Likely candidates (in order of expected impact, by Δ R² in this analysis): D (+0.314), AP (+0.250), fib (+0.285), recalc (+0.217), thrombin (+0.159).
