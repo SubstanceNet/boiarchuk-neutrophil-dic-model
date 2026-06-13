@@ -144,7 +144,7 @@ def fit_one_iteration(g1_synth, g2_synth, baseline_x, seed, verbose=False):
 
 def main():
     print("=" * 70)
-    print("Analysis 10 — Parametric bootstrap (N=100, v13 baseline)")
+    print("Analysis 22 — Parametric bootstrap (N=100, v13 baseline)")
     print("=" * 70)
 
     out_dir = ANALYSIS_DIR / "results"
@@ -250,4 +250,29 @@ def main():
 
 
 if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description=(
+            "Parametric bootstrap of the v13 baseline (analysis 22). "
+            "WARNING: a full run is N=100 refits and takes ~20 h wall-clock on "
+            "16 threads. Per-iteration results are cached under results/_cache/, "
+            "so an interrupted run resumes where it left off."
+        ),
+    )
+    parser.add_argument(
+        "--run",
+        action="store_true",
+        help=(
+            "Actually start the ~20 h bootstrap. Without this flag the script "
+            "prints this notice and exits without computing anything."
+        ),
+    )
+    args = parser.parse_args()
+    if not args.run:
+        print(__doc__)
+        print("This is a LONG run (~20 h, N=100). Nothing was computed.")
+        print("Re-invoke with --run to start:")
+        print("    python -m analyses.22_predictive_check.run --run")
+        raise SystemExit(0)
     main()

@@ -29,10 +29,12 @@ Parametric Gaussian bootstrap, N=100 iterations:
 ## Run
 
 ```bash
-python -m analyses.10_bootstrap.run
+python -m analyses.22_predictive_check.run --run
 ```
 
-Wall-clock: 23.4 hours (actual, 100 members, zero failed).
+The `--run` flag is required: without it the script prints a notice and exits
+without computing (this is a long run). Wall-clock: 23.4 hours (actual, 100
+members, zero failed).
 
 ## Outputs
 

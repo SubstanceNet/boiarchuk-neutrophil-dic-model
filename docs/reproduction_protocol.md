@@ -7,8 +7,8 @@ of effort, from a seconds-long verification to a full multi-day re-run.
 
 Results were produced on a workstation with an 8-core / 16-thread x86-64 CPU,
 32 GB RAM, running Linux (kernel 6.x), Python 3.10.12, with the pinned
-dependencies in `requirements.txt` (NumPy 2.2.6, SciPy ≥ 1.13, Matplotlib
-3.10.3). Wall-clock times below assume 16 threads; they scale roughly with
+dependencies in `requirements.txt` (NumPy 2.2.6, SciPy 1.15.3, Matplotlib
+3.10.6). Wall-clock times below assume 16 threads; they scale roughly with
 core count.
 
 Full bit-level reproducibility additionally requires the same Python, NumPy and
@@ -21,7 +21,12 @@ workers.
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e .
+pip install -r requirements.txt   # exact pins (NumPy 2.2.6, SciPy 1.15.3, Matplotlib 3.10.6)
 ```
+
+The editable install enforces only compatible version floors (`pyproject.toml`);
+the pinned `requirements.txt` is required for bit-level reproduction, because the
+global optimizer is sensitive to NumPy/SciPy versions.
 
 ## Level 1 — Verify (seconds)
 
@@ -35,8 +40,10 @@ pytest -m "not slow"
 This runs four test groups: structural smoke tests; data-integrity tests
 (CSV values match the source dissertation literals); reproducibility tests; and
 scientific-invariant tests (`tests/test_invariants.py`), which read the tracked
-result artifacts and assert the manuscript's conclusions — the ~22× Group I vs
-Group II hypocoagulation separation, the factor XIII nadir near −77 %, the day-11
+result artifacts and assert the manuscript's conclusions — the ~21× Group I vs
+Group II hypocoagulation separation (raw median ratio 22×, reported as 21×
+relative to the rounded Group II baseline of 7 s), the factor XIII nadir near
+−77 %, the day-11
 peak, the mechanism-split fractions, the two-phase therapeutic window, the
 good-basin count (n = 27), and the dose/timing thresholds. A green run is the
 fastest meaningful confirmation that the repository is intact.

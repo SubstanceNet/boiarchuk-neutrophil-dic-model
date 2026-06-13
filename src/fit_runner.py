@@ -209,6 +209,234 @@ def run_with_overrides(
     return result
     
 # ============================================================
+#  v13 baseline fit pipeline (standard 26-param v13 cost)
+# ============================================================
+
+def _run_fit_v13_impl(
+    g1, g2,
+    *,
+    quick: bool = False,
+    seeds: list[int] | None = None,
+    workers: int = -1,
+    w_group: tuple[float, float] | None = None,
+    verbose: bool = True,
+) -> dict:
+    """Direct v13-cost fit pipeline. Mirrors src.fit.run_fit but uses
+    src.cost_v13.joint_cost_v13 instead of v12 joint_cost.
+
+    Used internally by run_with_overrides_v13.
+    """
+    import time
+    from scipy.optimize import differential_evolution, minimize
+    from .cost_v13 import joint_cost_v13, W_GROUP_DEFAULT
+    from .model import make_fine_grids
+    from .data import build_neutrophil_interpolators
+
+    if seeds is None:
+        seeds = [42] if quick else [42, 7, 123, 2024, 999]
+    if quick:
+        de_pop, de_iter, nm_iter, pw_iter = 8, 120, 3000, 2000
+    else:
+        de_pop, de_iter, nm_iter, pw_iter = 12, 300, 10000, 8000
+
+    if w_group is None:
+        w_group = W_GROUP_DEFAULT
+
+    n1_interp, n2_interp = build_neutrophil_interpolators(g1, g2)
+    t_fine_g1, t_fine_g2 = make_fine_grids()
+    cost_args = (g1, g2, n1_interp, n2_interp, t_fine_g1, t_fine_g2, w_group)
+
+    def _cost_bounded(pv):
+        for i, (lo, hi) in enumerate(cfg.BOUNDS):
+            if pv[i] < lo or pv[i] > hi:
+                penalty = 1.0 + max(lo - pv[i], pv[i] - hi, 0.0) / (hi - lo)
+                return cfg.COST_PENALTY_NAN * penalty
+        return joint_cost_v13(pv, *cost_args)
+
+    best_cost = cfg.COST_PENALTY_NAN
+    best_x = None
+    per_seed_costs: list[tuple[int, float]] = []
+    t_start = time.time()
+
+    for seed in seeds:
+        if verbose:
+            print(f"--- DE v13 seed={seed} ---", flush=True)
+        ts = time.time()
+        r = differential_evolution(
+            joint_cost_v13, cfg.BOUNDS, args=cost_args,
+            maxiter=de_iter, popsize=de_pop, seed=seed, tol=1e-7,
+            workers=workers, mutation=(0.5, 1.5), recombination=0.85,
+            disp=False, polish=False,
+        )
+        per_seed_costs.append((seed, float(r.fun)))
+        if verbose:
+            print(f"  cost={r.fun:.6f} ({time.time()-ts:.0f}s, {r.nfev} evals)", flush=True)
+        if r.fun < best_cost:
+            best_cost = float(r.fun)
+            best_x = r.x.copy()
+            if verbose:
+                print("  -> best", flush=True)
+
+    if best_x is None:
+        raise RuntimeError("v13 DE failed for all seeds")
+
+    if verbose:
+        print(f"\nBest DE: {best_cost:.6f}", flush=True)
+
+    for method, opts in [
+        ("Nelder-Mead", {"maxiter": nm_iter, "xatol": 1e-9, "fatol": 1e-10}),
+        ("Powell",      {"maxiter": pw_iter, "ftol": 1e-10}),
+        ("Nelder-Mead", {"maxiter": nm_iter, "xatol": 1e-10, "fatol": 1e-11}),
+    ]:
+        try:
+            r = minimize(_cost_bounded, best_x, method=method, options=opts)
+            if np.isfinite(r.fun) and r.fun < best_cost:
+                best_x = r.x.copy()
+                best_cost = float(r.fun)
+                if verbose:
+                    print(f"  {method}: {r.fun:.6f} -> improved", flush=True)
+            elif verbose:
+                print(f"  {method}: {r.fun:.6f}", flush=True)
+        except Exception as e:
+            if verbose:
+                print(f"  {method}: failed ({e})", flush=True)
+
+    return dict(
+        best_x=best_x,
+        best_cost=best_cost,
+        params_dict={n: float(best_x[i]) for i, n in enumerate(cfg.NAMES)},
+        t_total=time.time() - t_start,
+        per_seed_costs=per_seed_costs,
+    )
+
+
+def run_with_overrides_v13(
+    overrides: dict[str, Any],
+    *,
+    seeds: list[int] | None = None,
+    quick: bool = True,
+    workers: int = -1,
+    w_group: tuple[float, float] | None = None,
+    cache_dir: Path | None = None,
+    use_cache: bool = True,
+    label: str | None = None,
+    verbose: bool = True,
+) -> dict:
+    """v13 cost analogue of run_with_overrides.
+
+    Cache key includes 'v13' marker and w_group, so v13 caches do not
+    collide with v12 caches.
+    """
+    from .cost_v13 import joint_cost_v13_decomposed, W_GROUP_DEFAULT
+    from .model import solve_group, make_fine_grids
+    from .data import build_neutrophil_interpolators
+
+    if seeds is None:
+        seeds = [42] if quick else [42, 7, 123, 2024, 999]
+    if w_group is None:
+        w_group = W_GROUP_DEFAULT
+
+    # Augment cache key with v13 marker and w_group, so caches don't collide.
+    payload = {
+        "overrides": _canonical(overrides),
+        "seeds": sorted(int(s) for s in seeds),
+        "quick": bool(quick),
+        "cost_version": "v13",
+        "w_group": list(w_group),
+        "version": "1",
+    }
+    raw = json.dumps(payload, sort_keys=True).encode()
+    key = hashlib.sha256(raw).hexdigest()[:16]
+    label_str = label or f"v13/override={overrides}"
+
+    if cache_dir is None:
+        cache_dir = Path("analyses/_default_cache_v13")
+    cache_dir = Path(cache_dir)
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    cache_path = cache_dir / f"fit_v13_{key}.pkl"
+
+    if use_cache and cache_path.exists():
+        with cache_path.open("rb") as f:
+            result = pickle.load(f)
+        result["cached"] = True
+        if verbose:
+            print(f"[{label_str}] CACHE HIT  ({key}, t={result['t_total']:.0f}s saved)")
+        return result
+
+    if verbose:
+        print(f"[{label_str}] running v13 fit (key={key}, quick={quick}, seeds={seeds}, w_group={w_group})...")
+    t0 = time.time()
+
+    g1, g2 = load_data()
+    n1_interp, n2_interp = build_neutrophil_interpolators(g1, g2)
+    t_fine_g1, t_fine_g2 = make_fine_grids()
+
+    with patched_config(overrides):
+        fit_result = _run_fit_v13_impl(
+            g1, g2, quick=quick, seeds=seeds, workers=workers,
+            w_group=w_group, verbose=False,
+        )
+        best_x = fit_result["best_x"]
+        kr_g1 = best_x[1]
+        kr_g2 = best_x[1] * best_x[24]
+        tp2_g1 = best_x[8]
+        tp2_g2 = best_x[8] * best_x[25]
+        o1 = solve_group(best_x, g1.T, n1_interp, t_fine_g1, kr_g1, tp2_g1)
+        o2 = solve_group(best_x, g2.T, n2_interp, t_fine_g2, kr_g2, tp2_g2)
+
+        # Decomposition at the best point — recorded for inspection
+        decomp = joint_cost_v13_decomposed(
+            best_x, g1, g2, n1_interp, n2_interp, t_fine_g1, t_fine_g2, w_group=w_group,
+        )
+
+    metrics_g1 = {}
+    for k, d in [("recalc", g1.recalc), ("thrombin", g1.thrombin),
+                 ("fib", g1.fib), ("xiii", g1.xiii),
+                 ("AP", g1.AP), ("D", g1.deg)]:
+        m = o1[k]
+        metrics_g1[k] = dict(R2=r_squared(m, d),
+                             RMSE=float(np.sqrt(np.mean((m - d) ** 2))))
+
+    metrics_g2 = {}
+    for k, d in [("recalc", g2.recalc), ("thrombin", g2.thrombin),
+                 ("fib", g2.fib), ("xiii", g2.xiii),
+                 ("AP", g2.AP), ("D", g2.deg)]:
+        m = o2[k][:len(d)]
+        metrics_g2[k] = dict(R2=r_squared(m, d),
+                             RMSE=float(np.sqrt(np.mean((m - d) ** 2))))
+
+    result = dict(
+        cost_version="v13",
+        w_group=list(w_group),
+        overrides=_canonical(overrides),
+        seeds=list(seeds),
+        quick=quick,
+        cache_key=key,
+        cached=False,
+        wall_time=time.time() - t0,
+        best_x=fit_result["best_x"].tolist(),
+        best_cost=fit_result["best_cost"],
+        params_dict=fit_result["params_dict"],
+        t_total=fit_result["t_total"],
+        per_seed_costs=fit_result["per_seed_costs"],
+        decomposition={k: v for k, v in decomp.items()
+                       if k != "w_group"},   # serialise minus tuple
+        metrics_g1=metrics_g1,
+        metrics_g2=metrics_g2,
+        avg_r2_g1=float(np.mean([v["R2"] for v in metrics_g1.values()])),
+        avg_r2_g2=float(np.mean([v["R2"] for v in metrics_g2.values()])),
+    )
+
+    with cache_path.open("wb") as f:
+        pickle.dump(result, f)
+    if verbose:
+        print(f"[{label_str}] DONE  ({result['t_total']:.0f}s, "
+              f"cost={result['best_cost']:.4f}, "
+              f"R2_G1={result['avg_r2_g1']:.3f}, R2_G2={result['avg_r2_g2']:.3f})")
+    return result
+
+
+# ============================================================
 #  v13 group-specific fit pipeline (factory-based, generalised)
 # ============================================================
 

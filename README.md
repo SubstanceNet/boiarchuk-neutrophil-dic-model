@@ -43,10 +43,16 @@ results/       Top-level generated outputs (git-ignored except .gitkeep)
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -e .
+pip install -r requirements.txt   # exact pins — needed to reproduce the numbers
 ```
 
-Requires Python ≥ 3.10. Runtime dependencies: NumPy, SciPy, Matplotlib (pinned
-in `requirements.txt`).
+Requires Python ≥ 3.10. Runtime dependencies: NumPy, SciPy, Matplotlib. The
+editable install (`pip install -e .`) only enforces compatible *version floors*
+(see `pyproject.toml`); the second command pins the exact versions (NumPy 2.2.6,
+SciPy 1.15.3, Matplotlib 3.10.6) used to produce the published results. Because
+`scipy.optimize.differential_evolution` is sensitive to library versions,
+installing the pins is required for bit-level reproduction (see
+`docs/reproduction_protocol.md`).
 
 ## Quick start
 
