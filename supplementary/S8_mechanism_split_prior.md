@@ -1,6 +1,6 @@
 # S8. Sensitivity to the Mechanism-Decomposition Prior Weight ($W_{\text{SPLIT}}$)
 
-*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: §2.2 (introduction of $W_{\text{SPLIT}}$ as one of two structural priors), §3.3 ("The prior is necessary for identifiability: without it, the recalcification fraction is not identified across different optimiser seeds"; mechanism decomposition fractions and Table 2), and the definition of the cost term $J_{\text{split}}$ in §S2.1. This appendix provides empirical evidence for the two central claims about the $W_{\text{SPLIT}} = 2.0$ prior: it is necessary for identifiability and validated post-hoc by improved fit in the parallel (Group II) cohort.*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: Methods, Mathematical model (introduction of $W_{\text{SPLIT}}$ as one of two structural priors); Results, mechanism decomposition ("The prior is necessary for identifiability: without it, the recalcification fraction is not identified across different optimiser seeds"; mechanism decomposition fractions and Table 2), and the definition of the cost term $J_{\text{split}}$ in §S2.1. This appendix provides empirical evidence for the two central claims about the $W_{\text{SPLIT}} = 2.0$ prior: it is necessary for identifiability and validated post-hoc by improved fit in the parallel (Group II) cohort.*
 
 ---
 
@@ -10,7 +10,7 @@ The mechanism-decomposition prior is the second term of the joint cost function 
 
 $$J_{\text{split}} = (f_{\text{recalc}} - 0.24)^2 + (f_{\text{fib}} - 0.76)^2 + (f_{\text{xiii}} - 0.82)^2,$$
 
-with weight $W_{\text{SPLIT}}$. The targets $(0.24, 0.76, 0.82)$ are the neutrophil-attributed day-1 fractions $(\Delta G_1 - \Delta G_2)/\Delta G_1$, estimated from the dissertation tables (main text §3.3). $f_{\text{recalc}}$, $f_{\text{fib}}$, $f_{\text{xiii}}$ are the Group I day-2 fractions read from the model.
+with weight $W_{\text{SPLIT}}$. The targets $(0.24, 0.76, 0.82)$ are the neutrophil-attributed day-1 fractions $(\Delta G_1 - \Delta G_2)/\Delta G_1$, estimated from the dissertation tables (Results, mechanism decomposition). $f_{\text{recalc}}$, $f_{\text{fib}}$, $f_{\text{xiii}}$ are the Group I day-2 fractions read from the model.
 
 A nine-fit scan characterised the role of $W_{\text{SPLIT}}$. The structure was asymmetric across $W$ values, focused on two cases testing the central claims:
 
@@ -87,8 +87,8 @@ $R^2_{\text{G2}}$ is **higher at $W = 2.0$ than at $W = 0$ across all three seed
 
 ## S8.6 Conclusion
 
-The mechanism-decomposition prior $W_{\text{SPLIT}} = 2.0$ is therefore (i) **necessary** for identifiability — without it, three optimiser seeds find equicost solutions with recalcification fractions spanning 13 percentage points and fibrinogen fractions near 0.05 (S8.2); (ii) **validated** post-hoc — $R^2_{\text{G2}}$ in the parallel cohort improves by 2–7 pp across all three seeds (S8.5); and (iii) **biologically motivated** — the targets are day-1 ratios $(\Delta G_1 - \Delta G_2)/\Delta G_1$, derived from a different time point than the day-2 fit they constrain, and the two groups have nearly identical haemostatic baselines that make the derivation correctly posed (main text §3.3).
+The mechanism-decomposition prior $W_{\text{SPLIT}} = 2.0$ is therefore (i) **necessary** for identifiability — without it, three optimiser seeds find equicost solutions with recalcification fractions spanning 13 percentage points and fibrinogen fractions near 0.05 (S8.2); (ii) **validated** post-hoc — $R^2_{\text{G2}}$ in the parallel cohort improves by 2–7 pp across all three seeds (S8.5); and (iii) **biologically motivated** — the targets are day-1 ratios $(\Delta G_1 - \Delta G_2)/\Delta G_1$, derived from a different time point than the day-2 fit they constrain, and the two groups have nearly identical haemostatic baselines that make the derivation correctly posed (Results, mechanism decomposition).
 
-One transparency caveat applies, repeated here for self-contained reading: at $W = 0$, the neutrophil fibrinogen fraction settles near 0.05 across seeds (S8.2), so the prior target of 0.76 is an *imposed* day-1-derived goal, not a feature *reproduced* by day-2 fibrinogen dynamics. Main text §3.3 already states this caveat; §S8 confirms it directly from the $W = 0$ fits.
+One transparency caveat applies, repeated here for self-contained reading: at $W = 0$, the neutrophil fibrinogen fraction settles near 0.05 across seeds (S8.2), so the prior target of 0.76 is an *imposed* day-1-derived goal, not a feature *reproduced* by day-2 fibrinogen dynamics. The Results (mechanism decomposition) already state this caveat; §S8 confirms it directly from the $W = 0$ fits.
 
-The decomposition is therefore best described as a regularised, prior-constrained estimate consistent with the day-1 biological signal, not as a prior-free inference from day-2 fitting alone. This is the framing used in main text §3.3; §S8 provides the empirical evidence underlying it.
+The decomposition is therefore best described as a regularised, prior-constrained estimate consistent with the day-1 biological signal, not as a prior-free inference from day-2 fitting alone. This is the framing used in the Results (mechanism decomposition); §S8 provides the empirical evidence underlying it.

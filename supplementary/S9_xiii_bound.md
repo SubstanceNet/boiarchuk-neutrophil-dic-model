@@ -1,6 +1,6 @@
 # S9. Upper Bound on $c_x$ (Factor XIII Channel) as a Structural Prior
 
-*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: §2.2 ("Its relaxation opens a multimodal landscape in which factor XIII fitting competes with other Group II observables"). Related appendices: §S1.3 (role of $c_x$ in the $dX/dt$ equation), §S2.6 ($c_x$ bound saturation in Table S2 — median 545.8, upper CI 600.0), §S3.2 ($c_x$ classified as grid-truncated by profile likelihood), §S4.3 (mechanistic interpretation of the $b_x/k_x$ manifold from bootstrap).*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: Methods, Mathematical model ("Its relaxation opens a multimodal landscape in which factor XIII fitting competes with other Group II observables"). Related appendices: §S1.3 (role of $c_x$ in the $dX/dt$ equation), §S2.6 ($c_x$ bound saturation in Table S2 — median 545.8, upper CI 600.0), §S3.2 ($c_x$ classified as grid-truncated by profile likelihood), §S4.3 (mechanistic interpretation of the $b_x/k_x$ manifold from bootstrap).*
 
 ---
 

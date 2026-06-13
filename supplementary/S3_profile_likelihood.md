@@ -1,6 +1,6 @@
 # S3. Profile Likelihood Plots — All 26 Parameters
 
-*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). The parameter classification (§2.4: well-identified, weakly identified, sloppy) used in the main text for interpreting bootstrap intervals (§3.2, Table 1, Table S2). This appendix describes the profiling method, presents full per-parameter results, and provides multi-start validation of the sloppy classification.*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). The parameter classification (Methods, Robustness analysis: well-identified, weakly identified, sloppy) used in the main text for interpreting bootstrap intervals (Results, Identifiability analysis; Table 1, Table S2). This appendix describes the profiling method, presents full per-parameter results, and provides multi-start validation of the sloppy classification.*
 
 ---
 
@@ -16,7 +16,7 @@ The **relative profile depth** for parameter $\theta_i$ is defined as
 
 $$\text{depth\_rel} = \frac{C_{\text{edge}} - C_{\text{baseline}}}{C_{\text{baseline}}},$$
 
-where $C_{\text{edge}}$ is the smaller of the two grid-edge cost values. A sharp local minimum gives $\text{depth\_rel} \gg 0$; a flat profile gives $\text{depth\_rel} \approx 0$. Classification thresholds used throughout (aligned with main text §3.2):
+where $C_{\text{edge}}$ is the smaller of the two grid-edge cost values. A sharp local minimum gives $\text{depth\_rel} \gg 0$; a flat profile gives $\text{depth\_rel} \approx 0$. Classification thresholds used throughout (aligned with the Results, Identifiability analysis):
 
 - **Well-identified or moderately identified:** $\text{depth\_rel} > 5\%$
 - **Weakly identified:** $2\% \leq \text{depth\_rel} \leq 5\%$
@@ -30,7 +30,7 @@ The 95% confidence interval used in the profile-likelihood code is read as the c
 
 Twenty-three parameters fall cleanly into the three depth-rel categories above; three additional parameters reach the grid boundary before a clearly defined minimum is found and are reported separately as *grid-truncated*. In total: 6 + 5 + 12 + 3 = 26.
 
-**Well-identified or moderately identified (6 parameters, depth\_rel $> 5\%$).** These parameters carry the model's predictive content: their values are constrained by the data above the 5% relative-cost threshold. Within this group identifiability is graded rather than uniform: $t_{p2}$ is sharply identified (depth\_rel 0.473), $k_m$ and $t_m$ are moderately identified (depth\_rel $\approx 0.14$–$0.15$), and $k_d$, $s_2$, $a_t$ sit just above the threshold (depth\_rel $\approx 0.07$). The two parameters that carry the therapeutic-window prediction, $k_m$ and $t_m$, are therefore only moderately identified.
+**Well-identified or moderately identified (6 parameters, depth\_rel $> 5\%$).** These parameters carry the model's predictive content: their values are constrained by the data above the 5% relative-cost threshold. Within this group identifiability is graded rather than uniform: $t_{p2}$ is sharply identified (depth\_rel 0.473), $k_m$ and $t_m$ are moderately identified (depth\_rel $\approx 0.14$–$0.15$), and $k_d$, $s_2$, $a_t$ sit just above the threshold (depth\_rel $\approx 0.07$). The two parameters that carry the therapeutic-window prediction, $k_m$ and $t_m$, are therefore only moderately identified. Note that the manuscript's binary "well-identified" set is defined solely by the relative-profile-depth $> 5\%$ threshold, whereas the `classification` string field stored in the result JSON (`analyses/09_profile_likelihood/results/full_summary.json`) is a finer-grained internal labelling (well / moderate / weak / sloppy / grid-truncated) that should not be read as contradicting the binary $> 5\%$ criterion used in the main text and tables.
 
 **Weakly identified (5 parameters, $2\% \leq$ depth\_rel $\leq 5\%$).** Constrained by the data, but with wide confidence intervals; predictions depending solely on them will carry visible uncertainty.
 
@@ -103,4 +103,4 @@ Panels are ordered by classification: well-identified at the top, then weakly id
 
 Profile likelihood (this appendix) measures the *local curvature of the cost surface* at the baseline optimum: how cost responds to perturbation of one parameter at a time, with all others free to compensate. Parametric bootstrap (§S4 and Table S2) measures the *global scatter under re-sampling of the data*: how the optimum shifts when synthetic data are drawn from the baseline predictions with noise. The two criteria are complementary and generally agree.
 
-Main text §3.2 cites the profile likelihood depth criterion as the source of the well-identified classification. Bootstrap confidence intervals in Table S2 use a different criterion (re-sampling percentile) and produce a different parameter ordering by uncertainty; the key divergence is $k_d$, well-identified by depth (0.073) but wide by bootstrap (CI width 3.17×). The interpretation of this divergence — a sharp local minimum with a heavy re-sampling right tail — is given in §S2.6.
+The Results (Identifiability analysis) cite the profile likelihood depth criterion as the source of the well-identified classification. Bootstrap confidence intervals in Table S2 use a different criterion (re-sampling percentile) and produce a different parameter ordering by uncertainty; the key divergence is $k_d$, well-identified by depth (0.073) but wide by bootstrap (CI width 3.17×). The interpretation of this divergence — a sharp local minimum with a heavy re-sampling right tail — is given in §S2.6.

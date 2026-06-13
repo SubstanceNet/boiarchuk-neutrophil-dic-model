@@ -34,6 +34,14 @@ This is the running log of known issues, methodological concerns, and open quest
 
 ## I-2: G2 R² regression on joint fit vs separate fit (RESOLVED in Phase 1, analysis 03)
 
+> **Update (v3.16 / v1.0.1 audit):** the "~22 percentage points" figure and the
+> "systematic across all 6 observables" framing below were **superseded**. After the
+> v13 recompute the architectural gap is **≈14.4 pp** (separate-v13 G2 0.8363 vs
+> joint-v13 G2 0.6920) and is **concentrated in the factor XIII channel**, not uniform
+> across observables. The old ~22 pp was a cross-version artefact (separate-v13 vs the
+> stale joint-**v12** value 0.6204). Canonical treatment: Supplementary S10 and S2.7.
+> The body below is retained as the original Phase-1 record.
+
 **Original concern.** v11.2 diagnostic separate fits: G2 average R² = 0.868 (25 free parameters fitted to G2 alone, 54 datapoints). v12 joint fit: G2 average R² = 0.598 (24 shared params + 2 modifiers). The R² drop is large and not adequately explained in the v12 report.
 
 **Two competing interpretations.**

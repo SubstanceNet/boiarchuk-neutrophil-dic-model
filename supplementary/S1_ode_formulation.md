@@ -1,6 +1,6 @@
 # S1. Full ODE Formulation and Observable Equations
 
-*Part of the Supplementary Information for the manuscript "A mechanistic model of neutrophil-mediated disseminated intravascular coagulation predicts a narrow therapeutic window for myelosuppressive intervention…". This appendix provides the complete mathematical specification of the model; parameter symbols are defined in Table S2 of Appendix S2, which also consolidates the numerical estimates (a selection of well-identified parameters is given in Table 1 of the main text). Cross-references from the main text: state-space definition (§2.2), $g_{Hn}$ nonlinearity (§4.4), initial-condition convention (§2.1), definition of group-specific modifiers $k_m$/$t_m$ (§2.2; quantitative application — §3.5).*
+*Part of the Supplementary Information for the manuscript "A mechanistic model of neutrophil-mediated disseminated intravascular coagulation predicts a narrow therapeutic window for myelosuppressive intervention…". This appendix provides the complete mathematical specification of the model; parameter symbols are defined in Table S2 of Appendix S2, which also consolidates the numerical estimates (a selection of well-identified parameters is given in Table 1 of the main text). Cross-references from the main text: state-space definition (Methods, Mathematical model), $g_{Hn}$ nonlinearity (Discussion, limitations), initial-condition convention (Methods, Mathematical model), definition of group-specific modifiers $k_m$/$t_m$ (Methods, Mathematical model; quantitative application — Results, Virtual experiments).*
 
 ---
 
@@ -82,7 +82,7 @@ The pool accumulates while the inducer is active and decays with rate constant $
 
 $$\frac{dH_n}{dt} = k_{na} \cdot \min(AP^2,\, 10) \cdot \max\!\left(1 - \frac{H_n}{H_m},\, 0.005\right) - k_{nd} \cdot H_n$$
 
-Production is driven by $AP^2$ (a phenomenological model of neutrophil burst amplification), capped at $AP^2 = 10$ to prevent unbounded growth during transient $AP$ excursions. The factor $\max(1 - H_n/H_m,\, 0.005)$ is a saturation floor: production wanes as $H_n$ approaches the limiting capacity $H_m$, with a numerical floor of 0.005 that prevents division by zero in the $g_{Hn}$ formula (§S1.4). The second term is first-order clearance.
+Production is driven by $AP^2$ (a phenomenological model of neutrophil burst amplification), capped at $AP^2 = 10$ to prevent unbounded growth during transient $AP$ excursions. The cap value is a conservative anti-blow-up guard rather than a fitted quantity: at the reported optimum $AP^2$ stays far below it (maximum $\approx 0.47$ in the Group I configuration and $\approx 0.09$ in Group II), so the cap is never active in the baseline fit and only bounds pathological trajectories that the global optimiser may probe transiently. The factor $\max(1 - H_n/H_m,\, 0.005)$ is a saturation floor: production wanes as $H_n$ approaches the limiting capacity $H_m$, with a numerical floor of 0.005 that prevents division by zero in the $g_{Hn}$ formula (§S1.4). The second term is first-order clearance.
 
 **Factor XIII activity:**
 
@@ -90,7 +90,7 @@ $$\frac{dX}{dt} = a_x \cdot V(t) + c_x \cdot AP \cdot N_r(t) - b_x \cdot g_{Hn} 
 
 where $\text{liver}(H_n) = \max(1 - H_n/H_m,\, 0)$.
 
-$X$ is itself a state with its own dynamics, unlike recalcification time, thrombin time, and fibrinogen (which are algebraic functions of the state; §S1.6). The right-hand side has four terms: direct stimulation by the inducer ($a_x \cdot V$); neutrophil-mediated production proportional to acid phosphatase and to the relative neutrophil signal ($c_x \cdot AP \cdot N_r$; this models elastase-mediated activation of plasma factor XIII, where $AP$ serves as a marker of the degranulation that releases neutrophil elastase from the same azurophilic granules [Henriksson et al., 1980; Bagoly et al., 2008]; biological rationale — main text §4.2); $g_{Hn}$-mediated consumption ($b_x \cdot g_{Hn}$; see the $g_{Hn}$ nonlinearity in §S1.4); and liver-modulated resynthesis ($k_x \cdot \text{liver} \cdot X$). The resynthesis term is limited by liver function, modelled as $\max(1 - H_n/H_m, 0)$: when $H_n$ saturates the limiting capacity, hepatic resynthesis ceases.
+$X$ is itself a state with its own dynamics, unlike recalcification time, thrombin time, and fibrinogen (which are algebraic functions of the state; §S1.6). The right-hand side has four terms: direct stimulation by the inducer ($a_x \cdot V$); neutrophil-mediated production proportional to acid phosphatase and to the relative neutrophil signal ($c_x \cdot AP \cdot N_r$; this models elastase-mediated activation of plasma factor XIII, where $AP$ serves as a marker of the degranulation that releases neutrophil elastase from the same azurophilic granules [Henriksson et al., 1980; Bagoly et al., 2008]; biological rationale — the Discussion, mechanism decomposition); $g_{Hn}$-mediated consumption ($b_x \cdot g_{Hn}$; see the $g_{Hn}$ nonlinearity in §S1.4); and liver-modulated resynthesis ($k_x \cdot \text{liver} \cdot X$). The resynthesis term is limited by liver function, modelled as $\max(1 - H_n/H_m, 0)$: when $H_n$ saturates the limiting capacity, hepatic resynthesis ceases.
 
 ---
 
@@ -110,7 +110,7 @@ The two regimes are activated in different experimental configurations. In the G
 
 The numerical floor 0.005 in the denominator bounds $g_{Hn} \leq 200 \cdot H_n$; this ceiling is never approached in practice — even in the most severe Group I members, max $H_n/H_m = 0.75$ gives only a ~4-fold lift, far from the 200-fold ceiling. The floor exists purely to keep the integrator well-defined at the saturation boundary.
 
-$g_{Hn}$ enters the factor XIII channel twice: it appears (i) in the algebraic maps for recalcification, thrombin, and fibrinogen (§S1.6), and (ii) inside the factor XIII ODE itself as $-b_x \cdot g_{Hn}$ (§S1.3). This double dependence explains the structurally high sensitivity of the XIII channel to $H_n$ dynamics noted in the main text §3.2 and §4.4: phase mismatches between $AP$ and $g_{Hn}$ near the limiting capacity (the catastrophic-cancellation mode described in §4.4) are amplified in the XIII fit.
+$g_{Hn}$ enters the factor XIII channel twice: it appears (i) in the algebraic maps for recalcification, thrombin, and fibrinogen (§S1.6), and (ii) inside the factor XIII ODE itself as $-b_x \cdot g_{Hn}$ (§S1.3). This double dependence explains the structurally high sensitivity of the XIII channel to $H_n$ dynamics noted in the Results (Identifiability analysis) and the Discussion (limitations): phase mismatches between $AP$ and $g_{Hn}$ near the limiting capacity (the catastrophic-cancellation mode described in the Discussion, limitations) are amplified in the XIII fit.
 
 ---
 
@@ -120,7 +120,7 @@ All five states are initialised to zero at $t = 0$:
 
 $$\mathbf{y}(0) = \bigl[D(0),\; AP(0),\; H_c(0),\; H_n(0),\; X(0)\bigr] = (0, 0, 0, 0, 0).$$
 
-These zeros are deltas, not absolute values. Measurements for each group are reported as changes from that group's own pre-induction baseline: Group I from the intact state, Group II from the post-busulfan state "M" (prior to inducer administration). The experimental rationale and note on the statistical significance of the shift from intact to M are given in §2.1 of the main text — "all changes in Group II are measured relative to state M, not to the intact baseline."
+These zeros are deltas, not absolute values. Measurements for each group are reported as changes from that group's own pre-induction baseline: Group I from the intact state, Group II from the post-busulfan state "M" (prior to inducer administration). The experimental rationale and note on the statistical significance of the shift from intact to M are given in the Methods (Mathematical model) — "all changes in Group II are measured relative to state M, not to the intact baseline."
 
 In particular, $X(0) = 0$ does not mean "no factor XIII at $t = 0$"; it means "no change from baseline at $t = 0$." The absolute baseline activity (100% in Group I, 93.2% in Group II) is a property of the experimental groups, not of the ODE state.
 
@@ -144,7 +144,7 @@ All coefficients ($a_r, c_r, b_r, a_t, b_t, a_f, c_f, b_f, d_f$) are constrained
 - For thrombin time, the structure is analogous but with only two terms.
 - For fibrinogen: $V$ and $AP$ raise concentration (acute-phase response); $g_{Hn}$ and $H_c$ deplete it (consumptive coagulopathy).
 
-The opposing-sign structure of the fibrinogen channel is the source of the catastrophic-cancellation phenomenon discussed in main text §4.4: in the window of days 5–7, $c_f \cdot AP$ and $-b_f \cdot g_{Hn}$ are each roughly fourfold larger in magnitude than their sum, so the observable is the difference of two large quantities.
+The opposing-sign structure of the fibrinogen channel is the source of the catastrophic-cancellation phenomenon discussed in the Discussion (limitations): in the window of days 5–7, $c_f \cdot AP$ and $-b_f \cdot g_{Hn}$ are each roughly fourfold larger in magnitude than their sum, so the observable is the difference of two large quantities.
 
 **Dynamic-state observable** — the integrated ODE state:
 
@@ -160,7 +160,7 @@ $$\text{degranulation\_index} = D \times 100 \quad \text{(expressed in \%)}$$
 
 These two observables therefore carry no contribution coefficients to estimate — they are identified up to the parameters governing the dynamics of $AP$ and $D$ (§S1.3).
 
-This three-tier organisation (algebraic / dynamic-state / direct-state) refines the apparent "four haemostatic channels with contribution coefficients" (main text §2.2) into a more precise structure: only three (recalc, thrombin, fib) are algebraic maps with their own coefficients; the fourth nominally "haemostatic" observable (xiii) is an integrated dynamic-equation state.
+This three-tier organisation (algebraic / dynamic-state / direct-state) refines the apparent "four haemostatic channels with contribution coefficients" (Methods, Mathematical model) into a more precise structure: only three (recalc, thrombin, fib) are algebraic maps with their own coefficients; the fourth nominally "haemostatic" observable (xiii) is an integrated dynamic-equation state.
 
 ---
 
@@ -191,7 +191,7 @@ Integration is performed on group-specific fine time grids and then linearly int
 
 NaN-checking of integrator output guards against silent failure: any NaN in a trajectory raises a `RuntimeError`, ensuring that bootstrap or LOO iterations cannot silently drift into pathological regions of parameter space.
 
-For the timing-of-intervention virtual experiment (main text §2.5), the ODE is integrated in two segments with the state vector continuous across the intervention boundary; only the two effective rate constants ($k_{r,\text{eff}}$, $t_{p2,\text{eff}}$) change instantaneously at $t = t_{\text{intervention}}$. Full protocol in §2.5 of the main text.
+For the timing-of-intervention virtual experiment (Methods, Virtual experiments), the ODE is integrated in two segments with the state vector continuous across the intervention boundary; only the two effective rate constants ($k_{r,\text{eff}}$, $t_{p2,\text{eff}}$) change instantaneously at $t = t_{\text{intervention}}$. Full protocol in the Methods (Virtual experiments).
 
 ---
 
@@ -205,4 +205,4 @@ $$\text{Group II:} \quad k_{r,\text{eff}} = k_r \cdot k_m, \qquad t_{p2,\text{ef
 
 Biologically, this means busulfan acts on the neutrophil compartment in two distinct ways. The rate modifier $k_m > 1$ represents accelerated clearance of activated neutrophils under reduced bone-marrow output (with $k_m \approx 4.9$ in the fitted Group II; see Table 1). The time modifier $t_m < 1$ represents an earlier inflammatory peak in the depleted Group II compartment (with $t_m \approx 0.43$ in the fitted Group II, shifting the peak from $t_{p2} \approx 9.2$ days in Group I to $\approx 3.9$ days in Group II).
 
-Critically, all per-cell biochemistry ($k_d, k_{rl}, k_{cl}, k_{na}, k_{nd}, a_x, c_x, b_x, k_x$, limiting capacity $H_m$, inducer parameters $k_{ca}, k_{cd}, \tau_v$, impulse width $s_2$ and amplitude $a_2$, and all nine coefficients of the algebraic observables) is held identical between groups. The two-modifier architecture therefore encodes the hypothesis that busulfan modifies the *kinetics and timing* of the neutrophil compartment without altering its *per-cell function*. Main text §3.5 quantifies what fraction of the observed Group II protection is attributable to this kinetic modification alone, and what fraction to the reduction in neutrophil count encoded in $N(t)$.
+Critically, all per-cell biochemistry ($k_d, k_{rl}, k_{cl}, k_{na}, k_{nd}, a_x, c_x, b_x, k_x$, limiting capacity $H_m$, inducer parameters $k_{ca}, k_{cd}, \tau_v$, impulse width $s_2$ and amplitude $a_2$, and all nine coefficients of the algebraic observables) is held identical between groups. The two-modifier architecture therefore encodes the hypothesis that busulfan modifies the *kinetics and timing* of the neutrophil compartment without altering its *per-cell function*. The Results (Virtual experiments) quantify what fraction of the observed Group II protection is attributable to this kinetic modification alone, and what fraction to the reduction in neutrophil count encoded in $N(t)$.

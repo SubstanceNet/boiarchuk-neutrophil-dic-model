@@ -19,15 +19,17 @@ and parallel editing.
 | `S7_reproducibility.md` | Reproducibility and Data Provenance | Software environment; three reproduction levels (verify in seconds / reproduce key result in hours / reproduce everything in days); the bootstrap ensemble artefact; data provenance; data integrity audit. |
 | `S8_mechanism_split_prior.md` | Sensitivity to the Mechanism-decomposition Prior Weight (W_SPLIT) | Empirical evidence that the W_SPLIT = 2.0 prior is necessary for identifiability and post-hoc validated by improved held-out (Group II) fit; full seed-stability and weight-sweep results. |
 | `S9_xiii_bound.md` | Upper Bound on cx as a Structural Prior | Two-series experiment (analyses 02 and 06) establishing that the cx ≤ 600 bound is necessary, value-justified, and validated; the zone structure of the cost landscape; rejected alternatives. |
-| `S10_joint_architecture.md` | Shared Architecture vs. Group-II-only | Per-observable comparison of joint fit vs. separate Group II fit; the ~22 pp average R² gap quantified; three arguments establishing the gap as architectural rather than overfitting; trade-off discussion. |
+| `S10_joint_architecture.md` | Shared Architecture vs. Group-II-only | Per-observable comparison of joint fit vs. separate Group II fit; the ~14 pp average R² gap quantified (XIII-concentrated); three arguments establishing the gap as architectural rather than overfitting; trade-off discussion. |
 
 ## Cross-referencing convention
 
 Main-text references to "Supplementary §S⟨n⟩" throughout `manuscript/draft.md`
-map to the files above by section number. The appendices in turn cross-
-reference main-text sections (§1–§5) and each other; the citation network
-is closed (every appendix is referenced from the main text; every main-text
-§S⟨n⟩ pointer resolves to an existing appendix).
+map to the files above by appendix number. Because the manuscript uses
+unnumbered section headings (npj style), the appendices in turn refer back to
+the main text by section *name* (e.g. "Methods, Mathematical model"; "Results,
+Identifiability analysis"), not by a numbered scheme. The citation network is
+closed: every appendix (S1–S10) is referenced at least once from the main text,
+and every main-text §S⟨n⟩ pointer resolves to an existing appendix.
 
 ## Source artefacts
 

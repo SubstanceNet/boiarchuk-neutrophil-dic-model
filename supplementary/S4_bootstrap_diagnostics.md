@@ -1,6 +1,6 @@
 # S4. Bootstrap Diagnostic Plots
 
-*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Bootstrap ensemble in the main text: §2.4 (pipeline), §3.2 (factor XIII under-determination, Figure 2), Table 1 (CIs for well-identified parameters), Table S2 (full ensemble). This appendix provides the methodological supplement: cost distribution, convergence diagnostics, mechanistic interpretation of the factor XIII basin classification, and sensitivity to normalisation.*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Bootstrap ensemble in the main text: Methods, Robustness analysis (pipeline); Results, Identifiability analysis (factor XIII under-determination, Figure 2); Table 1 (CIs for well-identified parameters), Table S2 (full ensemble). This appendix provides the methodological supplement: cost distribution, convergence diagnostics, mechanistic interpretation of the factor XIII basin classification, and sensitivity to normalisation.*
 
 ---
 
@@ -59,7 +59,7 @@ The defining diagnostic from the bootstrap is the broad, right-skewed distributi
 | $[0.3, 0.6)$ | 19 | 19% |
 | $\geq 0.6$ | 8 | 8% |
 
-The full-ensemble median is $R^2_{\text{G2}}(\text{XIII}) = 0.075$ with 95% CI $[-1.019, 0.649]$, reflecting the broad, right-skewed shape rather than a tight central tendency (Figure 2, panel b, main text). For subsequent analyses depending on accurate factor XIII predictions, we define a **"good-basin" subset** by the criterion $R^2_{\text{G2}}(\text{XIII}) \geq 0.3$; this yields **$n = 27$ members** (19 + 8 from the table above). The same $n = 27$ criterion is used for conservative confidence bands in the virtual experiments (main text §3.5) and in Figures 4–6.
+The full-ensemble median is $R^2_{\text{G2}}(\text{XIII}) = 0.075$ with 95% CI $[-1.019, 0.649]$, reflecting the broad, right-skewed shape rather than a tight central tendency (Figure 2, panel b, main text). For subsequent analyses depending on accurate factor XIII predictions, we define a **"good-basin" subset** by the criterion $R^2_{\text{G2}}(\text{XIII}) \geq 0.3$; this yields **$n = 27$ members** (19 + 8 from the table above). The same $n = 27$ criterion is used for conservative confidence bands in the virtual experiments (Results, Virtual experiments) and in Figures 4–6.
 
 **Mechanism: the $b_x/k_x$ ratio.** This spread is not arbitrary stochastic settling — it traces to a single parameter ratio that distinguishes the good- and poor-fitting basins. Comparison of 41 poor-basin iterations ($R^2 < 0$) with 19 good-basin iterations ($R^2 \geq 0.3$):
 
@@ -89,7 +89,7 @@ Median $R^2$ with 95% CI across 100 iterations:
 | AP | 0.809 [0.724, 0.862] | 0.952 [0.754, 0.974] |
 | D | 0.882 [0.807, 0.930] | 0.737 [0.590, 0.827] |
 
-Group I fit quality is robust across the ensemble — each observable shows median $R^2 > 0.70$. Group II shows the expected degradation in factor XIII; fibrinogen sits at median $R^2 = 0.407$ with the CI lower bound near zero, consistent with the fibrinogen channel cancellation diagnostic discussed in main text §4.4. Only 5 of 100 iterations achieve $R^2_{\text{G2}} \geq 0.4$ across *all six* observables simultaneously, highlighting that the joint Group II fit is constrained by the factor XIII channel, not by the data fit overall.
+Group I fit quality is robust across the ensemble — each observable shows median $R^2 > 0.70$. Group II shows the expected degradation in factor XIII; fibrinogen sits at median $R^2 = 0.407$ with the CI lower bound near zero, consistent with the fibrinogen channel cancellation diagnostic discussed in the Discussion (limitations). Only 5 of 100 iterations achieve $R^2_{\text{G2}} \geq 0.4$ across *all six* observables simultaneously, highlighting that the joint Group II fit is constrained by the factor XIII channel, not by the data fit overall.
 
 ---
 

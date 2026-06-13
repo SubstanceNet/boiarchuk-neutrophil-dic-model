@@ -1,6 +1,6 @@
 # S10. Shared Architecture Versus Group-II-Only
 
-*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: §2.3 (the architectural penalty on Group II fit quality; quantified in §S2.7 as an $\approx 14$ percentage-point gap concentrated almost entirely in the structurally under-determined factor XIII channel, architectural rather than due to overfitting). Related appendices: §S1.9 (24-shared + 2-modifier architecture), §S2.7 (architecture pointer in the estimation appendix), §S3.2 (parameter identifiability), §S9 ($c_x \leq 600$ bound on the factor XIII sloppy direction).*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: Methods, Parameter estimation (the architectural penalty on Group II fit quality; quantified in §S2.7 as an $\approx 14$ percentage-point gap concentrated almost entirely in the structurally under-determined factor XIII channel, architectural rather than due to overfitting). Related appendices: §S1.9 (24-shared + 2-modifier architecture), §S2.7 (architecture pointer in the estimation appendix), §S3.2 (parameter identifiability), §S9 ($c_x \leq 600$ bound on the factor XIII sloppy direction).*
 
 ---
 
@@ -43,7 +43,7 @@ Per-observable Group II $R^2$ at the joint baseline (seed 42, §S2.5 / Table S2)
 | D | +0.7594 | +0.8191 | +0.0597 |
 | **mean** | **+0.6920** | **+0.8363** | **+0.1444** |
 
-The mean improvement $\Delta \approx 0.144$ is the **$\approx 14$ percentage points** figure quantified in §S2.7 (referenced from main text §2.3). Reading the columns:
+The mean improvement $\Delta \approx 0.144$ is the **$\approx 14$ percentage points** figure quantified in §S2.7 (referenced from the Methods, Parameter estimation). Reading the columns:
 
 - The gap is dominated by a single channel: **factor XIII** ($\Delta = +0.72$), where joint fitting reaches only $R^2 = 0.077$ — consistent with the bootstrap median $R^2_{\text{G2}}(\text{XIII}) = 0.075$ (§S4.3).
 - Across the other five observables the mean $\Delta$ is only **+0.03**; two of them (**recalcification** and **acid phosphatase**) are fit marginally better under joint fitting ($\Delta < 0$).
@@ -69,7 +69,7 @@ Together the three arguments support the architectural interpretation. The separ
 
 The shared architecture forces both groups to share 24 of 26 parameters: degranulation kinetics ($k_d, k_{rl}, k_{cl}$), neutrophil-derived pool kinetics ($k_{na}, k_{nd}, H_m$), four factor XIII channel parameters ($a_x, c_x, b_x, k_x$), inducer impulse parameters ($k_{ca}, k_{cd}$ in S1.7 plus $a_2, s_2, t_{p2}$), and all nine algebraic observable coefficients ($a_r, b_r, c_r, a_t, b_t, a_f, b_f, c_f, d_f$). Only two parameters — $k_m$ and $t_m$ — are group-specific (§S1.9). This shared parametrisation encodes the biological hypothesis that busulfan modifies the *kinetics and timing* of the neutrophil compartment ($k_m$, $t_m$) without altering its *per-cell biochemistry* (everything else shared).
 
-The 14 pp $R^2_{\text{G2}}$ gap is the cost of this hypothesis. Separate fitting, without shared parameters, achieves $\approx 0.84$ mean $R^2_{\text{G2}}$; the joint baseline achieves $\approx 0.69$. The difference is concentrated almost entirely in factor XIII (S10.3) and decomposes into a dominant architecture-sharing term ($\approx 0.52$ on that channel) and a smaller mechanism-prior term ($\approx 0.20$); it is the price paid for a single shared mechanistic parametrisation for both groups. This price is accepted because the mechanistic claims that follow — in particular the busulfan mechanism interpretation in §3.5 of the main text and the dose–response dependence in §S6, both of which rely on $k_m$ and $t_m$ meaning the same thing across groups — require a single shared per-cell biochemistry. A separate-fit parametrisation would give better Group II numbers but would not support a comparable claim about what *changed* between groups.
+The 14 pp $R^2_{\text{G2}}$ gap is the cost of this hypothesis. Separate fitting, without shared parameters, achieves $\approx 0.84$ mean $R^2_{\text{G2}}$; the joint baseline achieves $\approx 0.69$. The difference is concentrated almost entirely in factor XIII (S10.3) and decomposes into a dominant architecture-sharing term ($\approx 0.52$ on that channel) and a smaller mechanism-prior term ($\approx 0.20$); it is the price paid for a single shared mechanistic parametrisation for both groups. This price is accepted because the mechanistic claims that follow — in particular the busulfan mechanism interpretation in the Results (Virtual experiments) and the dose–response dependence in §S6, both of which rely on $k_m$ and $t_m$ meaning the same thing across groups — require a single shared per-cell biochemistry. A separate-fit parametrisation would give better Group II numbers but would not support a comparable claim about what *changed* between groups.
 
 ---
 

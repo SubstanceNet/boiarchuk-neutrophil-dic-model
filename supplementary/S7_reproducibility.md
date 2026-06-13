@@ -1,6 +1,6 @@
 # S7. Reproducibility and Data Provenance
 
-*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: §2.3 (parameter estimation), §2.4 (robustness pipeline), and §2.5 (virtual experiments). This appendix documents the provenance of every data value and the full repository-level reproduction protocol (`docs/reproduction_protocol.md`, `data/csv/PROVENANCE.md`).*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: Methods, Parameter estimation; Methods, Robustness analysis (robustness pipeline); and Methods, Virtual experiments. This appendix documents the provenance of every data value and the full repository-level reproduction protocol (`docs/reproduction_protocol.md`, `data/csv/PROVENANCE.md`).*
 
 ---
 
