@@ -32,6 +32,7 @@ The model successfully reproduces the deep hypocoagulable phase, matching the la
 ### Identifiability analysis outlines parameter constraints
 Profile likelihood analysis reveals that six of the twenty-six model parameters are well-identified based on a relative profile depth threshold of $>5\%$ ($t_{p2}$, $k_m$, $t_m$, $k_d$, $s_2$, and $a_t$). The remaining twenty parameters are weakly identified, sloppy, or grid-truncated (full per-parameter profile-likelihood profiles and classification in Supplementary Appendix §S3). This sensitivity pattern represents a structural property of over-parameterised systems-biology models rather than an issue with the numerical fit. Predictions depending on the well-identified parameters—such as the inducer impulse timing and the busulfan kinetic modifiers—remain robust.
 Parametric bootstrap iterations ($N = 100$) yield parameter confidence intervals consistent with the profile likelihood landscape (Table 1; full bootstrap diagnostics in Supplementary Appendix §S4).
+
 Table 1. Well-identified parameters (relative profile likelihood depth $>5\%$): median and 95% confidence intervals from the 100-member bootstrap ensemble. These six exhibit a range of profile depths, from deeply constrained ($t_{p2}$) to values approaching the 5% threshold ($k_d$, $s_2$, $a_t$), where bootstrap intervals are correspondingly wider (full 26-parameter bootstrap estimates in §S2.5, Table S2).
 | Parameter | Median [95% CI] | Functional Role |
 |---|---|---|
@@ -41,19 +42,23 @@ Table 1. Well-identified parameters (relative profile likelihood depth $>5\%$): 
 | $k_d$ | 0.264 [0.218, 1.054] | Neutrophil degranulation rate constant |
 | $s_2$ | 1.757 [1.513, 2.712] | Width of the secondary inflammatory impulse |
 | $a_t$ | 5.659 [4.893, 6.437] | Thrombin / inducer impulse coefficient |
+
 A notable exception to this stability is the factor XIII channel in the myelosuppressed cohort, which is structurally under-determined. Across the bootstrap ensemble, 41% of the members yield a negative $R^2$ for Group II factor XIII, forming a right-skewed distribution with a heavy negative tail, where the optimiser distributes across a continuum of parametric basins of varying fit quality (Figure 2b).
 Leave-one-out cross-validation confirms that Group I predictions are structurally robust to the removal of any single time point (median PRESS = 6.5). Group II dynamics exhibit higher sensitivity to point removal (median PRESS = 20.6), identifying the early acid phosphatase dynamics as the least constrained component of the suppressed fit. Aggregate fit quality and well-identified parameter estimates remain stable under both deterministic and stochastic perturbations of the input neutrophil count $N(t)$.
 ### Structurally informed priors enable mechanism decomposition
 We evaluate the internal consistency of the model by decomposing the coagulation disturbances on day 2 of the experiment using structurally informed priors ($W_{\text{SPLIT}} = 2.0$). Because both cohorts enter DIC from comparable haemostatic states, the day-1 between-group contrast isolates the early neutrophil contribution. The model successfully incorporates these regularising targets, yielding stable day-2 neutrophil-attributed fractions across the re-sampling ensemble (Table 2, Figure 3).
+
 Table 2. Mechanism decomposition: neutrophil-attributed fraction of each coagulation channel on day 2 of Group I.
 | Channel | Prior Target | Fitted Median [95% CI] | Mechanistic Pathway |
 |---|---|---|---|
 | Recalcification time | 0.24 | 0.240 [0.225, 0.249] | Vascular dominant |
 | Fibrinogen | 0.76 | 0.759 [0.738, 0.777] | Prior-imposed neutrophil contribution |
 | Factor XIII | 0.82 | 0.806 [0.777, 0.844] | Neutrophil dominant |
+
 The structural analysis demonstrates that contact-phase disturbances (recalcification time) are predominantly driven by direct vascular toxicity. Conversely, the early alterations in factor XIII are primarily neutrophil-mediated, consistent with elastase-driven activation and subsequent consumption. For the fibrinogen channel, the model assigns a minimal neutrophil contribution (~0.05) when unconstrained; thus, the fitted fraction of 0.76 reflects the imposed day-1 prior rather than an independent feature derived from day-2 dynamics.
 ### Model-predicted coagulopathy severity aligns with independent lethality profiles
 To corroborate the biological relevance of the framework against unmeasured physiological outcomes, the model was evaluated against the independently observed lethality contrast (30% mortality in Group I occurring strictly between days 10–12; 0% mortality in Group II). Simulating unsuppressed Group I dynamics through the bootstrap ensemble demonstrates a pronounced escalation in coagulopathy severity compared to the myelosuppressed baseline. The model predicts an approximately 21-fold separation in peak hypocoagulation between the cohorts (147 s vs. 7 s; the unrounded median ratio is 22×) (Table 3).
+
 Table 3. Modeled severity metrics and comparison against independent Group I experimental outcomes.
 | Metric | Group I Model Median [95% CI] | Observed (Group I) | Model–Data Agreement | Group II Model Median [95% CI] |
 |---|---|---|---|---|
@@ -61,6 +66,7 @@ Table 3. Modeled severity metrics and comparison against independent Group I exp
 | Factor XIII nadir (min $\Delta$XIII, %) | −77.1 [−94.4, −61.4] | −76.7 | Divergence within 1% | −13.8 [−19.7, −7.3] |
 | Fibrinogen nadir (min $\Delta$fib, mg%) | −58.3 [−69.1, −46.4] | −52.6 | Divergence within 11% | −1.4 [−8.1, 0.0] |
 | Coagulopathy peak (days) | 11 [10, 11] | 11 | Identical timing | 5 [5, 6] |
+
 While the in-sample factor XIII and fibrinogen nadirs are accurately captured, the peak recalcification time is underestimated by 29%. Crucially, the model-predicted coagulopathy peak occurs precisely on day 11, aligning with the window of maximum empirical hypocoagulation and mortality (Figure 1, grey band). The model thus provides a directional and temporal representation of the pathogenetic landscape underlying cohort survival.
 ### Virtual experiments predict a biphasic therapeutic window and independent thresholds
 #### Dose–response dependence
@@ -69,11 +75,13 @@ Evaluated at the Group II neutrophil profile, the fitted kinetic modification re
 Varying the onset of myelosuppression ($t_{\text{intervention}}$) reveals a distinct, biphasic therapeutic window (Figure 6). Intervention initiated within the first 2.5 days achieves near-complete attenuation of the coagulopathy, maintaining peak hypocoagulation shifts at 7–8 s. A transition phase occurs between days 2.5 and 3, over which the median peak severity approximately doubles (7.9 s to 14.4 s), though the absolute 95% uncertainty bands overlap. Delayed intervention after day 3 provides only partial mitigation—limiting peak severity 2- to 3-fold relative to the untreated reference—but cannot prevent acute cascade activation. This establishes an early prevention phase (0–2.5 days) and a late mitigation phase (2.5–6+ days). The full two-segment timing protocol and per-scenario temporal metrics are given in Supplementary Appendix §S5.
 #### Dose $\times$ time thresholds
 Simulating contrasting intervention combinations indicates that dose and timing operate as independent thresholds rather than a continuous trade-off (Table 4).
+
 Table 4. Evaluation of dose and timing interactions on peak hypocoagulation severity.
 | Scenario | Dose ($k_m$) | Timing (days) | Peak $\Delta$recalc Median [95% CI] | Untreated Reference | Clinical Outcome |
 |---|---|---|---|---|---|
 | High Dose, Late | 10.0 | 4 | 28.0 [0.0, 38.9] | 75.6 [60.5, 92.0] | Mitigation only (dose ceiling) |
 | Low Dose, Early | 2.5 | 0 | 34.0 [22.7, 44.0] | 75.6 [60.5, 92.0] | Therapeutic failure (dose floor) |
+
 Doubling the suppression dose during the mitigation phase ($t = 4$ days) provides no measurable benefit over the baseline protocol, indicating a firm dose ceiling once the consumptive cascade is established. Conversely, halving the dose even at optimal timing ($t = 0$ days) causes therapeutic failure, resulting in a severe coagulopathy (34.0 s) that exceeds late full-dose intervention. Successful intervention thus necessitates crossing both independent barriers simultaneously.
 
 ## Discussion
