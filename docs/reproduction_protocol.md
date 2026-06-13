@@ -55,9 +55,10 @@ The bootstrap ensemble is the natural target, since the virtual experiments
 depend on it:
 
 ```bash
-python -m analyses.05_v13_baseline.fit          # baseline fit (~12 min)
-python -m analyses.22_predictive_check.run       # bootstrap, N=100 (~20 h)
-python -m analyses.22_predictive_check.aggregate # writes ensemble.json + ensemble_members.json
+python -m analyses.05_v13_baseline.fit             # baseline fit (~12 min)
+python -m analyses.22_predictive_check.run --run   # bootstrap, N=100 (~23 h; --run required, else no-op)
+python -m analyses.22_predictive_check.aggregate   # writes ensemble.json + ensemble_members.json
+                                                   # (re-aggregates from tracked iter_*.json if no local _cache)
 ```
 
 Each bootstrap member is fit from a fixed per-member seed (`seed = i`), so the
@@ -69,7 +70,7 @@ A cheaper Level-2 target is the dose-response phase diagram, which reuses the
 existing ensemble:
 
 ```bash
-python -m analyses.30_myelosan_dose.run          # 22,500 simulations (~2 h)
+python -m analyses.30_myelosan_dose.run          # 22,500 simulations (~2 min)
 python -m analyses.30_myelosan_dose.make_fig4
 ```
 
@@ -80,11 +81,11 @@ The full pipeline from scratch. Approximate wall-clock on 16 threads:
 | Stage | Analysis | Time |
 |-------|----------|------|
 | Baseline fit | 05 | ~12 min |
-| Bootstrap ensemble | 22 | ~20 h |
-| Leave-one-out CV | 20 | ~5 h |
-| N(t) perturbation | 21 | ~11 h |
-| Dose-response | 30 | ~2 h |
-| Intervention timing | 31 | ~3 min |
+| Bootstrap ensemble | 22 | ~23 h |
+| Leave-one-out CV | 20 | ~6 h |
+| N(t) perturbation | 21 | ~13 h |
+| Dose-response | 30 | ~2 min |
+| Intervention timing | 31 | ~7 s |
 | Combinations | 32 | minutes |
 | G1 severity validation | 33 | minutes |
 

@@ -66,9 +66,9 @@ Reproduce the baseline fit and the bootstrap ensemble that the virtual
 experiments depend on:
 
 ```bash
-python -m analyses.05_v13_baseline.fit       # baseline joint fit
-python -m analyses.22_predictive_check.run   # bootstrap ensemble (slow)
-python -m analyses.22_predictive_check.aggregate
+python -m analyses.05_v13_baseline.fit            # baseline joint fit
+python -m analyses.22_predictive_check.run --run  # bootstrap ensemble (slow; --run required)
+python -m analyses.22_predictive_check.aggregate  # re-aggregates from tracked iter_*.json if no local cache
 ```
 
 Run a virtual experiment and regenerate its figure:

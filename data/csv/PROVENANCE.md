@@ -72,7 +72,7 @@ For reconstructing original measurements from CSV deltas, baselines are:
 | Plasma recalcification time | 78.7 s | (~baseline shifted, see G2 table) | Diss. table 4.9 / 5.9 |
 | Thrombin time | (per protocol) | (per protocol) | Diss. tables |
 | Fibrinogen | (per protocol) | (per protocol) | Diss. tables |
-| Factor XIII | 100% (by definition) | 100% (by definition) | Standard |
+| Factor XIII | 100% (intact reference) | 93.2% (state M; intact = 100%) | Standard; G2 baseline per S1.5 |
 | Acid phosphatase | (low baseline, BO) | (low baseline, BO) | Diss. table 5.7 |
 | Neutrophil count | 7.3 × 10⁹/L | 3.9 × 10⁹/L (post-busulfan, state M) | Diss. table 5.1 |
 

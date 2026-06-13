@@ -27,13 +27,41 @@ OBS_FIELD = {"recalc": "recalc", "thrombin": "thrombin", "fib": "fib",
 
 
 def load_ensemble():
-    """Load all iteration records from cache."""
+    """Load all iteration records.
+
+    Prefers the git-ignored per-iteration pickle cache
+    (``results/_cache/iter_*.pkl``, written by ``run.py`` during a live
+    bootstrap). On a fresh clone that cache is absent, so we fall back to the
+    version-controlled per-iteration JSON artifacts (``results/iter_*.json``)
+    and finally to the consolidated ``results/ensemble_raw.json`` — both of
+    which carry the same record fields. This lets ``aggregate`` regenerate
+    ``ensemble.json`` from the tracked artifacts without re-running the ~23 h
+    bootstrap.
+    """
     iters = []
     for p in sorted(CACHE_DIR.glob("iter_*.pkl")):
         with p.open("rb") as f:
             rec = pickle.load(f)
         if not rec.get("failed"):
             iters.append(rec)
+    if iters:
+        return iters
+
+    # Fallback 1: tracked per-iteration JSON files.
+    for p in sorted(RESULTS_DIR.glob("iter_*.json")):
+        rec = json.loads(p.read_text())
+        if not rec.get("failed"):
+            iters.append(rec)
+    if iters:
+        return iters
+
+    # Fallback 2: consolidated raw ensemble.
+    raw_path = RESULTS_DIR / "ensemble_raw.json"
+    if raw_path.exists():
+        raw = json.loads(raw_path.read_text())
+        for rec in raw.get("iter_records", []):
+            if not rec.get("failed"):
+                iters.append(rec)
     return iters
 
 
