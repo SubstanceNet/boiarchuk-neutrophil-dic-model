@@ -48,7 +48,7 @@ def main():
 
     # no-myelosan level (km=1) reference
     ax.axhline(med[0], color="0.7", lw=0.7, ls=":", zorder=1)
-    ax.annotate("no myelosan", xy=(km[0], med[0]), xytext=(km[0] + 0.3, med[0] - 6),
+    ax.annotate("no busulfan", xy=(km[0], med[0]), xytext=(km[0] + 0.3, med[0] - 6),
                 fontsize=7, color="0.4", va="top")
 
     # observed G2 operating point (km=4.93)
