@@ -228,4 +228,4 @@ workflow, same as v1.0.0); (2) write the reserved DOI into draft.md Declarations
 and S7.6; (3) create the `v1.0.1` git tag; (4) publish the Zenodo version. Do not
 move or delete the existing `v1.0.0` tag/DOI.
 
-**Status.** Open — scheduled for the v1.0.1 release step.
+**Status.** Done (v1.0.1 release, 2026-06). The manuscript now cites the **concept DOI `10.5281/zenodo.20673520`** (always-latest) and **tag `v1.0.1`** in draft.md Declarations, S7.6, and the manuscript README; we used the concept-DOI rather than reserving a new per-version DOI (simpler, never goes stale). The immutable `v1.0.0` tag/DOI `...521` were left untouched as the historical archive.

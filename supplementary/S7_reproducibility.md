@@ -44,4 +44,4 @@ All CSV values are byte-identical to the source arrays archived in `archive/v12/
 
 ## S7.6 Versioned history
 
-The repository history is tagged at every development milestone, allowing any intermediate state of the model and analyses to be checked out for comparison. The public release accompanying this manuscript is hosted at `https://github.com/SubstanceNet/boiarchuk-neutrophil-dic-model` (release tag `v1.0.0`) and archived at Zenodo under DOI `10.5281/zenodo.20673521`, which is the canonical citable reference for the code and the reconstructed dataset.
+The repository history is tagged at every development milestone, allowing any intermediate state of the model and analyses to be checked out for comparison. The public release accompanying this manuscript is hosted at `https://github.com/SubstanceNet/boiarchuk-neutrophil-dic-model` (release tag `v1.0.1`) and archived at Zenodo under DOI `10.5281/zenodo.20673520`, which is the canonical citable reference for the code and the reconstructed dataset.

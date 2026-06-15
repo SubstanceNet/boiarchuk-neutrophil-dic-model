@@ -154,7 +154,7 @@ def main():
     print("\n  Interpretation: recalc amplitude underestimated ~30% (br*gHn channel);")
     print("  fib and xiii within ~5-10%; timing exact. Underestimate is channel-")
     print("  localized (recalc), not systemic. Consistent with joint-fit architecture")
-    print("  penalty (analysis 03: ~22 pp G2 R2 traded for G1 compatibility).")
+    print("  penalty (analysis 03: ~14 pp G2 R2 traded for G1 compatibility).")
 
     out_path = RESULTS_DIR / "g1_severity.json"
     out_path.write_text(json.dumps(out, indent=2))
