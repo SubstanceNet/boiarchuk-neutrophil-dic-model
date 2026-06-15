@@ -904,9 +904,9 @@
     }
   },
   "convergence": {
-    "avg_width_change": 0.12174346886501383,
+    "avg_width_change": 0.11155250086307972,
     "max_change_param": "df",
-    "max_change_value": -0.9137896221675224,
+    "max_change_value": -0.47747652698240745,
     "converged": 0.0
   }
 }

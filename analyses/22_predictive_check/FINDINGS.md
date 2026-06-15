@@ -209,6 +209,8 @@ Comparing CI 95 width at N=50 (first half) vs N=100 (full).
 Aggregate avg |Δ width|: 12.2%. Max change: df (-91.4% of width, but
 absolute change small in context of wide sloppy CI).
 
+> **Note (convention fix):** the figures above (12.2%, df -91.4%) were computed with the width change relative to the *N=100* (post-doubling) width. The manuscript's per-parameter numbers and the corrected aggregate use the change relative to the *N=50* (pre-doubling) width — the natural reading of "width changed by X% upon doubling." Under that convention the aggregate mean is **11.2%** and the df maximum is **-47.7%** (`aggregate.py` now divides by `half_w`; `ensemble.json` regenerated; S4.2 reports 11.2%). Direction and the `converged=False` verdict are unchanged.
+
 **Caveat about km:** km classified as well-identified per analysis 09 but
 its CI width changed by 26.4% from N=50 to N=100. Reported CI [3.46, 5.73]
 may be slightly underestimated. True CI likely closer to [3.2, 6.0]. The

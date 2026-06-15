@@ -209,8 +209,8 @@ def main():
     for name in cfg.NAMES:
         full_w = param_ci[name]["p97.5"] - param_ci[name]["p2.5"]
         half_w = half_param_ci[name]["p97.5"] - half_param_ci[name]["p2.5"]
-        if full_w > 0:
-            change = (full_w - half_w) / full_w
+        if half_w > 0:
+            change = (full_w - half_w) / half_w   # relative to the N=50 (pre-doubling) width
             width_change.append((name, change, full_w, half_w))
     avg_change = np.mean([abs(c[1]) for c in width_change])
     max_change = max(width_change, key=lambda x: abs(x[1]))
