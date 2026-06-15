@@ -1,6 +1,6 @@
 # S9. Upper Bound on $c_x$ (Factor XIII Channel) as a Structural Prior
 
-*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: Methods, Mathematical model ("Its relaxation opens a multimodal landscape in which factor XIII fitting competes with other Group II observables"). Related appendices: §S1.3 (role of $c_x$ in the $dX/dt$ equation), §S2.6 ($c_x$ bound saturation in Table S2 — median 545.8, upper CI 600.0), §S3.2 ($c_x$ classified as grid-truncated by profile likelihood), §S4.3 (mechanistic interpretation of the $b_x/k_x$ manifold from bootstrap).*
+*Part of the Supplementary Information for Boiarchuk & Onasenko (2026). Cross-references from the main text: Methods, Mathematical model (the $c_x \leq 600$ bound; its relaxation opens a multimodal factor-XIII landscape). Related appendices: §S1.3 (role of $c_x$ in the $dX/dt$ equation), §S2.6 ($c_x$ bound saturation in Table S2 — median 545.8, upper CI 600.0), §S3.2 ($c_x$ classified as grid-truncated by profile likelihood), §S4.3 (mechanistic interpretation of the $b_x/k_x$ manifold from bootstrap).*
 
 ---
 
@@ -106,7 +106,7 @@ Alternative resolutions via group-specific $c_x$ or group-specific $c_f$ (additi
 
 A second, independent criterion validates the $c_x \leq 600$ bound — not total cost, but the **per-observable $R^2$ balance of Group II**. Reading the per-observable Group II columns from the analysis 02 table (§S9.2):
 
-- The constrained baseline ($c_x \leq 600$) keeps **all six Group II observables at positive $R^2$** simultaneously (the table shows five; the sixth, thrombin, is also positive in the baseline data).
+- The constrained baseline ($c_x \leq 600$) keeps **all six Group II observables at a positive $R^2$** simultaneously (the table shows five; the sixth, thrombin, is strongly positive in Group II, with $R^2 \approx 0.94$, §S4.4).
 - Every unconstrained fit ($n = 8$ across two basins at $c_x \leq 2000$ and $c_x \leq 5000$) has **at least one Group II observable with $R^2 < 0$** — either $R^2_{\text{xiii,G2}}$ in the dominant "sacrifice XIII" basin, or $R^2_{\text{fib,G2}}$ / $R^2_{\text{D,G2}}$ in the minority "preserve XIII" basin.
 
 This is a stronger criterion than total cost (S9.2 already showed that cost does not discriminate between basins) and stronger than $R^2_{\text{xiii,G2}}$ alone (which can be raised by sacrificing other channels). It says that *the only configuration in which the shared model fits all six Group II observables consistently* is the $c_x \leq 600$ baseline. The bound is therefore motivated not only by identifiability (S9.3) but also chosen by a cost-free, per-observable validation.
