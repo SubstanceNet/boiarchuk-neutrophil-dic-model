@@ -163,9 +163,15 @@ O.D.B. developed and conducted the experimental work, provided biological interp
 
 ## References
 
+- Alhamdi Y, Toh CH (2017) Recent advances in pathophysiology of disseminated intravascular coagulation: the role of circulating histones and neutrophil extracellular traps. *F1000Research* 6:2143. doi:10.12688/f1000research.12498.1
+
+- Bach-Gansmo ET, Halvorsen S, Godal HC, Skjønsberg OH (1994) Degradation of the α-chain of fibrin by human neutrophil elastase reduces the stimulating effect of fibrin on plasminogen activation. *Thrombosis Research* 75(3):307–317. doi:10.1016/0049-3848(94)90241-0
+
+- Bagoly Z, Fazakas F, Komáromi I, Haramura G, Tóth E, Muszbek L (2008) Cleavage of factor XIII by human neutrophil elastase results in a novel active truncated form of factor XIII A subunit. *Thrombosis and Haemostasis* 99(4):668–674. doi:10.1160/TH07-09-0577
+
 - Boiarchuk O.D. (1998a) The role of the lysosomal apparatus of neutrophilic leukocytes in the formation of disseminated intravascular coagulation syndrome: abstract of the thesis for the degree of Candidate of Biological Sciences, speciality 03.00.13. Institute of Physiology named after O.O. Bohomolets, NAS of Ukraine, Kyiv. 16 pp. *(in Ukrainian)*
 
-- Boiarchuk O.D. (1998b) Experimental model of DIC syndrome. *Visnyk Problem Biolohii i Medytsyny* (7):132–138. *(in Russian)*
+- Boiarchuk E.D. (1998b) Experimental model of DIC syndrome. *Visnyk Problem Biolohii i Medytsyny* (7):132–138. *(in Russian)*
 
 - Boiarchuk E.D. (2008) Changes in neutrophil activity during the formation of disseminated intravascular coagulation syndrome. *Scientific Bulletin of Mykolaiv State University named after V.O. Sukhomlynsky. Series: Biological Sciences* 23(3):14–17. *(in Russian)*
 
@@ -178,14 +184,6 @@ O.D.B. developed and conducted the experimental work, provided biological interp
 - Boiarchuk O.D. (2023a) Effect of granulopoiesis suppression on the haemostatic system in DIC syndrome. In: *Current Issues in Biology and Medicine: Proceedings of the XIX All-Ukrainian Scientific Conference* (Lubny, June 2, 2023). Lubny: State Institution "LNU named after Taras Shevchenko". pp. 9–10. *(in Ukrainian)*
 
 - Boiarchuk O. (2023b) Characteristics of neutrophils in DIC syndrome. *Scientific Collection «InterConf+»* 32(151):410–414. doi:10.51582/interconf.19-20.04.2023.042
-
-- Pigarevsky V.Ye. (1975) Lysosomal-cationic test. *Pathological Physiology and Experimental Therapy* (3):86–88. *(in Russian)*
-
-- Alhamdi Y, Toh CH (2017) Recent advances in pathophysiology of disseminated intravascular coagulation: the role of circulating histones and neutrophil extracellular traps. *F1000Research* 6:2143. doi:10.12688/f1000research.12498.1
-
-- Bach-Gansmo ET, Halvorsen S, Godal HC, Skjønsberg OH (1994) Degradation of the α-chain of fibrin by human neutrophil elastase reduces the stimulating effect of fibrin on plasminogen activation. *Thrombosis Research* 75(3):307–317. doi:10.1016/0049-3848(94)90241-0
-
-- Bagoly Z, Fazakas F, Komáromi I, Haramura G, Tóth E, Muszbek L (2008) Cleavage of factor XIII by human neutrophil elastase results in a novel active truncated form of factor XIII A subunit. *Thrombosis and Haemostasis* 99(4):668–674. doi:10.1160/TH07-09-0577
 
 - Borregaard N, Cowland JB (1997) Granules of the human neutrophilic polymorphonuclear leukocyte. *Blood* 89(10):3503–3521. doi:10.1182/blood.V89.10.3503
 
@@ -212,6 +210,8 @@ O.D.B. developed and conducted the experimental work, provided biological interp
 - Mitchell JL, Mutch NJ (2019) Let's cross-link: diverse functions of the promiscuous cellular transglutaminase factor XIII-A. *Journal of Thrombosis and Haemostasis* 17(1):19–30. doi:10.1111/jth.14348
 
 - Muszbek L, Bereczky Z, Bagoly Z, Komáromi I, Katona É (2011) Factor XIII: a coagulation factor with multiple plasmatic and cellular functions. *Physiological Reviews* 91(3):931–972. doi:10.1152/physrev.00016.2010
+
+- Pigarevsky V.Ye. (1975) Lysosomal-cationic test. *Pathological Physiology and Experimental Therapy* (3):86–88. *(in Russian)*
 
 - Plow EF, Edgington TS (1975) An alternative pathway for fibrinolysis. I. The cleavage of fibrinogen by leukocyte proteases at physiologic pH. *Journal of Clinical Investigation* 56(1):30–38. doi:10.1172/JCI108076
 
