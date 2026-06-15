@@ -48,7 +48,7 @@ def main():
 
     # no-myelosan level (km=1) reference
     ax.axhline(med[0], color="0.7", lw=0.7, ls=":", zorder=1)
-    ax.annotate("k_m=1 (no rate modification)", xy=(km[0], med[0]), xytext=(km[0] + 0.3, med[0] - 6),
+    ax.annotate("$k_m = 1$ (no rate modification)", xy=(km[0], med[0]), xytext=(km[0] + 0.3, med[0] - 6),
                 fontsize=7, color="0.4", va="top")
 
     # observed G2 operating point (km=4.93)
@@ -56,7 +56,7 @@ def main():
     # interpolate median severity at the observed km for the marker
     sev_at_g2 = float(np.interp(KM_BASELINE_G2, km, med))
     ax.plot([KM_BASELINE_G2], [sev_at_g2], "^", color=C_G2, ms=7, mfc=C_G2,
-            mec="white", mew=0.6, zorder=4, label=f"G2 dose (km={KM_BASELINE_G2})")
+            mec="white", mew=0.6, zorder=4, label=f"G2 dose ($k_m = {KM_BASELINE_G2}$)")
 
     ax.set_xlabel(r"$k_m$ (rate modifier)")
     ax.set_ylabel(r"Peak hypocoagulation (max $\Delta$recalc, s)")

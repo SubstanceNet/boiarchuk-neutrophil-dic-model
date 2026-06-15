@@ -172,7 +172,7 @@ The following constants are specified outside of optimisation. Their values are 
 |---|---|---|---|
 | $\tau_v$ (TV\_FIX) | 1.5 | days | Time scale of the inducer toxicity impulse; biologically motivated by the peak acute systemic effect of ethylphenacin in rabbits at ~36 h after administration. |
 | $k_{cd}$ (KCD\_FIX) | 0.2 | day$^{-1}$ | Clearance rate of the inducer-derived coagulation pool ($H_c$); held fixed at a diagnostic-phase value, an open candidate for future refitting with a prior. |
-| $N_{1,\text{BASE}}$ | 7.3 | $10^9$/L | Baseline neutrophil count for normalisation $N_r(t) = N(t) / N_{1,\text{BASE}}$; corresponds to the intact Group I baseline. |
+| $N_{1,\text{BASE}}$ | 7.3 | $10^9$/L | Baseline neutrophil count for normalisation $N_r(t) = N(t) / N_{1,\text{BASE}}$; corresponds to the intact Group I baseline. The same fixed scale normalises both cohorts, so the suppressed Group II profile (baseline $\approx 3.9$) enters as a reduced $N_r$ rather than rescaled to unity, preserving the absolute count difference used in the §S6.5 decomposition. |
 
 These three constants and the 26 optimised parameters of Table S2 constitute the complete model parametrisation.
 

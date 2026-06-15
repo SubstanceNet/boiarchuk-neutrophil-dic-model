@@ -73,7 +73,7 @@ def main():
 
         # reference points (neutral: white-edged)
         ax.plot(1.0, 1.0, marker="o", color="white", ms=7, mec="black",
-                mew=1.0, zorder=5, label="No kinetic modification (k_m=t_m=1)")
+                mew=1.0, zorder=5, label="No kinetic modification ($k_m = t_m = 1$)")
         ax.plot(TM_BASELINE_G2, KM_BASELINE_G2, marker="*", color="white",
                 ms=12, mec="black", mew=1.0, zorder=5,
                 label="G2 observed")
