@@ -91,6 +91,7 @@ The manuscript was developed iteratively and reorganised into the current
 npj-style draft from an earlier numbered-section version. Structural milestones
 are recorded as git tags (e.g. `manuscript-v2-final`, `pre-submission-audit`,
 `v1.0.0`). The released code+data snapshot accompanying the manuscript is tag
-`v1.0.1`, archived on Zenodo under the concept DOI 10.5281/zenodo.20673520
-(which always resolves to the latest version); this `v1.0.1` release incorporates
-the post-release corrections from the development audit.
+`v1.0.2`, archived on Zenodo under the concept DOI 10.5281/zenodo.20673520
+(which always resolves to the latest version); this `v1.0.2` release incorporates
+the post-release corrections from the development audit (five label/convention/
+bibliography/typography fixes after the v1.0.1 tag).

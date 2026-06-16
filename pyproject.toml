@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "boiarchuk-neutrophil-dic-model"
-version = "1.0.1"
+version = "1.0.2"
 description = "Mechanistic ODE model of neutrophil-driven DIC pathogenesis (Boiarchuk 1998-2023 dataset)"
 readme = "README.md"
 requires-python = ">=3.10"

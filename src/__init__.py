@@ -20,7 +20,7 @@ Public API (the importable package root is ``src``):
     from src import joint_cost            # legacy v12 cost (reproducibility only)
 """
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 __authors__ = ["Olena D. Boiarchuk", "Oleksiy Onasenko"]
 __status__ = "Research"
 
